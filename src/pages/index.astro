@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SchemaMarkup from "../components/SchemaMarkup.astro";
+import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
 
 const repuestos = await getCollection("repuestos");
 const repuestosDestacados = repuestos.slice(0, 4);
+const whatsappUrl = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(siteConfig.whatsappMensajeGenerico)}`;
 ---
 
 <BaseLayout
@@ -30,7 +32,7 @@ const repuestosDestacados = repuestos.slice(0, 4);
           Ver catálogo de repuestos
         </a>
         <a
-          href="https://wa.me/5491100000000?text=Hola%2C%20quiero%20consultar%20por%20un%20repuesto%20Peisa."
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="whatsapp-btn"

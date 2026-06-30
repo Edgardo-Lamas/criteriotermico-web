@@ -41,21 +41,6 @@ const guias = await getCollection("instalacion");
         </div>
       )}
 
-      <!-- Newsletter -->
-      <div class="newsletter">
-        <h3>📩 Recibí novedades y guías técnicas</h3>
-        <p>Suscribite para recibir nuevas guías de instalación, diagnósticos y ofertas en repuestos.</p>
-        <form class="newsletter__form" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
-          <input
-            type="email"
-            class="newsletter__input"
-            placeholder="Tu email"
-            required
-            aria-label="Dirección de email"
-          />
-          <button type="submit" class="btn btn--primary">Suscribirme</button>
-        </form>
-      </div>
     </div>
   </section>
 </BaseLayout>
