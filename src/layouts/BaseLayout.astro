@@ -11,7 +11,7 @@ interface Props {
   canonicalUrl?: string;
 }
 
-const { title, description, ogImage = "/images/og-default.jpg", canonicalUrl } = Astro.props;
+const { title, description, ogImage = "/images/og-default.png", canonicalUrl } = Astro.props;
 const currentPath = Astro.url.pathname;
 const siteUrl = "https://criteriotermico.com.ar";
 const fullCanonical = canonicalUrl || `${siteUrl}${currentPath}`;
