@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PriceDisplay from "../../components/PriceDisplay.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import SymptomsCard from "../../components/SymptomsCard.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SchemaMarkup from "../../components/SchemaMarkup.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const repuestos = await getCollection("repuestos");
+  return repuestos.map((item) => {
+    // In Astro v5 glob loader, item.id is the filename without extension
+    // We use the slug from the JSON data for clean URLs
+    return {
+      params: { slug: item.data.slug },
+      props: { repuesto: item.data },
+    };
+  });
+}
+
+const { repuesto } = Astro.props;
+
+// Build SEO fields
+const codigoDisplay = repuesto.codigo ? ` (${repuesto.codigo})` : "";
+const seoTitle = repuesto.codigo
+  ? `${repuesto.nombre}${codigoDisplay} — Repuesto original Peisa | Criterio Térmico`
+  : `${repuesto.nombre} — Repuesto original Peisa | Criterio Térmico`;
+const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.slice(0, 3).join(", ")}. Repuesto original Peisa disponible para retiro en Villa Urquiza, CABA. Asesoramiento técnico incluido.`;
+const h1Text = repuesto.codigo
+  ? `${repuesto.nombre} — cód. ${repuesto.codigo}`
+  : repuesto.nombre;
+---
+
+<BaseLayout title={seoTitle} description={seoDescription}>
+  <SchemaMarkup type="product" data={repuesto} />
+  <SchemaMarkup
+    type="breadcrumb"
+    data={{
+      items: [
+        { name: "Inicio", url: "https://criteriotermico.com.ar/" },
+        { name: "Repuestos", url: "https://criteriotermico.com.ar/repuestos" },
+        { name: repuesto.nombre, url: `https://criteriotermico.com.ar/repuestos/${repuesto.slug}` },
+      ],
+    }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: "Repuestos", href: "/repuestos" },
+          { label: repuesto.nombre },
+        ]}
+      />
+
+      <div class="product-detail">
+        <!-- Image -->
+        <img
+          src={repuesto.imagen}
+          alt={repuesto.nombre}
+          class="product-detail__image"
+          width="600"
+          height="600"
+        />
+
+        <!-- Info -->
+        <div class="product-detail__info">
+          <!-- Badge + H1 -->
+          <div>
+            <span class={`badge ${repuesto.disponible ? "badge--available" : "badge--unavailable"}`}>
+              {repuesto.disponible ? "✓ Disponible" : "Sin stock"}
+            </span>
+          </div>
+
+          <h1>{h1Text}</h1>
+
+          {repuesto.codigo && (
+            <span class="product-detail__code">Código oficial: {repuesto.codigo}</span>
+          )}
+
+          <!-- Price -->
+          <PriceDisplay precioUsd={repuesto.precio_usd} />
+
+          <!-- Compatible Models -->
+          <div class="product-detail__section">
+            <h2>Modelos compatibles</h2>
+            <div class="product-detail__models">
+              {repuesto.modelos_compatibles.map((modelo: string) => (
+                <span class="product-detail__model-tag">{modelo}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Symptoms -->
+          <SymptomsCard sintomas={repuesto.sintomas} />
+
+          <!-- Description -->
+          <div class="product-detail__section">
+            <h2>Descripción técnica</h2>
+            <p class="product-detail__desc">{repuesto.descripcion}</p>
+          </div>
+
+          <!-- WhatsApp CTA -->
+          <WhatsAppButton
+            mensaje={repuesto.whatsapp_mensaje}
+            texto="Consultar por WhatsApp"
+          />
+
+          <!-- Installation guide link -->
+          {repuesto.guia_instalacion_slug && (
+            <a href={`/instalacion/${repuesto.guia_instalacion_slug}`} class="install-link">
+              <span class="install-link__icon">📋</span>
+              <div>
+                <div class="install-link__text">Ver guía de instalación</div>
+                <div class="install-link__sub">Paso a paso para reemplazar esta pieza</div>
+              </div>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

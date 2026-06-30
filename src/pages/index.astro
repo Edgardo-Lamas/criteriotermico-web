@@ -1,0 +1,151 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SchemaMarkup from "../components/SchemaMarkup.astro";
+import { getCollection } from "astro:content";
+
+const repuestos = await getCollection("repuestos");
+const repuestosDestacados = repuestos.slice(0, 4);
+---
+
+<BaseLayout
+  title="Criterio Térmico — Repuestos Peisa originales en Villa Urquiza, CABA"
+  description="Repuestos originales Peisa con asesoramiento técnico. Ventiladores, flujostatos Bitron, termostatos táctiles y válvulas. Retiro en Villa Urquiza, CABA."
+>
+  <SchemaMarkup type="local-business" data={{}} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero__badge">🔧 20 años de experiencia técnica</span>
+      <h1>
+        Repuestos Peisa originales con
+        <span class="hero__accent">asesoramiento técnico</span>
+      </h1>
+      <p class="hero__subtitle">
+        Ventiladores, flujostatos, termostatos y válvulas para calderas Peisa.
+        Identificamos tu problema, te damos el repuesto correcto y te guiamos para instalarlo.
+      </p>
+      <div class="hero__actions">
+        <a href="/repuestos" class="btn btn--primary btn--lg">
+          Ver catálogo de repuestos
+        </a>
+        <a
+          href="https://wa.me/5491100000000?text=Hola%2C%20quiero%20consultar%20por%20un%20repuesto%20Peisa."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="whatsapp-btn"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L.057 23.882l6.198-1.625A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.367l-.36-.213-3.681.965.981-3.595-.234-.369A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+          </svg>
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Catálogo</p>
+        <h2>Repuestos disponibles</h2>
+        <p class="section-header__desc">
+          Repuestos originales Peisa listos para retiro en Villa Urquiza, CABA.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        {repuestosDestacados.map((item) => {
+          const r = item.data;
+          return (
+            <a href={`/repuestos/${r.slug}`} class="card" style="text-decoration: none;">
+              <img
+                src={r.imagen}
+                alt={r.nombre}
+                class="card__image"
+                loading="lazy"
+                width="600"
+                height="600"
+              />
+              <div class="card__body">
+                {r.codigo && <span class="card__code">Cód. {r.codigo}</span>}
+                <h3 class="card__title">{r.nombre}</h3>
+                <p class="card__desc">{r.descripcion.substring(0, 100)}...</p>
+                <div class="card__footer">
+                  {r.precio_usd > 0 ? (
+                    <span class="price-usd" style="font-size: var(--text-xl);">USD {r.precio_usd}</span>
+                  ) : (
+                    <span class="price-consult" style="font-size: var(--text-base);">Consultar precio</span>
+                  )}
+                  <span class={`badge ${r.disponible ? "badge--available" : "badge--unavailable"}`}>
+                    {r.disponible ? "✓ Disponible" : "Sin stock"}
+                  </span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-8);">
+        <a href="/repuestos" class="btn btn--secondary btn--lg">Ver todos los repuestos →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="section" style="background: var(--color-bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Por qué elegirnos</p>
+        <h2>Criterio Térmico</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">🔧</div>
+          <h3 class="feature-card__title">20 años de experiencia</h3>
+          <p class="feature-card__desc">
+            Técnico matriculado con dos décadas de trabajo exclusivo en calderas Peisa.
+            Conocemos cada modelo y cada falla.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">✅</div>
+          <h3 class="feature-card__title">Repuestos originales</h3>
+          <p class="feature-card__desc">
+            Solo vendemos repuestos originales Peisa. Sin genéricos, sin adaptaciones.
+            La pieza correcta para tu caldera.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon">🎯</div>
+          <h3 class="feature-card__title">Asesoramiento técnico</h3>
+          <p class="feature-card__desc">
+            Te ayudamos a diagnosticar la falla antes de comprar.
+            No te vendemos algo que no necesitás.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnostic CTA -->
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <div class="section-header">
+        <p class="section-header__label">¿No sabés qué repuesto necesitás?</p>
+        <h2>Empezá por el diagnóstico</h2>
+        <p class="section-header__desc">
+          Identificá el problema de tu caldera con nuestras guías técnicas.
+          Cada diagnóstico te lleva al repuesto correcto.
+        </p>
+      </div>
+      <a href="/diagnostico" class="btn btn--primary btn--lg">Ver guías de diagnóstico →</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,18 @@
+{
+  "slug": "flujostato-bitron-onoff-90000054",
+  "nombre": "Flujostato de priorización ON/OFF Bitron para caldera Peisa",
+  "codigo": "90000054",
+  "marca": "Peisa",
+  "precio_usd": 0,
+  "imagen": "/images/repuestos/placeholder.webp",
+  "disponible": true,
+  "modelos_compatibles": ["Diva Convencional 24", "Diva Convencional 32", "modelo 2011 y actual"],
+  "sintomas": [
+    "La caldera calienta ambiente pero no produce agua caliente sanitaria",
+    "La priorización entre calefacción y ACS no funciona correctamente",
+    "Código de error relacionado con flujo de agua"
+  ],
+  "descripcion": "Flujostato de priorización ON/OFF marca Bitron, repuesto original Peisa. Controla la priorización entre calefacción central y agua caliente sanitaria.",
+  "guia_instalacion_slug": "",
+  "whatsapp_mensaje": "Hola, consulto por el flujostato Bitron Peisa 90000054. ¿Está disponible?"
+}

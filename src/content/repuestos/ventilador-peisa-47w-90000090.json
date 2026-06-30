@@ -1,0 +1,18 @@
+{
+  "slug": "ventilador-peisa-47w-90000090",
+  "nombre": "Ventilador forzador 47W para caldera Peisa",
+  "codigo": "90000090",
+  "marca": "Peisa",
+  "precio_usd": 0,
+  "imagen": "/images/repuestos/placeholder.webp",
+  "disponible": true,
+  "modelos_compatibles": ["Diva Duo F", "Única F", "DS", "C tiro forzado (anteriores a 2019)"],
+  "sintomas": [
+    "La caldera no enciende aunque intenta arrancar",
+    "Ruido inusual o vibración en el ventilador",
+    "Error de tiro en el display"
+  ],
+  "descripcion": "Ventilador original Peisa 47W 50Hz para calderas de tiro forzado. Pieza de alta rotación por desgaste natural. Compatible con línea Diva convencional y nueva generación anteriores a 2019.",
+  "guia_instalacion_slug": "instalacion-ventilador-peisa-47w",
+  "whatsapp_mensaje": "Hola, consulto por el ventilador Peisa 90000090. ¿Está disponible?"
+}

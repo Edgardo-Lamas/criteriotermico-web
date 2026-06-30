@@ -1,0 +1,18 @@
+{
+  "slug": "kit-valvula-detentor-escuadra-media",
+  "nombre": "Kit válvula + detentor escuadra ½\" Peisa",
+  "codigo": "",
+  "marca": "Peisa",
+  "precio_usd": 0,
+  "imagen": "/images/repuestos/placeholder.webp",
+  "disponible": true,
+  "modelos_compatibles": ["Radiadores Peisa", "Toalleros Peisa"],
+  "sintomas": [
+    "Pérdida de agua en la conexión del radiador",
+    "Imposibilidad de regular o cortar el flujo en un radiador",
+    "Válvula existente dura o bloqueada"
+  ],
+  "descripcion": "Kit completo de válvula y detentor escuadra ½\" original Peisa para radiadores y toalleros. Permite regular y cortar el flujo individualmente por elemento.",
+  "guia_instalacion_slug": "",
+  "whatsapp_mensaje": "Hola, consulto por el kit válvula detentor ½\" Peisa. ¿Está disponible?"
+}

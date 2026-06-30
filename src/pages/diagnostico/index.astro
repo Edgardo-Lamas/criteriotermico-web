@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection } from "astro:content";
+
+const articulos = await getCollection("diagnostico");
+---
+
+<BaseLayout
+  title="Diagnóstico de calderas Peisa — Criterio Térmico"
+  description="Guías técnicas para diagnosticar fallas en calderas Peisa. Identificá el problema y el repuesto que necesitás con asesoramiento de un técnico con 20 años de experiencia."
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumbs items={[{ label: "Diagnóstico" }]} />
+
+      <div class="section-header" style="text-align: left;">
+        <h1>Diagnóstico técnico de calderas Peisa</h1>
+        <p class="section-header__desc" style="margin-inline: 0;">
+          Identificá el problema de tu caldera con estas guías técnicas. Cada diagnóstico te indica qué repuesto necesitás y cómo resolver la falla.
+        </p>
+      </div>
+
+      <div class="article-grid">
+        {articulos.map((articulo) => (
+          <a href={`/diagnostico/${articulo.id}`} class="article-card">
+            <span class="article-card__tag">{articulo.data.categoria}</span>
+            <h2 class="article-card__title">{articulo.data.title}</h2>
+            <p class="article-card__excerpt">{articulo.data.description}</p>
+            <span class="article-card__link">
+              Leer diagnóstico →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

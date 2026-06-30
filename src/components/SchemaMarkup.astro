@@ -1,0 +1,85 @@
+---
+interface Props {
+  type: "product" | "article" | "local-business" | "breadcrumb";
+  data: Record<string, any>;
+}
+
+const { type, data } = Astro.props;
+
+let schema: Record<string, any> = {};
+
+if (type === "product") {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: data.nombre,
+    description: data.descripcion,
+    image: data.imagen,
+    sku: data.codigo || undefined,
+    brand: {
+      "@type": "Brand",
+      name: data.marca,
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: data.precio_usd > 0 ? data.precio_usd : undefined,
+      availability: data.disponible
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      seller: {
+        "@type": "LocalBusiness",
+        name: "Criterio Térmico",
+      },
+    },
+  };
+} else if (type === "article") {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: data.title,
+    description: data.description,
+    datePublished: data.fecha,
+    author: {
+      "@type": "Organization",
+      name: "Criterio Térmico",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Criterio Térmico",
+    },
+  };
+} else if (type === "local-business") {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Criterio Térmico",
+    description:
+      "Repuestos originales Peisa en Villa Urquiza, CABA. Ventiladores, flujostatos, termostatos táctiles y válvulas. Asesoramiento técnico incluido.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Villa Urquiza",
+      addressRegion: "CABA",
+      addressCountry: "AR",
+    },
+    url: "https://criteriotermico.com.ar",
+    telephone: "+54911XXXXXXXX",
+    openingHours: "Mo-Fr 09:00-18:00",
+  };
+} else if (type === "breadcrumb") {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: data.items.map(
+      (item: { name: string; url: string }, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        item: item.url,
+      })
+    ),
+  };
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

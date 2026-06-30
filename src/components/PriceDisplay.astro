@@ -1,0 +1,52 @@
+---
+const { precioUsd } = Astro.props;
+---
+
+<div class="price-display" data-usd={precioUsd}>
+  {precioUsd > 0 ? (
+    <>
+      <span class="price-usd">USD {precioUsd}</span>
+      <span class="price-ars" data-price-ars>Calculando...</span>
+      <span class="price-note">Precio en pesos al tipo de cambio blue del día</span>
+    </>
+  ) : (
+    <>
+      <span class="price-consult">Consultar precio</span>
+      <span class="price-note">Contactanos por WhatsApp para conocer el precio actual</span>
+    </>
+  )}
+</div>
+
+<script>
+  async function fetchDolarPrice(): Promise<number | null> {
+    try {
+      const res = await fetch('https://dolarapi.com/v1/dolares/blue');
+      const data = await res.json();
+      return data.venta;
+    } catch {
+      return null;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const displays = document.querySelectorAll('.price-display');
+    const tipoCambio = await fetchDolarPrice();
+
+    displays.forEach((display) => {
+      const usd = parseFloat((display as HTMLElement).dataset.usd || '0');
+      const arsEl = display.querySelector('[data-price-ars]');
+      if (!arsEl) return;
+
+      if (tipoCambio && usd > 0) {
+        const ars = (usd * tipoCambio).toLocaleString('es-AR', {
+          style: 'currency',
+          currency: 'ARS',
+          maximumFractionDigits: 0,
+        });
+        arsEl.textContent = ars;
+      } else {
+        arsEl.textContent = 'Tipo de cambio no disponible';
+      }
+    });
+  });
+</script>

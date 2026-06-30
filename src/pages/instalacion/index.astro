@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection } from "astro:content";
+
+const guias = await getCollection("instalacion");
+---
+
+<BaseLayout
+  title="Guías de instalación de repuestos Peisa — Criterio Térmico"
+  description="Guías paso a paso para instalar repuestos Peisa. Contenido técnico propio de un instalador con 20 años de experiencia en calderas y calefacción central."
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumbs items={[{ label: "Instalación" }]} />
+
+      <div class="section-header" style="text-align: left;">
+        <h1>Guías de instalación — repuestos Peisa</h1>
+        <p class="section-header__desc" style="margin-inline: 0;">
+          Guías paso a paso para instalar repuestos Peisa. Contenido técnico propio de un técnico con 20 años de experiencia.
+        </p>
+      </div>
+
+      {guias.length > 0 ? (
+        <div class="article-grid">
+          {guias.map((guia) => (
+            <a href={`/instalacion/${guia.id}`} class="article-card">
+              <span class="article-card__tag">{guia.data.categoria}</span>
+              <h2 class="article-card__title">{guia.data.title}</h2>
+              <p class="article-card__excerpt">{guia.data.description}</p>
+              <span class="article-card__link">
+                Ver guía completa →
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <div class="empty-state__icon">📋</div>
+          <p>Próximamente — guías de instalación en preparación.</p>
+        </div>
+      )}
+
+      <!-- Newsletter -->
+      <div class="newsletter">
+        <h3>📩 Recibí novedades y guías técnicas</h3>
+        <p>Suscribite para recibir nuevas guías de instalación, diagnósticos y ofertas en repuestos.</p>
+        <form class="newsletter__form" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
+          <input
+            type="email"
+            class="newsletter__input"
+            placeholder="Tu email"
+            required
+            aria-label="Dirección de email"
+          />
+          <button type="submit" class="btn btn--primary">Suscribirme</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

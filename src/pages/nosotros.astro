@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+---
+
+<BaseLayout
+  title="Quiénes somos — Criterio Térmico"
+  description="20 años de experiencia en calderas Peisa. Técnico matriculado en Villa Urquiza, CABA. Repuestos originales y asesoramiento técnico."
+>
+  <section class="section">
+    <div class="container container--narrow">
+      <Breadcrumbs items={[{ label: "Nosotros" }]} />
+
+      <div class="about-hero">
+        <h1>Criterio Térmico</h1>
+        <p class="hero__subtitle" style="margin-top: var(--space-4);">
+          Repuestos originales Peisa con el respaldo de 20 años de experiencia técnica real.
+        </p>
+      </div>
+
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="about-stat__number">20+</div>
+          <div class="about-stat__label">Años de experiencia</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat__number">100%</div>
+          <div class="about-stat__label">Repuestos originales</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat__number">Peisa</div>
+          <div class="about-stat__label">Especialización exclusiva</div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <h2>Conocimiento técnico real</h2>
+        <p>
+          Criterio Térmico nace de la experiencia directa con calderas Peisa.
+          No somos un catálogo online genérico — somos un técnico matriculado que
+          conoce cada modelo, cada falla y cada solución.
+        </p>
+        <p>
+          Cuando consultás por un repuesto, no te mandamos una pieza y listo.
+          Te preguntamos qué síntoma tiene tu caldera, verificamos que el repuesto
+          sea el correcto para tu modelo, y te damos las indicaciones para instalarlo.
+        </p>
+
+        <h2>¿Por qué "Criterio" Térmico?</h2>
+        <p>
+          Porque vender un repuesto sin saber si es el correcto no tiene criterio.
+          Cada pieza que ofrecemos viene con el respaldo de saber exactamente
+          por qué se cambió, qué síntoma resuelve y cómo se instala.
+        </p>
+
+        <h2>Ubicación y retiro</h2>
+        <p>
+          Estamos en <strong>Villa Urquiza, CABA</strong>. Los repuestos se retiran
+          en persona, coordinando previamente por WhatsApp. No hacemos envíos por
+          el momento — queremos asegurarnos de que cada pieza sea la correcta
+          antes de entregarla.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

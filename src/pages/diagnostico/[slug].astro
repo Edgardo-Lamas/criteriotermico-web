@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SchemaMarkup from "../../components/SchemaMarkup.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const articulos = await getCollection("diagnostico");
+  return articulos.map((articulo) => ({
+    params: { slug: articulo.id },
+    props: { articulo },
+  }));
+}
+
+const { articulo } = Astro.props;
+const { Content } = await render(articulo);
+---
+
+<BaseLayout
+  title={`${articulo.data.title} — Criterio Térmico`}
+  description={articulo.data.description}
+>
+  <SchemaMarkup type="article" data={articulo.data} />
+  <SchemaMarkup
+    type="breadcrumb"
+    data={{
+      items: [
+        { name: "Inicio", url: "https://criteriotermico.com.ar/" },
+        { name: "Diagnóstico", url: "https://criteriotermico.com.ar/diagnostico" },
+        { name: articulo.data.title, url: `https://criteriotermico.com.ar/diagnostico/${articulo.id}` },
+      ],
+    }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: "Diagnóstico", href: "/diagnostico" },
+          { label: articulo.data.title },
+        ]}
+      />
+
+      <div class="article-content">
+        <span class="article-card__tag" style="margin-bottom: var(--space-4); display: inline-block;">
+          {articulo.data.categoria}
+        </span>
+        <h1>{articulo.data.title}</h1>
+        <Content />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

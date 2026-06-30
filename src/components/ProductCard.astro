@@ -1,0 +1,39 @@
+---
+interface Props {
+  nombre: string;
+  codigo: string;
+  slug: string;
+  imagen: string;
+  precio_usd: number;
+  disponible: boolean;
+  descripcion: string;
+}
+
+const { nombre, codigo, slug, imagen, precio_usd, disponible, descripcion } = Astro.props;
+---
+
+<a href={`/repuestos/${slug}`} class="card" style="text-decoration: none;">
+  <img
+    src={imagen}
+    alt={nombre}
+    class="card__image"
+    loading="lazy"
+    width="600"
+    height="600"
+  />
+  <div class="card__body">
+    {codigo && <span class="card__code">Cód. {codigo}</span>}
+    <h3 class="card__title">{nombre}</h3>
+    <p class="card__desc">{descripcion.substring(0, 100)}...</p>
+    <div class="card__footer">
+      {precio_usd > 0 ? (
+        <span class="price-usd" style="font-size: var(--text-xl);">USD {precio_usd}</span>
+      ) : (
+        <span class="price-consult" style="font-size: var(--text-base);">Consultar precio</span>
+      )}
+      <span class={`badge ${disponible ? "badge--available" : "badge--unavailable"}`}>
+        {disponible ? "✓ Disponible" : "Sin stock"}
+      </span>
+    </div>
+  </div>
+</a>

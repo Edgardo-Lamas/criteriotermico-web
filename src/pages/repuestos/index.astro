@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection } from "astro:content";
+
+const repuestos = await getCollection("repuestos");
+---
+
+<BaseLayout
+  title="Catálogo de repuestos Peisa — Criterio Térmico"
+  description="Repuestos originales Peisa disponibles: ventiladores, flujostatos Bitron, termostatos táctiles, válvulas y detentores. Retiro en Villa Urquiza, CABA."
+>
+  <section class="section">
+    <div class="container">
+      <Breadcrumbs items={[{ label: "Repuestos" }]} />
+
+      <div class="section-header" style="text-align: left;">
+        <h1>Repuestos Peisa originales disponibles</h1>
+        <p class="section-header__desc" style="margin-inline: 0;">
+          Todos los repuestos son originales Peisa. Retiro en persona en Villa Urquiza, CABA. Consultá disponibilidad y precio por WhatsApp.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        {repuestos.map((item) => (
+          <ProductCard
+            nombre={item.data.nombre}
+            codigo={item.data.codigo}
+            slug={item.data.slug}
+            imagen={item.data.imagen}
+            precio_usd={item.data.precio_usd}
+            disponible={item.data.disponible}
+            descripcion={item.data.descripcion}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
