@@ -4,7 +4,7 @@
   "codigo": "90000054",
   "marca": "Peisa",
   "precio_usd": 0,
-  "imagen": "/images/repuestos/placeholder.webp",
+  "imagen": "/images/repuestos/placeholder.svg",
   "disponible": true,
   "modelos_compatibles": ["Diva Convencional 24", "Diva Convencional 32", "modelo 2011 y actual"],
   "sintomas": [

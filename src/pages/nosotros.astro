@@ -1,6 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import CredibilityStrip from "../components/CredibilityStrip.astro";
+
+const credibilidad = [
+  { icon: "🔧", number: "20+ años", label: "de trayectoria técnica" },
+  { icon: "🎓", number: "Matriculado", label: "técnico habilitado" },
+  { icon: "⚙️", number: "Exclusivo", label: "especialista en calderas Peisa" },
+  { icon: "📍", number: "Villa Urquiza", label: "CABA" },
+];
 ---
 
 <BaseLayout
@@ -14,25 +22,38 @@ import Breadcrumbs from "../components/Breadcrumbs.astro";
       <div class="about-hero">
         <h1>Criterio Térmico</h1>
         <p class="hero__subtitle" style="margin-top: var(--space-4);">
-          Repuestos originales Peisa con el respaldo de 20 años de experiencia técnica real.
+          20 años de experiencia técnica real, del otro lado de cada repuesto que vendemos.
         </p>
       </div>
 
-      <div class="about-stats">
-        <div class="about-stat">
-          <div class="about-stat__number">20+</div>
-          <div class="about-stat__label">Años de experiencia</div>
+      <CredibilityStrip items={credibilidad} />
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--color-bg-secondary); padding-block: var(--space-12);">
+    <div class="container container--narrow">
+      <div class="premium-row">
+        <div class="premium-row__media">
+          <img src="/images/nosotros/taller-detalle.jpg" alt="Manos instalando un repuesto en una caldera Peisa" loading="lazy" />
         </div>
-        <div class="about-stat">
-          <div class="about-stat__number">100%</div>
-          <div class="about-stat__label">Repuestos originales</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat__number">Peisa</div>
-          <div class="about-stat__label">Especialización exclusiva</div>
+        <div class="premium-row__text">
+          <span class="premium-row__badge">Quién está del otro lado del WhatsApp</span>
+          <h2 style="margin-bottom: var(--space-4);">Mi oficio, en cada diagnóstico</h2>
+          <p class="premium-row__desc">
+            [TODO: confirmar con Edgardo — cómo empezó en el oficio, en qué año, y qué lo
+            llevó a especializarse exclusivamente en calderas Peisa.]
+          </p>
+          <p class="premium-row__desc">
+            [TODO: confirmar con Edgardo — matrícula técnica (si quiere mostrar el número)
+            y barrios/zonas donde trabaja además de Villa Urquiza.]
+          </p>
         </div>
       </div>
+    </div>
+  </section>
 
+  <section class="section">
+    <div class="container container--narrow">
       <div class="article-content">
         <h2>Conocimiento técnico real</h2>
         <p>

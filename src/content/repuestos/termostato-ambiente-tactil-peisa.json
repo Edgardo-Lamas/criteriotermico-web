@@ -1,10 +1,10 @@
 {
   "slug": "termostato-ambiente-tactil-peisa",
-  "nombre": "Termostato de ambiente táctil Peisa",
+  "nombre": "Termostato de ambiente táctil",
   "codigo": "",
-  "marca": "Peisa",
+  "marca": "",
   "precio_usd": 0,
-  "imagen": "/images/repuestos/placeholder.webp",
+  "imagen": "/images/repuestos/placeholder.svg",
   "disponible": true,
   "modelos_compatibles": ["Compatible con calderas Peisa con conector de termostato estándar"],
   "sintomas": [
@@ -12,7 +12,7 @@
     "La caldera no respeta la temperatura programada",
     "Pantalla del termostato sin imagen o con error"
   ],
-  "descripcion": "Termostato de ambiente táctil original Peisa. Control preciso de temperatura con interfaz táctil. Compatible con la línea de calderas Peisa.",
+  "descripcion": "Termostato de ambiente táctil con control preciso de temperatura e interfaz táctil. Compatible con la línea de calderas Peisa mediante conector estándar.",
   "guia_instalacion_slug": "",
-  "whatsapp_mensaje": "Hola, consulto por el termostato táctil Peisa. ¿Está disponible?"
+  "whatsapp_mensaje": "Hola, consulto por el termostato de ambiente táctil. ¿Está disponible?"
 }

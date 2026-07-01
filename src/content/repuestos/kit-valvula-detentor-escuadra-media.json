@@ -4,7 +4,7 @@
   "codigo": "",
   "marca": "Peisa",
   "precio_usd": 0,
-  "imagen": "/images/repuestos/placeholder.webp",
+  "imagen": "/images/repuestos/placeholder.svg",
   "disponible": true,
   "modelos_compatibles": ["Radiadores Peisa", "Toalleros Peisa"],
   "sintomas": [

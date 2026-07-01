@@ -1,58 +1,202 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SchemaMarkup from "../components/SchemaMarkup.astro";
+import CredibilityStrip from "../components/CredibilityStrip.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
 
 const repuestos = await getCollection("repuestos");
 const repuestosDestacados = repuestos.slice(0, 4);
-const whatsappUrl = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(siteConfig.whatsappMensajeGenerico)}`;
+const diagnosticos = (await getCollection("diagnostico")).slice(0, 3);
+
+const credibilidad = [
+  { icon: "🔧", number: "20+ años", label: "de trayectoria técnica" },
+  { icon: "🎓", number: "Matriculado", label: "técnico habilitado" },
+  { icon: "⚙️", number: "Exclusivo", label: "especialista en calderas Peisa" },
+  { icon: "📍", number: "Villa Urquiza", label: "CABA" },
+];
 ---
 
 <BaseLayout
-  title="Criterio Térmico — Repuestos Peisa originales en Villa Urquiza, CABA"
-  description="Repuestos originales Peisa con asesoramiento técnico. Ventiladores, flujostatos Bitron, termostatos táctiles y válvulas. Retiro en Villa Urquiza, CABA."
+  title="Criterio Térmico — 20 años de experiencia técnica en calderas Peisa"
+  description="Técnico con 20 años de experiencia en calderas Peisa en Villa Urquiza, CABA. Diagnóstico, asesoramiento técnico y repuestos originales."
 >
   <SchemaMarkup type="local-business" data={{}} />
 
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <span class="hero__badge">🔧 20 años de experiencia técnica</span>
-      <h1>
-        Repuestos Peisa originales con
-        <span class="hero__accent">asesoramiento técnico</span>
-      </h1>
-      <p class="hero__subtitle">
-        Ventiladores, flujostatos, termostatos y válvulas para calderas Peisa.
-        Identificamos tu problema, te damos el repuesto correcto y te guiamos para instalarlo.
-      </p>
-      <div class="hero__actions">
-        <a href="/repuestos" class="btn btn--primary btn--lg">
-          Ver catálogo de repuestos
+      <div class="hero__grid">
+        <div class="hero__content">
+          <span class="hero__badge">👷 20 años reparando calderas Peisa — Villa Urquiza, CABA</span>
+          <h1>
+            20 años de experiencia técnica en calderas Peisa,
+            <span class="hero__accent">en cada repuesto que vendemos</span>
+          </h1>
+          <p class="hero__subtitle">
+            Ventiladores, flujostatos, termostatos y válvulas para calderas Peisa.
+            Identificamos tu problema, te damos el repuesto correcto y te guiamos para instalarlo.
+          </p>
+          <div class="hero__actions">
+            <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} />
+            <a href="/diagnostico" class="btn btn--secondary btn--lg">
+              Ver diagnóstico técnico
+            </a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <img
+            src="/images/home/hero-tecnico.jpg"
+            alt="Técnico diagnosticando una caldera Peisa"
+            width="1600"
+            height="1200"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credibility strip -->
+  <section style="background: var(--color-bg-secondary); border-block: 1px solid var(--color-border);">
+    <div class="container">
+      <CredibilityStrip items={credibilidad} />
+    </div>
+  </section>
+
+  <!-- Diagnóstico spotlight -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: left;">
+        <p class="section-header__label">Lo que nos diferencia</p>
+        <h2>Diagnóstico técnico, no una tienda más</h2>
+        <p class="section-header__desc" style="margin-inline: 0;">
+          No vendemos repuestos al voleo. Estas guías vienen del mismo criterio con el
+          que diagnosticamos cada caldera en 20 años de oficio.
+        </p>
+      </div>
+
+      <div class="article-grid">
+        {diagnosticos.map((articulo) => (
+          <a href={`/diagnostico/${articulo.id}`} class="article-card">
+            <span class="article-card__tag">{articulo.data.categoria}</span>
+            <h3 class="article-card__title">{articulo.data.title}</h3>
+            <p class="article-card__excerpt">{articulo.data.description}</p>
+            <span class="article-card__link">Leer diagnóstico →</span>
+          </a>
+        ))}
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-8);">
+        <a href="/diagnostico" class="btn btn--primary btn--lg">Ver todas las guías de diagnóstico →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí teaser -->
+  <section class="section" style="background: var(--color-bg-secondary);">
+    <div class="container">
+      <div class="premium-showcase">
+        <div class="premium-row">
+          <a href="/nosotros" class="premium-row__media">
+            <img src="/images/home/sobre-mi-portrait.jpg" alt="Técnico especialista de Criterio Térmico" loading="lazy" />
+          </a>
+          <div class="premium-row__text">
+            <span class="premium-row__badge">Quién está del otro lado del WhatsApp</span>
+            <h3>20 años dedicados exclusivamente a calderas Peisa</h3>
+            <p class="premium-row__desc">
+              Cuando escribís, no te contesta un call center. Te contesto yo, con el
+              criterio de dos décadas diagnosticando y reparando este mismo sistema de
+              calefacción, uno a la vez.
+            </p>
+            <a href="/nosotros" class="btn btn--primary">Conocé mi historia →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Repuestos en fotos -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Repuestos</p>
+        <h2>Piezas que reparamos todos los días</h2>
+        <p class="section-header__desc">
+          Los repuestos que más se rompen en calderas Peisa. Tocá una foto para ver la ficha técnica completa.
+        </p>
+      </div>
+
+      <div class="photo-grid">
+        <a href="/repuestos/flujostato-bitron-onoff-90000054" class="photo-card">
+          <img src="/images/home/flujostato.jpg" alt="Flujostato de priorización ON/OFF Bitron" loading="lazy" />
+          <span class="photo-card__label">Flujostato Bitron ON/OFF</span>
         </a>
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="whatsapp-btn"
-        >
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.522 5.847L.057 23.882l6.198-1.625A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.367l-.36-.213-3.681.965.981-3.595-.234-.369A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
-          </svg>
-          Consultar por WhatsApp
+        <a href="/repuestos/ventilador-peisa-47w-90000090" class="photo-card">
+          <img src="/images/home/ventilador.jpg" alt="Ventilador forzador 47W para caldera Peisa" loading="lazy" />
+          <span class="photo-card__label">Ventilador forzador 47W</span>
+        </a>
+        <a href="/repuestos/kit-valvula-detentor-escuadra-media" class="photo-card">
+          <img src="/images/home/kit-valvula.jpg" alt="Kit válvula y detentor escuadra ½ pulgada" loading="lazy" />
+          <span class="photo-card__label">Kit válvula + detentor ½"</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Featured Products -->
+  <!-- Premium showcase -->
+  <section class="section" style="background: var(--color-bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-header__label">Criterio Térmico</p>
+        <h2>Más que un repuesto</h2>
+        <p class="section-header__desc">
+          Asesoramiento técnico incluido en cada pieza que vendemos.
+        </p>
+      </div>
+
+      <div class="premium-showcase">
+        <div class="premium-row">
+          <a href="/repuestos/termostato-ambiente-tactil-peisa" class="premium-row__media">
+            <img src="/images/home/termostato-premium.jpg" alt="Termostato de ambiente táctil controlando la temperatura del hogar" loading="lazy" />
+          </a>
+          <div class="premium-row__text">
+            <span class="premium-row__badge">Control de temperatura</span>
+            <h3>Controlá el clima de tu hogar</h3>
+            <p class="premium-row__desc">
+              Un termostato táctil que responde bien es la diferencia entre pasar frío
+              y tener la casa a la temperatura justa. En Criterio Térmico te asesoramos
+              para elegir el que corresponde a tu caldera y te explicamos cómo instalarlo.
+            </p>
+            <a href="/repuestos/termostato-ambiente-tactil-peisa" class="btn btn--primary">Ver ficha técnica →</a>
+          </div>
+        </div>
+
+        <div class="premium-row premium-row--reverse">
+          <a href="/repuestos/kit-valvula-detentor-escuadra-media" class="premium-row__media">
+            <img src="/images/home/valvulas-detentores-premium.jpg" alt="Válvulas y detentores para radiadores en un ambiente hogareño" loading="lazy" />
+          </a>
+          <div class="premium-row__text">
+            <span class="premium-row__badge">Regulación por ambiente</span>
+            <h3>Válvulas y detentores para tus radiadores</h3>
+            <p class="premium-row__desc">
+              Regulá o cortá el flujo de cada radiador de forma individual. Con la
+              pieza original y el asesoramiento de 20 años de experiencia de Criterio
+              Térmico, cada ambiente queda a la temperatura que necesitás.
+            </p>
+            <a href="/repuestos/kit-valvula-detentor-escuadra-media" class="btn btn--primary">Ver ficha técnica →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Repuestos disponibles -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <p class="section-header__label">Catálogo</p>
-        <h2>Repuestos disponibles</h2>
+        <p class="section-header__label">Repuestos disponibles</p>
+        <h2>Lo que tenemos en stock</h2>
         <p class="section-header__desc">
           Repuestos originales Peisa listos para retiro en Villa Urquiza, CABA.
         </p>
@@ -97,57 +241,18 @@ const whatsappUrl = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURICompon
     </div>
   </section>
 
-  <!-- Why Us -->
-  <section class="section" style="background: var(--color-bg-secondary);">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-header__label">Por qué elegirnos</p>
-        <h2>Criterio Térmico</h2>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-card__icon">🔧</div>
-          <h3 class="feature-card__title">20 años de experiencia</h3>
-          <p class="feature-card__desc">
-            Técnico matriculado con dos décadas de trabajo exclusivo en calderas Peisa.
-            Conocemos cada modelo y cada falla.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-card__icon">✅</div>
-          <h3 class="feature-card__title">Repuestos originales</h3>
-          <p class="feature-card__desc">
-            Solo vendemos repuestos originales Peisa. Sin genéricos, sin adaptaciones.
-            La pieza correcta para tu caldera.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-card__icon">🎯</div>
-          <h3 class="feature-card__title">Asesoramiento técnico</h3>
-          <p class="feature-card__desc">
-            Te ayudamos a diagnosticar la falla antes de comprar.
-            No te vendemos algo que no necesitás.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Diagnostic CTA -->
-  <section class="section">
+  <section class="section" style="background: var(--color-bg-secondary);">
     <div class="container" style="text-align: center;">
       <div class="section-header">
-        <p class="section-header__label">¿No sabés qué repuesto necesitás?</p>
-        <h2>Empezá por el diagnóstico</h2>
+        <p class="section-header__label">¿Preferís hablar directo?</p>
+        <h2>Escribinos por WhatsApp</h2>
         <p class="section-header__desc">
-          Identificá el problema de tu caldera con nuestras guías técnicas.
-          Cada diagnóstico te lleva al repuesto correcto.
+          Contanos qué le pasa a tu caldera y te decimos si es un repuesto,
+          una instalación, o algo que podés resolver vos mismo.
         </p>
       </div>
-      <a href="/diagnostico" class="btn btn--primary btn--lg">Ver guías de diagnóstico →</a>
+      <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} />
     </div>
   </section>
 </BaseLayout>
