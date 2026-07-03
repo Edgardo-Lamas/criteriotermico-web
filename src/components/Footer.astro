@@ -5,45 +5,58 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <div class="container">
-    <div class="footer__inner">
-      <div>
-        <div class="footer__brand">🔥 Criterio Térmico</div>
-        <p class="footer__desc">
-          {siteConfig.descripcion}
-        </p>
-        <p class="footer__desc" style="margin-top: var(--space-4);">
-          📍 {siteConfig.direccion}<br />
-          🕐 {siteConfig.horario}
-        </p>
-      </div>
+  <div class="container footer__inner">
+    <div>
+      <a href="/" class="footer__brand">
+        <span class="header__logo-icon">
+          <img src="/logo-mark.png" alt="Criterio Térmico" />
+        </span>
+        <span class="footer__brand-text">Criterio·Térmico</span>
+      </a>
+      <p class="footer__desc">
+        {siteConfig.descripcion}
+      </p>
+      <p class="footer__desc" style="margin-top: var(--space-4);">
+        📍 {siteConfig.direccion}<br />
+        🕐 {siteConfig.horario}
+      </p>
+    </div>
 
-      <div>
-        <div class="footer__title">Secciones</div>
-        <div class="footer__links">
-          <a href="/repuestos">Repuestos</a>
-          <a href="/diagnostico">Diagnóstico</a>
-          <a href="/instalacion">Instalación</a>
-          <a href="/nosotros">Nosotros</a>
-        </div>
-      </div>
-
-      <div>
-        <div class="footer__title">Contacto</div>
-        <div class="footer__links">
-          <a
-            href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(siteConfig.whatsappMensajeGenerico)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            💬 WhatsApp
-          </a>
-        </div>
+    <div>
+      <div class="footer__title">Secciones</div>
+      <div class="footer__links">
+        <a href="/diagnostico">Diagnóstico</a>
+        <a href="/repuestos">Repuestos</a>
+        <a href="/nosotros">El técnico</a>
+        <a href="/notas">Notas</a>
+        <a href="/para-tecnicos">Para técnicos</a>
       </div>
     </div>
 
-    <div class="footer__bottom">
-      © {year} {siteConfig.nombre}. Todos los derechos reservados.
+    <div>
+      <div class="footer__title">Contacto</div>
+      <div class="footer__links">
+        <a
+          href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(siteConfig.whatsappMensajeGenerico)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp · Edgardo
+        </a>
+        <a
+          href={`https://wa.me/${siteConfig.whatsappAlejandro}?text=${encodeURIComponent(siteConfig.whatsappMensajeGenerico)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp · Alejandro
+        </a>
+        <span>{siteConfig.direccion}</span>
+        <span>{siteConfig.horario}</span>
+      </div>
     </div>
+  </div>
+
+  <div class="footer__bottom">
+    © {year} {siteConfig.nombre} · Repuestos y servicio técnico Peisa · {siteConfig.direccion}
   </div>
 </footer>

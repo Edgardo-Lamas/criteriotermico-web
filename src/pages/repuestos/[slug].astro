@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PriceDisplay from "../../components/PriceDisplay.astro";
 import WhatsAppButton from "../../components/WhatsAppButton.astro";
-import SymptomsCard from "../../components/SymptomsCard.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SchemaMarkup from "../../components/SchemaMarkup.astro";
 import { getCollection } from "astro:content";
@@ -10,8 +9,6 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const repuestos = await getCollection("repuestos");
   return repuestos.map((item) => {
-    // In Astro v5 glob loader, item.id is the filename without extension
-    // We use the slug from the JSON data for clean URLs
     return {
       params: { slug: item.data.slug },
       props: { repuesto: item.data },
@@ -21,15 +18,16 @@ export async function getStaticPaths() {
 
 const { repuesto } = Astro.props;
 
-// Build SEO fields
+const diagnosticos = await getCollection("diagnostico");
+const guiasRelacionadas = diagnosticos.filter((d) =>
+  d.data.repuestos_relacionados?.includes(repuesto.slug)
+);
+
 const codigoDisplay = repuesto.codigo ? ` (${repuesto.codigo})` : "";
 const seoTitle = repuesto.codigo
   ? `${repuesto.nombre}${codigoDisplay} — Repuesto original Peisa | Criterio Térmico`
   : `${repuesto.nombre} — Repuesto original Peisa | Criterio Térmico`;
 const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.slice(0, 3).join(", ")}. Repuesto original Peisa disponible para retiro en Villa Urquiza, CABA. Asesoramiento técnico incluido.`;
-const h1Text = repuesto.codigo
-  ? `${repuesto.nombre} — cód. ${repuesto.codigo}`
-  : repuesto.nombre;
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription}>
@@ -45,8 +43,8 @@ const h1Text = repuesto.codigo
     }}
   />
 
-  <section class="section">
-    <div class="container">
+  <section class="section--tight">
+    <div class="container container--mid">
       <Breadcrumbs
         items={[
           { label: "Repuestos", href: "/repuestos" },
@@ -54,70 +52,103 @@ const h1Text = repuesto.codigo
         ]}
       />
 
-      <div class="product-detail">
-        <!-- Image -->
-        <img
-          src={repuesto.imagen}
-          alt={repuesto.nombre}
-          class="product-detail__image"
-          width="600"
-          height="600"
-        />
+      <div class="product-detail" style="margin-top: 26px;">
+        <div class="product-detail__media">
+          <img src={repuesto.imagen} alt={repuesto.nombre} width="600" height="600" />
+          <span class="product-detail__badge">
+            <span class="product-card__badge-dot"></span>
+            {repuesto.disponible ? "Disponible" : "Sin stock"}
+          </span>
+        </div>
 
-        <!-- Info -->
         <div class="product-detail__info">
-          <!-- Badge + H1 -->
-          <div>
-            <span class={`badge ${repuesto.disponible ? "badge--available" : "badge--unavailable"}`}>
-              {repuesto.disponible ? "✓ Disponible" : "Sin stock"}
-            </span>
-          </div>
-
-          <h1>{h1Text}</h1>
-
           {repuesto.codigo && (
-            <span class="product-detail__code">Código oficial: {repuesto.codigo}</span>
+            <span class="product-detail__code">COD {repuesto.codigo} · {repuesto.marca || "Peisa"} original</span>
           )}
 
-          <!-- Price -->
-          <PriceDisplay precioUsd={repuesto.precio_usd} />
+          <h1>{repuesto.nombre}</h1>
 
-          <!-- Compatible Models -->
-          <div class="product-detail__section">
-            <h2>Modelos compatibles</h2>
-            <div class="product-detail__models">
-              {repuesto.modelos_compatibles.map((modelo: string) => (
-                <span class="product-detail__model-tag">{modelo}</span>
-              ))}
+          <p class="product-detail__desc">{repuesto.descripcion}</p>
+
+          <div class="product-detail__price-box">
+            <span class="product-detail__price-label">Precio</span>
+            <PriceDisplay precioUsd={repuesto.precio_usd} />
+            <p class="price-note" style="margin-top: 4px;">
+              Te confirmamos disponibilidad y precio del día al instante.
+            </p>
+            <div style="margin-top: 16px;">
+              <WhatsAppButton
+                mensaje={repuesto.whatsapp_mensaje}
+                texto="Consultar por WhatsApp"
+                class="whatsapp-btn--full"
+              />
             </div>
           </div>
 
-          <!-- Symptoms -->
-          <SymptomsCard sintomas={repuesto.sintomas} />
-
-          <!-- Description -->
-          <div class="product-detail__section">
-            <h2>Descripción técnica</h2>
-            <p class="product-detail__desc">{repuesto.descripcion}</p>
+          <div class="product-detail__models">
+            <span class="product-detail__models-label">Modelos compatibles</span>
+            {repuesto.modelos_compatibles.map((modelo: string) => (
+              <span class="product-detail__model-tag">{modelo}</span>
+            ))}
           </div>
-
-          <!-- WhatsApp CTA -->
-          <WhatsAppButton
-            mensaje={repuesto.whatsapp_mensaje}
-            texto="Consultar por WhatsApp"
-          />
-
-          <!-- Installation guide link -->
-          {repuesto.guia_instalacion_slug && (
-            <a href={`/instalacion/${repuesto.guia_instalacion_slug}`} class="install-link">
-              <span class="install-link__icon">📋</span>
-              <div>
-                <div class="install-link__text">Ver guía de instalación</div>
-                <div class="install-link__sub">Paso a paso para reemplazar esta pieza</div>
-              </div>
-            </a>
-          )}
         </div>
+      </div>
+
+      <div class="detail-columns">
+        <div class="detail-box">
+          <div class="detail-box__header">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#b8790a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            <h2>Síntomas típicos</h2>
+          </div>
+          <ul class="symptoms__list">
+            {repuesto.sintomas.map((sintoma: string) => (
+              <li class="symptoms__item">{sintoma}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="detail-box">
+          <h2 style="font-family: var(--font-heading); font-weight: 700; font-size: 19px; margin-bottom: 16px;">
+            Guías relacionadas
+          </h2>
+          <div style="display: flex; flex-direction: column; gap: 11px;">
+            {guiasRelacionadas.map((guia) => (
+              <a href={`/diagnostico/${guia.id}`} class="install-link">
+                <span style="font-size: 20px;">📘</span>
+                <div>
+                  <div class="install-link__text">{guia.data.title}</div>
+                  <div class="install-link__sub">{guia.data.categoria}</div>
+                </div>
+              </a>
+            ))}
+            {repuesto.guia_instalacion_slug && (
+              <a href={`/instalacion/${repuesto.guia_instalacion_slug}`} class="install-link">
+                <span style="font-size: 20px;">🔧</span>
+                <div>
+                  <div class="install-link__text">Ver guía de instalación</div>
+                  <div class="install-link__sub">Paso a paso para reemplazar esta pieza</div>
+                </div>
+              </a>
+            )}
+            {guiasRelacionadas.length === 0 && !repuesto.guia_instalacion_slug && (
+              <p style="color: var(--color-text-muted); font-size: 14.5px;">
+                Todavía no hay guías publicadas para esta pieza — consultanos por WhatsApp.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div class="dark-cta" style="margin-top: clamp(40px, 5vw, 64px);">
+        <div class="dark-cta__text">
+          <h2>¿No estás seguro si es tu repuesto?</h2>
+          <p>Pasame el modelo de tu caldera y el número de serie. Te confirmo la compatibilidad antes de que compres.</p>
+        </div>
+        <WhatsAppButton mensaje={repuesto.whatsapp_mensaje} texto="Consultar disponibilidad" />
       </div>
     </div>
   </section>

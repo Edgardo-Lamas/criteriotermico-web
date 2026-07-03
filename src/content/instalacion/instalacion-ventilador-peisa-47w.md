@@ -10,7 +10,7 @@ repuesto_slug: "ventilador-peisa-47w-90000090"
 
 Esta guía cubre el reemplazo del ventilador forzador en calderas Peisa de tiro forzado: Diva Duo F, Única F, DS y C (anteriores a 2019).
 
-> **Importante:** Esta guía es orientativa. Si no tenés experiencia con instalaciones de gas, consultá con un técnico matriculado.
+> **Importante:** Esta guía es orientativa. Si no tenés experiencia con instalaciones de gas, consultá con un técnico especialista.
 
 ## Herramientas necesarias
 

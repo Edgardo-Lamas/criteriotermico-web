@@ -20,13 +20,26 @@ const repuestos = defineCollection({
 });
 
 const diagnostico = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/diagnostico" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/diagnostico" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     fecha: z.string(),
     categoria: z.string(),
     repuestos_relacionados: z.array(z.string()).optional(),
+  }),
+});
+
+const notas = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/notas" }),
+  schema: z.object({
+    title: z.string(),
+    category: z.string(),
+    excerpt: z.string(),
+    readingTime: z.string(),
+    image: z.string().optional(),
+    fecha: z.string(),
+    featured: z.boolean().optional(),
   }),
 });
 
@@ -41,4 +54,4 @@ const instalacion = defineCollection({
   }),
 });
 
-export const collections = { repuestos, diagnostico, instalacion };
+export const collections = { repuestos, diagnostico, instalacion, notas };

@@ -1,0 +1,241 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+
+const PLATFORM_URL = "https://edgardo-lamas.github.io/Criterio-Termico/";
+const waTecnicos = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+  "Hola, soy técnico/instalador y quiero saber más sobre la plataforma Criterio Térmico."
+)}`;
+---
+
+<BaseLayout
+  title="Criterio Térmico para instaladores — calculadoras, manual y simulador 2D"
+  description="Plataforma técnica independiente para instaladores de calefacción por radiadores: calculadoras de ingeniería, Simulador 2D, manual técnico de 14 capítulos y +200 errores frecuentes documentados."
+  hideChrome={true}
+>
+  <div class="saas-scope">
+    <header class="saas-header">
+      <div class="container saas-header__inner">
+        <a href="/" class="saas-header__logo">
+          <span class="header__logo-icon">
+            <img src="/logo-mark.png" alt="Criterio Térmico" />
+          </span>
+          <span class="header__logo-text" style="color: var(--sb-text);">
+            Criterio <span class="saas-header__badge">plataforma</span>
+          </span>
+        </a>
+        <nav class="saas-header__nav">
+          <a href="#features">Qué incluye</a>
+          <a href="#planes">Planes</a>
+          <a href="/">← Volver al sitio</a>
+        </nav>
+        <a href={PLATFORM_URL} target="_blank" rel="noopener" class="btn btn--saas btn--sm">
+          Entrar a la plataforma
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="saas-band" style="background: var(--sb-bg);">
+      <div class="container saas-band__grid">
+        <div>
+          <span class="saas-badge">Para instaladores de calefacción</span>
+          <h1 style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(38px,5vw,68px); line-height: 1; letter-spacing: -.035em; color: var(--sb-text);">
+            Cálculo, criterio<br />y obra, en <span style="color: var(--sb-accent);">una</span><br />plataforma.
+          </h1>
+          <p class="saas-band__desc" style="max-width: 512px;">
+            Criterio Térmico es la plataforma técnica <strong>independiente</strong> para
+            instaladores de calefacción por radiadores. Combina herramientas de cálculo
+            reales, un manual de criterios de obra y +200 errores frecuentes documentados.
+          </p>
+          <div class="hero__actions" style="margin-top: 34px;">
+            <a href={PLATFORM_URL} target="_blank" rel="noopener" class="btn btn--saas">
+              Entrar a la plataforma →
+            </a>
+            <a href="#planes" class="btn btn--saas-outline">Ver planes</a>
+          </div>
+          <div class="saas-stats">
+            <div>
+              <div class="saas-stat-number">+200</div>
+              <div class="saas-stat-label">errores documentados</div>
+            </div>
+            <div>
+              <div class="saas-stat-number">14 cap.</div>
+              <div class="saas-stat-label">de manual técnico</div>
+            </div>
+            <div>
+              <div class="saas-stat-number">Offline</div>
+              <div class="saas-stat-label">PWA, en la obra</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="saas-mockup">
+          <div class="saas-mockup__header">
+            <span class="saas-mockup__icon">🔧</span>
+            <span class="saas-mockup__title">Calculadora de potencia</span>
+          </div>
+          <div class="saas-mockup__field"><span>Ambiente</span><span>Living · 24 m²</span></div>
+          <div class="saas-mockup__field"><span>Orientación</span><span>Sur · exterior</span></div>
+          <div class="saas-mockup__field"><span>Altura</span><span>2,60 m</span></div>
+          <div class="saas-mockup__result">
+            <div class="saas-mockup__result-label">Potencia requerida</div>
+            <div class="saas-mockup__result-value">4,0 kW</div>
+            <div class="saas-mockup__result-note">3.480 kcal/h · incluye +15% de margen</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section">
+      <div class="container">
+        <p class="section-header__label">Qué incluye</p>
+        <h2 style="max-width: 660px;">Todo el criterio de obra, hecho herramienta.</h2>
+
+        <div class="saas-feature-grid">
+          <div class="saas-feature-card">
+            <div class="saas-feature-card__icon">🧮</div>
+            <h3>Calculadoras de ingeniería</h3>
+            <p>Potencia, diámetros, caudal, piso radiante y bombas. Corren en el browser, con 15% de margen de seguridad aplicado.</p>
+          </div>
+          <div class="saas-feature-card">
+            <div class="saas-feature-card__icon">📐</div>
+            <h3>Simulador 2D</h3>
+            <p>Subís el plano, ubicás los elementos y el sistema traza las tuberías solo. Exportás a PDF profesional y a BIM.</p>
+          </div>
+          <div class="saas-feature-card">
+            <div class="saas-feature-card__icon">📖</div>
+            <h3>Manual técnico · 14 capítulos</h3>
+            <p>Criterios claros y prácticos. No es un curso académico: es una guía de decisiones para resolver en obra.</p>
+          </div>
+          <div class="saas-feature-card">
+            <div class="saas-feature-card__icon">⚠️</div>
+            <h3>+200 errores frecuentes</h3>
+            <p>Casos reales documentados: problema, causa y solución. La experiencia de cientos de obras, buscable al instante.</p>
+          </div>
+          <div class="saas-feature-card">
+            <div class="saas-feature-card__icon">🤖</div>
+            <h3>Asistente Térmico IA</h3>
+            <p>Un chat que responde con el criterio del manual y los casos reales. Consultas técnicas según tu plan.</p>
+          </div>
+          <div class="saas-feature-card">
+            <div class="saas-feature-card__icon">🧾</div>
+            <h3>Presupuestos y presentación</h3>
+            <p>Guardás proyectos y armás presupuestos detallados para presentar al cliente con imagen profesional.</p>
+          </div>
+        </div>
+
+        <div class="saas-tags">
+          <span class="saas-tag">🏗️ Nace del oficio, no de la academia</span>
+          <span class="saas-tag">🚫 Independiente de marcas</span>
+          <span class="saas-tag">📱 Funciona offline (PWA)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="planes" class="section" style="background: var(--sb-bg-2); border-block: 1px solid var(--sb-border);">
+      <div class="container">
+        <div style="max-width: 660px; margin-inline: auto; text-align: center;">
+          <p class="section-header__label">Planes</p>
+          <h2>Precios en dólares, simples.</h2>
+          <p style="font-size: 16px; color: var(--sb-text-4); margin: 16px auto 0; max-width: 480px;">
+            Empezás gratis. Cuando te suma en el día a día, pasás a PRO. El plan anual
+            equivale a 2 meses gratis.
+          </p>
+        </div>
+
+        <div class="saas-pricing-grid">
+          <div class="saas-pricing-card">
+            <div class="saas-pricing-card__name">Gratis</div>
+            <div class="saas-pricing-card__price-row">
+              <span class="saas-pricing-card__price">$0</span>
+            </div>
+            <div class="saas-pricing-card__sub">Para explorar la plataforma</div>
+            <ul class="saas-pricing-card__features">
+              <li>Manual técnico básico</li>
+              <li>1 calculadora (potencia)</li>
+              <li>2 casos de error</li>
+              <li>10 consultas IA / día</li>
+            </ul>
+            <a href={PLATFORM_URL} target="_blank" rel="noopener" class="btn btn--saas-outline" style="display: block; text-align: center; margin-top: 24px;">
+              Empezar gratis
+            </a>
+          </div>
+
+          <div class="saas-pricing-card saas-pricing-card--featured">
+            <span class="saas-pricing-badge">MÁS ELEGIDO</span>
+            <div class="saas-pricing-card__name">PRO</div>
+            <div class="saas-pricing-card__price-row">
+              <span class="saas-pricing-card__price">USD 10</span>
+              <span class="saas-pricing-card__period">/mes</span>
+            </div>
+            <div class="saas-pricing-card__sub">o USD 100/año · consulta y cálculo diario</div>
+            <ul class="saas-pricing-card__features">
+              <li>Manual técnico completo</li>
+              <li>Todas las calculadoras</li>
+              <li>+200 errores frecuentes</li>
+              <li>50 consultas IA / día · sin publicidad</li>
+            </ul>
+            <a href={PLATFORM_URL} target="_blank" rel="noopener" class="btn btn--saas" style="display: block; text-align: center; margin-top: 24px;">
+              Elegir PRO
+            </a>
+          </div>
+
+          <div class="saas-pricing-card">
+            <div class="saas-pricing-card__name">PREMIUM</div>
+            <div class="saas-pricing-card__price-row">
+              <span class="saas-pricing-card__price">USD 18</span>
+              <span class="saas-pricing-card__period">/mes</span>
+            </div>
+            <div class="saas-pricing-card__sub">o USD 180/año · diseño y cierre de obra</div>
+            <ul class="saas-pricing-card__features">
+              <li>Todo lo de PRO</li>
+              <li>Simulador 2D completo</li>
+              <li>Proyectos ilimitados + PDF</li>
+              <li>Presupuestos · 200 IA / día</li>
+            </ul>
+            <a href={PLATFORM_URL} target="_blank" rel="noopener" class="btn btn--saas-outline" style="display: block; text-align: center; margin-top: 24px;">
+              Elegir PREMIUM
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="waitlist" class="section">
+      <div class="container">
+        <div class="saas-final-cta">
+          <div class="saas-final-cta__content">
+            <h2>Probala hoy, gratis.</h2>
+            <p>Entrá a la plataforma sin costo o escribinos si tenés dudas sobre qué plan te conviene.</p>
+            <div class="saas-final-cta__actions">
+              <a href={PLATFORM_URL} target="_blank" rel="noopener" class="btn btn--saas">
+                Entrar a la plataforma →
+              </a>
+              <a href={waTecnicos} target="_blank" rel="noopener" class="btn btn--saas-outline">
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="background: var(--sb-bg-3); border-top: 1px solid var(--sb-border);">
+      <div class="container" style="padding-block: 44px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+        <a href="/" style="display: flex; align-items: center; gap: 11px;">
+          <span class="header__logo-icon" style="width: 38px; height: 38px;">
+            <img src="/logo-mark.png" alt="Criterio Térmico" />
+          </span>
+          <span class="header__logo-text" style="color: var(--sb-text);">Criterio</span>
+        </a>
+        <div style="font-size: 13px; color: var(--sb-text-muted);">
+          Un producto de Criterio Térmico · Villa Urquiza, CABA
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

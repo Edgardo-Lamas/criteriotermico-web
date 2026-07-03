@@ -5,32 +5,36 @@ import CredibilityStrip from "../components/CredibilityStrip.astro";
 
 const credibilidad = [
   { icon: "🔧", number: "20+ años", label: "de trayectoria técnica" },
-  { icon: "🎓", number: "Matriculado", label: "técnico habilitado" },
-  { icon: "⚙️", number: "Exclusivo", label: "especialista en calderas Peisa" },
+  { icon: "🎯", number: "Especialista", label: "exclusivo en calderas Peisa" },
+  { icon: "🤝", number: "Directo", label: "con el técnico, sin call center" },
   { icon: "📍", number: "Villa Urquiza", label: "CABA" },
 ];
 ---
 
 <BaseLayout
-  title="Quiénes somos — Criterio Térmico"
-  description="20 años de experiencia en calderas Peisa. Técnico matriculado en Villa Urquiza, CABA. Repuestos originales y asesoramiento técnico."
+  title="El técnico — Criterio Térmico"
+  description="20 años de experiencia en calderas Peisa. Técnico especialista en Villa Urquiza, CABA. Repuestos originales y asesoramiento técnico directo."
 >
-  <section class="section">
+  <section class="section" style="padding-bottom: var(--space-10);">
     <div class="container container--narrow">
-      <Breadcrumbs items={[{ label: "Nosotros" }]} />
+      <Breadcrumbs items={[{ label: "El técnico" }]} />
 
       <div class="about-hero">
         <h1>Criterio Térmico</h1>
-        <p class="hero__subtitle" style="margin-top: var(--space-4);">
+        <p class="hero__subtitle" style="margin-top: var(--space-4); color: var(--color-text-secondary);">
           20 años de experiencia técnica real, del otro lado de cada repuesto que vendemos.
         </p>
       </div>
+    </div>
+  </section>
 
+  <section class="credibility-band">
+    <div class="container container--narrow">
       <CredibilityStrip items={credibilidad} />
     </div>
   </section>
 
-  <section class="section" style="background: var(--color-bg-secondary); padding-block: var(--space-12);">
+  <section class="section" style="background: var(--color-trust-bar); padding-block: var(--space-12);">
     <div class="container container--narrow">
       <div class="premium-row">
         <div class="premium-row__media">
@@ -40,12 +44,16 @@ const credibilidad = [
           <span class="premium-row__badge">Quién está del otro lado del WhatsApp</span>
           <h2 style="margin-bottom: var(--space-4);">Mi oficio, en cada diagnóstico</h2>
           <p class="premium-row__desc">
-            [TODO: confirmar con Edgardo — cómo empezó en el oficio, en qué año, y qué lo
-            llevó a especializarse exclusivamente en calderas Peisa.]
+            Soy Edgardo. Hace más de veinte años que reparo e instalo calderas Peisa:
+            aprendí en la casa de la gente, con la calefacción cortada y el frío
+            apurando.
           </p>
           <p class="premium-row__desc">
-            [TODO: confirmar con Edgardo — matrícula técnica (si quiere mostrar el número)
-            y barrios/zonas donde trabaja además de Villa Urquiza.]
+            Por eso Criterio Térmico no es una tienda anónima — cuando escribís, te
+            contesto yo, con el mismo criterio que aplico frente a la caldera.
+          </p>
+          <p style="font-size: 16px; line-height: 1.6; color: var(--color-text-tertiary); font-style: italic; margin-top: 8px;">
+            «No te vendo el repuesto más caro. Te vendo el que tu caldera necesita.»
           </p>
         </div>
       </div>
@@ -58,7 +66,7 @@ const credibilidad = [
         <h2>Conocimiento técnico real</h2>
         <p>
           Criterio Térmico nace de la experiencia directa con calderas Peisa.
-          No somos un catálogo online genérico — somos un técnico matriculado que
+          No somos un catálogo online genérico — somos un técnico especialista que
           conoce cada modelo, cada falla y cada solución.
         </p>
         <p>

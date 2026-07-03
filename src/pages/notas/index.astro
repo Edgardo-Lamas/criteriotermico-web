@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection } from "astro:content";
+
+const todasLasNotas = (await getCollection("notas")).sort(
+  (a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime()
+);
+
+const destacada = todasLasNotas.find((n) => n.data.featured) ?? todasLasNotas[0];
+const resto = todasLasNotas.filter((n) => n.id !== destacada?.id);
+
+const categorias = ["Todas", "Guías", "Mantenimiento", "Comparativas", "Ahorro", "Tecnología", "Diagnóstico"];
+---
+
+<BaseLayout
+  title="Notas de calefacción — Criterio Térmico"
+  description="Guías, comparativas y mantenimiento para entender tu calefacción, explicadas por un técnico con 20 años de experiencia en calderas Peisa."
+>
+  <section class="section--tight">
+    <div class="container" style="max-width: 720px;">
+      <Breadcrumbs items={[{ label: "Notas" }]} />
+
+      <p class="section-header__label" style="margin-top: 26px;">Notas de calefacción</p>
+      <h1>El calor, explicado por quien lo instala.</h1>
+      <p class="section-header__desc" style="margin-inline: 0; font-size: 18px; margin-top: 22px;">
+        Guías, comparativas y mantenimiento para que entiendas tu calefacción y tomes
+        mejores decisiones. Escrito por el técnico, sin tecnicismos innecesarios.
+      </p>
+
+      <div class="notas-filters" id="notas-filters">
+        {categorias.map((cat, i) => (
+          <button type="button" class={`notas-filter ${i === 0 ? "active" : ""}`} data-category={cat}>
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {destacada && (
+    <section class="container">
+      <a href={`/notas/${destacada.id}`} class="nota-featured">
+        <div class="nota-featured__content">
+          <div class="nota-featured__meta">
+            <span class="nota-featured__tag">Destacada · {destacada.data.category}</span>
+            <span class="nota-featured__time">Lectura de {destacada.data.readingTime}</span>
+          </div>
+          <h2>{destacada.data.title}</h2>
+          <p>{destacada.data.excerpt}</p>
+          <span class="nota-featured__link">Leer la nota completa →</span>
+        </div>
+        <div class="nota-featured__media">
+          {destacada.data.image && <img src={destacada.data.image} alt={destacada.data.title} />}
+        </div>
+      </a>
+    </section>
+  )}
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="notas-grid" id="notas-grid">
+        {resto.map((nota) => (
+          <a href={`/notas/${nota.id}`} class="nota-card" data-category={nota.data.category}>
+            <span class="nota-card__tag">{nota.data.category}</span>
+            <h3 class="nota-card__title">{nota.data.title}</h3>
+            <p class="nota-card__excerpt">{nota.data.excerpt}</p>
+            <span class="nota-card__link">Leer nota →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="margin-top: clamp(40px, 5vw, 64px); padding-bottom: clamp(56px, 7vw, 88px);">
+    <div class="dashed-cta">
+      <div class="dashed-cta__text">
+        <h2>¿Hay un tema que querés que cubramos?</h2>
+        <p>Contanos tu duda sobre calefacción y puede ser la próxima nota. Publicamos contenido nuevo cada mes.</p>
+      </div>
+      <a
+        href="https://wa.me/5491152604237?text=Hola%2C%20tengo%20un%20tema%20de%20calefacci%C3%B3n%20que%20me%20gustar%C3%ADa%20que%20cubran%20en%20una%20nota."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn--primary"
+      >
+        Proponer un tema →
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("#notas-filters .notas-filter");
+  const cards = document.querySelectorAll<HTMLAnchorElement>("#notas-grid .nota-card");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const category = btn.dataset.category;
+
+      cards.forEach((card) => {
+        const match = category === "Todas" || card.dataset.category === category;
+        (card as HTMLElement).style.display = match ? "" : "none";
+      });
+    });
+  });
+</script>

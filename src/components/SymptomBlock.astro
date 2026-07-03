@@ -1,0 +1,13 @@
+---
+interface Props {
+  variant?: "error" | "warning" | "success";
+  title: string;
+}
+
+const { variant = "error", title } = Astro.props;
+---
+
+<div class={`symptom-block ${variant !== "error" ? `symptom-block--${variant}` : ""}`}>
+  <div class="symptom-block__title">{title}</div>
+  <div class="symptom-block__desc"><slot /></div>
+</div>

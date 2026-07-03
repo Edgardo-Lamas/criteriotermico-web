@@ -15,9 +15,9 @@ const repuestos = await getCollection("repuestos");
     <div class="container">
       <Breadcrumbs items={[{ label: "Repuestos" }]} />
 
-      <div class="section-header" style="text-align: left;">
+      <div class="section-header section-header--left" style="margin-bottom: 44px;">
         <h1>Repuestos Peisa originales disponibles</h1>
-        <p class="section-header__desc" style="margin-inline: 0;">
+        <p class="section-header__desc">
           Todos los repuestos son originales Peisa. Retiro en persona en Villa Urquiza, CABA. Consultá disponibilidad y precio por WhatsApp.
         </p>
       </div>
@@ -29,9 +29,9 @@ const repuestos = await getCollection("repuestos");
             codigo={item.data.codigo}
             slug={item.data.slug}
             imagen={item.data.imagen}
-            precio_usd={item.data.precio_usd}
             disponible={item.data.disponible}
-            descripcion={item.data.descripcion}
+            modelos_compatibles={item.data.modelos_compatibles}
+            whatsapp_mensaje={item.data.whatsapp_mensaje}
           />
         ))}
       </div>

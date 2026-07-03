@@ -1,4 +1,7 @@
 ---
+import { siteConfig } from "../config/site";
+import WhatsAppButton from "./WhatsAppButton.astro";
+
 interface Props {
   currentPath?: string;
 }
@@ -6,31 +9,44 @@ interface Props {
 const { currentPath = "" } = Astro.props;
 
 const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/repuestos", label: "Repuestos" },
   { href: "/diagnostico", label: "Diagnóstico" },
-  { href: "/instalacion", label: "Instalación" },
-  { href: "/nosotros", label: "Nosotros" },
+  { href: "/repuestos", label: "Repuestos" },
+  { href: "/nosotros", label: "El técnico" },
+  { href: "/#trabajos", label: "Trabajos" },
+  { href: "/notas", label: "Notas" },
 ];
 ---
 
 <header class="header">
   <div class="container header__inner">
     <a href="/" class="header__logo">
-      <span class="header__logo-icon">CT</span>
-      Criterio Térmico
+      <span class="header__logo-icon">
+        <img src="/logo-mark.png" alt="Criterio Térmico" />
+      </span>
+      <span class="header__logo-text">Criterio<span class="dot">·</span>Térmico</span>
     </a>
 
     <nav class="header__nav" id="nav-menu">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class={currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)) ? "active" : ""}
+          class={!link.href.includes("#") && currentPath.startsWith(link.href) ? "active" : ""}
         >
           {link.label}
         </a>
       ))}
+      <a href="/para-tecnicos" class="nav--new">
+        Para técnicos <span class="badge-new">NUEVO</span>
+      </a>
     </nav>
+
+    <div class="header__cta">
+      <WhatsAppButton
+        mensaje={siteConfig.whatsappMensajeGenerico}
+        texto="Consultar"
+        class="whatsapp-btn--header"
+      />
+    </div>
 
     <button
       class="header__menu-btn"
@@ -56,7 +72,6 @@ const navLinks = [
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Close menu when clicking a link (mobile)
   nav?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       nav.classList.remove("open");

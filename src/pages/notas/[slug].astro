@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SchemaMarkup from "../../components/SchemaMarkup.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import { siteConfig } from "../../config/site";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const notas = await getCollection("notas");
+  return notas.map((nota) => ({
+    params: { slug: nota.id },
+    props: { nota },
+  }));
+}
+
+const { nota } = Astro.props;
+const { Content } = await render(nota);
+---
+
+<BaseLayout
+  title={`${nota.data.title} — Criterio Térmico`}
+  description={nota.data.excerpt}
+>
+  <SchemaMarkup
+    type="article"
+    data={{ title: nota.data.title, description: nota.data.excerpt, fecha: nota.data.fecha }}
+  />
+  <SchemaMarkup
+    type="breadcrumb"
+    data={{
+      items: [
+        { name: "Inicio", url: "https://criteriotermico.com.ar/" },
+        { name: "Notas", url: "https://criteriotermico.com.ar/notas" },
+        { name: nota.data.title, url: `https://criteriotermico.com.ar/notas/${nota.id}` },
+      ],
+    }}
+  />
+
+  <section class="section--tight">
+    <div class="container container--narrow">
+      <Breadcrumbs
+        items={[
+          { label: "Notas", href: "/notas" },
+          { label: nota.data.title },
+        ]}
+      />
+
+      <div class="article-header">
+        <span class="article-header__tag">{nota.data.category}</span>
+        <h1>{nota.data.title}</h1>
+        <div class="article-author">
+          <span class="article-author__avatar">E</span>
+          <div>
+            <div class="article-author__name">Edgardo · Técnico Criterio Térmico</div>
+            <div class="article-author__sub">Lectura de {nota.data.readingTime}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="container container--narrow" style="margin-top: 44px; padding-bottom: clamp(56px, 7vw, 88px);">
+    <div class="dashed-cta">
+      <div class="dashed-cta__text">
+        <h2>¿Te quedó alguna duda?</h2>
+        <p>Escribinos y te respondemos directo, sin vueltas.</p>
+      </div>
+      <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} texto="Consultar por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

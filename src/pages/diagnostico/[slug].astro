@@ -2,6 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SchemaMarkup from "../../components/SchemaMarkup.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import { siteConfig } from "../../config/site";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -14,6 +16,10 @@ export async function getStaticPaths() {
 
 const { articulo } = Astro.props;
 const { Content } = await render(articulo);
+
+const otrosArticulos = (await getCollection("diagnostico"))
+  .filter((a) => a.id !== articulo.id)
+  .slice(0, 2);
 ---
 
 <BaseLayout
@@ -32,8 +38,8 @@ const { Content } = await render(articulo);
     }}
   />
 
-  <section class="section">
-    <div class="container">
+  <section class="section--tight">
+    <div class="container container--narrow">
       <Breadcrumbs
         items={[
           { label: "Diagnóstico", href: "/diagnostico" },
@@ -41,13 +47,45 @@ const { Content } = await render(articulo);
         ]}
       />
 
-      <div class="article-content">
-        <span class="article-card__tag" style="margin-bottom: var(--space-4); display: inline-block;">
-          {articulo.data.categoria}
-        </span>
+      <div class="article-header">
+        <span class="article-header__tag">{articulo.data.categoria}</span>
         <h1>{articulo.data.title}</h1>
+        <div class="article-author">
+          <span class="article-author__avatar">E</span>
+          <div>
+            <div class="article-author__name">Edgardo · Técnico Criterio Térmico</div>
+            <div class="article-author__sub">20 años en calderas Peisa · Actualizado {articulo.data.fecha.slice(0, 4)}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content">
         <Content />
       </div>
+    </div>
+  </section>
+
+  {otrosArticulos.length > 0 && (
+    <section class="container container--narrow" style="margin-top: 40px; padding-bottom: 20px;">
+      <p class="section-header__label" style="margin-bottom: 16px;">Seguí leyendo</p>
+      <div class="related-grid">
+        {otrosArticulos.map((otro) => (
+          <a href={`/diagnostico/${otro.id}`} class="related-card">
+            <span class="related-card__tag">{otro.data.categoria}</span>
+            <h3 class="related-card__title">{otro.data.title.split("—")[0].trim()}</h3>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="container container--narrow" style="margin-top: 44px; padding-bottom: clamp(56px, 7vw, 88px);">
+    <div class="green-cta">
+      <div class="green-cta__text">
+        <h2>¿Seguís sin identificar la falla?</h2>
+        <p>Contame qué modelo tenés y qué hace la caldera. Te oriento por WhatsApp.</p>
+      </div>
+      <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} texto="Escribir a Edgardo" />
     </div>
   </section>
 </BaseLayout>

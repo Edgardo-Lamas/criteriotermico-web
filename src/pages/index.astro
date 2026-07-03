@@ -1,258 +1,390 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SchemaMarkup from "../components/SchemaMarkup.astro";
-import CredibilityStrip from "../components/CredibilityStrip.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
 
 const repuestos = await getCollection("repuestos");
-const repuestosDestacados = repuestos.slice(0, 4);
-const diagnosticos = (await getCollection("diagnostico")).slice(0, 3);
+const diagnosticos = await getCollection("diagnostico");
+const notas = (await getCollection("notas"))
+  .sort((a, b) => new Date(b.data.fecha).getTime() - new Date(a.data.fecha).getTime())
+  .slice(0, 4);
 
-const credibilidad = [
-  { icon: "🔧", number: "20+ años", label: "de trayectoria técnica" },
-  { icon: "🎓", number: "Matriculado", label: "técnico habilitado" },
-  { icon: "⚙️", number: "Exclusivo", label: "especialista en calderas Peisa" },
-  { icon: "📍", number: "Villa Urquiza", label: "CABA" },
+const trabajos = [
+  { file: "radiadores-diseno.jpg", alt: "Radiadores de diseño expuestos sobre muro de ladrillo", label: "Radiadores de diseño" },
+  { file: "radiador-talavera.jpg", alt: "Radiador de fundición blanco sobre piso calcáreo", label: "Fundición clásica · living" },
+  { file: "piso-radiante.jpg", alt: "Instalación de piso radiante en cocina", label: "Piso radiante · cocina" },
+  { file: "radiador-columna.jpg", alt: "Radiador columna de hierro en negro con llave cromada", label: "Columna de hierro" },
+  { file: "radiador-piedra.jpg", alt: "Radiador de fundición blanco sobre muro de piedra", label: "Sobre muro de piedra" },
+  { file: "radiador-living.jpg", alt: "Radiador de fundición negro en ambiente con plantas", label: "Ambiente cálido" },
+  { file: "radiador-bano.jpg", alt: "Radiador de fundición junto a la bañera", label: "Confort en el baño" },
+  { file: "toallero.png", alt: "Toallero caléntico instalado en el baño", label: "Toallero · baño" },
+  { file: "calderas.jpg", alt: "Sala de calderas con doble equipo instalado", label: "Sala de calderas" },
 ];
 ---
 
 <BaseLayout
-  title="Criterio Térmico — 20 años de experiencia técnica en calderas Peisa"
-  description="Técnico con 20 años de experiencia en calderas Peisa en Villa Urquiza, CABA. Diagnóstico, asesoramiento técnico y repuestos originales."
+  title="Criterio Térmico — Servicio técnico Peisa en Villa Urquiza, CABA"
+  description="20 años de oficio reparando e instalando calderas Peisa. Diagnóstico honesto, repuestos originales y atención directa con el técnico, en Villa Urquiza, CABA."
 >
   <SchemaMarkup type="local-business" data={{}} />
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero__grid">
-        <div class="hero__content">
-          <span class="hero__badge">👷 20 años reparando calderas Peisa — Villa Urquiza, CABA</span>
-          <h1>
-            20 años de experiencia técnica en calderas Peisa,
-            <span class="hero__accent">en cada repuesto que vendemos</span>
-          </h1>
-          <p class="hero__subtitle">
-            Ventiladores, flujostatos, termostatos y válvulas para calderas Peisa.
-            Identificamos tu problema, te damos el repuesto correcto y te guiamos para instalarlo.
-          </p>
-          <div class="hero__actions">
-            <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} />
-            <a href="/diagnostico" class="btn btn--secondary btn--lg">
-              Ver diagnóstico técnico
-            </a>
+  <section id="top" class="hero">
+    <div class="container hero__grid">
+      <div>
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          Servicio técnico Peisa · Villa Urquiza, CABA
+        </div>
+        <h1>Que tu casa nunca<br />pierda el <span class="hero__accent">calor</span>.</h1>
+        <p class="hero__subtitle">
+          Veinte años metiendo las manos en calderas Peisa. Diagnóstico honesto,
+          repuestos originales y atención directa con el técnico — sin call center,
+          sin vueltas.
+        </p>
+        <div class="hero__actions">
+          <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} texto="Consultar por WhatsApp" />
+          <a href="#diagnostico" class="btn btn--secondary">Ver diagnósticos gratis →</a>
+        </div>
+        <div class="hero__stats">
+          <div>
+            <div class="hero__stat-number">20 años</div>
+            <div class="hero__stat-label">de oficio real</div>
+          </div>
+          <div>
+            <div class="hero__stat-number">100%</div>
+            <div class="hero__stat-label">repuestos originales</div>
+          </div>
+          <div>
+            <div class="hero__stat-number">Directo</div>
+            <div class="hero__stat-label">con el técnico</div>
           </div>
         </div>
-        <div class="hero__media">
-          <img
-            src="/images/home/hero-tecnico.jpg"
-            alt="Técnico diagnosticando una caldera Peisa"
-            width="1600"
-            height="1200"
-          />
+      </div>
+
+      <div class="hero__media">
+        <div class="hero__frame">
+          <img src="/images/home/hero-tecnico.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+          <img data-hero-slide="0" src="/images/home/hero-tecnico.jpg" alt="Instalación y servicio técnico de calderas Peisa" />
+          <img data-hero-slide="1" src="/images/trabajos/radiador-talavera.jpg" alt="Radiador de fundición en un living con piso calcáreo" />
+          <img data-hero-slide="2" src="/images/trabajos/piso-radiante.jpg" alt="Piso radiante instalado en una cocina moderna" />
+          <img data-hero-slide="3" src="/images/trabajos/pasillo-clasico.jpg" alt="Radiador clásico en un pasillo señorial" />
+          <div class="hero__frame-gradient"></div>
+          <div class="hero__dots">
+            <span data-hero-dot="0"></span>
+            <span data-hero-dot="1"></span>
+            <span data-hero-dot="2"></span>
+            <span data-hero-dot="3"></span>
+          </div>
+        </div>
+        <div class="hero__floating-card">
+          <span class="hero__floating-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </span>
+          <div>
+            <div class="hero__floating-title">Técnico especialista</div>
+            <div class="hero__floating-sub">20 años en línea Peisa</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Credibility strip -->
-  <section style="background: var(--color-bg-secondary); border-block: 1px solid var(--color-border);">
-    <div class="container">
-      <CredibilityStrip items={credibilidad} />
+  <!-- Trust bar -->
+  <section class="trust-bar">
+    <div class="container trust-bar__inner">
+      <div class="trust-bar__item"><span class="star">✦</span> Diagnóstico antes de vender</div>
+      <div class="trust-bar__item"><span class="star">✦</span> Repuestos originales Peisa</div>
+      <div class="trust-bar__item"><span class="star">✦</span> Asesoramiento incluido</div>
+      <div class="trust-bar__item"><span class="star">✦</span> Villa Urquiza · a domicilio</div>
     </div>
   </section>
 
-  <!-- Diagnóstico spotlight -->
-  <section class="section">
+  <!-- Diagnóstico -->
+  <section id="diagnostico" class="section">
     <div class="container">
-      <div class="section-header" style="text-align: left;">
-        <p class="section-header__label">Lo que nos diferencia</p>
-        <h2>Diagnóstico técnico, no una tienda más</h2>
-        <p class="section-header__desc" style="margin-inline: 0;">
-          No vendemos repuestos al voleo. Estas guías vienen del mismo criterio con el
-          que diagnosticamos cada caldera en 20 años de oficio.
+      <div class="section-header section-header--left" data-reveal style="max-width: 760px; margin-bottom: 0;">
+        <p class="section-header__label">Guías del técnico</p>
+        <h2>Primero entendemos la falla.<br />Después hablamos de repuestos.</h2>
+        <p class="section-header__desc">
+          Guías gratuitas escritas por quien mete las manos en la caldera — no por
+          marketing. Identificá el problema antes de gastar de más.
         </p>
       </div>
 
-      <div class="article-grid">
+      <div class="article-grid" style="margin-top: 44px;">
         {diagnosticos.map((articulo) => (
-          <a href={`/diagnostico/${articulo.id}`} class="article-card">
+          <a href={`/diagnostico/${articulo.id}`} class="article-card" data-reveal>
             <span class="article-card__tag">{articulo.data.categoria}</span>
-            <h3 class="article-card__title">{articulo.data.title}</h3>
+            <h3 class="article-card__title">{articulo.data.title.split("—")[0].trim()}</h3>
             <p class="article-card__excerpt">{articulo.data.description}</p>
-            <span class="article-card__link">Leer diagnóstico →</span>
+            <span class="article-card__link">Leer la guía →</span>
           </a>
         ))}
       </div>
-
-      <div style="text-align: center; margin-top: var(--space-8);">
-        <a href="/diagnostico" class="btn btn--primary btn--lg">Ver todas las guías de diagnóstico →</a>
-      </div>
     </div>
   </section>
 
-  <!-- Sobre mí teaser -->
-  <section class="section" style="background: var(--color-bg-secondary);">
-    <div class="container">
-      <div class="premium-showcase">
-        <div class="premium-row">
-          <a href="/nosotros" class="premium-row__media">
-            <img src="/images/home/sobre-mi-portrait.jpg" alt="Técnico especialista de Criterio Térmico" loading="lazy" />
-          </a>
-          <div class="premium-row__text">
-            <span class="premium-row__badge">Quién está del otro lado del WhatsApp</span>
-            <h3>20 años dedicados exclusivamente a calderas Peisa</h3>
-            <p class="premium-row__desc">
-              Cuando escribís, no te contesta un call center. Te contesto yo, con el
-              criterio de dos décadas diagnosticando y reparando este mismo sistema de
-              calefacción, uno a la vez.
-            </p>
-            <a href="/nosotros" class="btn btn--primary">Conocé mi historia →</a>
-          </div>
+  <!-- El técnico -->
+  <section id="tecnico" class="tecnico">
+    <div class="container tecnico__grid">
+      <div class="tecnico__media" data-reveal>
+        <div class="tecnico__photo">
+          <img src="/images/home/sobre-mi-portrait.jpg" alt="Edgardo, técnico de Criterio Térmico" />
+        </div>
+        <div class="tecnico__badge">
+          <div class="tecnico__badge-number">20</div>
+          <div class="tecnico__badge-label">años de<br />oficio</div>
+        </div>
+      </div>
+      <div data-reveal>
+        <p class="tecnico__label">Quién atiende</p>
+        <h2>Detrás de cada respuesta,<br />un técnico de verdad.</h2>
+        <p class="tecnico__bio">
+          Soy Edgardo. Hace más de veinte años que reparo e instalo calderas Peisa:
+          aprendí en la casa de la gente, con la calefacción cortada y el frío
+          apurando. Por eso Criterio Térmico no es una tienda anónima — cuando
+          escribís, te contesto yo, con el mismo criterio que aplico frente a la
+          caldera.
+        </p>
+        <div class="tecnico__pills">
+          <span class="tecnico__pill">✓ 20 años de oficio</span>
+          <span class="tecnico__pill">✓ Especialista en Peisa</span>
+          <span class="tecnico__pill">✓ Atención personal</span>
+        </div>
+        <div class="tecnico__quote">
+          <p>«No te vendo el repuesto más caro. Te vendo el que tu caldera necesita.»</p>
+          <div class="tecnico__quote-author">— Edgardo · Criterio Térmico</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Repuestos en fotos -->
-  <section class="section">
+  <!-- Trabajos -->
+  <section id="trabajos" class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header section-header--left" data-reveal style="max-width: 760px; margin-bottom: 0;">
+        <p class="section-header__label">Trabajos realizados</p>
+        <h2>Instalaciones que se<br />disfrutan todos los días.</h2>
+        <p class="section-header__desc">
+          Radiadores de fundición, toalleros, piso radiante y salas de caldera. Cada
+          obra, terminada con prolijidad — porque el calor también entra por los ojos.
+        </p>
+      </div>
+
+      <div class="masonry" data-reveal>
+        {trabajos.map((foto) => (
+          <div class="masonry__item">
+            <img src={`/images/trabajos/${foto.file}`} alt={foto.alt} loading="lazy" />
+            <div class="masonry__overlay"></div>
+            <div class="masonry__label">{foto.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="masonry-cta">
+        <span>¿Querés una instalación así en tu casa?</span>
+        <WhatsAppButton
+          mensaje="Hola, quiero consultar por una instalación de calefacción."
+          texto="Consultanos por WhatsApp →"
+          class="btn--sm"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Repuestos -->
+  <section id="repuestos" class="section">
+    <div class="container">
+      <div class="section-header section-header--left" data-reveal style="max-width: 900px; margin-bottom: 0;">
         <p class="section-header__label">Repuestos</p>
-        <h2>Piezas que reparamos todos los días</h2>
+        <h2>Originales Peisa,<br />elegidos uno por uno.</h2>
         <p class="section-header__desc">
-          Los repuestos que más se rompen en calderas Peisa. Tocá una foto para ver la ficha técnica completa.
+          Todavía no somos un catálogo gigante — y está bien. Cada pieza que
+          ofrecemos es original y la recomendamos porque la instalamos con nuestras
+          propias manos. Vamos a sumar más modelos y calderas muy pronto.
         </p>
       </div>
 
-      <div class="photo-grid">
-        <a href="/repuestos/flujostato-bitron-onoff-90000054" class="photo-card">
-          <img src="/images/home/flujostato.jpg" alt="Flujostato de priorización ON/OFF Bitron" loading="lazy" />
-          <span class="photo-card__label">Flujostato Bitron ON/OFF</span>
-        </a>
-        <a href="/repuestos/ventilador-peisa-47w-90000090" class="photo-card">
-          <img src="/images/home/ventilador.jpg" alt="Ventilador forzador 47W para caldera Peisa" loading="lazy" />
-          <span class="photo-card__label">Ventilador forzador 47W</span>
-        </a>
-        <a href="/repuestos/kit-valvula-detentor-escuadra-media" class="photo-card">
-          <img src="/images/home/kit-valvula.jpg" alt="Kit válvula y detentor escuadra ½ pulgada" loading="lazy" />
-          <span class="photo-card__label">Kit válvula + detentor ½"</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Premium showcase -->
-  <section class="section" style="background: var(--color-bg-secondary);">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-header__label">Criterio Térmico</p>
-        <h2>Más que un repuesto</h2>
-        <p class="section-header__desc">
-          Asesoramiento técnico incluido en cada pieza que vendemos.
-        </p>
-      </div>
-
-      <div class="premium-showcase">
-        <div class="premium-row">
-          <a href="/repuestos/termostato-ambiente-tactil-peisa" class="premium-row__media">
-            <img src="/images/home/termostato-premium.jpg" alt="Termostato de ambiente táctil controlando la temperatura del hogar" loading="lazy" />
-          </a>
-          <div class="premium-row__text">
-            <span class="premium-row__badge">Control de temperatura</span>
-            <h3>Controlá el clima de tu hogar</h3>
-            <p class="premium-row__desc">
-              Un termostato táctil que responde bien es la diferencia entre pasar frío
-              y tener la casa a la temperatura justa. En Criterio Térmico te asesoramos
-              para elegir el que corresponde a tu caldera y te explicamos cómo instalarlo.
-            </p>
-            <a href="/repuestos/termostato-ambiente-tactil-peisa" class="btn btn--primary">Ver ficha técnica →</a>
-          </div>
-        </div>
-
-        <div class="premium-row premium-row--reverse">
-          <a href="/repuestos/kit-valvula-detentor-escuadra-media" class="premium-row__media">
-            <img src="/images/home/valvulas-detentores-premium.jpg" alt="Válvulas y detentores para radiadores en un ambiente hogareño" loading="lazy" />
-          </a>
-          <div class="premium-row__text">
-            <span class="premium-row__badge">Regulación por ambiente</span>
-            <h3>Válvulas y detentores para tus radiadores</h3>
-            <p class="premium-row__desc">
-              Regulá o cortá el flujo de cada radiador de forma individual. Con la
-              pieza original y el asesoramiento de 20 años de experiencia de Criterio
-              Térmico, cada ambiente queda a la temperatura que necesitás.
-            </p>
-            <a href="/repuestos/kit-valvula-detentor-escuadra-media" class="btn btn--primary">Ver ficha técnica →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Repuestos disponibles -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-header__label">Repuestos disponibles</p>
-        <h2>Lo que tenemos en stock</h2>
-        <p class="section-header__desc">
-          Repuestos originales Peisa listos para retiro en Villa Urquiza, CABA.
-        </p>
-      </div>
-
-      <div class="product-grid">
-        {repuestosDestacados.map((item) => {
+      <div class="product-grid" style="margin-top: 44px;" data-reveal>
+        {repuestos.map((item) => {
           const r = item.data;
           return (
-            <a href={`/repuestos/${r.slug}`} class="card" style="text-decoration: none;">
-              <img
-                src={r.imagen}
-                alt={r.nombre}
-                class="card__image"
-                loading="lazy"
-                width="600"
-                height="600"
-              />
-              <div class="card__body">
-                {r.codigo && <span class="card__code">Cód. {r.codigo}</span>}
-                <h3 class="card__title">{r.nombre}</h3>
-                <p class="card__desc">{r.descripcion.substring(0, 100)}...</p>
-                <div class="card__footer">
-                  {r.precio_usd > 0 ? (
-                    <span class="price-usd" style="font-size: var(--text-xl);">USD {r.precio_usd}</span>
-                  ) : (
-                    <span class="price-consult" style="font-size: var(--text-base);">Consultar precio</span>
-                  )}
-                  <span class={`badge ${r.disponible ? "badge--available" : "badge--unavailable"}`}>
-                    {r.disponible ? "✓ Disponible" : "Sin stock"}
-                  </span>
+            <div class="product-card">
+              <div class="product-card__media">
+                <img src={r.imagen} alt={r.nombre} loading="lazy" />
+                <span class={`product-card__badge ${r.disponible ? "" : "product-card__badge--unavailable"}`}>
+                  <span class="product-card__badge-dot"></span>
+                  {r.disponible ? "Disponible" : "Sin stock"}
+                </span>
+              </div>
+              <div class="product-card__body">
+                {r.codigo && <span class="product-card__code">COD {r.codigo}</span>}
+                <h3 class="product-card__title">{r.nombre}</h3>
+                <p class="product-card__models">{r.modelos_compatibles.slice(0, 3).join(" · ")}</p>
+                <div class="product-card__actions">
+                  <WhatsAppButton mensaje={r.whatsapp_mensaje} texto="Consultar precio" class="whatsapp-btn--sm" />
+                  <a href={`/repuestos/${r.slug}`} class="product-card__link">Ver ficha completa →</a>
                 </div>
               </div>
-            </a>
+            </div>
           );
         })}
-      </div>
 
-      <div style="text-align: center; margin-top: var(--space-8);">
-        <a href="/repuestos" class="btn btn--secondary btn--lg">Ver todos los repuestos →</a>
+        <a
+          href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hola, no encontré mi repuesto Peisa en la web. ¿Me pueden ayudar a conseguirlo?")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="product-card--cta"
+        >
+          <span class="product-card--cta__icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#e8822f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+          </span>
+          <h3>¿No encontrás tu repuesto?</h3>
+          <p>Decinos qué caldera tenés y qué falla. Lo buscamos y te decimos si lo conseguimos.</p>
+          <span class="product-card--cta__link">Escribinos por WhatsApp →</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Diagnostic CTA -->
-  <section class="section" style="background: var(--color-bg-secondary);">
-    <div class="container" style="text-align: center;">
-      <div class="section-header">
-        <p class="section-header__label">¿Preferís hablar directo?</p>
-        <h2>Escribinos por WhatsApp</h2>
-        <p class="section-header__desc">
-          Contanos qué le pasa a tu caldera y te decimos si es un repuesto,
-          una instalación, o algo que podés resolver vos mismo.
+  <!-- Para técnicos (SaaS band) -->
+  <section id="tecnicos" class="saas-scope saas-band">
+    <div class="container saas-band__grid">
+      <div data-reveal>
+        <span class="saas-badge">Nuevo · plataforma para instaladores</span>
+        <h2>20 años de oficio,<br />hechos plataforma.</h2>
+        <p class="saas-band__desc">
+          <strong>Criterio Térmico</strong> también es una plataforma para instaladores
+          de calefacción: calculadoras de ingeniería, simulador 2D, manual técnico de
+          14 capítulos y +200 errores de obra documentados.
         </p>
+        <div class="saas-feature-list">
+          <div class="saas-feature-item">
+            <span class="saas-feature-item__icon">◆</span>
+            <div>
+              <div class="saas-feature-item__title">Calculadoras + Simulador 2D</div>
+              <div class="saas-feature-item__desc">Potencia, caudales, diámetros y trazado de tuberías.</div>
+            </div>
+          </div>
+          <div class="saas-feature-item">
+            <span class="saas-feature-item__icon">◆</span>
+            <div>
+              <div class="saas-feature-item__title">Manual técnico de 14 capítulos</div>
+              <div class="saas-feature-item__desc">Criterios de decisión, no teoría académica.</div>
+            </div>
+          </div>
+          <div class="saas-feature-item">
+            <span class="saas-feature-item__icon">◆</span>
+            <div>
+              <div class="saas-feature-item__title">+200 errores frecuentes</div>
+              <div class="saas-feature-item__desc">Casos reales de obra: problema, causa y solución.</div>
+            </div>
+          </div>
+        </div>
+        <a href="/para-tecnicos" class="btn btn--saas" style="margin-top: 32px;">Conocer la plataforma →</a>
       </div>
-      <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} />
+
+      <div data-reveal>
+        <div class="saas-mockup">
+          <div class="saas-mockup__header">
+            <span class="saas-mockup__icon">🔧</span>
+            <span class="saas-mockup__title">Criterio</span>
+            <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--sb-accent);background:rgba(143,196,222,.14);padding:3px 9px;border-radius:999px;">Beta</span>
+          </div>
+          <div class="saas-mockup__field"><span>Ambiente</span><span>Living · 24 m²</span></div>
+          <div class="saas-mockup__field"><span>Orientación</span><span>Sur · exterior</span></div>
+          <div class="saas-mockup__field"><span>Altura</span><span>2,60 m</span></div>
+          <div class="saas-mockup__result">
+            <div class="saas-mockup__result-label">Potencia requerida</div>
+            <div class="saas-mockup__result-value">4,0 kW</div>
+            <div class="saas-mockup__result-note">3.480 kcal/h · incluye +15% de margen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notas -->
+  <section id="notas" class="section">
+    <div class="container">
+      <div class="section-header section-header--left" data-reveal style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 0;">
+        <div style="max-width: 640px;">
+          <p class="section-header__label">Notas de calefacción</p>
+          <h2>Entender tu calefacción,<br />en palabras simples.</h2>
+          <p class="section-header__desc">
+            Consejos, comparativas y mantenimiento explicados por el técnico.
+            Publicamos notas nuevas cada mes.
+          </p>
+        </div>
+        <a href="/notas" class="article-card__link" style="white-space: nowrap;">Ver todas las notas →</a>
+      </div>
+
+      <div class="notas-grid" style="margin-top: 44px;" data-reveal>
+        {notas.map((nota) => (
+          <a href={`/notas/${nota.id}`} class="nota-card">
+            <span class="nota-card__tag">{nota.data.category}</span>
+            <h3 class="nota-card__title">{nota.data.title}</h3>
+            <p class="nota-card__excerpt">{nota.data.excerpt}</p>
+            <span class="nota-card__link">Leer nota →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <div class="contact-card" data-reveal>
+        <p class="section-header__label">Contacto directo</p>
+        <h2>Escribinos. Te atiende el técnico.</h2>
+        <p style="font-size: 17px; line-height: 1.6; color: var(--color-text-secondary); margin: 18px auto 0; max-width: 520px;">
+          Contanos qué caldera tenés y qué le pasa. Sin formularios eternos: un mensaje y arrancamos.
+        </p>
+        <div class="contact-grid">
+          <a
+            href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(siteConfig.whatsappMensajeGenerico)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-item__icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.05-1.32A10 10 0 1 0 12 2z"/></svg>
+            </span>
+            <div>
+              <div class="contact-item__label">Edgardo</div>
+              <div class="contact-item__value">11 5260-4237</div>
+            </div>
+          </a>
+          <a
+            href={`https://wa.me/${siteConfig.whatsappAlejandro}?text=${encodeURIComponent(siteConfig.whatsappMensajeGenerico)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-item__icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.05-1.32A10 10 0 1 0 12 2z"/></svg>
+            </span>
+            <div>
+              <div class="contact-item__label">Alejandro</div>
+              <div class="contact-item__value">11 3198-6298</div>
+            </div>
+          </a>
+        </div>
+        <div class="contact-meta">
+          <span>📍 {siteConfig.direccion}</span>
+          <span>🕘 {siteConfig.horario}</span>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
