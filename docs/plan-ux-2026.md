@@ -313,11 +313,50 @@ Hecho:
 - Nav y footer reordenados por prioridad del instalador. Título y descripción de la
   home reescritos.
 
+- **Secciones reordenadas.** Antes la home seguía el orden del dueño de casa
+  (diagnóstico tercero, repuestos y plataforma al fondo). El orden nuevo sigue el
+  recorrido del instalador: primero lo que vino a buscar (criterio → repuestos →
+  herramientas), después la prueba de que quien lo dice sabe (el técnico → las obras),
+  y al final el carril del particular (diagnóstico → notas → contacto).
+
+  | # | Sección | Para quién |
+  |---|---|---|
+  | 1 | Hero | instalador |
+  | 2 | Bifurcación | los dos |
+  | 3 | Criterio de obra (adelanto de `/oficio`) | instalador |
+  | 4 | Repuestos | instalador |
+  | 5 | Plataforma | instalador |
+  | 6 | El técnico | prueba |
+  | 7 | Trabajos | prueba |
+  | 8 | Diagnóstico | particular |
+  | 9 | Notas | particular |
+  | 10 | Contacto | los dos |
+
+- **Repuestos cambia de eje**, como estaba previsto: de *"Originales Peisa, elegidos
+  uno por uno"* + "todavía no somos un catálogo gigante" (que se disculpa por el
+  tamaño) a *"Que sea el original, y que sea el que va"*, hablando de código y
+  compatibilidad. Con 4 SKUs no se compite por catálogo; se compite por precisión.
+- La bifurcación del particular ahora va a `/diagnostico` y no al ancla `#diagnostico`:
+  con el reordenamiento, esa sección quedó al fondo y lo obligaba a scrollear por
+  contenido técnico que no le interesa.
+
 Pendiente de esta fase:
-- Reordenar las secciones de la home: hoy el orden sigue siendo el del dueño de casa
-  (diagnóstico antes que repuestos y plataforma).
 - Reemplazar la repetición de grillas por escenas con ritmo propio.
 - Resolver el carrusel del hero (fotos que combinen, o una sola imagen fuerte).
+
+### Fase 2.5 — Paleta de color · PEDIDA POR EDGARDO 2026-07-22
+
+No le convence la paleta marrón/cream: *"Ese marrón..... mmmm"*. Pidió expresamente
+terminar lo planificado primero, pero queda anotado como trabajo a encarar.
+
+Hipótesis de por qué chirría ahora: el cream cálido viene del handoff que se hizo
+cuando el sitio le hablaba al dueño de casa. Comunica confort doméstico, no precisión
+técnica. Con el giro al instalador, el registro puede haber quedado desalineado.
+
+Cuando se encare: los tokens están centralizados en `:root` y casi todo el CSS los
+consume por variable, así que se cambia desde ahí sin tocar componentes. Verificar
+4,5:1 en cada cambio. El azul del bloque de plataforma es hoy el único registro frío y
+podría pasar a ser el eje.
 
 *Terminado cuando:* un gasista y un dueño de casa entienden, cada uno en menos de 5
 segundos, que el sitio es para él.

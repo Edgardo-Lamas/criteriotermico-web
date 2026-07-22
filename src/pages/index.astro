@@ -31,6 +31,7 @@ const trabajos = [
 >
   <SchemaMarkup type="local-business" data={{}} />
 
+
   <!-- Hero -->
   <section id="top" class="hero">
     <div class="container hero__grid">
@@ -109,7 +110,7 @@ const trabajos = [
         <span class="fork__link">Entrar al oficio →</span>
       </a>
 
-      <a href="#diagnostico" class="fork__card">
+      <a href="/diagnostico" class="fork__card">
         <span class="fork__eyebrow">Tengo una caldera</span>
         <h2 class="fork__title">Algo no anda en casa</h2>
         <p class="fork__desc">
@@ -121,27 +122,155 @@ const trabajos = [
     </div>
   </section>
 
-  <!-- Diagnóstico -->
-  <section id="diagnostico" class="section">
+  <!-- Adelanto de /oficio: el criterio es lo que el instalador vino a buscar -->
+  <section id="oficio" class="section">
     <div class="container">
       <div class="section-header section-header--left" data-reveal style="max-width: 760px; margin-bottom: 0;">
-        <p class="section-header__label">Guías del técnico</p>
-        <h2>Primero entendemos la falla.<br />Después hablamos de repuestos.</h2>
+        <p class="section-header__label">Criterio de obra</p>
+        <h2>Lo que no está<br />en el manual de la caldera.</h2>
         <p class="section-header__desc">
-          Guías gratuitas escritas por quien mete las manos en la caldera — no por
-          marketing. Identificá el problema antes de gastar de más.
+          Un sistema de calefacción obliga a cruzar cuatro terrenos, y cada uno tiene
+          su gremio. Ahí está la diferencia entre el que instala y el que calcula.
         </p>
       </div>
 
-      <div class="article-grid" style="margin-top: 44px;">
-        {diagnosticos.map((articulo) => (
-          <a href={`/diagnostico/${articulo.id}`} class="article-card" data-reveal>
-            <span class="article-card__tag">{articulo.data.categoria}</span>
-            <h3 class="article-card__title">{articulo.data.title.split("—")[0].trim()}</h3>
-            <p class="article-card__excerpt">{articulo.data.description}</p>
-            <span class="article-card__link">Leer la guía →</span>
-          </a>
-        ))}
+      <div class="dominio-grid" data-reveal>
+        <div class="dominio">
+          <h3 class="dominio__title">Gas</h3>
+          <p class="dominio__text">Acometida, diámetro y ventilación. Con el gas mal calculado, la mejor caldera no rinde.</p>
+        </div>
+        <div class="dominio">
+          <h3 class="dominio__title">Agua caliente</h3>
+          <p class="dominio__text">Caudales, saltos térmicos y prioridad sanitaria. Donde más reclamos se juntan.</p>
+        </div>
+        <div class="dominio">
+          <h3 class="dominio__title">Electricidad</h3>
+          <p class="dominio__text">Bombas, termostatos y placas. Muchas fallas que parecen de caldera, no lo son.</p>
+        </div>
+        <div class="dominio">
+          <h3 class="dominio__title">Termodinámica</h3>
+          <p class="dominio__text">Cuánta potencia pide el ambiente y cuánta entrega el emisor. Acá se define todo.</p>
+        </div>
+      </div>
+
+      <div class="masonry-cta" style="margin-top: 34px;">
+        <span>Cada uno de estos puntos, explicado en detalle.</span>
+        <a href="/oficio" class="btn btn--primary btn--sm">Entrar al oficio →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Repuestos -->
+  <section id="repuestos" class="section">
+    <div class="container">
+      <div class="section-header section-header--left" data-reveal style="max-width: 900px; margin-bottom: 0;">
+        <p class="section-header__label">Repuestos</p>
+        <h2>Que sea el original,<br />y que sea el que va.</h2>
+        <p class="section-header__desc">
+          Pocas piezas y bien elegidas: cada una lleva el código y las calderas
+          en las que entra, para que no vayas a probar. Si la que buscás no está,
+          decinos qué equipo tenés y la conseguimos.
+        </p>
+      </div>
+
+      <div class="product-grid" style="margin-top: 44px;" data-reveal>
+        {repuestos.map((item) => {
+          const r = item.data;
+          return (
+            <div class="product-card">
+              <div class="product-card__media">
+                <img src={r.imagen} alt={r.nombre} loading="lazy" />
+                <span class={`product-card__badge ${r.disponible ? "" : "product-card__badge--unavailable"}`}>
+                  <span class="product-card__badge-dot"></span>
+                  {r.disponible ? "Disponible" : "Sin stock"}
+                </span>
+              </div>
+              <div class="product-card__body">
+                {r.codigo && <span class="product-card__code">COD {r.codigo}</span>}
+                <h3 class="product-card__title">{r.nombre}</h3>
+                <p class="product-card__models">{r.modelos_compatibles.slice(0, 3).join(" · ")}</p>
+                <div class="product-card__actions">
+                  <WhatsAppButton mensaje={r.whatsapp_mensaje} texto="Consultar precio" class="whatsapp-btn--sm" />
+                  <a href={`/repuestos/${r.slug}`} class="product-card__link">Ver ficha completa →</a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+        <a
+          href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hola, no encontré mi repuesto Peisa en la web. ¿Me pueden ayudar a conseguirlo?")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="product-card--cta"
+        >
+          <span class="product-card--cta__icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#e8822f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+          </span>
+          <h3>¿No encontrás tu repuesto?</h3>
+          <p>Decinos qué caldera tenés y qué falla. Lo buscamos y te decimos si lo conseguimos.</p>
+          <span class="product-card--cta__link">Escribinos por WhatsApp →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plataforma (SaaS band) -->
+  <section id="plataforma" class="saas-scope saas-band">
+    <div class="container saas-band__grid">
+      <div data-reveal>
+        <span class="saas-badge">Nuevo · plataforma para instaladores</span>
+        <h2>20 años de oficio,<br />hechos plataforma.</h2>
+        <p class="saas-band__desc">
+          <strong>Criterio Térmico</strong> también es una plataforma para instaladores
+          de calefacción: calculadoras de ingeniería, simulador 2D, manual técnico de
+          14 capítulos y +200 errores de obra documentados.
+        </p>
+        <div class="saas-feature-list">
+          <div class="saas-feature-item">
+            <span class="saas-feature-item__icon">◆</span>
+            <div>
+              <div class="saas-feature-item__title">Calculadoras + Simulador 2D</div>
+              <div class="saas-feature-item__desc">Potencia, caudales, diámetros y trazado de tuberías.</div>
+            </div>
+          </div>
+          <div class="saas-feature-item">
+            <span class="saas-feature-item__icon">◆</span>
+            <div>
+              <div class="saas-feature-item__title">Manual técnico de 14 capítulos</div>
+              <div class="saas-feature-item__desc">Criterios de decisión, no teoría académica.</div>
+            </div>
+          </div>
+          <div class="saas-feature-item">
+            <span class="saas-feature-item__icon">◆</span>
+            <div>
+              <div class="saas-feature-item__title">+200 errores frecuentes</div>
+              <div class="saas-feature-item__desc">Casos reales de obra: problema, causa y solución.</div>
+            </div>
+          </div>
+        </div>
+        <a href="/plataforma" class="btn btn--saas" style="margin-top: 32px;">Conocer la plataforma →</a>
+      </div>
+
+      <div data-reveal>
+        <div class="saas-mockup">
+          <div class="saas-mockup__header">
+            <span class="saas-mockup__icon">🔧</span>
+            <span class="saas-mockup__title">Criterio</span>
+            <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--sb-accent);background:rgba(143,196,222,.14);padding:3px 9px;border-radius:999px;">Beta</span>
+          </div>
+          <div class="saas-mockup__field"><span>Ambiente</span><span>Living · 24 m²</span></div>
+          <div class="saas-mockup__field"><span>Orientación</span><span>Sur · exterior</span></div>
+          <div class="saas-mockup__field"><span>Altura</span><span>2,60 m</span></div>
+          <div class="saas-mockup__result">
+            <div class="saas-mockup__result-label">Potencia requerida</div>
+            <div class="saas-mockup__result-value">4,0 kW</div>
+            <div class="saas-mockup__result-note">3.480 kcal/h · incluye +15% de margen</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -214,117 +343,27 @@ const trabajos = [
     </div>
   </section>
 
-  <!-- Repuestos -->
-  <section id="repuestos" class="section">
+  <!-- Diagnóstico -->
+  <section id="diagnostico" class="section">
     <div class="container">
-      <div class="section-header section-header--left" data-reveal style="max-width: 900px; margin-bottom: 0;">
-        <p class="section-header__label">Repuestos</p>
-        <h2>Originales Peisa,<br />elegidos uno por uno.</h2>
+      <div class="section-header section-header--left" data-reveal style="max-width: 760px; margin-bottom: 0;">
+        <p class="section-header__label">Guías del técnico</p>
+        <h2>Primero entendemos la falla.<br />Después hablamos de repuestos.</h2>
         <p class="section-header__desc">
-          Todavía no somos un catálogo gigante — y está bien. Cada pieza que
-          ofrecemos es original y la recomendamos porque la instalamos con nuestras
-          propias manos. Vamos a sumar más modelos y calderas muy pronto.
+          Guías gratuitas escritas por quien mete las manos en la caldera — no por
+          marketing. Identificá el problema antes de gastar de más.
         </p>
       </div>
 
-      <div class="product-grid" style="margin-top: 44px;" data-reveal>
-        {repuestos.map((item) => {
-          const r = item.data;
-          return (
-            <div class="product-card">
-              <div class="product-card__media">
-                <img src={r.imagen} alt={r.nombre} loading="lazy" />
-                <span class={`product-card__badge ${r.disponible ? "" : "product-card__badge--unavailable"}`}>
-                  <span class="product-card__badge-dot"></span>
-                  {r.disponible ? "Disponible" : "Sin stock"}
-                </span>
-              </div>
-              <div class="product-card__body">
-                {r.codigo && <span class="product-card__code">COD {r.codigo}</span>}
-                <h3 class="product-card__title">{r.nombre}</h3>
-                <p class="product-card__models">{r.modelos_compatibles.slice(0, 3).join(" · ")}</p>
-                <div class="product-card__actions">
-                  <WhatsAppButton mensaje={r.whatsapp_mensaje} texto="Consultar precio" class="whatsapp-btn--sm" />
-                  <a href={`/repuestos/${r.slug}`} class="product-card__link">Ver ficha completa →</a>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-
-        <a
-          href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hola, no encontré mi repuesto Peisa en la web. ¿Me pueden ayudar a conseguirlo?")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="product-card--cta"
-        >
-          <span class="product-card--cta__icon">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#e8822f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="7" />
-              <path d="M21 21l-4.3-4.3" />
-            </svg>
-          </span>
-          <h3>¿No encontrás tu repuesto?</h3>
-          <p>Decinos qué caldera tenés y qué falla. Lo buscamos y te decimos si lo conseguimos.</p>
-          <span class="product-card--cta__link">Escribinos por WhatsApp →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Para técnicos (SaaS band) -->
-  <section id="tecnicos" class="saas-scope saas-band">
-    <div class="container saas-band__grid">
-      <div data-reveal>
-        <span class="saas-badge">Nuevo · plataforma para instaladores</span>
-        <h2>20 años de oficio,<br />hechos plataforma.</h2>
-        <p class="saas-band__desc">
-          <strong>Criterio Térmico</strong> también es una plataforma para instaladores
-          de calefacción: calculadoras de ingeniería, simulador 2D, manual técnico de
-          14 capítulos y +200 errores de obra documentados.
-        </p>
-        <div class="saas-feature-list">
-          <div class="saas-feature-item">
-            <span class="saas-feature-item__icon">◆</span>
-            <div>
-              <div class="saas-feature-item__title">Calculadoras + Simulador 2D</div>
-              <div class="saas-feature-item__desc">Potencia, caudales, diámetros y trazado de tuberías.</div>
-            </div>
-          </div>
-          <div class="saas-feature-item">
-            <span class="saas-feature-item__icon">◆</span>
-            <div>
-              <div class="saas-feature-item__title">Manual técnico de 14 capítulos</div>
-              <div class="saas-feature-item__desc">Criterios de decisión, no teoría académica.</div>
-            </div>
-          </div>
-          <div class="saas-feature-item">
-            <span class="saas-feature-item__icon">◆</span>
-            <div>
-              <div class="saas-feature-item__title">+200 errores frecuentes</div>
-              <div class="saas-feature-item__desc">Casos reales de obra: problema, causa y solución.</div>
-            </div>
-          </div>
-        </div>
-        <a href="/plataforma" class="btn btn--saas" style="margin-top: 32px;">Conocer la plataforma →</a>
-      </div>
-
-      <div data-reveal>
-        <div class="saas-mockup">
-          <div class="saas-mockup__header">
-            <span class="saas-mockup__icon">🔧</span>
-            <span class="saas-mockup__title">Criterio</span>
-            <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--sb-accent);background:rgba(143,196,222,.14);padding:3px 9px;border-radius:999px;">Beta</span>
-          </div>
-          <div class="saas-mockup__field"><span>Ambiente</span><span>Living · 24 m²</span></div>
-          <div class="saas-mockup__field"><span>Orientación</span><span>Sur · exterior</span></div>
-          <div class="saas-mockup__field"><span>Altura</span><span>2,60 m</span></div>
-          <div class="saas-mockup__result">
-            <div class="saas-mockup__result-label">Potencia requerida</div>
-            <div class="saas-mockup__result-value">4,0 kW</div>
-            <div class="saas-mockup__result-note">3.480 kcal/h · incluye +15% de margen</div>
-          </div>
-        </div>
+      <div class="article-grid" style="margin-top: 44px;">
+        {diagnosticos.map((articulo) => (
+          <a href={`/diagnostico/${articulo.id}`} class="article-card" data-reveal>
+            <span class="article-card__tag">{articulo.data.categoria}</span>
+            <h3 class="article-card__title">{articulo.data.title.split("—")[0].trim()}</h3>
+            <p class="article-card__excerpt">{articulo.data.description}</p>
+            <span class="article-card__link">Leer la guía →</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -403,4 +442,5 @@ const trabajos = [
       </div>
     </div>
   </section>
+
 </BaseLayout>
