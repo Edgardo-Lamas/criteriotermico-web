@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import { getCollection } from "astro:content";
+
+const instalaciones = await getCollection("instalacion");
+
+/* Los cuatro dominios que un sistema de calefacción obliga a cruzar. Es el
+   argumento central del sitio: casi nadie los aprende juntos, y ahí está la
+   diferencia entre el que instala y el que calcula. */
+const dominios = [
+  {
+    nombre: "Gas",
+    texto:
+      "Dimensionar la acometida, el diámetro y la ventilación. Una caldera bien elegida con el gas mal calculado no rinde, y el problema aparece recién con frío.",
+  },
+  {
+    nombre: "Agua caliente",
+    texto:
+      "Caudales, saltos térmicos y prioridad sanitaria. Es donde más reclamos se juntan: el agua tarda, sale tibia o la calefacción se corta cuando alguien abre una canilla.",
+  },
+  {
+    nombre: "Electricidad",
+    texto:
+      "Bombas, termostatos, válvulas de zona y placas. Buena parte de las fallas que parecen de caldera son de alimentación, de contacto o de una conexión mal hecha.",
+  },
+  {
+    nombre: "Termodinámica",
+    texto:
+      "Cuánta potencia pide realmente cada ambiente y cuánta entrega el emisor. Acá se define si el sistema anda o si hay que volver a la obra.",
+  },
+];
+---
+
+<BaseLayout
+  title="Oficio — Criterios de instalación de calefacción | Criterio Térmico"
+  description="Criterios de obra para instaladores de calefacción: dimensionado, gas, agua caliente sanitaria, electricidad y termodinámica. Escrito por un técnico con 20 años de obra."
+>
+  <section class="section--tight">
+    <div class="container" style="max-width: 780px;">
+      <Breadcrumbs items={[{ label: "Oficio" }]} />
+
+      <p class="section-header__label" style="margin-top: 26px;">Oficio</p>
+      <h1>De la obra a la especialidad en calefacción.</h1>
+      <p class="section-header__desc" style="margin-inline: 0; font-size: 18px; margin-top: 22px;">
+        Si sos gasista, sanitarista o electricista, ya sabés trabajar. Esta sección es
+        para lo otro: el criterio propio de la calefacción, que no se aprende en un
+        manual sino equivocándose en obra. Acá está lo que aprendí en veinte años,
+        para que te salga bien la primera vez.
+      </p>
+    </div>
+  </section>
+
+  <!-- Los cuatro dominios -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header--left" data-reveal style="max-width: 760px; margin-bottom: 0;">
+        <h2>Por qué cuesta más de lo que parece.</h2>
+        <p class="section-header__desc">
+          Un sistema de calefacción obliga a cruzar cuatro terrenos. Cada uno tiene su
+          gremio, y casi nadie los aprende juntos. Ahí está la diferencia entre el que
+          instala y el que calcula.
+        </p>
+      </div>
+
+      <div class="dominio-grid" data-reveal>
+        {dominios.map((d) => (
+          <div class="dominio">
+            <h3 class="dominio__title">{d.nombre}</h3>
+            <p class="dominio__text">{d.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Guías de instalación -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header section-header--left" data-reveal style="max-width: 760px; margin-bottom: 0;">
+        <h2>Guías de instalación.</h2>
+        <p class="section-header__desc">
+          Paso a paso, con las medidas y los valores que hay que verificar. Se suman
+          guías nuevas a medida que salen de la obra.
+        </p>
+      </div>
+
+      <div class="article-grid" style="margin-top: 44px;" data-reveal>
+        {instalaciones.map((guia) => (
+          <a href={`/instalacion/${guia.id}`} class="article-card">
+            <span class="article-card__tag">{guia.data.categoria}</span>
+            <h3 class="article-card__title">{guia.data.title}</h3>
+            <p class="article-card__excerpt">{guia.data.description}</p>
+            <span class="article-card__link">Ver la guía →</span>
+          </a>
+        ))}
+
+        <a
+          href={`https://wa.me/5491152604237?text=${encodeURIComponent("Hola Edgardo, soy instalador. Me gustaría que cubras este tema en una guía: ")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="article-card article-card--ask"
+        >
+          <span class="article-card__tag">Pedido</span>
+          <h3 class="article-card__title">¿Qué tema te falta?</h3>
+          <p class="article-card__excerpt">
+            Decime con qué te estás peleando en obra. Las guías salen de las consultas
+            que más se repiten.
+          </p>
+          <span class="article-card__link">Proponer un tema →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Asesoramiento: el producto real -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="asesoria" data-reveal>
+        <div>
+          <h2>Cuando el caso no entra en ninguna guía.</h2>
+          <p>
+            Techos altos, una casa vieja sin aislación, un mixto de radiadores y piso,
+            una caldera que ya reemplazaron dos veces. Esos casos no se resuelven con
+            una tabla: se resuelven con criterio. Mandame los datos de la obra y lo
+            vemos.
+          </p>
+          <p class="asesoria__note">
+            Te contesto yo, no un formulario. Si el caso me excede, te lo digo.
+          </p>
+        </div>
+        <div class="asesoria__action">
+          <WhatsAppButton
+            mensaje="Hola Edgardo, soy instalador y tengo una obra para consultarte. Te paso los datos:"
+            texto="Consultar una obra"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Puente a la plataforma -->
+  <section class="saas-scope saas-band">
+    <div class="container saas-band__grid">
+      <div data-reveal>
+        <span class="saas-badge">Herramientas</span>
+        <h2>Los cálculos, resueltos.</h2>
+        <p class="saas-band__desc">
+          Lo que acá se explica como criterio, del otro lado está resuelto como
+          herramienta: calculadoras de potencia y caudal, simulador 2D de la
+          instalación, manual técnico y los errores de obra más frecuentes,
+          documentados con causa y solución.
+        </p>
+        <a href="/plataforma" class="btn btn--saas" style="margin-top: 32px;">
+          Conocer la plataforma →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

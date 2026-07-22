@@ -295,12 +295,29 @@ la sección del SaaS. Convertir eso en un sistema deliberado:
 
 *Terminado cuando:* los componentes nuevos existen y están documentados.
 
-### Fase 3 — Home nueva · 2 sesiones
+### Fase 3 — Home nueva · primera mitad hecha 2026-07-22
 
-- Bifurcación explícita en la parte alta.
-- Hero reescrito para el profesional, sin perder la puerta del particular.
+Hecho:
+- **Hero reescrito para el instalador.** H1: *"Instalar calefacción cruza cuatro
+  oficios"*, con la bajada nombrando gas, agua caliente, electricidad y termodinámica.
+  Es el argumento más propio que tiene el sitio y no lo dice ningún competidor.
+  CTA primario "Ver criterios de obra" (antes el primario era WhatsApp).
+- **Bifurcación** apenas termina el hero, en lugar de la barra de sellos genéricos
+  ("Diagnóstico antes de vender", "Asesoramiento incluido") que no decía nada:
+  dos carriles, *Instalo calefacción* / *Tengo una caldera*. El del profesional pesa
+  más (fondo espresso) sin esconder al otro.
+- **`/oficio` creada**: los cuatro dominios, las guías de instalación, un pedido de
+  temas y el bloque de asesoramiento, que es el producto real y no tenía lugar propio.
+- **`/para-tecnicos` → `/plataforma`**, con redirect para no romper la URL vieja. Con
+  el sitio entero orientado al instalador, ese nombre ya no distinguía nada.
+- Nav y footer reordenados por prioridad del instalador. Título y descripción de la
+  home reescritos.
+
+Pendiente de esta fase:
+- Reordenar las secciones de la home: hoy el orden sigue siendo el del dueño de casa
+  (diagnóstico antes que repuestos y plataforma).
 - Reemplazar la repetición de grillas por escenas con ritmo propio.
-- Resolver el carrusel (o fotos que combinen, o una sola imagen fuerte).
+- Resolver el carrusel del hero (fotos que combinen, o una sola imagen fuerte).
 
 *Terminado cuando:* un gasista y un dueño de casa entienden, cada uno en menos de 5
 segundos, que el sitio es para él.

@@ -827,6 +827,196 @@ h4 { font-size: var(--text-xl); }
   font-size: 18px;
 }
 
+/* ---------- Bifurcación instalador / particular ----------
+   Va apenas termina el hero: el sitio le habla al instalador, y el dueño de
+   casa necesita ver su carril antes de decidir que esto no es para él.
+   El carril del profesional pesa más (fondo espresso) sin esconder al otro. */
+.fork {
+  background: var(--color-trust-bar);
+  border-bottom: 1px solid var(--color-border-soft);
+  padding-block: clamp(28px, 4vw, 44px);
+}
+
+.fork__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.fork__card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 26px 26px 22px;
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.fork__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.fork__card--pro {
+  background: var(--color-espresso);
+  border-color: transparent;
+}
+
+.fork__eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.fork__card--pro .fork__eyebrow {
+  color: var(--color-orange-light);
+}
+
+.fork__title {
+  font-size: clamp(21px, 2.2vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+.fork__card--pro .fork__title {
+  color: var(--color-text-inverse-strong);
+}
+
+.fork__desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  max-width: 46ch;
+}
+
+.fork__card--pro .fork__desc {
+  color: var(--color-cream-soft);
+}
+
+.fork__link {
+  margin-top: auto;
+  padding-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-orange);
+}
+
+.fork__card--pro .fork__link {
+  color: var(--color-orange-light);
+}
+
+/* ---------- /oficio ---------- */
+/* Los cuatro dominios. Numerados a propósito: acá el orden SÍ informa (es la
+   secuencia en que se verifica una instalación), no es andamiaje decorativo. */
+.dominio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  margin-top: 44px;
+  background: var(--color-border-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.dominio {
+  background: var(--color-bg, var(--color-cream));
+  padding: 26px 24px;
+  counter-increment: dominio;
+}
+
+.dominio__title {
+  font-size: 19px;
+  letter-spacing: -.01em;
+  margin-bottom: 8px;
+}
+
+.dominio__title::before {
+  content: "0" counter(dominio);
+  display: block;
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-orange);
+  margin-bottom: 10px;
+}
+
+.dominio__text {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.dominio-grid {
+  counter-reset: dominio;
+}
+
+.article-card--ask {
+  border-style: dashed;
+}
+
+.asesoria {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  background: var(--color-espresso);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-xl);
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.asesoria h2 {
+  color: var(--color-text-inverse-strong);
+  font-size: clamp(24px, 2.8vw, 34px);
+  margin-bottom: 14px;
+}
+
+.asesoria p {
+  color: var(--color-cream-soft);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+.asesoria__note {
+  margin-top: 14px;
+  font-size: 14.5px;
+  color: var(--color-cream-softer);
+}
+
+@media (max-width: 720px) {
+  .asesoria {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .asesoria__action .whatsapp-btn {
+    width: 100%;
+  }
+}
+
+/* Variante del botón de WhatsApp para el hero oscuro: sin el verde de marca,
+   que competía con el CTA principal ahora que el primario es "ver criterios". */
+.btn--secondary-ghost {
+  background: transparent;
+  color: var(--color-text-inverse);
+  border: 1px solid rgba(244, 236, 225, .28);
+  box-shadow: none;
+}
+
+.btn--secondary-ghost:hover {
+  background: rgba(244, 236, 225, .08);
+  transform: none;
+}
+
 /* ---------- Diagnostic cards (article-card) ---------- */
 .article-grid {
   display: grid;

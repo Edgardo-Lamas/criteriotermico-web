@@ -26,8 +26,8 @@ const trabajos = [
 ---
 
 <BaseLayout
-  title="Criterio Térmico — Servicio técnico Peisa en Villa Urquiza, CABA"
-  description="20 años de oficio reparando e instalando calderas Peisa. Diagnóstico honesto, repuestos originales y atención directa con el técnico, en Villa Urquiza, CABA."
+  title="Criterio Térmico — Criterio e insumos para instalar calefacción"
+  description="Para gasistas, sanitaristas e instaladores: criterios de obra, repuestos originales Peisa y asesoramiento directo de un técnico con 20 años de experiencia. Villa Urquiza, CABA."
 >
   <SchemaMarkup type="local-business" data={{}} />
 
@@ -37,30 +37,30 @@ const trabajos = [
       <div>
         <div class="hero__badge">
           <span class="hero__badge-dot"></span>
-          Servicio técnico Peisa · Villa Urquiza, CABA
+          Para instaladores de calefacción · Villa Urquiza, CABA
         </div>
-        <h1>Que tu casa nunca<br />pierda el <span class="hero__accent">calor</span>.</h1>
+        <h1>Instalar calefacción<br />cruza <span class="hero__accent">cuatro oficios</span>.</h1>
         <p class="hero__subtitle">
-          Veinte años metiendo las manos en calderas Peisa. Diagnóstico honesto,
-          repuestos originales y atención directa con el técnico — sin call center,
-          sin vueltas.
+          Gas, agua caliente, electricidad y termodinámica. Acá está el criterio para
+          cruzarlos bien: cálculos, repuestos originales y veinte años de obra, sin
+          teoría de manual.
         </p>
         <div class="hero__actions">
-          <WhatsAppButton mensaje={siteConfig.whatsappMensajeGenerico} texto="Consultar por WhatsApp" />
-          <a href="#diagnostico" class="btn btn--secondary">Ver diagnósticos gratis →</a>
+          <a href="/oficio" class="btn btn--primary">Ver criterios de obra →</a>
+          <WhatsAppButton mensaje="Hola Edgardo, soy instalador y quiero hacerte una consulta técnica." texto="Consultar" class="btn--secondary-ghost" />
         </div>
         <div class="hero__stats">
           <div>
             <div class="hero__stat-number">20 años</div>
-            <div class="hero__stat-label">de oficio real</div>
+            <div class="hero__stat-label">de obra, no de aula</div>
           </div>
           <div>
-            <div class="hero__stat-number">100%</div>
-            <div class="hero__stat-label">repuestos originales</div>
+            <div class="hero__stat-number">4 oficios</div>
+            <div class="hero__stat-label">en un solo sistema</div>
           </div>
           <div>
             <div class="hero__stat-number">Directo</div>
-            <div class="hero__stat-label">con el técnico</div>
+            <div class="hero__stat-label">te contesta el técnico</div>
           </div>
         </div>
       </div>
@@ -96,13 +96,28 @@ const trabajos = [
     </div>
   </section>
 
-  <!-- Trust bar -->
-  <section class="trust-bar">
-    <div class="container trust-bar__inner">
-      <div class="trust-bar__item"><span class="star">✦</span> Diagnóstico antes de vender</div>
-      <div class="trust-bar__item"><span class="star">✦</span> Repuestos originales Peisa</div>
-      <div class="trust-bar__item"><span class="star">✦</span> Asesoramiento incluido</div>
-      <div class="trust-bar__item"><span class="star">✦</span> Villa Urquiza · a domicilio</div>
+  <!-- Bifurcación: cada visitante elige su carril antes de seguir bajando -->
+  <section class="fork">
+    <div class="container fork__grid">
+      <a href="/oficio" class="fork__card fork__card--pro">
+        <span class="fork__eyebrow">Instalo calefacción</span>
+        <h2 class="fork__title">Quiero el criterio técnico</h2>
+        <p class="fork__desc">
+          Cómo se dimensiona, qué falla primero y por qué. Cálculos, repuestos por
+          compatibilidad y los errores que se pagan caros en obra.
+        </p>
+        <span class="fork__link">Entrar al oficio →</span>
+      </a>
+
+      <a href="#diagnostico" class="fork__card">
+        <span class="fork__eyebrow">Tengo una caldera</span>
+        <h2 class="fork__title">Algo no anda en casa</h2>
+        <p class="fork__desc">
+          No enciende, no calienta el agua o hace ruido. Guías gratis para entender
+          qué le pasa antes de gastar de más.
+        </p>
+        <span class="fork__link">Ver diagnósticos →</span>
+      </a>
     </div>
   </section>
 
@@ -291,7 +306,7 @@ const trabajos = [
             </div>
           </div>
         </div>
-        <a href="/para-tecnicos" class="btn btn--saas" style="margin-top: 32px;">Conocer la plataforma →</a>
+        <a href="/plataforma" class="btn btn--saas" style="margin-top: 32px;">Conocer la plataforma →</a>
       </div>
 
       <div data-reveal>

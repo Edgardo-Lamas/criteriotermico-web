@@ -8,11 +8,13 @@ interface Props {
 
 const { currentPath = "" } = Astro.props;
 
+// Orden por prioridad del instalador, que es a quien apunta el sitio:
+// primero el criterio y las piezas, después el carril del particular.
 const navLinks = [
-  { href: "/diagnostico", label: "Diagnóstico" },
+  { href: "/oficio", label: "Oficio" },
   { href: "/repuestos", label: "Repuestos" },
+  { href: "/diagnostico", label: "Diagnóstico" },
   { href: "/nosotros", label: "El técnico" },
-  { href: "/#trabajos", label: "Trabajos" },
   { href: "/notas", label: "Notas" },
 ];
 ---
@@ -35,8 +37,8 @@ const navLinks = [
           {link.label}
         </a>
       ))}
-      <a href="/para-tecnicos" class="nav--new">
-        Para técnicos <span class="badge-new">NUEVO</span>
+      <a href="/plataforma" class="nav--new">
+        Plataforma <span class="badge-new">NUEVO</span>
       </a>
     </nav>
 
