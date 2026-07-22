@@ -79,9 +79,20 @@ const fullCanonical = canonicalUrl || `${siteUrl}${currentPath}`;
               }
             }
           },
-          { threshold: 0.1, rootMargin: "0px 0px -6% 0px" }
+          // threshold 0 + margen inferior positivo: la sección arranca a
+          // revelarse antes de entrar en pantalla, así llega ya legible.
+          // Con threshold 0.1 las secciones más altas que el viewport
+          // disparaban tarde y se leían a medio aparecer.
+          { threshold: 0, rootMargin: "0px 0px 15% 0px" }
         );
         document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+
+        // Red de seguridad: un renderer que no scrollea (un crawler, un
+        // servicio de preview) nunca dispara el observer y se llevaría la
+        // página con las secciones invisibles. Pasado un margen, se muestran.
+        setTimeout(() => {
+          document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-visible"));
+        }, 2500);
       } else {
         document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-visible"));
       }

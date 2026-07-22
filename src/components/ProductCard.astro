@@ -21,9 +21,11 @@ const { nombre, codigo, slug, imagen, disponible, modelos_compatibles, whatsapp_
       <span class="product-card__badge-dot"></span>
       {disponible ? "Disponible" : "Sin stock"}
     </span>
+    {/* El código vive sobre la imagen: no todos los repuestos lo tienen todavía,
+        y en el cuerpo su ausencia desalineaba los títulos de la grilla. */}
+    {codigo && <span class="product-card__code">COD {codigo}</span>}
   </div>
   <div class="product-card__body">
-    {codigo && <span class="product-card__code">COD {codigo}</span>}
     <h3 class="product-card__title">{nombre}</h3>
     <p class="product-card__models">{modelos_compatibles.slice(0, 3).join(" · ")}</p>
     <div class="product-card__actions">

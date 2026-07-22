@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SchemaMarkup from "../components/SchemaMarkup.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import Icon from "../components/Icon.astro";
 import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
 
@@ -381,8 +382,8 @@ const trabajos = [
           </a>
         </div>
         <div class="contact-meta">
-          <span>📍 {siteConfig.direccion}</span>
-          <span>🕘 {siteConfig.horario}</span>
+          <span><Icon name="pin" /> {siteConfig.direccion}</span>
+          <span><Icon name="clock" /> {siteConfig.horario}</span>
         </div>
       </div>
     </div>

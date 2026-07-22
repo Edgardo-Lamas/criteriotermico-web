@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../config/site";
+import Icon from "./Icon.astro";
 
 const year = new Date().getFullYear();
 ---
@@ -16,9 +17,9 @@ const year = new Date().getFullYear();
       <p class="footer__desc">
         {siteConfig.descripcion}
       </p>
-      <p class="footer__desc" style="margin-top: var(--space-4);">
-        📍 {siteConfig.direccion}<br />
-        🕐 {siteConfig.horario}
+      <p class="footer__desc footer__meta">
+        <span><Icon name="pin" /> {siteConfig.direccion}</span>
+        <span><Icon name="clock" /> {siteConfig.horario}</span>
       </p>
     </div>
 

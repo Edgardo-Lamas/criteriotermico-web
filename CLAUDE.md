@@ -43,7 +43,7 @@ framework (no React/Vue/etc.), plain CSS (no Tailwind). Integrations: `@astrojs/
 - `instalacion` — Markdown step-by-step install guides, same shape plus an optional
   `repuesto_slug` linking back to a part.
 
-**Design system:** a single `src/styles/global.css` (~1400 lines) defines everything
+**Design system:** a single `src/styles/global.css` (~2900 lines) defines everything
 via CSS custom properties in `:root` — colors, typography (`Inter` body /
 `Outfit` heading), spacing, radius, shadows, transitions. Current theme is a warm
 light palette: `--color-bg-primary` (warm off-white), `--color-primary` (deep blue,
@@ -60,12 +60,24 @@ CSS near where they occur).
 `dolarapi.com`) are used on product pages. `SchemaMarkup.astro` emits JSON-LD
 (product/article/local-business/breadcrumb) — pass `type` + `data`.
 `CredibilityStrip.astro` is a reusable stat band (icon/number/label) used on both
-the homepage and `/nosotros`.
+the homepage and `/nosotros`. `Icon.astro` holds the site's inline SVG icons
+(stroke-based, `currentColor`) — use it instead of emoji, which render differently
+per platform and don't inherit text color.
+
+**Motion:** `[data-reveal]` + the IntersectionObserver in `BaseLayout.astro` drive
+section reveals. Keep the transition at ~300ms and the offset small: at 700ms/26px
+sections were still fading in while being read. The 2.5s fallback timer that reveals
+everything is deliberate — without it, a renderer that never scrolls (a crawler, a
+preview service) captures the page with its sections invisible.
+
+**Audience (decided 2026-07-22):** the site is being repositioned toward the
+professional installer — gasistas first, then sanitaristas and constructores. The
+product being sold is Edgardo's advice; spare parts and the SaaS follow from it. See
+`docs/plan-ux-2026.md` for the full plan and phase status.
 
 **Business config:** `src/config/site.ts` holds WhatsApp number, address, hours,
-etc. `siteConfig.whatsapp` and `siteConfig.telefono` are still placeholders — do not
-treat them as real contact info, and don't invent replacement values; they need to
-come from the site owner before go-live.
+etc. `siteConfig.whatsapp` (Edgardo) and `siteConfig.whatsappAlejandro` are real
+numbers — they are published on the live site. Don't replace them with invented values.
 
 **Images:** plain `<img src="/path">` strings, no `astro:assets` integration.
 Convention: `public/images/home/` for homepage-only imagery, `public/images/nosotros/`
