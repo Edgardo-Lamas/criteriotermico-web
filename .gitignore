@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 # design handoff reference (prototipos + assets ya copiados a public/)
 design_handoff_rediseno_home/
+.vercel
+.env*

@@ -3,6 +3,15 @@
 Fecha: 2026-07-22
 Estado del repo al arrancar: `main` limpio, último commit `b80bfcb` (handoff de diseño aplicado).
 
+**En producción desde el 22/07: https://criteriotermico-web.vercel.app**
+Proyecto Vercel `criteriotermico-web` (distinto de `criterio-termico`, que es el SaaS),
+con el repo de GitHub conectado: cada push a `main` deploya solo. Falta comprar
+`criteriotermico.com.ar` y apuntarlo acá; `astro.config.mjs` ya lo tiene como `site`.
+
+Se descartó GitHub Pages: al servirse bajo `/criteriotermico-web/` obligaba a configurar
+un `base` y a reescribir 31+ rutas absolutas, trabajo que había que deshacer al migrar
+a Vercel.
+
 ---
 
 ## 1. El problema real
@@ -71,6 +80,25 @@ Resueltas por Edgardo, y condicionan todo lo que sigue:
 ventas, lo urgente es el mensaje correcto y el contenido que trae gasistas por
 búsqueda; el sistema de diseño completo y el movimiento pueden esperar. No sirve un
 sitio impecable que le habla a la persona equivocada.
+
+### Quién es el lector (definido 2026-07-22)
+
+No es un ingeniero ni un estudiante. Es alguien **formado en la obra**: gasista,
+sanitarista o electricista que aprendió trabajando, no estudiando.
+
+Para instalar un sistema de calefacción necesita cruzar dominios que nadie le enseñó
+juntos: agua caliente sanitaria, gas, electricidad, y con experiencia también
+termodinámica y electrónica. Hoy su oficio está bien pago porque hay mucha demanda y
+poca oferta, así que le conviene especializarse ahora.
+
+**Eso define la misión del sitio: es donde alguien que ya sabe trabajar se vuelve
+específicamente bueno en calefacción.** No es un catálogo con guías. Y el que forma a
+los especialistas de un rubro termina siendo la autoridad de ese rubro, que es lo que
+después sostiene la venta de repuestos, el SaaS y los proyectos de obra grande.
+
+Consecuencia de tono: **nunca tratarlo de alumno.** Nada de "capacitación",
+"formación" ni "curso". Se le reconoce el oficio que ya tiene y se le ofrece la
+especialidad que le falta.
 
 ### Tensión que queda abierta
 
@@ -200,16 +228,58 @@ trabajo, no en días de calendario.
 Queda anotado y **no** corregido: el botón flotante de WhatsApp tapa texto en mobile
 durante el scroll. Es el compromiso normal de un botón flotante; si molesta, se revisa.
 
-### Fase 1 — Posicionamiento y arquitectura · 1 sesión, sin código
+### Fase 1 — Posicionamiento y arquitectura · casi cerrada
 
-La fase que decide todas las demás. Sale un documento, no un commit.
+Audiencia y misión: definidas arriba. Mapa del sitio aprobado por Edgardo el 22/07:
 
-- Definir las dos audiencias y qué busca cada una (esto lo aportás vos, es tu terreno).
-- Elegir el modelo de bifurcación y escribir el mensaje central del sitio.
-- Mapa del sitio nuevo: qué páginas existen, para quién, y cómo se enlazan.
-- Definir qué se muestra del SaaS acá y qué queda del otro lado.
+```
+/                     Home — bifurcación temprana: instalador / dueño de casa
+│
+├── TRONCO TÉCNICO (para el gasista)
+│   ├── /oficio       NUEVO — hub del profesional. Absorbe a /para-tecnicos
+│   │                 como puerta de entrada.
+│   │                 Bajada: "De la obra a la especialidad en calefacción".
+│   │   ├── buenas prácticas por tema (dimensionado, tendido, purga…)
+│   │   └── errores de obra
+│   ├── /repuestos    Reenfocado en COMPATIBILIDAD, no en góndola
+│   │   └── /repuestos/[slug]
+│   └── /instalacion  Guías paso a paso (hoy tiene 1 sola)
+│
+├── CAPTURA
+│   └── /asesoramiento  NUEVO — el producto real. Hoy no existe como página.
+│
+├── HERRAMIENTA
+│   └── /plataforma   El SaaS (hoy /para-tecnicos, renombrada)
+│
+├── CARRIL DEL PARTICULAR
+│   ├── /diagnostico
+│   └── /notas
+│
+└── /nosotros         Los 20 años. Es la prueba de todo lo demás.
+```
 
-*Terminado cuando:* hay un mapa aprobado y una frase que resume el sitio en una línea.
+Los tres cambios de fondo, más allá de mover cajas:
+
+1. **`/para-tecnicos` hoy es una contradicción.** Si todo el sitio es para técnicos,
+   esa página no puede llamarse así. Pasa a `/plataforma`; su rol de puerta al
+   profesional lo toma `/oficio`.
+2. **`/asesoramiento` no existe y es lo que se vende.** Hoy el producto principal está
+   disuelto en botones de WhatsApp, sin una página que explique qué se consulta, cómo
+   y qué se obtiene.
+3. **`/repuestos` cambia de eje**: de "mirá lo que tengo" a "fijate si esto va en tu
+   caldera". Con 4 SKUs el catálogo pierde contra cualquier casa de repuestos; la
+   compatibilidad y el criterio, no.
+
+Sobre el nombre `/oficio` (y no `/tecnica`): el lector se formó en la obra, y "oficio"
+le reconoce lo que ya tiene. En SEO no se pierde nada, porque lo que rankea son las
+páginas hijas ("cómo dimensionar un radiador"), no el índice de la sección.
+
+**Guías de diagnóstico — decidido: opción A.** Las 3 guías actuales están escritas para
+el dueño de casa ("tu caldera Peisa no produce agua caliente") y **quedan así**, en el
+carril del particular. En paralelo se escriben guías técnicas nuevas en `/oficio`, con
+lo que busca un gasista: qué medir, con qué valores de referencia, en qué orden
+descartar y qué falla es más probable según modelo. Mismo tema, dos textos, cada uno
+afilado para su lector.
 
 ### Fase 2 — Sistema de diseño de dos registros · 1-2 sesiones
 
