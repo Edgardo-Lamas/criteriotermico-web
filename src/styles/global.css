@@ -8,28 +8,46 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-  /* Colors — warm palette */
-  --color-cream: #f4ece1;
-  --color-card: #fffdf9;
-  --color-trust-bar: #efe3d4;
-  --color-espresso: #1b1512;
+  /* ---- Paleta "Acero" ----
+     Neutro frío: el sitio dejó de hablarle al dueño de casa (donde el cream
+     cálido decía living y confort) para hablarle al instalador. El naranja se
+     mantiene porque es el fuego y es lo que identifica la marca; lo que cambia
+     es el suelo, que ya no compite con él desde el mismo lado del círculo.
+     Todos los pares de texto/fondo verificados a 4,5:1 o mejor. */
+  --color-cream: #eaeef2;          /* fondo de página */
+  --color-card: #ffffff;
+  --color-trust-bar: #dde4ea;      /* bandas intermedias */
+  --color-espresso: #101a24;       /* bloques oscuros */
 
-  --color-text-body: #241c16;
-  --color-text-primary: #1b1512;
-  --color-text-secondary: #6b5d50;
-  --color-text-tertiary: #4a3f34;
-  /* 4.74:1 sobre --color-bg cream. No usar sobre fondos oscuros: para eso
-     están --color-cream-soft / --color-cream-softer. */
-  --color-text-muted: #746657;
-  --color-text-inverse: #f4ece1;
-  --color-text-inverse-strong: #faf3ea;
-  --color-cream-soft: #cbbcac;
-  --color-cream-softer: #a99b8c;
+  --color-text-body: #16222e;
+  --color-text-primary: #101a24;   /* 15,1:1 sobre el fondo */
+  --color-text-secondary: #44586a; /* 6,3:1 */
+  --color-text-tertiary: #2c3d4d;
+  /* 5,4:1 sobre el fondo. No usar sobre bloques oscuros: para eso están
+     --color-cream-soft / --color-cream-softer. */
+  --color-text-muted: #4e6274;
+  --color-text-inverse: #e6edf3;   /* 14,9:1 sobre el espresso */
+  --color-text-inverse-strong: #f4f8fb;
+  --color-cream-soft: #b3c3d1;     /* 9,7:1 sobre el espresso */
+  --color-cream-softer: #93a5b5;   /* 6,9:1 sobre el espresso */
 
+  /* El naranja de marca. Con blanco encima da 4,07:1, apenas por debajo del
+     mínimo, así que el relleno de los botones usa --color-orange-solid. */
   --color-orange: #d1591f;
-  --color-orange-hover: #b0431a;
-  --color-orange-light: #e8822f;
-  --color-bronze: #b98a4e;
+  --color-orange-solid: #c04f18;   /* 4,6:1 con texto blanco */
+  --color-orange-hover: #a53f11;
+  --color-orange-light: #f0803a;   /* 6,6:1 sobre el espresso */
+  /* Para texto chico sobre fondo claro: el naranja de marca ahí sólo llega a
+     3,5:1. Este da 5,2:1 sobre el fondo y 4,6:1 sobre las bandas. */
+  --color-orange-ink: #a63d09;
+  --color-bronze: #8a6a3c;
+
+  /* Componentes RGB, para las transparencias. Antes cada rgba() llevaba el
+     color escrito a mano y quedaban fuera de cualquier cambio de paleta. */
+  --rgb-ink: 16, 26, 36;
+  --rgb-inverse: 230, 237, 243;
+  --rgb-orange: 209, 89, 31;
+  --rgb-bg: 234, 238, 242;
 
   --color-whatsapp: #25d366;
   --color-whatsapp-hover: #20bd5a;
@@ -43,8 +61,8 @@
   /* Legacy trust-blue (only used for "Para técnicos" nav badge) */
   --color-trust-blue: #1a4d6d;
 
-  --color-border: rgba(27, 21, 18, 0.1);
-  --color-border-soft: rgba(27, 21, 18, 0.08);
+  --color-border: rgba(var(--rgb-ink), 0.14);
+  --color-border-soft: rgba(var(--rgb-ink), 0.09);
 
   /* Typography */
   --font-heading: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
@@ -230,11 +248,11 @@ h4 { font-size: var(--text-xl); }
 }
 
 @keyframes heroDot {
-  0% { width: 8px; background: rgba(244, 236, 225, .45); }
+  0% { width: 8px; background: rgba(var(--rgb-inverse), .45); }
   4% { width: 24px; background: var(--color-orange-light); }
   22% { width: 24px; background: var(--color-orange-light); }
-  26% { width: 8px; background: rgba(244, 236, 225, .45); }
-  100% { width: 8px; background: rgba(244, 236, 225, .45); }
+  26% { width: 8px; background: rgba(var(--rgb-inverse), .45); }
+  100% { width: 8px; background: rgba(var(--rgb-inverse), .45); }
 }
 
 [data-hero-slide] {
@@ -306,7 +324,9 @@ h4 { font-size: var(--text-xl); }
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(244, 236, 225, 0.82);
+  /* El fondo de la página, no el color de texto sobre oscuro: son parecidos en
+     esta paleta, pero el rol es otro y una futura variante los separaría. */
+  background: rgba(var(--rgb-bg), 0.82);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   z-index: -1;
@@ -336,7 +356,7 @@ h4 { font-size: var(--text-xl); }
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(209, 89, 31, .28);
+  box-shadow: 0 4px 14px rgba(var(--rgb-orange), .28);
   flex-shrink: 0;
 }
 
@@ -356,7 +376,7 @@ h4 { font-size: var(--text-xl); }
 }
 
 .header__logo-text .dot {
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
 }
 
 .header__nav {
@@ -469,9 +489,9 @@ h4 { font-size: var(--text-xl); }
 }
 
 .btn--primary {
-  background: var(--color-orange);
+  background: var(--color-orange-solid);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(209, 89, 31, .28);
+  box-shadow: 0 6px 18px rgba(var(--rgb-orange), .28);
 }
 
 .btn--primary:hover {
@@ -481,11 +501,11 @@ h4 { font-size: var(--text-xl); }
 .btn--secondary {
   background: transparent;
   color: var(--color-text-inverse);
-  border: 1px solid rgba(244, 236, 225, .28);
+  border: 1px solid rgba(var(--rgb-inverse), .28);
 }
 
 .btn--secondary:hover {
-  background: rgba(244, 236, 225, .08);
+  background: rgba(var(--rgb-inverse), .08);
 }
 
 .btn--outline {
@@ -534,9 +554,9 @@ h4 { font-size: var(--text-xl); }
   padding: 11px 18px;
   font-size: 14.5px;
   font-weight: 600;
-  background: var(--color-orange);
+  background: var(--color-orange-solid);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(209, 89, 31, .28);
+  box-shadow: 0 6px 18px rgba(var(--rgb-orange), .28);
 }
 
 .whatsapp-btn--header:hover {
@@ -587,7 +607,7 @@ h4 { font-size: var(--text-xl); }
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
   margin-bottom: 16px;
 }
 
@@ -625,7 +645,7 @@ h4 { font-size: var(--text-xl); }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(58% 55% at 80% 22%, rgba(209, 89, 31, .3), transparent 68%);
+  background: radial-gradient(58% 55% at 80% 22%, rgba(var(--rgb-orange), .3), transparent 68%);
   pointer-events: none;
 }
 
@@ -633,7 +653,7 @@ h4 { font-size: var(--text-xl); }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(45% 45% at 8% 92%, rgba(185, 138, 78, .14), transparent 70%);
+  background: radial-gradient(45% 45% at 8% 92%, rgba(var(--rgb-orange), .14), transparent 70%);
   pointer-events: none;
 }
 
@@ -651,11 +671,11 @@ h4 { font-size: var(--text-xl); }
   align-items: center;
   gap: 9px;
   padding: 7px 15px;
-  border: 1px solid rgba(244, 236, 225, .22);
+  border: 1px solid rgba(var(--rgb-inverse), .22);
   border-radius: var(--radius-full);
   font-size: 13px;
   font-weight: 600;
-  color: #f0d9c4;
+  color: var(--color-cream-soft);
   margin-bottom: 26px;
 }
 
@@ -664,7 +684,7 @@ h4 { font-size: var(--text-xl); }
   height: 7px;
   border-radius: 50%;
   background: var(--color-orange);
-  box-shadow: 0 0 0 4px rgba(209, 89, 31, .25);
+  box-shadow: 0 0 0 4px rgba(var(--rgb-orange), .25);
 }
 
 .hero h1 {
@@ -700,7 +720,7 @@ h4 { font-size: var(--text-xl); }
   flex-wrap: wrap;
   margin-top: 42px;
   padding-top: 30px;
-  border-top: 1px solid rgba(244, 236, 225, .14);
+  border-top: 1px solid rgba(var(--rgb-inverse), .14);
 }
 
 .hero__stat-number {
@@ -725,16 +745,16 @@ h4 { font-size: var(--text-xl); }
   position: relative;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  border: 1px solid rgba(244, 236, 225, .14);
+  border: 1px solid rgba(var(--rgb-inverse), .14);
   box-shadow: var(--shadow-dark);
   aspect-ratio: 4 / 3.4;
-  background: #14100c;
+  background: var(--color-espresso);
 }
 
 .hero__frame-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 16, 12, .1) 0%, transparent 42%, rgba(20, 16, 12, .62));
+  background: linear-gradient(180deg, rgba(var(--rgb-ink), .1) 0%, transparent 42%, rgba(var(--rgb-ink), .62));
   pointer-events: none;
   z-index: 1;
 }
@@ -905,7 +925,7 @@ h4 { font-size: var(--text-xl); }
   min-height: 32px;
   font-weight: 700;
   font-size: 15px;
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
 }
 
 .fork__card--pro .fork__link {
@@ -944,7 +964,7 @@ h4 { font-size: var(--text-xl); }
   font-family: monospace;
   font-size: 12px;
   font-weight: 700;
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
   margin-bottom: 10px;
 }
 
@@ -1008,12 +1028,12 @@ h4 { font-size: var(--text-xl); }
 .btn--secondary-ghost {
   background: transparent;
   color: var(--color-text-inverse);
-  border: 1px solid rgba(244, 236, 225, .28);
+  border: 1px solid rgba(var(--rgb-inverse), .28);
   box-shadow: none;
 }
 
 .btn--secondary-ghost:hover {
-  background: rgba(244, 236, 225, .08);
+  background: rgba(var(--rgb-inverse), .08);
   transform: none;
 }
 
@@ -1044,8 +1064,8 @@ h4 { font-size: var(--text-xl); }
   align-self: flex-start;
   font-size: 12px;
   font-weight: 700;
-  color: var(--color-orange);
-  background: rgba(209, 89, 31, .1);
+  color: var(--color-orange-ink);
+  background: rgba(var(--rgb-orange), .1);
   padding: 5px 12px;
   border-radius: var(--radius-full);
 }
@@ -1072,7 +1092,7 @@ h4 { font-size: var(--text-xl); }
   display: inline-flex;
   align-items: center;
   min-height: 40px;
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
   font-weight: 700;
   font-size: 15px;
 }
@@ -1098,7 +1118,7 @@ h4 { font-size: var(--text-xl); }
 .tecnico__photo {
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  border: 1px solid rgba(244, 236, 225, .12);
+  border: 1px solid rgba(var(--rgb-inverse), .12);
   box-shadow: var(--shadow-dark);
 }
 
@@ -1117,7 +1137,7 @@ h4 { font-size: var(--text-xl); }
   color: #fff;
   border-radius: var(--radius-lg);
   padding: 14px 18px;
-  box-shadow: 0 14px 34px rgba(209, 89, 31, .4);
+  box-shadow: 0 14px 34px rgba(var(--rgb-orange), .4);
   text-align: center;
 }
 
@@ -1170,18 +1190,18 @@ h4 { font-size: var(--text-xl); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(244, 236, 225, .22);
+  border: 1px solid rgba(var(--rgb-inverse), .22);
   border-radius: var(--radius-full);
   padding: 9px 16px;
   font-size: 14px;
-  color: #e6d8c8;
+  color: var(--color-cream-soft);
   font-weight: 500;
 }
 
 .tecnico__quote {
   margin-top: 32px;
   padding: 22px 24px;
-  background: rgba(244, 236, 225, .05);
+  background: rgba(var(--rgb-inverse), .05);
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   border-inline-start: 3px solid var(--color-orange);
 }
@@ -1189,7 +1209,7 @@ h4 { font-size: var(--text-xl); }
 .tecnico__quote p {
   font-size: 16px;
   line-height: 1.6;
-  color: #e6d8c8;
+  color: var(--color-cream-soft);
   font-style: italic;
 }
 
@@ -1221,7 +1241,7 @@ h4 { font-size: var(--text-xl); }
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
-  box-shadow: 0 1px 3px rgba(27, 21, 18, .06);
+  box-shadow: 0 1px 3px rgba(var(--rgb-ink), .06);
 }
 
 .masonry__item img {
@@ -1232,7 +1252,7 @@ h4 { font-size: var(--text-xl); }
 .masonry__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 52%, rgba(20, 16, 12, .62));
+  background: linear-gradient(180deg, transparent 52%, rgba(var(--rgb-ink), .62));
   pointer-events: none;
 }
 
@@ -1240,7 +1260,7 @@ h4 { font-size: var(--text-xl); }
   position: absolute;
   left: 15px;
   bottom: 13px;
-  color: #f7efe4;
+  color: var(--color-text-inverse-strong);
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 15px;
@@ -1267,6 +1287,9 @@ h4 { font-size: var(--text-xl); }
 }
 
 .product-card {
+  /* Red de contención: el chip de código se posiciona contra la imagen. Si
+     algún día vuelve a quedar fuera de ella, se ancla acá y no en el viewport. */
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--color-card);
@@ -1285,7 +1308,7 @@ h4 { font-size: var(--text-xl); }
 .product-card__media {
   position: relative;
   aspect-ratio: 1 / 1;
-  background: linear-gradient(150deg, #f7ede0, #efe0cd);
+  background: linear-gradient(150deg, var(--color-trust-bar), #cdd8e2);
 }
 
 /* En una sola columna el cuadrado se come la pantalla entera, y hoy casi
@@ -1350,8 +1373,10 @@ h4 { font-size: var(--text-xl); }
   font-family: monospace;
   font-size: 11.5px;
   font-weight: 700;
-  color: var(--color-orange);
-  background: rgba(255, 253, 249, .82);
+  color: var(--color-orange-ink);
+  /* Casi opaco: con .82 se filtraba el gradiente de la imagen y el código
+     quedaba por debajo del contraste mínimo. */
+  background: rgba(255, 255, 255, .95);
   backdrop-filter: blur(4px);
   padding: 4px 9px;
   border-radius: 6px;
@@ -1490,7 +1515,7 @@ h4 { font-size: var(--text-xl); }
   font-size: 11.5px;
   font-weight: 700;
   color: var(--color-bronze);
-  background: rgba(185, 138, 78, .12);
+  background: rgba(var(--rgb-orange), .12);
   padding: 5px 11px;
   border-radius: var(--radius-full);
   text-transform: uppercase;
@@ -1516,7 +1541,7 @@ h4 { font-size: var(--text-xl); }
 
 .nota-card__link {
   margin-top: auto;
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
   font-weight: 700;
   font-size: 14px;
 }
@@ -1527,7 +1552,7 @@ h4 { font-size: var(--text-xl); }
   background: var(--color-espresso);
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(27, 21, 18, .14);
+  box-shadow: 0 20px 50px rgba(var(--rgb-ink), .14);
 }
 
 .nota-featured__content {
@@ -1632,7 +1657,7 @@ h4 { font-size: var(--text-xl); }
 /* ---------- Dashed CTA box (notas final CTA) ---------- */
 .dashed-cta {
   background: var(--color-trust-bar);
-  border: 1px dashed rgba(27, 21, 18, .18);
+  border: 1px dashed rgba(var(--rgb-ink), .18);
   border-radius: var(--radius-2xl);
   padding: clamp(28px, 4vw, 44px);
   display: flex;
@@ -1725,7 +1750,7 @@ h4 { font-size: var(--text-xl); }
   border: 1px solid var(--color-border);
   border-radius: 28px;
   padding: clamp(36px, 5vw, 64px);
-  box-shadow: 0 20px 50px rgba(27, 21, 18, .07);
+  box-shadow: 0 20px 50px rgba(var(--rgb-ink), .07);
   text-align: center;
 }
 
@@ -1881,11 +1906,11 @@ h4 { font-size: var(--text-xl); }
 }
 
 .footer__bottom {
-  border-top: 1px solid rgba(244, 236, 225, .1);
+  border-top: 1px solid rgba(var(--rgb-inverse), .1);
   padding: 20px 24px;
   text-align: center;
   font-size: 12.5px;
-  color: #7d6f60;
+  color: var(--color-cream-softer);
 }
 
 @media (max-width: 768px) {
@@ -1913,11 +1938,11 @@ h4 { font-size: var(--text-xl); }
 }
 
 .breadcrumbs a:hover {
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
 }
 
 .breadcrumbs__separator {
-  color: #c3b4a2;
+  color: var(--color-text-muted);
 }
 
 .breadcrumbs__current {
@@ -1934,8 +1959,8 @@ h4 { font-size: var(--text-xl); }
   display: inline-block;
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--color-orange);
-  background: rgba(209, 89, 31, .1);
+  color: var(--color-orange-ink);
+  background: rgba(var(--rgb-orange), .1);
   padding: 6px 13px;
   border-radius: var(--radius-full);
 }
@@ -2032,7 +2057,7 @@ h4 { font-size: var(--text-xl); }
 
 .article-content li::before {
   content: '—';
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -2043,7 +2068,7 @@ h4 { font-size: var(--text-xl); }
 }
 
 .article-content blockquote {
-  background: rgba(209, 89, 31, .08);
+  background: rgba(var(--rgb-orange), .08);
   border-radius: var(--radius-md);
   padding: 18px 20px;
   margin-block: var(--space-6);
@@ -2060,7 +2085,7 @@ h4 { font-size: var(--text-xl); }
 }
 
 .article-content a:not(.btn) {
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -2168,13 +2193,13 @@ h4 { font-size: var(--text-xl); }
 }
 
 .related-card:hover {
-  border-color: var(--color-orange);
+  border-color: var(--color-orange-ink);
 }
 
 .related-card__tag {
   font-size: 11.5px;
   font-weight: 700;
-  color: var(--color-orange);
+  color: var(--color-orange-ink);
   text-transform: uppercase;
   letter-spacing: .05em;
 }
@@ -2201,7 +2226,7 @@ h4 { font-size: var(--text-xl); }
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid var(--color-border);
-  background: linear-gradient(150deg, #f7ede0, #efe0cd);
+  background: linear-gradient(150deg, var(--color-trust-bar), #cdd8e2);
   box-shadow: var(--shadow-md);
 }
 
@@ -2239,8 +2264,8 @@ h4 { font-size: var(--text-xl); }
   font-family: monospace;
   font-size: 13px;
   font-weight: 700;
-  color: var(--color-orange);
-  background: rgba(209, 89, 31, .1);
+  color: var(--color-orange-ink);
+  background: rgba(var(--rgb-orange), .1);
   padding: 6px 13px;
   border-radius: 8px;
 }
@@ -2339,7 +2364,7 @@ h4 { font-size: var(--text-xl); }
 }
 
 .install-link:hover {
-  border-color: var(--color-orange);
+  border-color: var(--color-orange-ink);
 }
 
 .install-link__text {
@@ -2475,7 +2500,7 @@ h4 { font-size: var(--text-xl); }
   transform: translateY(-50%);
   width: 1px;
   height: 32px;
-  background: rgba(244, 236, 225, .18);
+  background: rgba(var(--rgb-inverse), .18);
 }
 
 .credibility-strip__icon {
@@ -2486,7 +2511,7 @@ h4 { font-size: var(--text-xl); }
   align-items: center;
   justify-content: center;
   font-size: var(--text-xl);
-  background: rgba(244, 236, 225, .1);
+  background: rgba(var(--rgb-inverse), .1);
   border-radius: var(--radius-full);
 }
 
@@ -2545,8 +2570,8 @@ h4 { font-size: var(--text-xl); }
   font-weight: 700;
   letter-spacing: .05em;
   text-transform: uppercase;
-  color: var(--color-orange);
-  background: rgba(209, 89, 31, .1);
+  color: var(--color-orange-ink);
+  background: rgba(var(--rgb-orange), .1);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-4);
@@ -2583,7 +2608,7 @@ h4 { font-size: var(--text-xl); }
   font-family: var(--font-heading);
   font-size: clamp(64px, 10vw, 120px);
   font-weight: 800;
-  color: rgba(209, 89, 31, .35);
+  color: rgba(var(--rgb-orange), .35);
   line-height: 1;
 }
 
@@ -2638,6 +2663,12 @@ h4 { font-size: var(--text-xl); }
   font-family: var(--font-body);
   color: var(--sb-text-2);
   background: var(--sb-bg);
+}
+
+/* Dentro del scope oscuro, la etiqueta de sección no puede usar el naranja
+   pensado para fondo claro: ahí queda en 3:1. Va la variante clara. */
+.saas-scope .section-header__label {
+  color: var(--color-orange-light);
 }
 
 .saas-band {

@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SchemaMarkup from "../components/SchemaMarkup.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ProductCard from "../components/ProductCard.astro";
 import Icon from "../components/Icon.astro";
 import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
@@ -174,29 +175,7 @@ const trabajos = [
       </div>
 
       <div class="product-grid" style="margin-top: 44px;" data-reveal>
-        {repuestos.map((item) => {
-          const r = item.data;
-          return (
-            <div class="product-card">
-              <div class="product-card__media">
-                <img src={r.imagen} alt={r.nombre} loading="lazy" />
-                <span class={`product-card__badge ${r.disponible ? "" : "product-card__badge--unavailable"}`}>
-                  <span class="product-card__badge-dot"></span>
-                  {r.disponible ? "Disponible" : "Sin stock"}
-                </span>
-              </div>
-              <div class="product-card__body">
-                {r.codigo && <span class="product-card__code">COD {r.codigo}</span>}
-                <h3 class="product-card__title">{r.nombre}</h3>
-                <p class="product-card__models">{r.modelos_compatibles.slice(0, 3).join(" · ")}</p>
-                <div class="product-card__actions">
-                  <WhatsAppButton mensaje={r.whatsapp_mensaje} texto="Consultar precio" class="whatsapp-btn--sm" />
-                  <a href={`/repuestos/${r.slug}`} class="product-card__link">Ver ficha completa →</a>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {repuestos.map((item) => <ProductCard {...item.data} />)}
 
         <a
           href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hola, no encontré mi repuesto Peisa en la web. ¿Me pueden ayudar a conseguirlo?")}`}

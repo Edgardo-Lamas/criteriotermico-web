@@ -1,10 +1,13 @@
+<!-- Los colores van escritos acá dentro: es un archivo estático, no lee los
+     tokens del sitio. Si vuelve a cambiar la paleta, hay que actualizarlo a mano.
+     Valores actuales: fondo --color-trust-bar, trazo y texto de la rampa fría. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
-  <rect width="600" height="600" fill="#f5f1ea"/>
-  <g stroke="#8a8175" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <rect width="600" height="600" fill="#dde4ea"/>
+  <g stroke="#7b8b9a" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round">
     <rect x="230" y="245" width="140" height="100" rx="10"/>
     <circle cx="300" cy="295" r="28"/>
-    <circle cx="345" cy="262" r="4" fill="#8a8175"/>
+    <circle cx="345" cy="262" r="4" fill="#7b8b9a"/>
   </g>
-  <text x="300" y="400" text-anchor="middle" font-family="Outfit, system-ui, sans-serif" font-weight="700" font-size="34" fill="#201a14">Imagen</text>
-  <text x="300" y="444" text-anchor="middle" font-family="Outfit, system-ui, sans-serif" font-weight="700" font-size="34" fill="#201a14">próximamente</text>
+  <text x="300" y="400" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="34" fill="#2c3d4d">Imagen</text>
+  <text x="300" y="444" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="34" fill="#2c3d4d">próximamente</text>
 </svg>

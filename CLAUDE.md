@@ -43,6 +43,17 @@ framework (no React/Vue/etc.), plain CSS (no Tailwind). Integrations: `@astrojs/
 - `instalacion` — Markdown step-by-step install guides, same shape plus an optional
   `repuesto_slug` linking back to a part.
 
+**Palette (changed 2026-07-22):** the theme is now "Acero" — a cool neutral
+(`#eaeef2` ground, `#101a24` dark blocks), replacing the previous warm cream/espresso.
+The orange stays: it's the brand's fire. Three orange tokens exist for contrast
+reasons, and picking the wrong one silently fails WCAG: `--color-orange` (brand, icons
+and fills where nothing sits on top), `--color-orange-solid` (button fills, 4.6:1 with
+white text), `--color-orange-ink` (small text on light grounds), plus
+`--color-orange-light` for text on the dark blocks. Transparencies use the
+`--rgb-*` components (`--rgb-ink`, `--rgb-inverse`, `--rgb-orange`, `--rgb-bg`) rather
+than hardcoded channels. `public/images/repuestos/placeholder.svg` is static and does
+NOT read tokens — update it by hand on any palette change.
+
 **Design system:** a single `src/styles/global.css` (~2900 lines) defines everything
 via CSS custom properties in `:root` — colors, typography (`Inter` body /
 `Outfit` heading), spacing, radius, shadows, transitions. Current theme is a warm

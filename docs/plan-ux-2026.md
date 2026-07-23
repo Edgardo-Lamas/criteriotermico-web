@@ -344,19 +344,51 @@ Pendiente de esta fase:
 - Reemplazar la repetición de grillas por escenas con ritmo propio.
 - Resolver el carrusel del hero (fotos que combinen, o una sola imagen fuerte).
 
-### Fase 2.5 — Paleta de color · PEDIDA POR EDGARDO 2026-07-22
+### Fase 2.5 — Paleta "Acero" · ✅ COMPLETADA 2026-07-22
 
-No le convence la paleta marrón/cream: *"Ese marrón..... mmmm"*. Pidió expresamente
-terminar lo planificado primero, pero queda anotado como trabajo a encarar.
+Edgardo eligió **Acero** entre tres direcciones comparadas en vivo (contra "Taller",
+gris neutro puro, y "Banco de trabajo", oscuro por defecto).
 
-Hipótesis de por qué chirría ahora: el cream cálido viene del handoff que se hizo
-cuando el sitio le hablaba al dueño de casa. Comunica confort doméstico, no precisión
-técnica. Con el giro al instalador, el registro puede haber quedado desalineado.
+Neutro frío en lugar del cream cálido. El razonamiento: el cream venía del handoff
+hecho cuando el sitio le hablaba al dueño de casa, y comunicaba confort doméstico. El
+naranja se mantiene intacto porque es el fuego y es lo que identifica la marca; lo que
+cambió es el suelo, que ya no compite con él desde el mismo lado del círculo cromático.
 
-Cuando se encare: los tokens están centralizados en `:root` y casi todo el CSS los
-consume por variable, así que se cambia desde ahí sin tocar componentes. Verificar
-4,5:1 en cada cambio. El azul del bloque de plataforma es hoy el único registro frío y
-podría pasar a ser el eje.
+| | antes | ahora |
+|---|---|---|
+| Fondo | `#f4ece1` cream | `#eaeef2` |
+| Bloques oscuros | `#1b1512` espresso | `#101a24` azul petróleo |
+| Bandas | `#efe3d4` | `#dde4ea` |
+| Titulares | `#1b1512` | `#101a24` (15,1:1) |
+
+**Efecto lateral bueno:** el azul del bloque de plataforma (`--sb-*`) era hasta ahora
+el único registro frío del sitio y se sentía pegado. Con Acero se integra solo.
+
+Trabajo que exigió, más allá de cambiar los tokens:
+
+- **47 colores estaban escritos a mano** por fuera de las variables y se habrían
+  quedado cálidos. Se tokenizaron, incluyendo las transparencias: se agregaron
+  `--rgb-ink`, `--rgb-inverse`, `--rgb-orange` y `--rgb-bg` para que los `rgba()`
+  dejen de llevar el color hardcodeado.
+- **El header** pintaba su fondo con el color de texto sobre oscuro. Funcionaba de
+  casualidad porque los valores eran parecidos; ahora usa `--rgb-bg`.
+- **`placeholder.svg`** tenía la paleta vieja adentro. Es un archivo estático que no
+  lee tokens: si la paleta vuelve a cambiar, hay que editarlo a mano (queda un
+  comentario dentro del archivo avisando).
+- **Dos naranjas nuevos por contraste.** El de marca da 3,5:1 sobre fondo claro y
+  4,07:1 con blanco encima: alcanza para un ícono, no para texto ni para un botón.
+  Se agregaron `--color-orange-solid` (relleno de botones, 4,6:1 con blanco) y
+  `--color-orange-ink` (texto sobre fondo claro, 5,2:1).
+- **Bug encontrado de paso:** la home duplicaba el markup de la tarjeta de repuesto en
+  vez de usar `ProductCard.astro`. Cuando el código se movió sobre la imagen, esa copia
+  quedó vieja y su `position: absolute` sin ancestro posicionado se anclaba al viewport:
+  el chip "COD 90000090" aparecía flotando sobre el header. La home ahora usa el
+  componente.
+
+**Verificación:** auditoría automática de contraste sobre las 7 páginas, midiendo cada
+texto contra su fondo real (incluidos los gradientes). **467 textos, 0 por debajo del
+mínimo WCAG AA.** Los únicos que la herramienta marca son los rótulos del masonry, que
+van sobre foto con velo oscuro y son falso positivo.
 
 *Terminado cuando:* un gasista y un dueño de casa entienden, cada uno en menos de 5
 segundos, que el sitio es para él.
