@@ -334,13 +334,16 @@ const trabajos = [
         </p>
       </div>
 
-      <div class="article-grid" style="margin-top: 44px;">
-        {diagnosticos.map((articulo) => (
-          <a href={`/diagnostico/${articulo.id}`} class="article-card" data-reveal>
-            <span class="article-card__tag">{articulo.data.categoria}</span>
-            <h3 class="article-card__title">{articulo.data.title.split("—")[0].trim()}</h3>
-            <p class="article-card__excerpt">{articulo.data.description}</p>
-            <span class="article-card__link">Leer la guía →</span>
+      <div class="guias-list" data-reveal>
+        {diagnosticos.map((articulo, i) => (
+          <a href={`/diagnostico/${articulo.id}`} class="guia-row">
+            <span class="guia-row__num">{String(i + 1).padStart(2, "0")}</span>
+            <div class="guia-row__body">
+              <span class="guia-row__tag">{articulo.data.categoria}</span>
+              <h3 class="guia-row__title">{articulo.data.title.split("—")[0].trim()}</h3>
+              <p class="guia-row__excerpt">{articulo.data.description}</p>
+            </div>
+            <span class="guia-row__link">Leer la guía →</span>
           </a>
         ))}
       </div>
