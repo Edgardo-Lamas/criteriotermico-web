@@ -2894,6 +2894,42 @@ h4 { font-size: var(--text-xl); }
   margin-inline: auto;
 }
 
+/* ---------- Video de plataforma (demos del simulador) ----------
+   Reemplaza a los mockups estáticos: muestra la herramienta real en loop. */
+.pvideo {
+  margin: 0;
+  width: 100%;
+}
+
+.pvideo__el {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1876 / 1080;
+  object-fit: cover;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--sb-border);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+  background: var(--sb-bg-2);
+}
+
+.pvideo__caption {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--sb-text-4);
+}
+
+/* Grilla de la sección "En acción" de /plataforma */
+.saas-demo-grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: clamp(28px, 4vw, 44px);
+  align-items: start;
+}
+
 .saas-mockup__header {
   display: flex;
   align-items: center;

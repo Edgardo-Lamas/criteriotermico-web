@@ -1,0 +1,30 @@
+---
+/**
+ * Video de demostración de la plataforma (screen-recordings del simulador).
+ * Sin audio, sin controles, en loop y con autoplay silencioso — se comporta
+ * como una imagen viva. Siempre con `poster` para que no haya flash de carga.
+ * Pensado para usarse dentro de un contexto `saas-scope` (oscuro).
+ */
+interface Props {
+  src: string;        // basename del archivo en /videos/ (sin extensión)
+  label: string;      // descripción accesible del contenido
+  caption?: string;   // epígrafe visible opcional
+  class?: string;
+}
+const { src, label, caption, class: className } = Astro.props;
+---
+<figure class:list={["pvideo", className]}>
+  <video
+    class="pvideo__el"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster={`/videos/${src}.jpg`}
+    aria-label={label}
+  >
+    <source src={`/videos/${src}.mp4`} type="video/mp4" />
+  </video>
+  {caption && <figcaption class="pvideo__caption">{caption}</figcaption>}
+</figure>

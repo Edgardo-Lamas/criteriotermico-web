@@ -4,6 +4,7 @@ import SchemaMarkup from "../components/SchemaMarkup.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 import ProductCard from "../components/ProductCard.astro";
 import Icon from "../components/Icon.astro";
+import Video from "../components/Video.astro";
 import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
 
@@ -235,21 +236,10 @@ const trabajos = [
       </div>
 
       <div data-reveal>
-        <div class="saas-mockup">
-          <div class="saas-mockup__header">
-            <span class="saas-mockup__icon">🔧</span>
-            <span class="saas-mockup__title">Criterio</span>
-            <span style="margin-left:auto;font-size:11px;font-weight:700;color:var(--sb-accent);background:rgba(143,196,222,.14);padding:3px 9px;border-radius:999px;">Beta</span>
-          </div>
-          <div class="saas-mockup__field"><span>Ambiente</span><span>Living · 24 m²</span></div>
-          <div class="saas-mockup__field"><span>Orientación</span><span>Sur · exterior</span></div>
-          <div class="saas-mockup__field"><span>Altura</span><span>2,60 m</span></div>
-          <div class="saas-mockup__result">
-            <div class="saas-mockup__result-label">Potencia requerida</div>
-            <div class="saas-mockup__result-value">4,0 kW</div>
-            <div class="saas-mockup__result-note">3.480 kcal/h · incluye +15% de margen</div>
-          </div>
-        </div>
+        <Video
+          src="simulador-2d"
+          label="El Simulador 2D de Criterio Térmico analiza un plano arquitectónico y calcula la caldera recomendada"
+        />
       </div>
     </div>
   </section>

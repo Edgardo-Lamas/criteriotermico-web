@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Video from "../components/Video.astro";
 import { siteConfig } from "../config/site";
 
 const PLATFORM_URL = "https://edgardo-lamas.github.io/Criterio-Termico/";
@@ -70,20 +71,10 @@ const waTecnicos = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURICompone
           </div>
         </div>
 
-        <div class="saas-mockup">
-          <div class="saas-mockup__header">
-            <span class="saas-mockup__icon">🔧</span>
-            <span class="saas-mockup__title">Calculadora de potencia</span>
-          </div>
-          <div class="saas-mockup__field"><span>Ambiente</span><span>Living · 24 m²</span></div>
-          <div class="saas-mockup__field"><span>Orientación</span><span>Sur · exterior</span></div>
-          <div class="saas-mockup__field"><span>Altura</span><span>2,60 m</span></div>
-          <div class="saas-mockup__result">
-            <div class="saas-mockup__result-label">Potencia requerida</div>
-            <div class="saas-mockup__result-value">4,0 kW</div>
-            <div class="saas-mockup__result-note">3.480 kcal/h · incluye +15% de margen</div>
-          </div>
-        </div>
+        <Video
+          src="calculadoras"
+          label="Las calculadoras del instalador ordenadas por el paso de la obra: potencia, caudal, diámetros y bombas"
+        />
       </div>
     </section>
 
@@ -130,6 +121,26 @@ const waTecnicos = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURICompone
           <span class="saas-tag">🏗️ Nace del oficio, no de la academia</span>
           <span class="saas-tag">🚫 Independiente de marcas</span>
           <span class="saas-tag">📱 Funciona offline (PWA)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- En acción -->
+    <section id="en-accion" class="section" style="background: var(--sb-bg-2); border-block: 1px solid var(--sb-border);">
+      <div class="container">
+        <p class="section-header__label">En acción</p>
+        <h2 style="max-width: 660px;">Mirá cómo trabaja, antes de entrar.</h2>
+        <div class="saas-demo-grid">
+          <Video
+            src="simulador-2d"
+            label="El Simulador 2D analiza un plano arquitectónico y calcula la caldera recomendada"
+            caption="Simulador 2D · subís el plano y el cálculo se resuelve solo"
+          />
+          <Video
+            src="errores"
+            label="La base de más de 200 errores de obra frecuentes, con causa y solución"
+            caption="+200 errores de obra · buscables, con causa y solución"
+          />
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import Video from "../components/Video.astro";
 import { getCollection } from "astro:content";
 
 const instalaciones = await getCollection("instalacion");
@@ -155,6 +156,12 @@ const dominios = [
         <a href="/plataforma" class="btn btn--saas" style="margin-top: 32px;">
           Conocer la plataforma →
         </a>
+      </div>
+      <div data-reveal>
+        <Video
+          src="simulador-2d"
+          label="El Simulador 2D analiza un plano arquitectónico y calcula la caldera recomendada"
+        />
       </div>
     </div>
   </section>
