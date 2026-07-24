@@ -31,9 +31,9 @@ const otrosArticulos = (await getCollection("diagnostico"))
     type="breadcrumb"
     data={{
       items: [
-        { name: "Inicio", url: "https://criteriotermico.com.ar/" },
-        { name: "Diagnóstico", url: "https://criteriotermico.com.ar/diagnostico" },
-        { name: articulo.data.title, url: `https://criteriotermico.com.ar/diagnostico/${articulo.id}` },
+        { name: "Inicio", url: `${siteConfig.dominio}/` },
+        { name: "Diagnóstico", url: `${siteConfig.dominio}/diagnostico` },
+        { name: articulo.data.title, url: `${siteConfig.dominio}/diagnostico/${articulo.id}` },
       ],
     }}
   />

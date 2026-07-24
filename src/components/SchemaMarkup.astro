@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from "../config/site";
+
 interface Props {
   type: "product" | "article" | "local-business" | "breadcrumb";
   data: Record<string, any>;
@@ -66,8 +68,10 @@ if (type === "product") {
       addressRegion: "CABA",
       addressCountry: "AR",
     },
-    url: "https://criteriotermico.com.ar",
-    telephone: "+54911XXXXXXXX",
+    url: siteConfig.dominio,
+    // Era el placeholder "+54911XXXXXXXX", que se publicaba tal cual en el JSON-LD
+    // que lee Google para los resultados de negocio local.
+    telephone: siteConfig.telefono,
     openingHours: "Mo-Fr 09:00-18:00",
   };
 } else if (type === "breadcrumb") {

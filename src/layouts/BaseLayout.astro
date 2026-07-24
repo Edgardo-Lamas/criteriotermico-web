@@ -14,7 +14,11 @@ interface Props {
 
 const { title, description, ogImage = "/images/og-default.png", canonicalUrl, hideChrome = false } = Astro.props;
 const currentPath = Astro.url.pathname;
-const siteUrl = "https://criteriotermico.com.ar";
+// Única fuente de verdad: `site` en astro.config.mjs. Cuando esto era una constante
+// hardcodeada acá, el dominio quedó duplicado en seis archivos y al cambiarlo se
+// actualizaba solo uno — el canonical y la og:image seguían apuntando a un dominio
+// muerto. Al comprar el dominio propio alcanza con tocar astro.config.mjs.
+const siteUrl = Astro.site!.origin;
 const fullCanonical = canonicalUrl || `${siteUrl}${currentPath}`;
 ---
 

@@ -1,6 +1,7 @@
 export const siteConfig = {
   nombre: "Criterio Térmico",
-  dominio: "https://criteriotermico.com.ar",
+  // Debe coincidir con `site` en astro.config.mjs (ver la nota de ahí).
+  dominio: "https://criteriotermico-web.vercel.app",
   whatsapp: "5491152604237", // Edgardo
   whatsappAlejandro: "5491131986298", // Alejandro
   whatsappMensajeGenerico: "Hola, quiero consultar por un repuesto Peisa.",

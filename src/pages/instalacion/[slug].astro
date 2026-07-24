@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SchemaMarkup from "../../components/SchemaMarkup.astro";
+import { siteConfig } from "../../config/site";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -25,9 +26,9 @@ const { Content } = await render(guia);
     type="breadcrumb"
     data={{
       items: [
-        { name: "Inicio", url: "https://criteriotermico.com.ar/" },
-        { name: "Instalación", url: "https://criteriotermico.com.ar/instalacion" },
-        { name: guia.data.title, url: `https://criteriotermico.com.ar/instalacion/${guia.id}` },
+        { name: "Inicio", url: `${siteConfig.dominio}/` },
+        { name: "Instalación", url: `${siteConfig.dominio}/instalacion` },
+        { name: guia.data.title, url: `${siteConfig.dominio}/instalacion/${guia.id}` },
       ],
     }}
   />

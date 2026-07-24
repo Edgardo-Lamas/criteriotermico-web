@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://criteriotermico.com.ar/sitemap-index.xml
+Sitemap: https://criteriotermico-web.vercel.app/sitemap-index.xml

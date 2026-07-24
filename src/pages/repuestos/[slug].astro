@@ -4,6 +4,7 @@ import PriceDisplay from "../../components/PriceDisplay.astro";
 import WhatsAppButton from "../../components/WhatsAppButton.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SchemaMarkup from "../../components/SchemaMarkup.astro";
+import { siteConfig } from "../../config/site";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -43,9 +44,9 @@ const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.s
     type="breadcrumb"
     data={{
       items: [
-        { name: "Inicio", url: "https://criteriotermico.com.ar/" },
-        { name: "Repuestos", url: "https://criteriotermico.com.ar/repuestos" },
-        { name: repuesto.nombre, url: `https://criteriotermico.com.ar/repuestos/${repuesto.slug}` },
+        { name: "Inicio", url: `${siteConfig.dominio}/` },
+        { name: "Repuestos", url: `${siteConfig.dominio}/repuestos` },
+        { name: repuesto.nombre, url: `${siteConfig.dominio}/repuestos/${repuesto.slug}` },
       ],
     }}
   />

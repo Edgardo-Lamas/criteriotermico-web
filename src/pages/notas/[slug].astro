@@ -30,9 +30,9 @@ const { Content } = await render(nota);
     type="breadcrumb"
     data={{
       items: [
-        { name: "Inicio", url: "https://criteriotermico.com.ar/" },
-        { name: "Notas", url: "https://criteriotermico.com.ar/notas" },
-        { name: nota.data.title, url: `https://criteriotermico.com.ar/notas/${nota.id}` },
+        { name: "Inicio", url: `${siteConfig.dominio}/` },
+        { name: "Notas", url: `${siteConfig.dominio}/notas` },
+        { name: nota.data.title, url: `${siteConfig.dominio}/notas/${nota.id}` },
       ],
     }}
   />
