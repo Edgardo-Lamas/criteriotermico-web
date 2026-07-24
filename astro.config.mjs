@@ -3,12 +3,10 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 
 export default defineConfig({
-  // De acá salen canonical, og:url, og:image y el sitemap. Mientras apuntaba a
-  // criteriotermico.com.ar —que todavía no está comprado y da NXDOMAIN— la preview
-  // de WhatsApp no cargaba la imagen y el canonical mandaba a Google a un dominio
-  // muerto. AL COMPRAR EL DOMINIO: cambiar esta línea y `dominio` en
-  // src/config/site.ts, y agregarlo en Vercel para que el .vercel.app redirija.
-  site: "https://criteriotermico-web.vercel.app",
+  // De acá salen canonical, og:url, og:image y el sitemap. Es el dominio propio,
+  // ya comprado y apuntado a Vercel (2026-07-24). Debe coincidir con `dominio` en
+  // src/config/site.ts y con la línea Sitemap de public/robots.txt.
+  site: "https://crtermico.com",
   // /panel es una herramienta privada (métricas SEO): fuera del sitemap y con
   // noindex en BaseLayout, para que Google no la indexe ni la muestre.
   integrations: [sitemap({ filter: (page) => !page.includes("/panel") }), mdx()],

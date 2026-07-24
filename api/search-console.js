@@ -7,9 +7,10 @@
 // "Sabiduría para el Corazón" — el scope webmasters.readonly de la cuenta de
 // Edgardo abarca todas sus propiedades; solo cambia GSC_SITE).
 //   GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET / GOOGLE_REFRESH_TOKEN
-//   GSC_SITE  — la propiedad en Search Console. Para propiedad de dominio:
-//               "sc-domain:criteriotermico.com.ar". Para prefijo de URL (lo que
-//               sirve hoy en .vercel.app): "https://criteriotermico-web.vercel.app/".
+//   GSC_SITE  — la propiedad en Search Console. Recomendado: propiedad de dominio
+//               "sc-domain:crtermico.com" (cubre www/no-www y http/https, se
+//               verifica por DNS). Alternativa por prefijo de URL:
+//               "https://crtermico.com/".
 //
 // Gate: el sitio no tiene login, así que la protección real vive acá. Sin la
 // contraseña correcta (PANEL_PASSWORD) la función responde 401 y nunca toca a
@@ -21,7 +22,7 @@ let cache = null;
 let tokenCache = null;
 
 function gscSite() {
-  return process.env.GSC_SITE || "https://criteriotermico-web.vercel.app/";
+  return process.env.GSC_SITE || "sc-domain:crtermico.com";
 }
 
 async function getAccessToken() {

@@ -32,8 +32,10 @@ mismatches, not logic bugs.
 (which must be kept in step with it). Canonical, `og:url`, `og:image`, the JSON-LD
 breadcrumbs and the sitemap all derive from it, so a wrong value here breaks
 WhatsApp link previews and tells Google the canonical version lives somewhere else.
-It currently points at the `.vercel.app` URL because `criteriotermico.com.ar` is not
-bought yet — **when it is, change those two lines and add the domain in Vercel.**
+It points at the owner's domain **`crtermico.com`** (bought 2026-07-24, live on
+Vercel). The `.vercel.app` URL is now just the deploy target. Keep `site`
+(astro.config.mjs), `siteConfig.dominio` (src/config/site.ts) and the `Sitemap:`
+line in `public/robots.txt` all in step.
 
 **`vercel.json` holds the headers** (JSON takes no comments, hence this note):
 - Security: `nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`,

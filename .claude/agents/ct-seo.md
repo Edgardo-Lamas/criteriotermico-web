@@ -32,8 +32,8 @@ técnica de Edgardo como fuente, embudo hacia el asesoramiento y el SaaS.
 - **Qué es:** sitio de marketing/catálogo **estático en Astro 7** (`output: "static"`,
   sin framework UI, CSS plano) de Edgardo Lamas, técnico con 20+ años reparando e
   instalando calderas a gas Peisa en **Villa Urquiza, CABA, Argentina**. En producción
-  en `criteriotermico-web.vercel.app` (el dominio propio `criteriotermico.com.ar`
-  todavía no está comprado).
+  en su dominio propio **`crtermico.com`** (comprado el 2026-07-24; el `.vercel.app`
+  quedó como URL de despliegue).
 - **A quién le habla (define el tono):** al **instalador de oficio de la construcción**.
   El **gasista es el objetivo principal**, pero **NO el único**: todos los rubros de la
   obra son objetivo *muy importante* — **electricista, sanitarista/plomero, instalador de
