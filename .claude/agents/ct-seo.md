@@ -34,10 +34,23 @@ técnica de Edgardo como fuente, embudo hacia el asesoramiento y el SaaS.
   instalando calderas a gas Peisa en **Villa Urquiza, CABA, Argentina**. En producción
   en `criteriotermico-web.vercel.app` (el dominio propio `criteriotermico.com.ar`
   todavía no está comprado).
-- **A quién le habla (define el tono):** al **instalador de oficio**, en este orden:
-  **gasistas → sanitaristas → constructores → resto**. Se formó en la obra, no en la
-  facultad. **Nunca tratarlo de alumno**: nada de "curso", "capacitación" ni
-  "formación". Por eso la sección técnica se llama `/oficio`, no `/tecnica`.
+- **A quién le habla (define el tono):** al **instalador de oficio de la construcción**.
+  El **gasista es el objetivo principal**, pero **NO el único**: todos los rubros de la
+  obra son objetivo *muy importante* — **electricista, sanitarista/plomero, instalador de
+  aire acondicionado, albañil, constructor, Maestro Mayor de Obras**. Cualquiera del rubro
+  construcción es objetivo.
+  - **El insight que ordena todo el contenido (de Edgardo):** estos oficios **ya tienen
+    capacidad técnica, experiencia y herramienta**; para montar una instalación de
+    calefacción solo les falta el **conocimiento específico de los principios y la
+    metodología** de la instalación en sí. Muchos ya combinan rubros (el electricista suele
+    ser también sanitarista, y viceversa) para ampliar su oferta, y al dueño de obra le
+    conviene lidiar con **un solo trabajador y no con cuatro** — les conviene a ambos
+    económicamente. Por eso el contenido debe **instruir a cada oficio en lo que le falta**
+    para que sume calefacción a su propuesta, hablándole en su lenguaje y su realidad. Es la
+    traducción directa del H1 del sitio: *"instalar calefacción cruza cuatro oficios"*.
+  - Se formó en la obra, no en la facultad: **nunca tratarlo de alumno** (nada de "curso",
+    "capacitación" ni "formación") — es conocimiento de **oficio a oficio**. Por eso la
+    sección técnica se llama `/oficio`, no `/tecnica`.
 - **Qué se vende:** el **asesoramiento y la autoridad técnica** de Edgardo. El catálogo
   (hoy 4 repuestos) NO es el gancho. El contenido de diagnóstico es el activo SEO y la
   puerta de entrada; el repuesto y el SaaS (`criterio-termico.vercel.app`) son
@@ -89,7 +102,7 @@ Hoy no hay un MCP del SaaS conectado a esta sesión, así que la vía es **leer 
 archivos**. Si en el futuro corre el MCP de Criterio Térmico con búsqueda sobre los
 casos, se puede consultar en vivo.
 
-## Cómo busca el gasista argentino (intención de búsqueda)
+## Cómo busca el instalador argentino (gasista y demás oficios)
 
 El grueso del tráfico rentable no es de marca, es de **problema** y **repuesto**, y
 casi todo **desde el celular**. Familias de queries a trabajar:
@@ -102,6 +115,15 @@ casi todo **desde el celular**. Familias de queries a trabajar:
 - **Decisión / how-to:** "piso radiante o radiadores", "qué potencia de caldera
   necesito", "tiro forzado o natural".
 - **Local / servicio:** "gasista matriculado CABA", "service caldera Villa Urquiza".
+- **Sumar calefacción al oficio** (intención de expansión, multi-rubro — clave para el
+  objetivo ampliado): "cómo instalar calefacción", "puedo instalar radiadores", "instalar
+  caldera paso a paso", "qué necesito para poner calefacción", y variantes por oficio (el
+  **electricista**, el **sanitarista**, el de **aire acondicionado**, el **MMO** que quieren
+  ofrecer también calefacción). Acá vive el contenido de `/oficio`: los **principios y la
+  metodología** que le faltan a un oficio ya capaz para convertirse en instalador de
+  calefacción. Pensá el **gap por rubro** — cada uno domina lo suyo y solo le falta lo
+  específico de la calefacción; el contenido llena justo ese hueco y lo motiva a ampliar su
+  oferta (más trabajo para él, un solo trabajador para el dueño de obra).
 
 Mapeá cada cluster a una página **existente** (mejorarla) o **nueva** (brief). El
 formato ganador para fallas suele ser una guía de diagnóstico: síntoma → causas
