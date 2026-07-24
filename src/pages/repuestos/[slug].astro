@@ -24,6 +24,13 @@ const guiasRelacionadas = diagnosticos.filter((d) =>
 );
 
 const codigoDisplay = repuesto.codigo ? ` (${repuesto.codigo})` : "";
+
+// Galería: usa imagenes[] si están cargadas; si no, cae a la imagen única.
+const galeria = (repuesto.imagenes && repuesto.imagenes.length > 0)
+  ? repuesto.imagenes
+  : [repuesto.imagen];
+
+const compraMensaje = `Hola, quiero comprar el ${repuesto.nombre}${codigoDisplay}. ¿Me confirmás disponibilidad, precio del día y cómo coordinamos la entrega?`;
 const seoTitle = repuesto.codigo
   ? `${repuesto.nombre}${codigoDisplay} — Repuesto original Peisa | Criterio Térmico`
   : `${repuesto.nombre} — Repuesto original Peisa | Criterio Térmico`;
@@ -53,12 +60,29 @@ const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.s
       />
 
       <div class="product-detail" style="margin-top: 26px;">
-        <div class="product-detail__media">
-          <img src={repuesto.imagen} alt={repuesto.nombre} width="600" height="600" />
-          <span class="product-detail__badge">
-            <span class="product-card__badge-dot"></span>
-            {repuesto.disponible ? "Disponible" : "Sin stock"}
-          </span>
+        <div class="gallery" data-gallery>
+          <div class="product-detail__media gallery__stage">
+            <img src={galeria[0]} alt={repuesto.nombre} width="600" height="600" data-gallery-main />
+            <span class="product-detail__badge">
+              <span class="product-card__badge-dot"></span>
+              {repuesto.disponible ? "Disponible" : "Sin stock"}
+            </span>
+          </div>
+          {galeria.length > 1 && (
+            <div class="gallery__thumbs">
+              {galeria.map((img: string, i: number) => (
+                <button
+                  type="button"
+                  class:list={["gallery__thumb", i === 0 && "is-active"]}
+                  data-gallery-thumb
+                  data-src={img}
+                  aria-label={`Ver foto ${i + 1} de ${galeria.length}`}
+                >
+                  <img src={img} alt="" width="64" height="64" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <div class="product-detail__info">
@@ -72,15 +96,20 @@ const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.s
 
           <div class="product-detail__price-box">
             <span class="product-detail__price-label">Precio</span>
-            <PriceDisplay precioUsd={repuesto.precio_usd} />
+            <PriceDisplay precioUsd={repuesto.precio_usd} precioArs={repuesto.precio_ars} />
             <p class="price-note" style="margin-top: 4px;">
               Te confirmamos disponibilidad y precio del día al instante.
             </p>
-            <div style="margin-top: 16px;">
+            <div class="product-detail__buy">
+              <WhatsAppButton
+                mensaje={compraMensaje}
+                texto="Comprar por WhatsApp"
+                class="whatsapp-btn--full"
+              />
               <WhatsAppButton
                 mensaje={repuesto.whatsapp_mensaje}
-                texto="Consultar por WhatsApp"
-                class="whatsapp-btn--full"
+                texto="Consultar antes de comprar"
+                class="whatsapp-btn--full whatsapp-btn--ghost"
               />
             </div>
           </div>
@@ -152,4 +181,27 @@ const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.s
       </div>
     </div>
   </section>
+
+  <script>
+    // Galería tipo MercadoLibre: la miniatura activa cambia la imagen grande.
+    // En desktop cambia también con el hover; en touch, con el tap.
+    document.querySelectorAll<HTMLElement>("[data-gallery]").forEach((gallery) => {
+      const main = gallery.querySelector<HTMLImageElement>("[data-gallery-main]");
+      const thumbs = gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-thumb]");
+      if (!main || thumbs.length < 2) return;
+
+      const activate = (thumb: HTMLButtonElement) => {
+        const src = thumb.getAttribute("data-src");
+        if (!src) return;
+        main.setAttribute("src", src);
+        thumbs.forEach((t) => t.classList.remove("is-active"));
+        thumb.classList.add("is-active");
+      };
+
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener("click", () => activate(thumb));
+        thumb.addEventListener("mouseenter", () => activate(thumb));
+      });
+    });
+  </script>
 </BaseLayout>

@@ -4,7 +4,12 @@
   "codigo": "",
   "marca": "Peisa",
   "precio_usd": 0,
-  "imagen": "/images/repuestos/placeholder.svg",
+  "precio_ars": 45000,
+  "imagen": "/images/repuestos/valvula-detentor-1.jpg",
+  "imagenes": [
+    "/images/repuestos/valvula-detentor-1.jpg",
+    "/images/repuestos/valvula-detentor-2.jpg"
+  ],
   "disponible": true,
   "modelos_compatibles": ["Radiadores Peisa", "Toalleros Peisa"],
   "sintomas": [

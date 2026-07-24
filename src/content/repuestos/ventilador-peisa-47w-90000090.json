@@ -4,7 +4,13 @@
   "codigo": "90000090",
   "marca": "Peisa",
   "precio_usd": 0,
-  "imagen": "/images/repuestos/placeholder.svg",
+  "precio_ars": 420000,
+  "imagen": "/images/repuestos/ventilador-1.jpg",
+  "imagenes": [
+    "/images/repuestos/ventilador-1.jpg",
+    "/images/repuestos/ventilador-2.jpg",
+    "/images/repuestos/ventilador-3.jpg"
+  ],
   "disponible": true,
   "modelos_compatibles": ["Diva Duo F", "Única F", "DS", "C tiro forzado (anteriores a 2019)"],
   "sintomas": [

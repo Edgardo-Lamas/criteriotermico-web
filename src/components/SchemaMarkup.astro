@@ -22,8 +22,12 @@ if (type === "product") {
     },
     offers: {
       "@type": "Offer",
-      priceCurrency: "USD",
-      price: data.precio_usd > 0 ? data.precio_usd : undefined,
+      priceCurrency: data.precio_ars > 0 ? "ARS" : "USD",
+      price: data.precio_ars > 0
+        ? data.precio_ars
+        : data.precio_usd > 0
+          ? data.precio_usd
+          : undefined,
       availability: data.disponible
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",

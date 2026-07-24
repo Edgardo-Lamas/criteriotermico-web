@@ -4,7 +4,14 @@
   "codigo": "90000054",
   "marca": "Peisa",
   "precio_usd": 0,
-  "imagen": "/images/repuestos/placeholder.svg",
+  "precio_ars": 80000,
+  "imagen": "/images/repuestos/flujostato-1.jpg",
+  "imagenes": [
+    "/images/repuestos/flujostato-1.jpg",
+    "/images/repuestos/flujostato-2.jpg",
+    "/images/repuestos/flujostato-3.jpg",
+    "/images/repuestos/flujostato-4.jpg"
+  ],
   "disponible": true,
   "modelos_compatibles": ["Diva Convencional 24", "Diva Convencional 32", "modelo 2011 y actual"],
   "sintomas": [

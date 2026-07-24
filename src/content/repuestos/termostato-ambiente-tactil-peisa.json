@@ -4,7 +4,12 @@
   "codigo": "",
   "marca": "",
   "precio_usd": 0,
-  "imagen": "/images/repuestos/placeholder.svg",
+  "precio_ars": 60000,
+  "imagen": "/images/repuestos/termostato-1.jpg",
+  "imagenes": [
+    "/images/repuestos/termostato-1.jpg",
+    "/images/repuestos/termostato-2.jpg"
+  ],
   "disponible": true,
   "modelos_compatibles": ["Compatible con calderas Peisa con conector de termostato estándar"],
   "sintomas": [

@@ -1,9 +1,20 @@
 ---
-const { precioUsd } = Astro.props;
+const { precioUsd = 0, precioArs = 0 } = Astro.props;
+
+// Precio fijo en pesos (referencia actual). Cuando se carguen precios en USD
+// se deja precio_ars vacío y vuelve a mostrarse el peso al blue del día.
+const arsFijo = precioArs > 0
+  ? precioArs.toLocaleString("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 })
+  : null;
 ---
 
 <div class="price-display" data-usd={precioUsd}>
-  {precioUsd > 0 ? (
+  {arsFijo ? (
+    <>
+      <span class="price-pesos">{arsFijo}</span>
+      <span class="price-note">Precio en pesos</span>
+    </>
+  ) : precioUsd > 0 ? (
     <>
       <span class="price-usd">USD {precioUsd}</span>
       <span class="price-ars" data-price-ars>Calculando...</span>
