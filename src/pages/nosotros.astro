@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import CredibilityStrip from "../components/CredibilityStrip.astro";
+import SchemaMarkup from "../components/SchemaMarkup.astro";
+import { siteConfig } from "../config/site";
 
 const credibilidad = [
   { icon: "🔧", number: "20+ años", label: "de trayectoria técnica" },
@@ -15,6 +17,26 @@ const credibilidad = [
   title="El técnico — Criterio Térmico"
   description="20 años de experiencia en calderas Peisa. Técnico especialista en Villa Urquiza, CABA. Repuestos originales y asesoramiento técnico directo."
 >
+  <SchemaMarkup
+    type="person"
+    data={{
+      name: "Edgardo",
+      jobTitle: "Técnico instalador de calefacción — especialista en calderas Peisa",
+      description:
+        "Técnico con más de 20 años reparando e instalando calderas Peisa en Villa Urquiza, CABA. Del otro lado de cada repuesto y cada diagnóstico.",
+      image: `${siteConfig.dominio}/images/nosotros/taller-detalle.jpg`,
+      url: `${siteConfig.dominio}/nosotros`,
+      knowsAbout: [
+        "Calderas Peisa",
+        "Calefacción por radiadores",
+        "Instalación de calefacción a gas",
+        "Reparación de calderas",
+        "Piso radiante",
+        "Repuestos de calefacción",
+      ],
+    }}
+  />
+
   <section class="section" style="padding-bottom: var(--space-10);">
     <div class="container container--narrow">
       <Breadcrumbs items={[{ label: "El técnico" }]} />

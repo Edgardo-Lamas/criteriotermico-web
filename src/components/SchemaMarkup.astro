@@ -2,7 +2,7 @@
 import { siteConfig } from "../config/site";
 
 interface Props {
-  type: "product" | "article" | "local-business" | "breadcrumb";
+  type: "product" | "article" | "local-business" | "breadcrumb" | "person";
   data: Record<string, any>;
 }
 
@@ -73,6 +73,30 @@ if (type === "product") {
     // que lee Google para los resultados de negocio local.
     telephone: siteConfig.telefono,
     openingHours: "Mo-Fr 09:00-18:00",
+  };
+} else if (type === "person") {
+  // E-E-A-T: le dice a Google QUIÉN respalda el contenido. El diferencial del
+  // sitio es la autoridad del técnico, así que esta señal es la más importante.
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: data.name,
+    jobTitle: data.jobTitle,
+    description: data.description,
+    image: data.image || undefined,
+    url: data.url,
+    knowsAbout: data.knowsAbout,
+    worksFor: {
+      "@type": "LocalBusiness",
+      name: "Criterio Térmico",
+      url: siteConfig.dominio,
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Villa Urquiza",
+      addressRegion: "CABA",
+      addressCountry: "AR",
+    },
   };
 } else if (type === "breadcrumb") {
   schema = {
