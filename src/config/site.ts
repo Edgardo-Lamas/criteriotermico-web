@@ -12,3 +12,7 @@ export const siteConfig = {
     "Repuestos originales Peisa en Villa Urquiza, CABA. Ventiladores, flujostatos, termostatos táctiles y válvulas. Asesoramiento técnico incluido.",
   experiencia: "20 años",
 };
+
+/** Se muestra cuando un repuesto todavía no tiene foto propia. Es markup estático:
+ *  si cambia la paleta hay que actualizarlo a mano, no lee los tokens del sitio. */
+export const PLACEHOLDER_REPUESTO = "/images/repuestos/placeholder.svg";

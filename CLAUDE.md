@@ -20,9 +20,41 @@ npm run astro ...  # Run Astro CLI commands (e.g. astro add, astro check)
 ```
 
 No test suite or linter is configured. Verify changes by running `npm run build`
-(catches content-collection/schema errors) and visually checking pages with the dev
-server — this project has no component framework, so most bugs are visual/CSS or
-content-schema mismatches, not logic bugs.
+(catches content-collection/schema errors) and `npm run check` (`astro check` —
+types and unused bindings), then visually checking pages with the dev server. This
+project has no component framework, so most bugs are visual/CSS or content-schema
+mismatches, not logic bugs.
+
+## Production
+
+**The domain has a single source of truth: `site` in `astro.config.mjs`.**
+`BaseLayout` reads it from `Astro.site`, everything else from `siteConfig.dominio`
+(which must be kept in step with it). Canonical, `og:url`, `og:image`, the JSON-LD
+breadcrumbs and the sitemap all derive from it, so a wrong value here breaks
+WhatsApp link previews and tells Google the canonical version lives somewhere else.
+It currently points at the `.vercel.app` URL because `criteriotermico.com.ar` is not
+bought yet — **when it is, change those two lines and add the domain in Vercel.**
+
+**`vercel.json` holds the headers** (JSON takes no comments, hence this note):
+- Security: `nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`,
+  `Permissions-Policy`, plus a CSP. The CSP needs `'unsafe-inline'` in `script-src`
+  because Astro emits ~80 inline scripts here (carousel, reveals, product gallery,
+  `PriceDisplay`) and there is no build step adding nonces — it still blocks
+  externally-hosted scripts, which is the attack worth stopping on a static site.
+  `connect-src` must list `dolarapi.com` (the blue-dollar fetch in `PriceDisplay`)
+  and `font-src`/`style-src` the Google Fonts hosts. **Adding any third-party
+  script, font or API means widening the CSP or the page silently breaks.**
+- Cache: `/_astro/*` is immutable (Astro hashes those filenames); `/images/*` and
+  `/videos/*` get a day of `max-age` plus a week of `stale-while-revalidate` —
+  deliberately *not* `immutable`, because those filenames have no hash and photos
+  do get replaced in place. Without this everything was served `max-age=0`.
+
+Images are optimized by hand with `ffmpeg` before being committed (see the palette
+note below for where they live). Photos straight from a camera are ~3264px wide and
+have no business in a grid that renders them at 258px: scale to ~800px wide (1000
+for the portrait) at `-q:v 4`. Always give `<img>` a `width`/`height` unless the
+container already reserves the space with `aspect-ratio`, or the page shifts as it
+loads.
 
 ## Architecture
 

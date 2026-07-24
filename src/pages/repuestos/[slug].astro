@@ -4,7 +4,7 @@ import PriceDisplay from "../../components/PriceDisplay.astro";
 import WhatsAppButton from "../../components/WhatsAppButton.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SchemaMarkup from "../../components/SchemaMarkup.astro";
-import { siteConfig } from "../../config/site";
+import { siteConfig, PLACEHOLDER_REPUESTO } from "../../config/site";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -26,10 +26,11 @@ const guiasRelacionadas = diagnosticos.filter((d) =>
 
 const codigoDisplay = repuesto.codigo ? ` (${repuesto.codigo})` : "";
 
-// Galería: usa imagenes[] si están cargadas; si no, cae a la imagen única.
+// Galería: usa imagenes[] si están cargadas; si no, cae a la imagen única, y si
+// el repuesto todavía no tiene foto, al placeholder.
 const galeria = (repuesto.imagenes && repuesto.imagenes.length > 0)
   ? repuesto.imagenes
-  : [repuesto.imagen];
+  : [repuesto.imagen || PLACEHOLDER_REPUESTO];
 
 const compraMensaje = `Hola, quiero comprar el ${repuesto.nombre}${codigoDisplay}. ¿Me confirmás disponibilidad, precio del día y cómo coordinamos la entrega?`;
 const seoTitle = repuesto.codigo

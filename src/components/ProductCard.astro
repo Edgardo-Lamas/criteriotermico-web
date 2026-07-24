@@ -1,5 +1,6 @@
 ---
 import WhatsAppButton from "./WhatsAppButton.astro";
+import { PLACEHOLDER_REPUESTO } from "../config/site";
 
 interface Props {
   nombre: string;
@@ -12,11 +13,15 @@ interface Props {
 }
 
 const { nombre, codigo, slug, imagen, disponible, modelos_compatibles, whatsapp_mensaje } = Astro.props;
+
+// El schema exige `imagen`, pero un repuesto recién cargado puede llegar con el
+// campo vacío hasta que haya foto. Sin este fallback se muestra la imagen rota.
+const src = imagen || PLACEHOLDER_REPUESTO;
 ---
 
 <div class="product-card">
   <div class="product-card__media">
-    <img src={imagen} alt={nombre} loading="lazy" />
+    <img src={src} alt={nombre} loading="lazy" />
     <span class={`product-card__badge ${disponible ? "" : "product-card__badge--unavailable"}`}>
       <span class="product-card__badge-dot"></span>
       {disponible ? "Disponible" : "Sin stock"}

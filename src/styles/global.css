@@ -499,11 +499,6 @@ h4 { font-size: var(--text-xl); }
   background: var(--color-orange-hover);
 }
 
-.btn--secondary {
-  background: transparent;
-  color: var(--color-text-inverse);
-  border: 1px solid rgba(var(--rgb-inverse), .28);
-}
 
 .btn--secondary:hover {
   background: rgba(var(--rgb-inverse), .08);
@@ -819,34 +814,6 @@ h4 { font-size: var(--text-xl); }
   }
 }
 
-/* ---------- Trust bar ---------- */
-.trust-bar {
-  background: var(--color-trust-bar);
-  border-bottom: 1px solid var(--color-border-soft);
-}
-
-.trust-bar__inner {
-  padding-block: 22px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.trust-bar__item {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  color: var(--color-text-tertiary);
-  font-size: 14.5px;
-  font-weight: 500;
-}
-
-.trust-bar__item span.star {
-  color: var(--color-bronze);
-  font-size: 18px;
-}
 
 /* ---------- Bifurcación instalador / particular ----------
    Va apenas termina el hero: el sitio le habla al instalador, y el dueño de
@@ -1565,26 +1532,6 @@ h4 { font-size: var(--text-xl); }
   font-size: 15px;
 }
 
-/* ---------- Badges (disponibilidad genérica) ---------- */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.badge--available {
-  background: rgba(44, 138, 95, .14);
-  color: var(--color-success-text);
-}
-
-.badge--unavailable {
-  background: rgba(220, 53, 69, .12);
-  color: var(--color-error);
-}
 
 /* ---------- Notas cards ---------- */
 .notas-grid {
@@ -2488,13 +2435,6 @@ h4 { font-size: var(--text-xl); }
   font-weight: 500;
 }
 
-.product-detail__section h2 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 19px;
-  color: var(--color-text-primary);
-  margin-bottom: 16px;
-}
 
 .detail-columns {
   display: grid;
@@ -2589,31 +2529,6 @@ h4 { font-size: var(--text-xl); }
   color: var(--color-text-muted);
 }
 
-/* ---------- Symptoms card (repuesto sidebar) ---------- */
-.symptoms {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  padding: 24px 26px;
-}
-
-.symptoms__title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 19px;
-  color: var(--color-text-primary);
-  margin-bottom: 16px;
-}
-
-.symptoms__title svg {
-  color: var(--color-warning);
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-}
 
 .symptoms__list {
   display: flex;
@@ -2725,9 +2640,6 @@ h4 { font-size: var(--text-xl); }
   align-items: center;
 }
 
-.premium-row--reverse .premium-row__media {
-  order: 2;
-}
 
 .premium-row__media img {
   width: 100%;
@@ -2760,9 +2672,6 @@ h4 { font-size: var(--text-xl); }
 @media (max-width: 768px) {
   .premium-row {
     grid-template-columns: 1fr;
-  }
-  .premium-row--reverse .premium-row__media {
-    order: initial;
   }
 }
 
@@ -2958,16 +2867,6 @@ h4 { font-size: var(--text-xl); }
   background: rgba(143, 196, 222, .08);
 }
 
-.saas-mockup {
-  width: 100%;
-  max-width: 340px;
-  background: var(--sb-bg-2);
-  border: 1px solid rgba(143, 196, 222, .2);
-  border-radius: var(--radius-2xl);
-  padding: 20px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
-  margin-inline: auto;
-}
 
 /* ---------- Video de plataforma (demos del simulador) ----------
    Reemplaza a los mockups estáticos: muestra la herramienta real en loop. */
@@ -3005,81 +2904,6 @@ h4 { font-size: var(--text-xl); }
   align-items: start;
 }
 
-.saas-mockup__header {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 16px;
-}
-
-.saas-mockup__icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: rgba(95, 176, 214, .16);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-}
-
-.saas-mockup__title {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 14.5px;
-  color: var(--sb-text-2);
-}
-
-.saas-mockup__field {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--sb-highlight);
-  border: 1px solid rgba(143, 196, 222, .14);
-  border-radius: 10px;
-  padding: 10px 13px;
-  font-size: 13px;
-  margin-bottom: 9px;
-}
-
-.saas-mockup__field span:first-child {
-  color: var(--sb-text-muted);
-}
-
-.saas-mockup__field span:last-child {
-  color: var(--sb-text-2);
-  font-weight: 600;
-}
-
-.saas-mockup__result {
-  margin-top: 14px;
-  background: linear-gradient(140deg, var(--sb-highlight-2), var(--sb-bg));
-  border: 1px solid rgba(95, 176, 214, .3);
-  border-radius: 14px;
-  padding: 16px 18px;
-  text-align: center;
-}
-
-.saas-mockup__result-label {
-  font-size: 12px;
-  color: var(--sb-accent);
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  font-weight: 700;
-}
-
-.saas-mockup__result-value {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 30px;
-  color: var(--sb-text);
-  margin: 4px 0 2px;
-}
-
-.saas-mockup__result-note {
-  font-size: 12.5px;
-  color: var(--sb-success);
-}
 
 .saas-stats {
   display: flex;
@@ -3353,9 +3177,6 @@ h4 { font-size: var(--text-xl); }
 
 @media (max-width: 768px) {
   .saas-band__grid,
-  .saas-hero__grid {
-    grid-template-columns: 1fr;
-  }
   .saas-header__nav {
     display: none;
   }
