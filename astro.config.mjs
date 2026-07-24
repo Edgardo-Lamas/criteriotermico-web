@@ -9,7 +9,9 @@ export default defineConfig({
   // muerto. AL COMPRAR EL DOMINIO: cambiar esta línea y `dominio` en
   // src/config/site.ts, y agregarlo en Vercel para que el .vercel.app redirija.
   site: "https://criteriotermico-web.vercel.app",
-  integrations: [sitemap(), mdx()],
+  // /panel es una herramienta privada (métricas SEO): fuera del sitemap y con
+  // noindex en BaseLayout, para que Google no la indexe ni la muestre.
+  integrations: [sitemap({ filter: (page) => !page.includes("/panel") }), mdx()],
   output: "static",
   redirects: {
     // /para-tecnicos pasó a /plataforma cuando el sitio entero se reorientó al

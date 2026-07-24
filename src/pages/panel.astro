@@ -1,0 +1,527 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+// Panel privado de métricas SEO (Google Search Console). No lleva header/footer
+// ni el botón de WhatsApp: es una herramienta interna, no una página del sitio.
+// Va con noindex y queda fuera del sitemap (ver astro.config.mjs). El sitio no
+// tiene login, así que la protección real la hace la función /api/search-console
+// (pide la contraseña); esta página sin datos no expone nada.
+---
+
+<BaseLayout
+  title="Panel de métricas — Criterio Térmico"
+  description="Panel privado de métricas SEO."
+  hideChrome
+  noindex
+>
+  <div class="panel">
+    <!-- Login -->
+    <section id="login" class="login">
+      <div class="login-card">
+        <h1 class="login-title">Panel de métricas</h1>
+        <p class="login-sub">Criterio Térmico · Search Console</p>
+        <form id="login-form" autocomplete="off">
+          <label for="pass" class="login-label">Contraseña</label>
+          <input id="pass" type="password" class="login-input" autocomplete="current-password" />
+          <button type="submit" class="login-btn">Entrar</button>
+        </form>
+        <p id="login-error" class="login-err" hidden></p>
+      </div>
+    </section>
+
+    <!-- Dashboard (lo llena el script) -->
+    <main id="dash" class="dash" hidden>
+      <header class="dash-head">
+        <div>
+          <h1 class="dash-title">Métricas del sitio</h1>
+          <p id="dash-period" class="dash-period"></p>
+        </div>
+        <div class="dash-actions">
+          <nav class="tabs" id="tabs">
+            <button class="tab is-active" data-tab="seo">Búsqueda (SEO)</button>
+            <button class="tab" data-tab="audiencia">Audiencia</button>
+          </nav>
+          <button id="logout" class="ghost-btn" type="button">Salir</button>
+        </div>
+      </header>
+
+      <!-- Tab SEO -->
+      <section id="tab-seo" class="tab-panel">
+        <div id="kpis" class="kpis"></div>
+        <div id="trend" class="card trend"></div>
+        <div class="grid-2">
+          <div id="opportunities" class="card"></div>
+          <div id="devices" class="card"></div>
+        </div>
+        <div class="grid-2">
+          <div id="queries" class="card"></div>
+          <div id="pages" class="card"></div>
+        </div>
+        <div id="countries" class="card"></div>
+        <div id="notice" class="notice" hidden></div>
+      </section>
+
+      <!-- Tab Audiencia (pronto) -->
+      <section id="tab-audiencia" class="tab-panel" hidden>
+        <div class="card soon">
+          <h2 class="card-title">Audiencia — próximamente</h2>
+          <p>
+            Acá van a ir las visitas al sitio (sesiones, páginas más vistas, de dónde
+            llegan). Necesita instalar Google Analytics 4 o Vercel Analytics primero.
+            Search Console (la pestaña de al lado) mide qué buscó la gente en Google;
+            Analytics mide qué hace una vez que entró.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .panel {
+    min-height: 100vh;
+    background: var(--color-cream);
+    color: var(--color-text-body);
+  }
+
+  /* ---------- Login ---------- */
+  .login {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: var(--space-4);
+  }
+  .login-card {
+    width: 100%;
+    max-width: 360px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: var(--space-8, 2rem);
+    box-shadow: 0 20px 50px -24px rgba(var(--rgb-ink), 0.35);
+    text-align: center;
+  }
+  .login-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .login-sub {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    margin: 0.35rem 0 1.5rem;
+  }
+  .login-label {
+    display: block;
+    text-align: left;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.4rem;
+  }
+  .login-input {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    font-size: var(--text-base);
+    background: var(--color-cream);
+    color: var(--color-text-primary);
+  }
+  .login-input:focus {
+    outline: 2px solid var(--color-orange-solid);
+    outline-offset: 1px;
+  }
+  .login-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--color-orange-solid);
+    color: #fff;
+    font-weight: 700;
+    font-size: var(--text-base);
+    cursor: pointer;
+  }
+  .login-btn:hover { background: var(--color-orange-hover); }
+  .login-err {
+    color: var(--color-error);
+    font-size: var(--text-sm);
+    margin: 1rem 0 0;
+  }
+
+  /* ---------- Dashboard shell ---------- */
+  .dash {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4) var(--space-10, 3rem);
+  }
+  .dash-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+  }
+  .dash-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .dash-period { color: var(--color-text-secondary); font-size: var(--text-sm); margin: 0.25rem 0 0; }
+  .dash-actions { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+  .tabs { display: inline-flex; background: var(--color-trust-bar); border-radius: 10px; padding: 3px; }
+  .tab {
+    border: none;
+    background: transparent;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+  }
+  .tab.is-active { background: var(--color-card); color: var(--color-text-primary); box-shadow: 0 1px 3px rgba(var(--rgb-ink), 0.15); }
+  .ghost-btn {
+    border: 1px solid var(--color-border);
+    background: var(--color-card);
+    color: var(--color-text-secondary);
+    padding: 0.45rem 0.8rem;
+    border-radius: 8px;
+    font-size: var(--text-sm);
+    cursor: pointer;
+  }
+  .tab-panel { display: flex; flex-direction: column; gap: var(--space-4); }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: var(--space-5);
+  }
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    color: var(--color-text-primary);
+    margin: 0 0 0.25rem;
+  }
+  .card-sub { color: var(--color-text-secondary); font-size: var(--text-sm); margin: 0 0 1rem; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* KPIs */
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+  @media (max-width: 720px) { .kpis { grid-template-columns: 1fr 1fr; } }
+  .kpi { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 14px; padding: var(--space-4) var(--space-5); }
+  .kpi-label { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0 0 0.3rem; }
+  .kpi-value { font-family: var(--font-heading); font-size: var(--text-3xl); color: var(--color-text-primary); line-height: 1; }
+
+  /* Trend */
+  .trend-charts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+  @media (max-width: 720px) { .trend-charts { grid-template-columns: 1fr; } }
+  .chart-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+  .chart-name { font-size: var(--text-sm); font-weight: 600; color: var(--color-text-secondary); }
+  .chart-total { font-family: var(--font-heading); font-weight: 700; color: var(--color-text-primary); }
+  .chart svg { width: 100%; height: 120px; display: block; }
+
+  /* Ranked lists */
+  .rowlist { display: flex; flex-direction: column; gap: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-3);
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+  .row:last-child { border-bottom: none; }
+  .row-label { font-size: var(--text-sm); color: var(--color-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .row-metrics { display: flex; gap: var(--space-4); font-size: var(--text-sm); color: var(--color-text-secondary); white-space: nowrap; }
+  .row-metrics b { color: var(--color-text-primary); font-weight: 700; }
+  .pos-pill { display: inline-block; min-width: 2.2rem; text-align: center; background: rgba(var(--rgb-orange), 0.12); color: var(--color-orange-ink); border-radius: 6px; padding: 0.1rem 0.4rem; font-weight: 700; font-size: var(--text-xs); }
+
+  /* Bars (devices / countries) */
+  .bar-row { display: grid; grid-template-columns: 5.5rem 1fr auto; gap: var(--space-3); align-items: center; padding: 0.45rem 0; }
+  .bar-label { font-size: var(--text-sm); color: var(--color-text-primary); }
+  .bar-track { background: var(--color-trust-bar); border-radius: 6px; height: 10px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--color-orange-solid); border-radius: 6px; }
+  .bar-val { font-size: var(--text-sm); color: var(--color-text-secondary); white-space: nowrap; }
+
+  .empty { color: var(--color-text-secondary); font-size: var(--text-sm); padding: 0.5rem 0; }
+  .soon p { color: var(--color-text-secondary); line-height: var(--leading-normal); margin: 0; }
+
+  /* Aviso "no conectado" */
+  .notice {
+    background: rgba(var(--rgb-orange), 0.08);
+    border: 1px solid rgba(var(--rgb-orange), 0.25);
+    border-radius: 14px;
+    padding: var(--space-5);
+    color: var(--color-text-body);
+    line-height: var(--leading-normal);
+  }
+  .notice h2 { font-family: var(--font-heading); color: var(--color-text-primary); margin: 0 0 0.5rem; font-size: var(--text-lg); }
+  .notice ol { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+  .notice li { margin: 0.35rem 0; }
+  .notice code { background: rgba(var(--rgb-ink), 0.06); padding: 0.1rem 0.35rem; border-radius: 5px; font-size: 0.85em; }
+</style>
+
+<script>
+  interface Totals { clicks: number; impressions: number; ctr: number; position: number; }
+  interface QueryRow { query: string; clicks: number; impressions: number; ctr?: number; position: number; }
+  interface PageRow { page: string; clicks: number; impressions: number; }
+  interface DeviceRow { device: string; clicks: number; impressions: number; }
+  interface CountryRow { country: string; clicks: number; impressions: number; }
+  interface DailyRow { date: string; clicks: number; impressions: number; }
+  interface Data {
+    live?: boolean;
+    needsSetup?: boolean;
+    error?: string;
+    period?: string;
+    site?: string;
+    totals?: Totals;
+    queries?: QueryRow[];
+    opportunities?: QueryRow[];
+    pages?: PageRow[];
+    devices?: DeviceRow[];
+    countries?: CountryRow[];
+    daily?: DailyRow[];
+  }
+  type Attrs = Record<string, string>;
+  type Metric = { k: string; v: number };
+
+  const KEY_STORE = "ct_panel_key";
+  const nf = new Intl.NumberFormat("es-AR");
+  const nf1 = new Intl.NumberFormat("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+  const $ = (id: string): HTMLElement => document.getElementById(id) as HTMLElement;
+
+  // ---- helpers de DOM (sin innerHTML) ----
+  function el(tag: string, attrs: Attrs | null, children?: (Node | string)[]): HTMLElement {
+    const n = document.createElement(tag);
+    if (attrs)
+      for (const k in attrs) {
+        if (k === "class") n.className = attrs[k];
+        else if (k === "text") n.textContent = attrs[k];
+        else n.setAttribute(k, attrs[k]);
+      }
+    if (children) for (const c of children) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    return n;
+  }
+  const SVGNS = "http://www.w3.org/2000/svg";
+  function s(tag: string, attrs?: Attrs): SVGElement {
+    const n = document.createElementNS(SVGNS, tag);
+    if (attrs) for (const k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function clear(node: Node): void {
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  const DEVICE_LABEL: Record<string, string> = { MOBILE: "Celular", DESKTOP: "Escritorio", TABLET: "Tablet" };
+  const COUNTRY_LABEL: Record<string, string> = {
+    arg: "Argentina", usa: "Estados Unidos", esp: "España", mex: "México", chl: "Chile",
+    ury: "Uruguay", col: "Colombia", per: "Perú", bra: "Brasil", pry: "Paraguay", bol: "Bolivia",
+  };
+
+  // ---- gráfico de área (sparkline) hecho a mano ----
+  function areaChart(values: number[]): SVGElement {
+    const W = 300, H = 120, pad = 6;
+    const svg = s("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "none" });
+    const max = Math.max(1, ...values);
+    const n = values.length;
+    if (n === 0) return svg;
+    const x = (i: number): number => (n === 1 ? W / 2 : pad + (i * (W - pad * 2)) / (n - 1));
+    const y = (v: number): number => H - pad - (v / max) * (H - pad * 2);
+    let line = "";
+    values.forEach((v, i) => { line += (i === 0 ? "M" : "L") + x(i).toFixed(1) + " " + y(v).toFixed(1); });
+    const area = line + ` L ${x(n - 1).toFixed(1)} ${H} L ${x(0).toFixed(1)} ${H} Z`;
+    svg.appendChild(s("path", { d: area, fill: "rgba(209,89,31,0.14)", stroke: "none" }));
+    svg.appendChild(s("path", { d: line, fill: "none", stroke: "var(--color-orange-solid)", "stroke-width": "2", "vector-effect": "non-scaling-stroke", "stroke-linejoin": "round" }));
+    return svg;
+  }
+
+  function chartBlock(name: string, total: number, values: number[]): HTMLElement {
+    const head = el("div", { class: "chart-head" }, [
+      el("span", { class: "chart-name", text: name }),
+      el("span", { class: "chart-total", text: nf.format(total) }),
+    ]);
+    const chart = el("div", { class: "chart" }, [areaChart(values)]);
+    return el("div", null, [head, chart]);
+  }
+
+  function rankedRow(label: string, metrics: Metric[], posValue?: number | null): HTMLElement {
+    const left = el("div", { class: "row-label", title: label, text: label });
+    const m = el("div", { class: "row-metrics" });
+    if (posValue != null) m.appendChild(el("span", { class: "pos-pill", text: "#" + nf1.format(posValue) }));
+    for (const met of metrics) {
+      m.appendChild(el("span", null, [el("b", { text: nf.format(met.v) }), " " + met.k]));
+    }
+    return el("div", { class: "row" }, [left, m]);
+  }
+
+  function barRow(label: string, value: number, max: number): HTMLElement {
+    const pct = max > 0 ? Math.max(2, (value / max) * 100) : 0;
+    return el("div", { class: "bar-row" }, [
+      el("span", { class: "bar-label", text: label }),
+      el("div", { class: "bar-track" }, [el("div", { class: "bar-fill", style: `width:${pct}%` })]),
+      el("span", { class: "bar-val", text: nf.format(value) }),
+    ]);
+  }
+
+  function emptyMsg(text: string): HTMLElement { return el("p", { class: "empty", text }); }
+
+  // ---- render principal ----
+  function render(d: Data): void {
+    $("dash-period").textContent = d.period ? "Últimos 28 días · " + d.period : "Últimos 28 días";
+
+    // KPIs
+    const kpis = $("kpis");
+    clear(kpis);
+    const t = d.totals || { clicks: 0, impressions: 0, ctr: 0, position: 0 };
+    const kpiData = [
+      ["Clics", nf.format(t.clicks)],
+      ["Impresiones", nf.format(t.impressions)],
+      ["CTR", nf1.format(t.ctr) + "%"],
+      ["Posición media", t.position ? nf1.format(t.position) : "—"],
+    ];
+    for (const [label, value] of kpiData) {
+      kpis.appendChild(el("div", { class: "kpi" }, [
+        el("p", { class: "kpi-label", text: label }),
+        el("div", { class: "kpi-value", text: value }),
+      ]));
+    }
+
+    // Tendencia
+    const trend = $("trend");
+    clear(trend);
+    trend.appendChild(el("h2", { class: "card-title", text: "Tendencia diaria" }));
+    trend.appendChild(el("p", { class: "card-sub", text: "Clics e impresiones día a día" }));
+    const daily = d.daily || [];
+    const charts = el("div", { class: "trend-charts" }, [
+      chartBlock("Clics", t.clicks, daily.map((r) => r.clicks)),
+      chartBlock("Impresiones", t.impressions, daily.map((r) => r.impressions)),
+    ]);
+    trend.appendChild(charts);
+
+    // Oportunidades
+    const opp = $("opportunities");
+    clear(opp);
+    opp.appendChild(el("h2", { class: "card-title", text: "Oportunidades" }));
+    opp.appendChild(el("p", { class: "card-sub", text: "Ya aparecés en Google (posición 5–20) pero podés subir" }));
+    const list = el("div", { class: "rowlist" });
+    const opps = d.opportunities || [];
+    if (opps.length) {
+      for (const o of opps) {
+        list.appendChild(rankedRow(o.query, [{ k: "impr.", v: o.impressions }, { k: "clics", v: o.clicks }], o.position));
+      }
+    } else list.appendChild(emptyMsg("Sin oportunidades todavía. Aparecen cuando el sitio empieza a rankear."));
+    opp.appendChild(list);
+
+    // Dispositivos
+    const dev = $("devices");
+    clear(dev);
+    dev.appendChild(el("h2", { class: "card-title", text: "Dispositivo" }));
+    dev.appendChild(el("p", { class: "card-sub", text: "El instalador busca desde el celular" }));
+    const devs = d.devices || [];
+    const devMax = Math.max(1, ...devs.map((x) => x.impressions));
+    if (devs.length) for (const x of devs) dev.appendChild(barRow(DEVICE_LABEL[x.device] || x.device, x.impressions, devMax));
+    else dev.appendChild(emptyMsg("Sin datos de dispositivo."));
+
+    // Top consultas
+    const q = $("queries");
+    clear(q);
+    q.appendChild(el("h2", { class: "card-title", text: "Búsquedas que te encuentran" }));
+    q.appendChild(el("p", { class: "card-sub", text: "Lo que la gente escribió en Google" }));
+    const ql = el("div", { class: "rowlist" });
+    const qs = d.queries || [];
+    if (qs.length) for (const r of qs) ql.appendChild(rankedRow(r.query, [{ k: "clics", v: r.clicks }, { k: "impr.", v: r.impressions }]));
+    else ql.appendChild(emptyMsg("Sin búsquedas registradas todavía."));
+    q.appendChild(ql);
+
+    // Top páginas
+    const p = $("pages");
+    clear(p);
+    p.appendChild(el("h2", { class: "card-title", text: "Páginas más vistas" }));
+    p.appendChild(el("p", { class: "card-sub", text: "Desde resultados de Google" }));
+    const pl = el("div", { class: "rowlist" });
+    const ps = d.pages || [];
+    if (ps.length) for (const r of ps) pl.appendChild(rankedRow(r.page, [{ k: "clics", v: r.clicks }, { k: "impr.", v: r.impressions }]));
+    else pl.appendChild(emptyMsg("Sin páginas con tráfico todavía."));
+    p.appendChild(pl);
+
+    // Países
+    const c = $("countries");
+    clear(c);
+    c.appendChild(el("h2", { class: "card-title", text: "Países" }));
+    const cs = d.countries || [];
+    const cMax = Math.max(1, ...cs.map((x) => x.impressions));
+    if (cs.length) for (const x of cs) c.appendChild(barRow(COUNTRY_LABEL[x.country] || x.country.toUpperCase(), x.impressions, cMax));
+    else c.appendChild(emptyMsg("Sin datos de país todavía."));
+
+    $("notice").hidden = true;
+  }
+
+  // Estado "conectado pero sin credenciales de Google": muestra la guía.
+  function renderNeedsSetup(d: { error?: string }): void {
+    render({});
+    const notice = $("notice");
+    clear(notice);
+    notice.appendChild(el("h2", { text: "Conectar Google Search Console" }));
+    notice.appendChild(el("p", { text: d.error || "Faltan las credenciales de Google en Vercel." }));
+    const ol = el("ol", null, [
+      el("li", { text: "Verificar el sitio en Google Search Console (Edgardo, paso interactivo)." }),
+      el("li", null, ["Cargar en Vercel las variables ", el("code", { text: "GOOGLE_CLIENT_ID" }), ", ", el("code", { text: "GOOGLE_CLIENT_SECRET" }), ", ", el("code", { text: "GOOGLE_REFRESH_TOKEN" }), " (se reusan las de Sabiduría) y ", el("code", { text: "GSC_SITE" }), "."]),
+      el("li", { text: "Redeploy. Los datos aparecen acá automáticamente (Google acumula día a día)." }),
+    ]);
+    notice.appendChild(ol);
+    notice.hidden = false;
+  }
+
+  async function load(key: string): Promise<void> {
+    const res = await fetch("/api/search-console", { headers: { "x-panel-key": key } });
+    if (res.status === 401) { sessionStorage.removeItem(KEY_STORE); throw new Error("bad-key"); }
+    const data: Data = await res.json();
+    sessionStorage.setItem(KEY_STORE, key);
+    $("login").hidden = true;
+    $("dash").hidden = false;
+    if (data.live) render(data);
+    else if (data.needsSetup) renderNeedsSetup(data);
+    else renderNeedsSetup({ error: data.error || "No se pudo conectar con Google Search Console." });
+  }
+
+  // ---- tabs ----
+  $("tabs").addEventListener("click", (e: Event) => {
+    const btn = (e.target as HTMLElement).closest(".tab") as HTMLElement | null;
+    if (!btn) return;
+    for (const b of document.querySelectorAll(".tab")) b.classList.toggle("is-active", b === btn);
+    $("tab-seo").hidden = btn.dataset.tab !== "seo";
+    $("tab-audiencia").hidden = btn.dataset.tab !== "audiencia";
+  });
+
+  // ---- login / logout ----
+  $("login-form").addEventListener("submit", async (e: Event) => {
+    e.preventDefault();
+    const err = $("login-error");
+    err.hidden = true;
+    const key = ($("pass") as HTMLInputElement).value.trim();
+    if (!key) return;
+    try {
+      await load(key);
+    } catch (_) {
+      err.textContent = "Contraseña incorrecta.";
+      err.hidden = false;
+    }
+  });
+  $("logout").addEventListener("click", () => {
+    sessionStorage.removeItem(KEY_STORE);
+    location.reload();
+  });
+
+  // sesión guardada
+  const saved = sessionStorage.getItem(KEY_STORE);
+  if (saved) load(saved).catch(() => { /* pedir de nuevo */ });
+</script>
