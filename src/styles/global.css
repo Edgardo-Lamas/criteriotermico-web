@@ -1409,9 +1409,10 @@ h4 { font-size: var(--text-xl); }
   background: linear-gradient(150deg, var(--color-trust-bar), #cdd8e2);
 }
 
-/* En una sola columna el cuadrado se come la pantalla entera, y hoy casi
-   todas las fichas muestran el placeholder. Se achata para que el nombre del
-   repuesto entre en el mismo golpe de vista que la foto. */
+/* En una sola columna el cuadrado se come la pantalla entera. Se achata para que
+   el nombre del repuesto entre en el mismo golpe de vista que la foto.
+   El aspect-ratio de este contenedor es lo que reserva el espacio de la imagen:
+   por eso las <img> de las fichas no necesitan width/height para evitar el salto. */
 @media (max-width: 560px) {
   .product-card__media {
     aspect-ratio: 16 / 10;

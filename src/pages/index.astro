@@ -15,15 +15,15 @@ const notas = (await getCollection("notas"))
   .slice(0, 4);
 
 const trabajos = [
-  { file: "radiadores-diseno.jpg", alt: "Radiadores de diseño expuestos sobre muro de ladrillo", label: "Radiadores de diseño" },
-  { file: "radiador-talavera.jpg", alt: "Radiador de fundición blanco sobre piso calcáreo", label: "Fundición clásica · living" },
-  { file: "piso-radiante.jpg", alt: "Instalación de piso radiante en cocina", label: "Piso radiante · cocina" },
-  { file: "radiador-columna.jpg", alt: "Radiador columna de hierro en negro con llave cromada", label: "Columna de hierro" },
-  { file: "radiador-piedra.jpg", alt: "Radiador de fundición blanco sobre muro de piedra", label: "Sobre muro de piedra" },
-  { file: "radiador-living.jpg", alt: "Radiador de fundición negro en ambiente con plantas", label: "Ambiente cálido" },
-  { file: "radiador-bano.jpg", alt: "Radiador de fundición junto a la bañera", label: "Confort en el baño" },
-  { file: "toallero.png", alt: "Toallero caléntico instalado en el baño", label: "Toallero · baño" },
-  { file: "calderas.jpg", alt: "Sala de calderas con doble equipo instalado", label: "Sala de calderas" },
+  { file: "radiadores-diseno.jpg", alt: "Radiadores de diseño expuestos sobre muro de ladrillo", label: "Radiadores de diseño", w: 800, h: 600 },
+  { file: "radiador-talavera.jpg", alt: "Radiador de fundición blanco sobre piso calcáreo", label: "Fundición clásica · living", w: 800, h: 600 },
+  { file: "piso-radiante.jpg", alt: "Instalación de piso radiante en cocina", label: "Piso radiante · cocina", w: 467, h: 488 },
+  { file: "radiador-columna.jpg", alt: "Radiador columna de hierro en negro con llave cromada", label: "Columna de hierro", w: 800, h: 600 },
+  { file: "radiador-piedra.jpg", alt: "Radiador de fundición blanco sobre muro de piedra", label: "Sobre muro de piedra", w: 480, h: 640 },
+  { file: "radiador-living.jpg", alt: "Radiador de fundición negro en ambiente con plantas", label: "Ambiente cálido", w: 800, h: 1066 },
+  { file: "radiador-bano.jpg", alt: "Radiador de fundición junto a la bañera", label: "Confort en el baño", w: 800, h: 732 },
+  { file: "toallero.jpg", alt: "Toallero caléntico instalado en el baño", label: "Toallero · baño", w: 800, h: 670 },
+  { file: "calderas.jpg", alt: "Sala de calderas con doble equipo instalado", label: "Sala de calderas", w: 800, h: 600 },
 ];
 ---
 
@@ -70,11 +70,11 @@ const trabajos = [
 
       <div class="hero__media">
         <div class="hero__frame">
-          <img src="/images/home/hero-piso.jpg" alt="" aria-hidden="true" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
-          <img data-hero-slide="0" src="/images/home/hero-piso.jpg" alt="Instalador colocando el circuito de un piso radiante en obra" />
-          <img data-hero-slide="1" src="/images/home/hero-calderas.jpg" alt="Técnico trabajando en una sala con dos calderas murales" />
-          <img data-hero-slide="2" src="/images/home/hero-colector.jpg" alt="Instalador conectando el colector de un piso radiante" />
-          <img data-hero-slide="3" src="/images/home/hero-toallero.jpg" alt="Instalador montando un toallero en un baño" />
+          <img src="/images/home/hero-piso.jpg" alt="" aria-hidden="true" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" width="1280" height="960"/>
+          <img data-hero-slide="0" src="/images/home/hero-piso.jpg" alt="Instalador colocando el circuito de un piso radiante en obra" width="1280" height="960"/>
+          <img data-hero-slide="1" src="/images/home/hero-calderas.jpg" alt="Técnico trabajando en una sala con dos calderas murales" width="1280" height="960"/>
+          <img data-hero-slide="2" src="/images/home/hero-colector.jpg" alt="Instalador conectando el colector de un piso radiante" width="1280" height="960"/>
+          <img data-hero-slide="3" src="/images/home/hero-toallero.jpg" alt="Instalador montando un toallero en un baño" width="1280" height="960"/>
           <div class="hero__frame-gradient"></div>
           <div class="hero__dots">
             <span data-hero-dot="0"></span>
@@ -249,7 +249,7 @@ const trabajos = [
     <div class="container tecnico__grid">
       <div class="tecnico__media" data-reveal>
         <div class="tecnico__photo">
-          <img src="/images/home/sobre-mi-portrait.jpg" alt="Edgardo, técnico de Criterio Térmico" />
+          <img src="/images/home/sobre-mi-portrait.jpg" alt="Edgardo, técnico de Criterio Térmico" width="1000" height="1150" loading="lazy" />
         </div>
         <div class="tecnico__badge">
           <div class="tecnico__badge-number">20</div>
@@ -294,7 +294,7 @@ const trabajos = [
       <div class="masonry" data-reveal>
         {trabajos.map((foto) => (
           <div class="masonry__item">
-            <img src={`/images/trabajos/${foto.file}`} alt={foto.alt} loading="lazy" />
+            <img src={`/images/trabajos/${foto.file}`} alt={foto.alt} width={foto.w} height={foto.h} loading="lazy" />
             <div class="masonry__overlay"></div>
             <div class="masonry__label">{foto.label}</div>
           </div>
