@@ -33,9 +33,14 @@ const galeria = (repuesto.imagenes && repuesto.imagenes.length > 0)
   : [repuesto.imagen || PLACEHOLDER_REPUESTO];
 
 const compraMensaje = `Hola, quiero comprar el ${repuesto.nombre}${codigoDisplay}. ¿Me confirmás disponibilidad, precio del día y cómo coordinamos la entrega?`;
-const seoTitle = repuesto.codigo
-  ? `${repuesto.nombre}${codigoDisplay} — Repuesto original Peisa | Criterio Térmico`
-  : `${repuesto.nombre} — Repuesto original Peisa | Criterio Térmico`;
+// El código de repuesto casi no se usa en la práctica (dato de Edgardo), así que
+// queda fuera del título. Tampoco se duplica "Peisa" cuando el nombre ya lo dice
+// (solo se agrega si falta), ni se repite "| Criterio Térmico" —Google añade el
+// nombre del sitio solo—. Se mantiene el gancho "Repuesto original".
+const marcaRepuesto = repuesto.marca || "Peisa";
+const seoTitle = repuesto.nombre.includes(marcaRepuesto)
+  ? `${repuesto.nombre} — Repuesto original`
+  : `${repuesto.nombre} ${marcaRepuesto} — Repuesto original`;
 const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.slice(0, 3).join(", ")}. Repuesto original Peisa disponible para retiro en Villa Urquiza, CABA. Asesoramiento técnico incluido.`;
 ---
 
