@@ -1,6 +1,6 @@
 {
   "slug": "flujostato-bitron-onoff-90000054",
-  "nombre": "Flujostato de priorización ON/OFF Bitron para caldera Peisa",
+  "nombre": "Flujostato Bitron",
   "codigo": "90000054",
   "marca": "Peisa",
   "precio_usd": 0,
@@ -21,5 +21,5 @@
   ],
   "descripcion": "Flujostato de priorización ON/OFF marca Bitron, repuesto original Peisa. Controla la priorización entre calefacción central y agua caliente sanitaria.",
   "guia_instalacion_slug": "",
-  "whatsapp_mensaje": "Hola, consulto por el flujostato Bitron Peisa 90000054. ¿Está disponible?"
+  "whatsapp_mensaje": "Hola, consulto por el flujostato Bitron Peisa. ¿Está disponible?"
 }
