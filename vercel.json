@@ -24,8 +24,7 @@
     {
       "source": "/sanitarios-san-martin",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "googlebot: noindex, nofollow" },
-        { "key": "X-Robots-Tag", "value": "bingbot: noindex, nofollow" }
+        { "key": "X-Robots-Tag", "value": "googlebot: noindex, nofollow" }
       ]
     },
     {
