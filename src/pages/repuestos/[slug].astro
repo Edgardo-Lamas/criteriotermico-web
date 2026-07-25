@@ -39,7 +39,23 @@ const marcaRepuesto = repuesto.marca || "Peisa";
 const seoTitle = repuesto.nombre.includes(marcaRepuesto)
   ? `${repuesto.nombre} — Repuesto original`
   : `${repuesto.nombre} ${marcaRepuesto} — Repuesto original`;
-const seoDescription = `${repuesto.nombre} para ${repuesto.modelos_compatibles.slice(0, 3).join(", ")}. Repuesto original Peisa disponible para retiro en Villa Urquiza, CABA. Asesoramiento técnico incluido.`;
+// La compatibilidad se declara de dos formas distintas en el contenido: como lista
+// de modelos ("Diva Duo F", "Única F") o como una frase suelta ("Compatible con
+// calderas Peisa con conector estándar"). Anteponerle "para" a la frase daba
+// "Termostato para Compatible con calderas…" en el snippet de Google, así que se
+// detecta el caso y se usa tal cual. Se apunta a 120-160 caracteres: por debajo se
+// desaprovecha el snippet, por encima Google lo corta a mitad de frase.
+const modelos = repuesto.modelos_compatibles ?? [];
+const esFrase = modelos.length === 1 && modelos[0].length > 30;
+const colaSeo = `Repuesto original ${marcaRepuesto} con asesoramiento técnico. Retiro en Villa Urquiza, CABA.`;
+// Se listan hasta 3 modelos y se van sacando de a uno hasta que la descripción
+// entra en el límite; los nombres de modelo son de largo muy variable.
+let seoDescription = colaSeo;
+for (let n = esFrase ? 1 : Math.min(modelos.length, 3); n >= 1; n--) {
+  const lista = esFrase ? modelos[0] : `Compatible con ${modelos.slice(0, n).join(", ")}`;
+  seoDescription = `${lista}. ${colaSeo}`;
+  if (seoDescription.length <= 158) break;
+}
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription}>
