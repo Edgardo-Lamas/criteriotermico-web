@@ -11,9 +11,15 @@ interface Props {
   canonicalUrl?: string;
   hideChrome?: boolean;
   noindex?: boolean;
+  // Un `noindex` genérico también frena a los crawlers de preview: el de
+  // Facebook/WhatsApp no arma la tarjeta del enlace en una página marcada así.
+  // Con esto el noindex se dirige solo a los buscadores, que es lo que se quiere
+  // en una página privada que igual se comparte por mensaje (la propuesta
+  // comercial). No usarlo en páginas que no se comparten, como /panel.
+  permitirPreviewSocial?: boolean;
 }
 
-const { title, description, ogImage = "/images/og-default.png", canonicalUrl, hideChrome = false, noindex = false } = Astro.props;
+const { title, description, ogImage = "/images/og-default.png", canonicalUrl, hideChrome = false, noindex = false, permitirPreviewSocial = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 // Única fuente de verdad: `site` en astro.config.mjs. Cuando esto era una constante
 // hardcodeada acá, el dominio quedó duplicado en seis archivos y al cambiarlo se
@@ -34,7 +40,15 @@ const fullCanonical = canonicalUrl || `${siteUrl}${currentPath}`;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={fullCanonical} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex &&
+      (permitirPreviewSocial ? (
+        <>
+          <meta name="googlebot" content="noindex, nofollow" />
+          <meta name="bingbot" content="noindex, nofollow" />
+        </>
+      ) : (
+        <meta name="robots" content="noindex, nofollow" />
+      ))}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
