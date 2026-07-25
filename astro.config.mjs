@@ -1,6 +1,19 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
+import fs from "node:fs";
+
+// Notas marcadas `borrador: true`: existen como archivo pero todavía no tienen
+// contenido escrito. Se leen acá con fs porque el filtro del sitemap recibe una
+// URL suelta, sin acceso a las colecciones de contenido.
+const DIR_NOTAS = "./src/content/notas";
+const notasBorrador = fs
+  .readdirSync(DIR_NOTAS)
+  .filter((archivo) => archivo.endsWith(".md"))
+  .filter((archivo) =>
+    /^borrador:\s*true\s*$/m.test(fs.readFileSync(`${DIR_NOTAS}/${archivo}`, "utf-8"))
+  )
+  .map((archivo) => `/notas/${archivo.replace(/\.md$/, "")}`);
 
 export default defineConfig({
   // De acá salen canonical, og:url, og:image y el sitemap. Es el dominio propio,
@@ -9,7 +22,14 @@ export default defineConfig({
   site: "https://crtermico.com",
   // /panel es una herramienta privada (métricas SEO): fuera del sitemap y con
   // noindex en BaseLayout, para que Google no la indexe ni la muestre.
-  integrations: [sitemap({ filter: (page) => !page.includes("/panel") }), mdx()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes("/panel") &&
+        !notasBorrador.some((ruta) => page.includes(ruta)),
+    }),
+    mdx(),
+  ],
   output: "static",
   redirects: {
     // /para-tecnicos pasó a /plataforma cuando el sitio entero se reorientó al

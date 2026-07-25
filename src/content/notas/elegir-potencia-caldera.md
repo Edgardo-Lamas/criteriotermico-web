@@ -5,6 +5,7 @@ excerpt: "La cuenta simple —metros, ambientes, orientación y aislación— pa
 readingTime: "6 min"
 image: "/images/home/termostato-premium.jpg"
 fecha: "2026-03-01"
+borrador: true
 featured: true
 ---
 

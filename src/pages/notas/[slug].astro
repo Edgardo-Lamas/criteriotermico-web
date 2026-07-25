@@ -21,6 +21,7 @@ const { Content } = await render(nota);
 <BaseLayout
   title={`${nota.data.title} — Criterio Térmico`}
   description={nota.data.excerpt}
+  noindex={nota.data.borrador}
 >
   <SchemaMarkup
     type="article"

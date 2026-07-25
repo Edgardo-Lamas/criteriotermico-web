@@ -42,6 +42,11 @@ const notas = defineCollection({
     image: z.string().optional(),
     fecha: z.string(),
     featured: z.boolean().optional(),
+    // La nota existe pero todavía no tiene contenido escrito. Queda fuera del
+    // sitemap (astro.config.mjs) y con noindex (notas/[slug].astro): en un dominio
+    // nuevo, que Google conozca el sitio por páginas vacías pesa sobre todo el
+    // resto. Sacar la marca al completarla.
+    borrador: z.boolean().optional(),
   }),
 });
 

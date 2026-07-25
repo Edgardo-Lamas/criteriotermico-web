@@ -4,6 +4,7 @@ category: "Guías"
 excerpt: "Cómo reconocer tu tipo de caldera y por qué importa para los repuestos."
 readingTime: "4 min"
 fecha: "2026-04-12"
+borrador: true
 ---
 
 *[TODO: Edgardo — completar contenido de esta nota]*

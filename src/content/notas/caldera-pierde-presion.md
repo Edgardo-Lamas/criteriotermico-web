@@ -4,6 +4,7 @@ category: "Diagnóstico"
 excerpt: "Si tenés que reponer agua seguido, algo pasa. Las causas más comunes."
 readingTime: "5 min"
 fecha: "2026-04-05"
+borrador: true
 ---
 
 *[TODO: Edgardo — completar contenido de esta nota]*
