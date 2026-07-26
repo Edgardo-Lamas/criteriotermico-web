@@ -28,12 +28,6 @@
       ]
     },
     {
-      "source": "/prueba-preview",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "googlebot: noindex, nofollow" }
-      ]
-    },
-    {
       "source": "/_astro/(.*)",
       "headers": [
         {

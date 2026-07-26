@@ -28,8 +28,6 @@ export default defineConfig({
       filter: (page) =>
         !page.includes("/panel") &&
         !page.includes("/sanitarios-san-martin") &&
-        !page.includes("/prueba-preview") &&
-        !page.includes("/prueba-preview-abierta") &&
         !notasBorrador.some((ruta) => page.includes(ruta)),
     }),
     mdx(),
