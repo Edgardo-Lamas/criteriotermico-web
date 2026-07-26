@@ -34,8 +34,18 @@ breadcrumbs and the sitemap all derive from it, so a wrong value here breaks
 WhatsApp link previews and tells Google the canonical version lives somewhere else.
 It points at the owner's domain **`crtermico.com`** (bought 2026-07-24, live on
 Vercel). The `.vercel.app` URL is now just the deploy target. Keep `site`
-(astro.config.mjs), `siteConfig.dominio` (src/config/site.ts) and the `Sitemap:`
-line in `public/robots.txt` all in step.
+(astro.config.mjs), `siteConfig.dominio` (src/config/site.ts), the `Sitemap:`
+line in `public/robots.txt` and the `www` redirect in `vercel.json` all in step —
+JSON can't import the config, so that last one repeats the domain by hand.
+
+**`www.crtermico.com` is registered too, and redirects to the bare domain.** Both
+names had to exist: the wildcard DNS record answers for `www` anyway, so until it was
+registered Vercel handed that name a certificate issued for the bare domain and
+browsers refused the connection outright — anyone typing `www.` out of habit got a
+security error rather than the site, and links with `www.` showed no preview. Adding
+the domain gets the certificate; the redirect in `vercel.json` (matched on the `host`
+header) is what stops the site from answering on two addresses at once, which would
+hand Google a duplicate.
 
 **`vercel.json` holds the headers** (JSON takes no comments, hence this note):
 - Security: `nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`,
