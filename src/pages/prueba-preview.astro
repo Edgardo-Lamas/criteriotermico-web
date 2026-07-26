@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// PÁGINA TEMPORAL DE DIAGNÓSTICO — BORRAR cuando se resuelva lo de la preview.
+//
+// La propuesta a Sanitarios (/sanitarios-san-martin) no muestra vista previa en
+// WhatsApp: no aparece ninguna tarjeta, solo el enlace pelado. El resto del sitio
+// sí la muestra, así que el problema es de esa página y quedan dos sospechosos que
+// no se pueden separar mirando la página que falla:
+//
+//   a) el caché de Facebook/WhatsApp, envenenado por los primeros intentos que
+//      todavía daban 404 (y que el `?v=1` NO limpia, porque el og:url manda al
+//      crawler de vuelta a la URL canónica);
+//   b) la configuración de página privada — el `noindex` dirigido a googlebot/bingbot
+//      y el `X-Robots-Tag` de vercel.json — que algún crawler podría estar leyendo de
+//      más y por eso no arma la tarjeta.
+//
+// Esta página es la variable de control: URL nueva (caché limpio garantizado) con la
+// configuración IDÉNTICA a la propuesta. Si acá SÍ sale la preview, la configuración
+// está bien y lo de la propuesta es el caché. Si acá TAMPOCO sale, es la configuración.
+---
+
+<BaseLayout
+  title="Criterio Térmico — Planteo de trabajo conjunto"
+  description="Plataforma técnica independiente para instaladores de calefacción por radiadores: cálculo, diseño sobre plano, presupuesto y lista de materiales. Presentado a Sanitarios San Martín."
+  ogImage="/images/og-sanitarios.png"
+  hideChrome
+  noindex
+  permitirPreviewSocial
+>
+  <main class="prueba">
+    <h1>Página de prueba</h1>
+    <p>
+      Esta página existe solo para probar la vista previa de los enlaces. No tiene
+      contenido y se borra cuando termine la prueba.
+    </p>
+  </main>
+</BaseLayout>
+
+<style>
+  .prueba {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+</style>
