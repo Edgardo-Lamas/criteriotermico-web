@@ -77,6 +77,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <style>
+  /* El atributo `hidden` oculta con `display: none`, pero cualquier regla propia
+     que fije `display` le gana. Acá .login, .dash y .tab-panel lo hacían, así que
+     el tablero se veía sin entrar y el login no se iba al entrar. */
+  [hidden] {
+    display: none !important;
+  }
+
   .panel {
     min-height: 100vh;
     background: var(--color-cream);
