@@ -20,14 +20,12 @@ export default defineConfig({
   // ya comprado y apuntado a Vercel (2026-07-24). Debe coincidir con `dominio` en
   // src/config/site.ts y con la línea Sitemap de public/robots.txt.
   site: "https://crtermico.com",
-  // /panel es una herramienta privada (métricas SEO) y /sanitarios-san-martin es una
-  // propuesta comercial dirigida a un cliente concreto: las dos van fuera del sitemap
-  // y con noindex en BaseLayout, para que Google no las indexe ni las muestre.
+  // /panel es una herramienta privada (métricas SEO): va fuera del sitemap y con
+  // noindex en BaseLayout, para que Google no la indexe ni la muestre.
   integrations: [
     sitemap({
       filter: (page) =>
         !page.includes("/panel") &&
-        !page.includes("/sanitarios-san-martin") &&
         !notasBorrador.some((ruta) => page.includes(ruta)),
     }),
     mdx(),
