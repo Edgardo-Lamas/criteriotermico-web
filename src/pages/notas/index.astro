@@ -10,7 +10,10 @@ const todasLasNotas = (await getCollection("notas")).sort(
 const destacada = todasLasNotas.find((n) => n.data.featured) ?? todasLasNotas[0];
 const resto = todasLasNotas.filter((n) => n.id !== destacada?.id);
 
-const categorias = ["Todas", "Guías", "Mantenimiento", "Comparativas", "Ahorro", "Tecnología", "Diagnóstico"];
+// Las categorías se listan a mano y NO salen de las notas publicadas: el filtro
+// tiene que existir antes que la primera nota de cada tema. Si se agrega una nota
+// con una categoría que no está acá, su chip no aparece y el filtro la deja afuera.
+const categorias = ["Todas", "Guías", "Historia", "Mantenimiento", "Comparativas", "Ahorro", "Tecnología", "Diagnóstico", "Seguridad"];
 ---
 
 <BaseLayout

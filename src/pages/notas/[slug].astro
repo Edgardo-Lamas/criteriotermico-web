@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SchemaMarkup from "../../components/SchemaMarkup.astro";
 import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import Icon from "../../components/Icon.astro";
 import { siteConfig } from "../../config/site";
 import { getCollection, render } from "astro:content";
 
@@ -16,16 +17,29 @@ export async function getStaticPaths() {
 
 const { nota } = Astro.props;
 const { Content } = await render(nota);
+
+// La tarjeta de WhatsApp usa su propio recorte si la nota lo trae; si no, la
+// portada. Nunca la OG del sitio: un artículo compartido tiene que mostrarse a
+// sí mismo, no la marca.
+const ogDeLaNota = nota.data.ogImage || nota.data.image;
+const urlNota = `${siteConfig.dominio}/notas/${nota.id}`;
+const textoCompartir = `${nota.data.title} — Criterio Térmico`;
 ---
 
 <BaseLayout
   title={`${nota.data.title} — Criterio Térmico`}
   description={nota.data.excerpt}
+  ogImage={ogDeLaNota}
   noindex={nota.data.borrador}
 >
   <SchemaMarkup
     type="article"
-    data={{ title: nota.data.title, description: nota.data.excerpt, fecha: nota.data.fecha }}
+    data={{
+      title: nota.data.title,
+      description: nota.data.excerpt,
+      fecha: nota.data.fecha,
+      imagen: `${siteConfig.dominio}${ogDeLaNota}`,
+    }}
   />
   <SchemaMarkup
     type="breadcrumb"
@@ -59,11 +73,75 @@ const { Content } = await render(nota);
         </div>
       </div>
 
+      <figure class="article-cover">
+        {/* 4:3 fijo, no las medidas del archivo: el CSS recorta la portada a esa
+            relación, así que declarar acá el tamaño real de cada foto haría que
+            el navegador reserve un alto que después no usa, y la página salta. */}
+        <img
+          src={nota.data.image}
+          alt={nota.data.title}
+          width="1200"
+          height="900"
+          fetchpriority="high"
+        />
+        {nota.data.imageCredito && (
+          <figcaption set:html={nota.data.imageCredito} />
+        )}
+      </figure>
+
       <div class="article-content">
         <Content />
       </div>
+
+      <div class="article-share">
+        <span class="article-share__label">Compartir esta nota</span>
+        <div class="article-share__buttons">
+          <a
+            class="article-share__btn"
+            href={`https://wa.me/?text=${encodeURIComponent(`${textoCompartir}\n${urlNota}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="whatsapp" size={18} /> WhatsApp
+          </a>
+          <a
+            class="article-share__btn"
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlNota)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="facebook" size={18} /> Facebook
+          </a>
+          <button class="article-share__btn" type="button" data-copiar-enlace={urlNota}>
+            <Icon name="link" size={18} /> <span>Copiar enlace</span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
+
+  <script>
+    // Copiar al portapapeles con confirmación visible: sin el cambio de texto no
+    // hay forma de saber si funcionó, y el usuario vuelve a apretar.
+    document.querySelectorAll<HTMLButtonElement>("[data-copiar-enlace]").forEach((boton) => {
+      const etiqueta = boton.querySelector("span");
+      boton.addEventListener("click", async () => {
+        if (!etiqueta) return;
+        try {
+          await navigator.clipboard.writeText(boton.dataset.copiarEnlace ?? "");
+          const original = etiqueta.textContent;
+          etiqueta.textContent = "¡Copiado!";
+          boton.classList.add("is-copiado");
+          setTimeout(() => {
+            etiqueta.textContent = original;
+            boton.classList.remove("is-copiado");
+          }, 2000);
+        } catch {
+          etiqueta.textContent = "No se pudo copiar";
+        }
+      });
+    });
+  </script>
 
   <section class="container container--narrow" style="margin-top: 44px; padding-bottom: clamp(56px, 7vw, 88px);">
     <div class="dashed-cta">

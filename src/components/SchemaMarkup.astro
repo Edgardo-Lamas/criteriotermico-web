@@ -45,6 +45,9 @@ if (type === "product") {
     "@type": "Article",
     headline: data.title,
     description: data.description,
+    // Google pide la imagen para mostrar el artículo con miniatura en los
+    // resultados. Va absoluta: una ruta relativa no le sirve.
+    image: data.imagen || undefined,
     datePublished: data.fecha,
     author: {
       "@type": "Organization",

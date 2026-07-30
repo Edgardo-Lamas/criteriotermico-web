@@ -39,7 +39,19 @@ const notas = defineCollection({
     category: z.string(),
     excerpt: z.string(),
     readingTime: z.string(),
-    image: z.string().optional(),
+    // Obligatoria a propósito: la nota se lee como artículo y se comparte por
+    // WhatsApp, y las dos cosas dependen de la foto. Si es opcional, la que se
+    // publique sin ella arranca con el texto pelado y sale con la OG genérica,
+    // y nadie se entera hasta que alguien pega el enlace. Así, el build frena.
+    image: z.string(),
+    // Crédito al pie de la portada: quién la sacó y bajo qué licencia. Las fotos
+    // de archivo arqueológico vienen de Wikimedia, y CC BY / CC BY-SA obligan a
+    // atribuir. Vacío solo si la foto es propia.
+    imageCredito: z.string().optional(),
+    // Imagen para la tarjeta de WhatsApp/Facebook. Va aparte de `image` porque
+    // el recorte 1200x630 no coincide con el de la portada. Si falta, cae en la
+    // del sitio, que no dice nada del artículo.
+    ogImage: z.string().optional(),
     fecha: z.string(),
     featured: z.boolean().optional(),
     // La nota existe pero todavía no tiene contenido escrito. Queda fuera del

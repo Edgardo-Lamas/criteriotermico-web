@@ -1534,9 +1534,14 @@ h4 { font-size: var(--text-xl); }
 
 
 /* ---------- Notas cards ---------- */
+/* Tope de 380px por columna + centrado: con `1fr` y pocas notas publicadas la
+   fila quedaba con una tarjeta a la izquierda y tres huecos al lado, que se lee
+   como que la sección está rota. Así el bloque se ve entero con una nota o con
+   cuatro, y no hay que tocar nada cuando se publica la próxima. */
 .notas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 380px));
+  justify-content: center;
   gap: 22px;
 }
 
@@ -2053,6 +2058,111 @@ h4 { font-size: var(--text-xl); }
   color: var(--color-text-muted);
 }
 
+/* ---------- Portada del artículo ---------- */
+/* La foto va antes del texto y ocupa todo el ancho de la columna: es lo que
+   separa una nota de un párrafo suelto. El aspect-ratio reserva el lugar antes
+   de que la imagen baje — sin eso el título salta cuando termina de cargar. */
+.article-cover {
+  max-width: var(--container-narrow);
+  margin: 28px auto 36px;
+}
+
+.article-cover img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+.article-cover figcaption {
+  margin-top: 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.article-cover figcaption a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Figuras dentro del cuerpo del artículo. Sin el margen de abajo el párrafo
+   siguiente se pega al pie de foto y se lee como parte del crédito. */
+.article-content figure {
+  margin: 32px 0;
+}
+
+.article-content figure img {
+  margin: 0;
+}
+
+.article-content figcaption {
+  margin-top: 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.article-content figcaption a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------- Compartir ---------- */
+.article-share {
+  max-width: var(--container-narrow);
+  margin: 44px auto 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.article-share__label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
+}
+
+.article-share__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.article-share__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--transition-base), color var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.article-share__btn:hover {
+  border-color: var(--color-orange-solid);
+  color: var(--color-orange-ink);
+}
+
+.article-share__btn.is-copiado {
+  border-color: var(--color-orange-solid);
+  color: var(--color-orange-ink);
+}
+
 /* ---------- Article content (Markdown/MDX prose) ---------- */
 .article-content {
   max-width: var(--container-narrow);
@@ -2093,19 +2203,24 @@ h4 { font-size: var(--text-xl); }
   gap: 10px;
 }
 
+/* El guion va posicionado, NO con `display: flex` en el <li>. Con flex, cada
+   hijo del ítem (un <a>, un <em>, cada trozo de texto suelto) se vuelve un
+   item flex independiente y la línea se parte en columnas: se ve bien mientras
+   el ítem es texto plano y se rompe en cuanto lleva un enlace o una cursiva. */
 .article-content li {
-  display: flex;
-  gap: 12px;
+  position: relative;
+  padding-left: 24px;
   font-size: 16.5px;
   line-height: 1.55;
-  padding-left: 0;
 }
 
 .article-content li::before {
   content: '—';
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--color-orange-ink);
   font-weight: 700;
-  flex-shrink: 0;
 }
 
 .article-content strong {
