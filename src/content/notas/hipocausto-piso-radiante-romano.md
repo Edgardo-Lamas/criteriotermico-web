@@ -7,7 +7,6 @@ image: "/images/notas/hipocausto-minturnae.jpg"
 imageCredito: 'Termas romanas de Minturnae, Italia. Se ven las hileras de <em>pilae</em> que sostenían el piso y, al fondo, las bocas por donde entraba el calor. Foto: Awinkler3, <a href="https://commons.wikimedia.org/wiki/File:Hypocaust_of_baths_in_Minturnae.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, CC0.'
 ogImage: "/images/notas/og-hipocausto.jpg"
 fecha: "2026-07-30"
-featured: true
 ---
 
 Para entrar a la sala caliente de unas termas romanas había que calzarse sandalias

@@ -2251,6 +2251,49 @@ h4 { font-size: var(--text-xl); }
   text-underline-offset: 2px;
 }
 
+/* ---------- Tablas dentro del artículo ---------- */
+/* Markdown no envuelve la tabla en nada, así que el scroll horizontal va en un
+   <div class="table-scroll"> escrito a mano alrededor. Sin eso, una tabla de tres
+   columnas empuja el ancho de TODA la página en un celular: el que scrollea no es
+   el cuadro, es el body, y el texto de la nota queda corrido. */
+.table-scroll {
+  overflow-x: auto;
+  margin-block: var(--space-6);
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-content table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.article-content th,
+.article-content td {
+  padding: 11px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-content th {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: .01em;
+  color: var(--color-text-primary);
+  background: rgba(var(--rgb-ink), .04);
+  border-bottom-width: 2px;
+}
+
+.article-content td {
+  color: var(--color-text-secondary);
+}
+
+.article-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
 /* ---------- Symptom blocks (MDX component) ---------- */
 .symptom-block {
   background: var(--color-card);
@@ -2307,6 +2350,33 @@ h4 { font-size: var(--text-xl); }
 }
 
 .callout-box strong {
+  color: var(--color-orange-light);
+}
+
+/* Variante de acción inmediata, para las notas de seguridad. El formato pone
+   arriba de todo lo que hay que hacer YA: quien llega buscando "olor raro" no
+   puede leer seis párrafos antes del dato que le importa. Hereda el fondo
+   oscuro del callout; lo que hay que rehacer son las viñetas, porque las de
+   .article-content están pintadas para fondo claro y sobre el espresso no se
+   leen. */
+.callout-box--urgente {
+  border-inline-start: 5px solid var(--color-error);
+}
+
+.callout-box--urgente .callout-box__body {
+  margin-bottom: 0;
+}
+
+.article-content .callout-box--urgente ul {
+  margin-bottom: 0;
+  gap: 13px;
+}
+
+.article-content .callout-box--urgente li {
+  color: var(--color-cream-soft);
+}
+
+.article-content .callout-box--urgente li::before {
   color: var(--color-orange-light);
 }
 
