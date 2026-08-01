@@ -2183,6 +2183,103 @@ h4 { font-size: var(--text-xl); }
   margin-bottom: 0;
 }
 
+/* ---------- Comparativa de pérdidas (gráfico de barras sin librería) ----------
+   Se dibuja con CSS puro: cada barra lee su largo de la variable --v (el
+   porcentaje), así que el dato vive en el HTML del artículo y no hay ningún
+   script. ⚠ La CSP de este sitio no permite scripts de terceros: cualquier
+   gráfico que se agregue tiene que resolverse así o con SVG a mano. */
+.article-content .perdidas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(18px, 3vw, 32px);
+  margin: 32px 0 12px;
+}
+
+.article-content .perdidas__col {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 2.4vw, 22px);
+}
+
+.article-content .perdidas__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text-primary);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.article-content .perdidas__title span {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-orange-ink);
+  margin-top: 3px;
+}
+
+/* Anula el estilo de lista del artículo: acá cada ítem es una fila de gráfico,
+   no un punteo. Sin esto hereda el guion de ::before y la sangría. */
+.article-content .perdidas__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+}
+
+.article-content .perdidas__list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "label num" "bar bar";
+  align-items: center;
+  gap: 2px 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.article-content .perdidas__list li::before {
+  content: none;
+}
+
+.article-content .perdidas__label {
+  grid-area: label;
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+}
+
+.article-content .perdidas__num {
+  grid-area: num;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.article-content .perdidas__bar {
+  grid-area: bar;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-orange);
+  /* --v es el porcentaje; 39 es el máximo del gráfico, así que la barra más
+     larga llega al borde y el resto queda a escala contra ella. */
+  width: calc(var(--v) / 39 * 100%);
+  min-width: 4px;
+}
+
+.article-content .perdidas__bar--alerta {
+  background: var(--color-espresso);
+}
+
+@media (max-width: 560px) {
+  .article-content .perdidas {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Crédito de la foto cuando la figura no lleva figcaption propio (maquetas
    pareadas): mismo tamaño y color que un pie de foto, no un párrafo más. */
 .article-content .article-nota-credito {
