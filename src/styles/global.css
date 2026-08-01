@@ -160,6 +160,13 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+  /* Va junto con max-width y no es opcional: los <img> del sitio declaran
+     width/height reales para reservar espacio, y cuando el ancho se achica
+     (columna angosta, mobile) el navegador conserva el alto del atributo y la
+     imagen sale estirada. Con height:auto recalcula la proporción.
+     Las que sí necesitan alto fijo (portadas con object-fit) lo fijan desde su
+     propia clase, que gana por especificidad. */
+  height: auto;
 }
 
 input,
@@ -1551,9 +1558,37 @@ h4 { font-size: var(--text-xl); }
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: 26px;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* La foto es parte de la tarjeta, no un adorno: sin ella el grid queda como una
+   lista de títulos sobre blanco, y una nota con portada real se ve peor listada
+   que abierta. `image` ya es obligatoria en el schema, así que siempre hay una. */
+.nota-card__media {
+  aspect-ratio: 16 / 10;
+  background: var(--color-trust-bar);
+  overflow: hidden;
+}
+
+.nota-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.nota-card:hover .nota-card__media img {
+  transform: scale(1.04);
+}
+
+.nota-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 26px 26px;
 }
 
 .nota-card:hover {
@@ -2110,6 +2145,85 @@ h4 { font-size: var(--text-xl); }
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+/* ---------- Maquetas de figura: que no todas las notas se lean igual ----------
+   Decisión editorial (2026-08-01): la estructura interna varía de nota a nota.
+   Estas clases se ponen a mano en el Markdown de cada artículo; sin clase, la
+   figura sigue siendo la de ancho completo de siempre.
+
+   ⚠ Las tres rompen a una sola columna en mobile, donde no hay ancho para dos.
+   ⚠ `--figura-ancha` se sale del contenedor angosto con márgenes negativos: si
+   alguna vez el artículo deja de estar centrado, esto hay que revisarlo. */
+
+/* Imagen y texto lado a lado. El texto va en el mismo bloque, después de la
+   figura: se envuelven los dos en .figura-par. */
+.article-content .figura-par {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 34px);
+  align-items: center;
+  margin: 36px 0;
+}
+
+.article-content .figura-par figure {
+  margin: 0;
+}
+
+.article-content .figura-par figure img {
+  border-radius: var(--radius-lg);
+}
+
+/* El texto que acompaña no arrastra el margen de párrafo suelto. */
+.article-content .figura-par__texto > :first-child {
+  margin-top: 0;
+}
+
+.article-content .figura-par__texto > :last-child {
+  margin-bottom: 0;
+}
+
+/* Crédito de la foto cuando la figura no lleva figcaption propio (maquetas
+   pareadas): mismo tamaño y color que un pie de foto, no un párrafo más. */
+.article-content .article-nota-credito {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Invierte el orden visual sin tocar el orden del HTML, que es el que lee un
+   lector de pantalla y el que queda en mobile. */
+.article-content .figura-par--invertida .figura-par__texto {
+  order: -1;
+}
+
+/* Figura que se sale del ancho de lectura: para una foto que merece respirar. */
+.article-content .figura-ancha {
+  margin: clamp(36px, 5vw, 52px) calc(var(--figura-sangria) * -1);
+}
+
+.article-content .figura-ancha img {
+  border-radius: var(--radius-xl);
+}
+
+.article-content .figura-ancha figcaption {
+  padding: 0 var(--figura-sangria);
+}
+
+.article-content {
+  --figura-sangria: clamp(0px, 6vw, 90px);
+}
+
+@media (max-width: 768px) {
+  .article-content .figura-par {
+    grid-template-columns: 1fr;
+  }
+
+  /* En una sola columna, la imagen va siempre primero: el texto invertido
+     quedaría separado de la foto que explica. */
+  .article-content .figura-par--invertida .figura-par__texto {
+    order: 0;
+  }
 }
 
 /* ---------- Compartir ---------- */

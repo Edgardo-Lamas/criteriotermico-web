@@ -2,7 +2,7 @@
 title: "Monóxido de carbono: el asesino silencioso"
 category: "Seguridad"
 excerpt: "Un hombre tirado en el living de su casa. Su mujer entra a socorrerlo y cae al lado. El monóxido no se ve, no se huele y no tiene gusto: primero adormece, y después saca la fuerza necesaria para salir. Qué hacer en el momento, qué encontramos en esa casa, y por qué un detector puede tardar dos horas en sonar."
-readingTime: "14 min"
+readingTime: "16 min"
 image: "/images/notas/monoxido-llama.jpg"
 imageCredito: "Combustión incompleta: la llama arde amarilla porque al quemador no le llega todo el aire que necesita. Abajo, pegado al pico, sobrevive el anillo azul de la parte que sí quema bien. Imagen generada digitalmente para esta nota."
 ogImage: "/images/notas/og-monoxido.jpg"
@@ -160,24 +160,76 @@ la habitación.
 
 ## Cómo envenena
 
-El monóxido entra por los pulmones y pasa a la sangre, donde se encuentra con la
-hemoglobina: la proteína que lleva el oxígeno desde el pulmón hasta cada célula.
+Antes del veneno hay que entender el sistema que ataca, porque ahí está todo.
 
-La hemoglobina tiene un problema de diseño que nadie podía prever. **Prefiere el
-monóxido al oxígeno, con una afinidad 200 veces mayor.** No es que el monóxido
-"desplace" al oxígeno a los empujones: es que cuando pasan los dos por al lado,
-la hemoglobina elige al monóxido. Lo que se forma se llama carboxihemoglobina, y
-esa molécula ya no transporta oxígeno.
+**Qué es la hemoglobina.** Cada vez que respirás, el oxígeno del aire llega a los
+pulmones y tiene que viajar hasta la última célula del cuerpo. No viaja suelto:
+viaja cargado. La hemoglobina es la proteína que hace ese transporte, y va dentro
+de los glóbulos rojos: cada glóbulo lleva unos 270 millones de moléculas de
+hemoglobina, y cada una puede agarrar hasta cuatro moléculas de oxígeno. Las
+carga en el pulmón, las lleva por la sangre y las suelta donde hacen falta. Toda
+tu energía depende de ese viaje de ida y vuelta, que se repite sin parar mientras
+estás vivo.
 
-El daño no termina ahí. Son tres cosas a la vez:
+**Quién es el primer cliente.** El cerebro. Pesa alrededor del 2% de tu cuerpo y
+consume cerca del 20% del oxígeno que respirás. Y a diferencia de un músculo, no
+tiene reservas: no aguanta un rato sin recibir. Por eso los primeros síntomas de
+esta intoxicación son mentales —confusión, torpeza, somnolencia— y no dolor de
+pecho o falta de aire. **El primer órgano que se queda sin nafta es el que tenías
+que usar para darte cuenta de que algo anda mal.**
+
+**Qué hace el monóxido.** Entra por los pulmones igual que el oxígeno, llega a la
+sangre y se encuentra con la hemoglobina. Y ahí ocurre lo que hace de este gas lo
+que es: **la hemoglobina lo prefiere. Se une a él con una afinidad unas 200 a 250
+veces mayor que al oxígeno.** No lo desplaza a los empujones; simplemente, cuando
+pasan los dos por al lado, ella elige al monóxido. Lo que se forma se llama
+carboxihemoglobina, y esa molécula ya no transporta nada. El camión sigue
+circulando, cargado con lo que no sirve.
+
+Y no se suelta fácil. La unión es reversible —el cuerpo lo elimina, por suerte—,
+pero es tan tenaz que la mitad tarda **entre 3 y 4 horas** en irse respirando
+aire común, cuando el oxígeno se entrega y se recarga en segundos. Ahí está el
+sentido del tratamiento: respirar oxígeno puro acorta esa espera a 60-90 minutos,
+y la cámara hiperbárica a 20-30. **No es que "le den aire" al intoxicado: le
+están arrancando el monóxido a la hemoglobina.** Por eso el hospital no es una
+formalidad.
+
+### Tóxico, venenoso, y por qué no es lo mismo que el dióxido de carbono
+
+Acá conviene detenerse, porque la diferencia explica por qué este gas mata y
+otros solamente desplazan.
+
+Los gases que te dejan sin oxígeno se dividen en dos familias. Los **asfixiantes
+simples** no le hacen nada a tu cuerpo: lo único que hacen es ocupar el lugar del
+aire. Si una habitación se llena de nitrógeno, de metano o de dióxido de carbono,
+el problema es que ya no queda oxígeno para respirar. Sacás a la persona al aire
+libre y vuelve a respirar oxígeno normalmente, porque su sangre nunca dejó de
+funcionar. Ese es el caso del **dióxido de carbono**, el CO₂: el gas que exhalás
+todo el día, el de la bebida con gas. Peligroso en cantidad y en ambiente
+cerrado, sí, pero peligroso **por lo que ocupa**.
+
+El monóxido de carbono es de la otra familia: un **asfixiante químico**. Y esa es
+la palabra que cambia todo. No te falta oxígeno en la habitación —en la casa del
+principio había aire de sobra, y las dos personas tiradas en el piso estaban
+respirando—. Lo que falla es el transporte. **El monóxido no te saca el oxígeno:
+te rompe el sistema que lo reparte.** Podés estar respirando aire perfectamente
+bueno y morirte igual, con los pulmones sanos y llenos.
+
+Por eso el CO₂ intoxica y el CO envenena. Un veneno no es cualquier sustancia que
+haga daño: es la que se mete en la maquinaria del cuerpo y la usa en contra
+tuyo. El monóxido hace exactamente eso — y no solo con la hemoglobina.
+
+Son tres golpes a la vez, y solo el primero es el que todo el mundo conoce:
 
 - **Transporta menos oxígeno**, porque parte de la flota quedó ocupada.
 - **Suelta peor el que sí lleva.** La poca hemoglobina que quedó cargada con
-  oxígeno se aferra a él y le cuesta entregarlo en los tejidos.
-- **Interfiere dentro de la célula**, uniéndose a otras proteínas de la
-  respiración celular, y tiene todavía más afinidad por la mioglobina del
-  corazón. Por eso el corazón sufre incluso con niveles de carboxihemoglobina
-  considerados bajos.
+  oxígeno se aferra a él y le cuesta entregarlo en los tejidos. No alcanza con
+  llevarlo: hay que soltarlo donde hace falta, y eso también queda dañado.
+- **Interfiere dentro de la célula.** El monóxido se une además a otras proteínas
+  de la respiración celular —bloquea la maquinaria que quema el oxígeno para
+  producir energía— y tiene todavía más afinidad por la mioglobina del corazón.
+  Por eso el corazón sufre incluso con niveles de carboxihemoglobina considerados
+  bajos. Aunque le llegara oxígeno, la célula ya no puede usarlo.
 
 Esto último explica algo importante: **los síntomas no se corresponden
 prolijamente con el nivel en sangre.** Hay gente con síntomas serios y valores
@@ -402,3 +454,4 @@ enteramente antes de que pase.
 - Ministerio de Salud de la Nación. [Intoxicación por monóxido de carbono](https://www.argentina.gob.ar/salud/glosario/intoxicacionpormonoxidodecarbono) — recomendaciones y centros toxicológicos.
 - ENARGAS. [NAG-204: Aparato eléctrico para la detección de monóxido de carbono en locales de uso doméstico](https://www.enargas.gob.ar/secciones/normativa/pdf/normas-tecnicas/NAG-204.pdf), año 2016.
 - ENARGAS. [Monóxido de carbono](https://www.enargas.gob.ar/secciones/monoxido-de-carbono/monoxido-de-carbono.php) — recomendaciones de uso seguro del gas.
+- StatPearls / National Library of Medicine. [Carbon Monoxide Toxicity](https://www.ncbi.nlm.nih.gov/books/NBK430740/) — afinidad por la hemoglobina, vida media de la carboxihemoglobina y efecto sobre la respiración celular.

@@ -358,10 +358,15 @@ const trabajos = [
       <div class="notas-grid" style="margin-top: 44px;" data-reveal>
         {notas.map((nota) => (
           <a href={`/notas/${nota.id}`} class="nota-card">
-            <span class="nota-card__tag">{nota.data.category}</span>
-            <h3 class="nota-card__title">{nota.data.title}</h3>
-            <p class="nota-card__excerpt">{nota.data.excerpt}</p>
-            <span class="nota-card__link">Leer nota →</span>
+            <div class="nota-card__media">
+              <img src={nota.data.image} alt={nota.data.title} width="600" height="375" loading="lazy" />
+            </div>
+            <div class="nota-card__body">
+              <span class="nota-card__tag">{nota.data.category}</span>
+              <h3 class="nota-card__title">{nota.data.title}</h3>
+              <p class="nota-card__excerpt">{nota.data.excerpt}</p>
+              <span class="nota-card__link">Leer nota →</span>
+            </div>
           </a>
         ))}
       </div>
