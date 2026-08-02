@@ -1,11 +1,18 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Breadcrumbs from "../components/Breadcrumbs.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
-import Video from "../components/Video.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import Video from "../../components/Video.astro";
 import { getCollection } from "astro:content";
 
 const instalaciones = await getCollection("instalacion");
+
+// Los artículos de criterio profesional, del más nuevo al más viejo. Los que
+// todavía no tienen contenido escrito no se listan: la tarjeta prometía y la
+// página entregaba un TODO.
+const articulos = (await getCollection("criterio"))
+  .filter((articulo) => !articulo.data.borrador)
+  .sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
 
 /* Los cuatro dominios que un sistema de calefacción obliga a cruzar. Es el
    argumento central del sitio: casi nadie los aprende juntos, y ahí está la
@@ -75,6 +82,50 @@ const dominios = [
       </div>
     </div>
   </section>
+
+  <!-- Criterio profesional: la parte del trabajo que no es técnica -->
+  {articulos.length > 0 && (
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header section-header--left" data-reveal style="max-width: 760px; margin-bottom: 0;">
+          <h2>La parte que no es técnica.</h2>
+          <p class="section-header__desc">
+            Presupuestar, cobrar, dejar por escrito lo que se acordó. Es la mitad del
+            trabajo que decide si una obra bien hecha además deja plata, y la única que
+            no se aprende mirando a alguien con más recorrido.
+          </p>
+        </div>
+
+        {/* Se reusa la tarjeta de las notas: mismo tratamiento de imagen, que fue
+            justamente lo que hizo falta agregar allá. Duplicar el CSS para cambiarle
+            el nombre a la clase no compra nada. */}
+        {/* `justify-content: start` pisa el centrado del grid de notas: allá hay
+            cinco tarjetas y llenan la fila, acá todavía hay una sola y centrada
+            queda flotando lejos del título que la presenta. */}
+        <div class="notas-grid" style="margin-top: 44px; justify-content: start;" data-reveal>
+          {articulos.map((articulo) => (
+            <a href={`/criterio/${articulo.id}`} class="nota-card">
+              <div class="nota-card__media">
+                <img
+                  src={articulo.data.image}
+                  alt={articulo.data.title}
+                  width="600"
+                  height="375"
+                  loading="lazy"
+                />
+              </div>
+              <div class="nota-card__body">
+                <span class="nota-card__tag">{articulo.data.categoria}</span>
+                <h3 class="nota-card__title">{articulo.data.title}</h3>
+                <p class="nota-card__excerpt">{articulo.data.description}</p>
+                <span class="nota-card__link">Leer la guía →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Guías de instalación -->
   <section class="section" style="padding-top: 0;">

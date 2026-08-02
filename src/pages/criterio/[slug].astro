@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import SchemaMarkup from "../../components/SchemaMarkup.astro";
+import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import Icon from "../../components/Icon.astro";
+import { siteConfig } from "../../config/site";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const articulos = await getCollection("criterio");
+  return articulos.map((articulo) => ({
+    params: { slug: articulo.id },
+    props: { articulo },
+  }));
+}
+
+const { articulo } = Astro.props;
+const { Content } = await render(articulo);
+
+// Mismo criterio que en las notas: el artículo compartido tiene que mostrarse a
+// sí mismo, nunca la OG genérica del sitio.
+const ogDelArticulo = articulo.data.ogImage || articulo.data.image;
+const urlArticulo = `${siteConfig.dominio}/criterio/${articulo.id}`;
+const textoCompartir = `${articulo.data.title} — Criterio Térmico`;
+---
+
+<BaseLayout
+  title={`${articulo.data.title} — Criterio Térmico`}
+  description={articulo.data.description}
+  ogImage={ogDelArticulo}
+  noindex={articulo.data.borrador}
+>
+  <SchemaMarkup
+    type="article"
+    data={{
+      title: articulo.data.title,
+      description: articulo.data.description,
+      fecha: articulo.data.fecha,
+      imagen: `${siteConfig.dominio}${ogDelArticulo}`,
+    }}
+  />
+  <SchemaMarkup
+    type="breadcrumb"
+    data={{
+      items: [
+        { name: "Inicio", url: `${siteConfig.dominio}/` },
+        { name: "Criterio", url: `${siteConfig.dominio}/criterio` },
+        { name: articulo.data.title, url: urlArticulo },
+      ],
+    }}
+  />
+
+  <section class="section--tight">
+    <div class="container container--narrow">
+      <Breadcrumbs
+        items={[
+          { label: "Criterio", href: "/criterio" },
+          { label: articulo.data.title },
+        ]}
+      />
+
+      <div class="article-header">
+        <span class="article-header__tag">{articulo.data.categoria}</span>
+        <h1>{articulo.data.title}</h1>
+        <div class="article-author">
+          <span class="article-author__avatar">E</span>
+          <div>
+            <div class="article-author__name">Edgardo · Técnico Criterio Térmico</div>
+            <div class="article-author__sub">Lectura de {articulo.data.readingTime}</div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="article-cover">
+        {/* 4:3 fijo, no las medidas del archivo: el CSS recorta la portada a esa
+            relación, así que declarar acá el tamaño real de cada foto haría que
+            el navegador reserve un alto que después no usa, y la página salta. */}
+        <img
+          src={articulo.data.image}
+          alt={articulo.data.title}
+          width="1200"
+          height="900"
+          fetchpriority="high"
+        />
+        {articulo.data.imageCredito && (
+          <figcaption set:html={articulo.data.imageCredito} />
+        )}
+      </figure>
+
+      <div class="article-content">
+        <Content />
+      </div>
+
+      <div class="article-share">
+        <span class="article-share__label">Compartir esta guía</span>
+        <div class="article-share__buttons">
+          <a
+            class="article-share__btn"
+            href={`https://wa.me/?text=${encodeURIComponent(`${textoCompartir}\n${urlArticulo}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="whatsapp" size={18} /> WhatsApp
+          </a>
+          <a
+            class="article-share__btn"
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlArticulo)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="facebook" size={18} /> Facebook
+          </a>
+          <button class="article-share__btn" type="button" data-copiar-enlace={urlArticulo}>
+            <Icon name="link" size={18} /> <span>Copiar enlace</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Copiar al portapapeles con confirmación visible: sin el cambio de texto no
+    // hay forma de saber si funcionó, y el usuario vuelve a apretar.
+    document.querySelectorAll<HTMLButtonElement>("[data-copiar-enlace]").forEach((boton) => {
+      const etiqueta = boton.querySelector("span");
+      boton.addEventListener("click", async () => {
+        if (!etiqueta) return;
+        try {
+          await navigator.clipboard.writeText(boton.dataset.copiarEnlace ?? "");
+          const original = etiqueta.textContent;
+          etiqueta.textContent = "¡Copiado!";
+          boton.classList.add("is-copiado");
+          setTimeout(() => {
+            etiqueta.textContent = original;
+            boton.classList.remove("is-copiado");
+          }, 2000);
+        } catch {
+          etiqueta.textContent = "No se pudo copiar";
+        }
+      });
+    });
+  </script>
+
+  <section class="container container--narrow" style="margin-top: 44px; padding-bottom: clamp(56px, 7vw, 88px);">
+    <div class="dashed-cta">
+      <div class="dashed-cta__text">
+        <h2>¿Tenés una obra para presupuestar?</h2>
+        <p>Pasame los datos y lo vemos juntos. Te contesto yo, no un formulario.</p>
+      </div>
+      <WhatsAppButton
+        mensaje="Hola Edgardo, tengo una obra para presupuestar y quería consultarte. Te paso los datos:"
+        texto="Consultar por WhatsApp"
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -3,17 +3,21 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import fs from "node:fs";
 
-// Notas marcadas `borrador: true`: existen como archivo pero todavía no tienen
-// contenido escrito. Se leen acá con fs porque el filtro del sitemap recibe una
+// Contenido marcado `borrador: true`: existe como archivo pero todavía no tiene
+// contenido escrito. Se lee acá con fs porque el filtro del sitemap recibe una
 // URL suelta, sin acceso a las colecciones de contenido.
-const DIR_NOTAS = "./src/content/notas";
-const notasBorrador = fs
-  .readdirSync(DIR_NOTAS)
-  .filter((archivo) => archivo.endsWith(".md"))
-  .filter((archivo) =>
-    /^borrador:\s*true\s*$/m.test(fs.readFileSync(`${DIR_NOTAS}/${archivo}`, "utf-8"))
-  )
-  .map((archivo) => `/notas/${archivo.replace(/\.md$/, "")}`);
+const borradores = (coleccion) => {
+  const dir = `./src/content/${coleccion}`;
+  return fs
+    .readdirSync(dir)
+    .filter((archivo) => archivo.endsWith(".md"))
+    .filter((archivo) =>
+      /^borrador:\s*true\s*$/m.test(fs.readFileSync(`${dir}/${archivo}`, "utf-8"))
+    )
+    .map((archivo) => `/${coleccion}/${archivo.replace(/\.md$/, "")}`);
+};
+
+const rutasBorrador = [...borradores("notas"), ...borradores("criterio")];
 
 export default defineConfig({
   // De acá salen canonical, og:url, og:image y el sitemap. Es el dominio propio,
@@ -26,7 +30,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes("/panel") &&
-        !notasBorrador.some((ruta) => page.includes(ruta)),
+        !rutasBorrador.some((ruta) => page.includes(ruta)),
     }),
     mdx(),
   ],

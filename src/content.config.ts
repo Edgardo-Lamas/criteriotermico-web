@@ -73,4 +73,30 @@ const instalacion = defineCollection({
   }),
 });
 
-export const collections = { repuestos, diagnostico, instalacion, notas };
+// Artículos de criterio profesional: presupuestar, cobrar, cubrirse. No son
+// guías paso a paso (eso es `instalacion`) ni notas de interés general (eso es
+// `notas`): le hablan a quien vive de esto, sobre la parte del trabajo que no
+// es técnica y que nadie le enseña. Por eso viven en /criterio y no en /notas.
+const criterio = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/criterio" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    categoria: z.string(),
+    readingTime: z.string(),
+    // Obligatoria por la misma razón que en `notas`: el artículo se comparte por
+    // WhatsApp y sin portada sale con la OG genérica del sitio, que no dice nada
+    // de lo que el lector está por abrir.
+    image: z.string(),
+    imageCredito: z.string().optional(),
+    // Recorte 1200x630 propio para la tarjeta de WhatsApp/Facebook. Si falta,
+    // cae en la portada, cuyo encuadre 4:3 se recorta distinto.
+    ogImage: z.string().optional(),
+    fecha: z.string(),
+    // Mismo mecanismo que en `notas`: fuera del sitemap y con noindex mientras
+    // el contenido no esté escrito.
+    borrador: z.boolean().optional(),
+  }),
+});
+
+export const collections = { repuestos, diagnostico, instalacion, notas, criterio };

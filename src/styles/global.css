@@ -2480,6 +2480,13 @@ h4 { font-size: var(--text-xl); }
   font-size: 16px;
 }
 
+/* Tablas de cuatro columnas o más. Con el min-width de 420px cada celda queda
+   en unos 100px y el texto se parte palabra por palabra: se lee peor que
+   desplazando. Se pone a mano en el Markdown, junto a .table-scroll. */
+.table-scroll--ancha table {
+  min-width: 680px;
+}
+
 .article-content th,
 .article-content td {
   padding: 11px 14px;
