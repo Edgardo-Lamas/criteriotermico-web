@@ -907,7 +907,7 @@ h4 { font-size: var(--text-xl); }
   color: var(--color-orange-light);
 }
 
-/* ---------- /oficio ---------- */
+/* ---------- /criterio ---------- */
 /* Los cuatro dominios. Numerados a propósito: acá el orden SÍ informa (es la
    secuencia en que se verifica una instalación), no es andamiaje decorativo. */
 .dominio-grid {

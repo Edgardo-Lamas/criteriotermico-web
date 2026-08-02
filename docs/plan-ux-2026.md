@@ -1,5 +1,11 @@
 # Plan de mejora UX/UI — Criterio Térmico (sitio web)
 
+> ⚠ **SUPERADO EN MATERIA DE LENGUAJE (2026-08-02).** Este plan llama "oficios" a los
+> rubros de la obra y opone la obra a la academia. Ese criterio **quedó sin efecto**:
+> manda `docs/norma-lenguaje.md`. En resumen: se los nombra por su rubro, no se cuentan
+> oficios, y nunca se opone la obra al estudio. La sección `/oficio` pasó a llamarse
+> **`/criterio`** (redirect 301 en `vercel.json`). Todo lo demás del plan sigue vigente.
+
 Fecha: 2026-07-22
 Estado del repo al arrancar: `main` limpio, último commit `b80bfcb` (handoff de diseño aplicado).
 
@@ -96,9 +102,14 @@ específicamente bueno en calefacción.** No es un catálogo con guías. Y el qu
 los especialistas de un rubro termina siendo la autoridad de ese rubro, que es lo que
 después sostiene la venta de repuestos, el SaaS y los proyectos de obra grande.
 
-Consecuencia de tono: **nunca tratarlo de alumno.** Nada de "capacitación",
-"formación" ni "curso". Se le reconoce el oficio que ya tiene y se le ofrece la
-especialidad que le falta.
+Consecuencia de tono: **nunca tratarlo de alumno.** Se le reconoce lo que ya sabe y se
+le ofrece la especialidad que le falta.
+
+> ⚠ **Corregido el 2026-08-02.** Este párrafo prohibía las palabras "capacitación",
+> "formación" y "curso". **Esa prohibición quedó sin efecto**: el problema nunca fue el
+> vocabulario sino la posición del que habla. El instalador ya se capacita y las marcas
+> lo invitan a jornadas de producto; Criterio Térmico se ofrece como una de esas
+> opciones de actualización. Ver §5 de `docs/norma-lenguaje.md`.
 
 ### Tensión que queda abierta
 
@@ -236,7 +247,7 @@ Audiencia y misión: definidas arriba. Mapa del sitio aprobado por Edgardo el 22
 /                     Home — bifurcación temprana: instalador / dueño de casa
 │
 ├── TRONCO TÉCNICO (para el gasista)
-│   ├── /oficio       NUEVO — hub del profesional. Absorbe a /para-tecnicos
+│   ├── /criterio     NUEVO — hub del profesional. Absorbe a /para-tecnicos
 │   │                 como puerta de entrada.
 │   │                 Bajada: "De la obra a la especialidad en calefacción".
 │   │   ├── buenas prácticas por tema (dimensionado, tendido, purga…)
@@ -262,7 +273,7 @@ Los tres cambios de fondo, más allá de mover cajas:
 
 1. **`/para-tecnicos` hoy es una contradicción.** Si todo el sitio es para técnicos,
    esa página no puede llamarse así. Pasa a `/plataforma`; su rol de puerta al
-   profesional lo toma `/oficio`.
+   profesional lo toma `/criterio`.
 2. **`/asesoramiento` no existe y es lo que se vende.** Hoy el producto principal está
    disuelto en botones de WhatsApp, sin una página que explique qué se consulta, cómo
    y qué se obtiene.
@@ -270,13 +281,16 @@ Los tres cambios de fondo, más allá de mover cajas:
    caldera". Con 4 SKUs el catálogo pierde contra cualquier casa de repuestos; la
    compatibilidad y el criterio, no.
 
-Sobre el nombre `/oficio` (y no `/tecnica`): el lector se formó en la obra, y "oficio"
-le reconoce lo que ya tiene. En SEO no se pierde nada, porque lo que rankea son las
-páginas hijas ("cómo dimensionar un radiador"), no el índice de la sección.
+Sobre el nombre de la sección: originalmente `/oficio` (y no `/tecnica`), porque el
+lector se formó en la obra. **Corregido el 2026-08-02 a `/criterio`** — "oficio" como
+nombre de sección clasifica al lector en vez de reconocerlo, y "criterio" es además la
+palabra de la marca (ver `docs/norma-lenguaje.md`). En SEO no se pierde nada, porque lo
+que rankea son las páginas hijas ("cómo dimensionar un radiador"), no el índice de la
+sección; el 301 conserva lo poco que hubiera.
 
 **Guías de diagnóstico — decidido: opción A.** Las 3 guías actuales están escritas para
 el dueño de casa ("tu caldera Peisa no produce agua caliente") y **quedan así**, en el
-carril del particular. En paralelo se escriben guías técnicas nuevas en `/oficio`, con
+carril del particular. En paralelo se escriben guías técnicas nuevas en `/criterio`, con
 lo que busca un gasista: qué medir, con qué valores de referencia, en qué orden
 descartar y qué falla es más probable según modelo. Mismo tema, dos textos, cada uno
 afilado para su lector.
@@ -306,7 +320,7 @@ Hecho:
   ("Diagnóstico antes de vender", "Asesoramiento incluido") que no decía nada:
   dos carriles, *Instalo calefacción* / *Tengo una caldera*. El del profesional pesa
   más (fondo espresso) sin esconder al otro.
-- **`/oficio` creada**: los cuatro dominios, las guías de instalación, un pedido de
+- **`/criterio` creada**: los cuatro dominios, las guías de instalación, un pedido de
   temas y el bloque de asesoramiento, que es el producto real y no tenía lugar propio.
 - **`/para-tecnicos` → `/plataforma`**, con redirect para no romper la URL vieja. Con
   el sitio entero orientado al instalador, ese nombre ya no distinguía nada.
@@ -323,7 +337,7 @@ Hecho:
   |---|---|---|
   | 1 | Hero | instalador |
   | 2 | Bifurcación | los dos |
-  | 3 | Criterio de obra (adelanto de `/oficio`) | instalador |
+  | 3 | Criterio de obra (adelanto de `/criterio`) | instalador |
   | 4 | Repuestos | instalador |
   | 5 | Plataforma | instalador |
   | 6 | El técnico | prueba |

@@ -6,6 +6,11 @@
       "has": [{ "type": "host", "value": "www.crtermico.com" }],
       "destination": "https://crtermico.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/oficio",
+      "destination": "/criterio",
+      "permanent": true
     }
   ],
   "headers": [

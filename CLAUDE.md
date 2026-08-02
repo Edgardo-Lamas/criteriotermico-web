@@ -130,6 +130,17 @@ professional installer — gasistas first, then sanitaristas and constructores. 
 product being sold is Edgardo's advice; spare parts and the SaaS follow from it. See
 `docs/plan-ux-2026.md` for the full plan and phase status.
 
+**Language norm — read `docs/norma-lenguaje.md` before writing any user-facing copy.**
+It is Edgardo's own criterion (2026-08-02) and overrides anything the older docs say.
+The short version, in Spanish because that is what ships: readers are *treated as*
+professionals but never *called* "profesionales" — they are named by their trade (el
+gasista, el electricista, el calefaccionista). Never count "oficios" or write "gente de
+oficio"; "oficio" is only valid as a quality ("20 años de oficio"), never as a label for
+people. Never oppose site-work to academia ("nace del oficio, no de la academia") — the
+product is thermal calculation, which comes from exactly that. Talking about training
+and capacitación *is* allowed: what degrades is a classroom tone, not the word. The
+section formerly at `/oficio` is now `/criterio` (301 in `vercel.json`).
+
 **Business config:** `src/config/site.ts` holds WhatsApp number, address, hours,
 etc. `siteConfig.whatsapp` (Edgardo) and `siteConfig.whatsappAlejandro` are real
 numbers — they are published on the live site. Don't replace them with invented values.
