@@ -130,7 +130,7 @@ importa: **la regla de la ropa no es una sola, porque depende de la tarea.**
 - **En la amoladora y la agujereadora**, manga corta o bien ajustada. Nada que
   cuelgue.
 - **En la termofusora**, exactamente al revés: manga larga y guante de calor,
-  porque lo que te amenaza no es el enganche sino el contacto y la salpicadura.
+  porque lo que te amenaza no es el enganche sino el contacto con la matriz.
 
 Son dos respuestas opuestas y las dos son correctas. Lo que no cambia es el
 criterio del que salen: **la ropa se elige por lo que va a hacer la tarea de las
@@ -369,7 +369,6 @@ Lo que se desprende:
   Es el momento en que la regla de la manga se invierte.
 - **Enfriamiento**: la matriz sigue caliente mucho después de que apagaste la
   máquina, y esa es la quemadura clásica — la de cuando ya terminaste.
-- **Antiparras**, por la salpicadura de material fundido.
 
 ## 6. La herramienta eléctrica
 
@@ -383,10 +382,11 @@ condiciones dieléctricas adecuadas, y agrega:
 > Deben contar además con dispositivos que corten la alimentación en forma
 > automática, ante el cese de la acción del operador.
 
-Es decir: **cuando soltás, se apaga.** Que es la manera formal de decir que
-**trabar el gatillo con precinto, cinta o alambre está prohibido por escrito.**
-Es la costumbre más extendida del rubro y la que convierte un tropezón en una
-amoladora girando suelta en el piso.
+Es decir: **cuando soltás, se apaga.** Que es la manera formal de decir dos
+cosas: que trabar el gatillo con precinto, cinta o alambre está prohibido por
+escrito, y —lo que importa más seguido— que **una máquina cuyo gatillo quedó
+duro o no vuelve solo ya no cumple con la norma y hay que sacarla de servicio.**
+Es un desgaste que aparece de a poco y al que uno se acostumbra sin registrarlo.
 
 Dos artículos más del mismo capítulo, cortos y de puro sentido práctico:
 
@@ -450,10 +450,10 @@ parado en el tercer escalón con las dos manos ocupadas y el cuerpo torcido para
 llegar al caño no es usar mal la escalera: es usar la herramienta equivocada. Ahí
 va un caballete o un andamio.
 
-## 8. El techo
+## 8. La terraza y la altura
 
-Subir al techo aparece más seguido de lo que uno diría: el conducto, una
-ventilación, un tramo que cruza, la terraza donde está el tanque.
+Subir aparece más seguido de lo que uno diría: el conducto, una ventilación, un
+tramo que cruza, la terraza donde está el tanque.
 
 Dos artículos, y los dos sorprenden por lo bajo del umbral.
 
@@ -463,8 +463,8 @@ El **artículo 54** define qué es trabajar con riesgo de caída:
 > sea igual o mayor a DOS METROS (2 m.) con respecto del plano horizontal
 > inferior más próximo.
 
-**Dos metros.** No es el edificio: es el techo de una planta baja, y es también
-media escalera de tijera abierta.
+**Dos metros.** No es el edificio ni la altura que uno imagina: es la losa de una
+planta baja, y es también media escalera de tijera abierta.
 
 El **artículo 112** fija el umbral del arnés:
 
@@ -478,16 +478,16 @@ y su resistencia; y el cabo de vida será **el más corto posible** conforme a l
 tarea. Un cabo largo no te salva de la caída: te salva del final de la caída, que
 no es lo mismo cuando abajo hay cuatro metros de recorrido.
 
-<div class="callout-box callout-box--urgente">
-  <div class="callout-box__title">Lo que la norma no dice, y en un techo argentino decide</div>
+<div class="callout-box">
+  <div class="callout-box__title">La parte difícil no es el arnés: es dónde lo atás</div>
   <div class="callout-box__body">
-    <p>Buena parte de los techos a los que vas a subir son de chapa vieja o de
-    fibrocemento, y esos materiales no avisan: no se hunden despacio, se rompen
-    de golpe y de una sola vez.</p>
-    <p>El criterio es no cargar el peso sobre la superficie sino sobre la
-    estructura que la sostiene, y no confiar en que una chapa que aguantó el
-    paso anterior va a aguantar el siguiente. Si no se ve dónde está la
-    estructura, no es un techo por el que se camina.</p>
+    El artículo pide verificar el anclaje y su resistencia, y ahí es donde la
+    norma deja de ser trámite. En una obra grande el punto de amarre está
+    previsto. En una casa, muchas veces no hay ninguno pensado para eso, y
+    engancharse de lo primero que se encuentra es peor que no engancharse,
+    porque cambia una caída por una caída con algo atrás. <strong>Si no hay un
+    punto de anclaje del que puedas responder, eso se resuelve antes de subir y
+    no arriba.</strong>
   </div>
 </div>
 
