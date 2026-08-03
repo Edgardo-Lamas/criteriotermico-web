@@ -7,6 +7,11 @@ image: "/images/criterio/seguridad-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-seguridad.jpg"
 fecha: "2026-08-03"
+# Fuera de línea el 2026-08-03: el enfoque estaba mal. Se fue a gas y a salas de
+# máquinas de calderas de alta potencia, cuando el trabajo real es calefacción
+# por agua en vivienda unifamiliar (PEX y termofusión) y el riesgo real es el
+# del cuerpo: peso, postura, calzado, orden en obra. Se reescribe entera.
+borrador: true
 ---
 
 Durante cuarenta y dos años, la norma que gobierna tu trabajo recomendó sellar
