@@ -2264,9 +2264,14 @@ h4 { font-size: var(--text-xl); }
   height: 7px;
   border-radius: var(--radius-full);
   background: var(--color-orange);
-  /* --v es el porcentaje; 39 es el máximo del gráfico, así que la barra más
-     larga llega al borde y el resto queda a escala contra ella. */
-  width: calc(var(--v) / 39 * 100%);
+  /* --v es el porcentaje de cada barra y --vmax el mayor del gráfico, así que
+     la barra más larga llega al borde y el resto queda a escala contra ella.
+     El máximo estuvo hardcodeado en 39 (el de la nota de aislación) hasta que
+     un gráfico con valores más altos se salió de la pantalla en mobile: la
+     barra se calculaba contra 39 y cualquier --v mayor daba más de 100%. El
+     default conserva ese valor para no tocar el gráfico que ya estaba
+     publicado; cada gráfico nuevo declara su propio --vmax en el contenedor. */
+  width: calc(var(--v) / var(--vmax, 39) * 100%);
   min-width: 4px;
 }
 

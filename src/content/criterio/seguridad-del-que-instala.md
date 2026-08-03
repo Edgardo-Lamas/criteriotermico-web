@@ -2,7 +2,7 @@
 title: "Lo que te lastima no es la caldera"
 description: "En una instalación de calefacción por agua el accidente no viene del equipo: viene de la escalera, del peso de un radiador, de la amoladora y de las horas de rodillas. Qué exige la normativa y qué queda a tu criterio."
 categoria: "Seguridad"
-readingTime: "22 min"
+readingTime: "25 min"
 image: "/images/criterio/seguridad-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-seguridad.jpg"
@@ -35,6 +35,75 @@ Esta guía va por ese camino, en el orden en que lo recorrés: lo que te ponés
 antes de entrar, la obra que te toca, el peso, la postura, la herramienta, la
 escalera y el techo. De cada cosa: qué exige la normativa argentina —con el
 texto enlazado— y dónde termina la norma y empezás vos.
+
+Pero antes conviene ver los números, porque no dicen lo que uno espera.
+
+## Lo que pasa de verdad, según los que lo cuentan
+
+La Superintendencia de Riesgos del Trabajo publica cada trimestre cómo ocurrieron
+los accidentes denunciados en todo el país. Estos son los del
+[primer trimestre de 2026](https://www.srt.gob.ar/estadisticas/datos-provisorios/Informe%20provisorio%20de%20accidentabilidad%20laboral.pdf),
+sobre **113.774 casos notificados** en el sistema entero:
+
+<div class="perdidas" style="--vmax:27.5">
+  <div class="perdidas__col">
+    <div class="perdidas__title">Casos según forma de ocurrencia <span>enero a marzo de 2026</span></div>
+    <ul class="perdidas__list">
+      <li><span class="perdidas__bar" style="--v:27.5"></span><span class="perdidas__label">Otras formas de accidente</span><span class="perdidas__num">27,5%</span></li>
+      <li><span class="perdidas__bar" style="--v:24.2"></span><span class="perdidas__label">Caídas de personas</span><span class="perdidas__num">24,2%</span></li>
+      <li><span class="perdidas__bar" style="--v:21.1"></span><span class="perdidas__label">Pisadas, choques o golpes con objetos</span><span class="perdidas__num">21,1%</span></li>
+      <li><span class="perdidas__bar" style="--v:9.7"></span><span class="perdidas__label">Esfuerzos excesivos</span><span class="perdidas__num">9,7%</span></li>
+      <li><span class="perdidas__bar" style="--v:5.6"></span><span class="perdidas__label">Sin datos</span><span class="perdidas__num">5,6%</span></li>
+      <li><span class="perdidas__bar" style="--v:4"></span><span class="perdidas__label">Atrapamiento por o entre objetos</span><span class="perdidas__num">4,0%</span></li>
+      <li><span class="perdidas__bar" style="--v:3.3"></span><span class="perdidas__label">Caídas de objetos</span><span class="perdidas__num">3,3%</span></li>
+      <li><span class="perdidas__bar" style="--v:3"></span><span class="perdidas__label">Sustancias nocivas o radiaciones</span><span class="perdidas__num">3,0%</span></li>
+      <li><span class="perdidas__bar" style="--v:1.3"></span><span class="perdidas__label">Temperaturas extremas</span><span class="perdidas__num">1,3%</span></li>
+      <li><span class="perdidas__bar" style="--v:0.3"></span><span class="perdidas__label">Corriente eléctrica</span><span class="perdidas__num">0,3%</span></li>
+    </ul>
+  </div>
+</div>
+
+Mirá la última línea y después mirá la segunda.
+
+**Caídas de personas: 27.488 casos. Contacto con la corriente eléctrica: 339.**
+Por cada trabajador que se accidentó con la electricidad hubo **ochenta y uno**
+que se cayeron, y **treinta y tres** que se lastimaron haciendo fuerza.
+
+Y sin embargo, si le preguntás a cualquiera en una obra qué es lo peligroso, te
+va a nombrar la electricidad. Nadie te va a decir "levantar mal un radiador".
+
+Sumadas, **caídas de personas, golpes contra objetos y esfuerzos excesivos son el
+55% de todos los casos del país** — y eso contando dentro del total una categoría
+de "otras formas" y otra de "sin datos" que juntas se llevan otro tercio.
+
+### Y en construcción, todavía más
+
+Los datos por rama son más difíciles de conseguir, pero la
+[Fundación UOCRA publicó el desagregado de la SRT para la Construcción](https://www.uocra.org/pdf/sst/cuadernillos/CUADERNILLO_CONSIDERAC_PRACTIC_PREVENC_OBRAS.pdf):
+pisadas, choques o golpes por objetos **30,2%**, caídas de personas **18,4%** y
+esfuerzos excesivos **17,1%**. Las mismas tres formas, pero concentrando el
+**65,7%** de los casos del sector, contra el 55% del promedio nacional. Y la
+corriente eléctrica, otra vez abajo de todo: 0,4%.
+
+⚠ Ese desagregado corresponde al año 2011, que es el último con esa apertura
+publicada por el sector; los datos generales de arriba son de 2026. Se citan los
+dos por separado a propósito, sin mezclarlos.
+
+Para dimensionar el sector: en el primer trimestre de 2026 la construcción
+notificó **9.053 casos**, el **8,0%** de todo el sistema — con muchísimos menos
+trabajadores cubiertos que la administración pública o la industria, que están
+arriba en esa lista.
+
+<div class="callout-box">
+  <div class="callout-box__title">Lo que estos números te están diciendo</div>
+  <div class="callout-box__body">
+    <p>Que el accidente típico de una obra <strong>no es espectacular</strong>. No
+    es el chispazo ni la explosión. Es un tipo que se cayó, uno que se golpeó
+    contra algo y uno que hizo fuerza mal.</p>
+    <p>Tres cosas aburridas, sin épica ninguna, que explican más de la mitad de
+    todo lo que pasa. Y las tres se previenen con lo que sigue.</p>
+  </div>
+</div>
 
 ## 1. Lo que te ponés antes de entrar
 
@@ -430,10 +499,15 @@ En este trabajo hay dos clases de daño y se comportan al revés.
 
 **El primero es el accidente**: la escalera, el techo, la amoladora, la
 quemadura. Pasa en un segundo, se ve, y todo el mundo entiende lo que pasó.
-Contra ese se trabaja con lo de siempre —el apoyo firme, el metro que sobresale,
-el gatillo sin trabar, el guante— y con una sola idea de fondo: **casi todos
-ocurren en tareas de un minuto.** Nadie se cae del andamio que armó con cuidado
-para tres días. Se cae del banquito que arrimó para hacer una cosa rápida.
+Contra ese se trabaja con lo de siempre: el apoyo firme, el metro que sobresale,
+el gatillo sin trabar, el guante.
+
+Y acá volvé a mirar el gráfico del principio, porque tiene una lectura más.
+**Las tres formas que se llevan más de la mitad de todo —caerse, golpearse
+contra algo y hacer fuerza mal— no son las de las tareas difíciles.** Nadie se
+cae del andamio que armó con cuidado para trabajar tres días. Se cae del banquito
+que arrimó para hacer una cosa rápida, y se golpea con lo que dejó en el piso
+porque lo iba a levantar después.
 
 **El segundo no es un accidente**: son las rodillas, la espalda y el hombro. No
 tiene fecha, no tiene testigo y no lo cubre nadie, porque no hay un día en que
@@ -457,8 +531,9 @@ Toda la normativa citada es argentina y está enlazada a su texto oficial.
 - [Resolución 295/2003](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-295-2003-90396), Anexo I — especificaciones técnicas sobre ergonomía y levantamiento manual de cargas.
 - [Resolución SRT 51/97](https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/44588/norma.htm) — aviso de obra a la ART y Programa de Seguridad. [Resolución SRT 35/98](https://servicios.infoleg.gob.ar/infolegInternet/anexos/50000-54999/50188/norma.htm) — coordinación entre contratistas y subcontratistas. Ambas complementan al Decreto 911/96, junto con las Resoluciones SRT 231/96 (Legajo Técnico) y 319/99.
 - **IRAM 3610** — calzado de seguridad: requisitos y ensayos. **IRAM 3703** — calzado de seguridad para la construcción.
-- [Fundación UOCRA — *Consideraciones prácticas para las diferentes etapas de obra*](https://www.uocra.org/pdf/sst/cuadernillos/CUADERNILLO_CONSIDERAC_PRACTIC_PREVENC_OBRAS.pdf) y el material de salud y seguridad de su Departamento de Salud y Seguridad en el Trabajo, que es la fuente sindical específica del sector y publica por etapa de obra.
-- [Biblioteca y publicaciones de la Superintendencia de Riesgos del Trabajo](https://www.srt.gob.ar/) — reportes por rama de actividad e identificación de riesgos en la industria de la construcción.
+- [SRT — *Informe provisorio de accidentabilidad laboral*, enero a marzo de 2026](https://www.srt.gob.ar/estadisticas/datos-provisorios/Informe%20provisorio%20de%20accidentabilidad%20laboral.pdf) (elaborado en junio de 2026): cuadro 9, casos notificados según forma de ocurrencia, y cuadro 19, casos por actividad económica. De ahí salen todos los porcentajes del gráfico y los 9.053 casos de construcción del trimestre.
+- [Fundación UOCRA — *Consideraciones prácticas para las diferentes etapas de obra*](https://www.uocra.org/pdf/sst/cuadernillos/CUADERNILLO_CONSIDERAC_PRACTIC_PREVENC_OBRAS.pdf): de ahí sale el desagregado de la Construcción por forma de ocurrencia (datos SRT del año 2011). Su Departamento de Salud y Seguridad en el Trabajo publica material por etapa de obra y es la fuente específica del sector.
+- [Estadísticas de la Superintendencia de Riesgos del Trabajo](https://www.srt.gob.ar/estadisticas/) — series, anuarios e informes por rama de actividad.
 - Temperatura y tiempos de termofusión: documentación técnica de los fabricantes de tubería de polipropileno para termofusión.
 
 Donde la normativa citada rige formalmente para el empleador y su personal, se
