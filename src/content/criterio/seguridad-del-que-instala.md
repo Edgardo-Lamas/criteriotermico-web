@@ -87,34 +87,75 @@ tiene nada que hacer ahí.
 
 ### El casco, que es el que más se desestima
 
-Al casco hay que dedicarle un párrafo aparte, porque es el elemento que más se
-subestima y el que peor se entiende.
+Al casco hay que dedicarle una sección aparte, porque es el elemento que más se
+subestima y porque alrededor de él hay una confusión que conviene deshacer.
 
-El **artículo 107** del Decreto 911/96 lo exige para
+Primero, lo que dice la norma, que no admite matices. El **artículo 107** del
+Decreto 911/96 obliga a proveer casco de seguridad a
 
 > todo trabajador que desarrolle sus tareas en obras de construcción o en
 > dependencias cuya actividad suponga riesgos específicos de accidentes.
 
-Y acá está la parte que conviene entender bien, porque cambia por completo cuándo
-te lo ponés: **el casco no te protege de tu trabajo. Te protege del trabajo de
-los otros.** Vos, instalando calefacción, no generás caída de objetos sobre tu
-propia cabeza. La generan el que está en la planta de arriba, el que sube
-material, el que pica un techo, el que está armando encofrado sobre tu vertical.
+**No distingue por tamaño de obra.** No dice "en obras de más de tantos metros",
+no dice "cuando haya varios rubros". Dice obras de construcción. Una casa chica
+es una obra de construcción.
 
-De ahí sale un criterio de obra que ninguna norma escribe con esas palabras y que
-sin embargo es el que se usa: **el casco escala con la obra, porque lo que escala
-es la cantidad de rubros trabajando al mismo tiempo.**
+Ahora, lo que pasa en la realidad es otra cosa, y sería deshonesto no decirlo:
+**en la obra chica muchos no lo usan, y en la obra mediana y grande lo usa todo
+el mundo sin discutirlo.** Eso es un hecho de la industria, no una interpretación
+de la norma. Y lo que importa es entender bien de dónde sale esa diferencia,
+porque el motivo no es el que uno supondría.
 
-- En una casa de una planta, con vos solo o casi solo adentro, arriba tuyo no
-  suele haber nadie y el casco casi no tiene a qué responder.
-- En una **casa de más de una planta**, en un dúplex, en un edificio, la cosa se
-  da vuelta: hay varios rubros a la vez y en distintos niveles, y arriba tuyo
-  siempre hay alguien. **Ahí el casco se usa**, y por eso en obras medianas y
-  grandes es la regla y nadie la discute.
+**El riesgo del casco no lo generás vos.** Instalando calefacción no te tirás
+nada en la cabeza: te lo tiran el que trabaja en la planta de arriba, el que sube
+material, el que pica un techo, el que arma encofrado sobre tu vertical. Por eso
+el peligro efectivamente crece cuando crecen los rubros trabajando al mismo
+tiempo, que es lo que pasa en una casa de más de una planta, en un dúplex o en un
+edificio.
 
-La pregunta práctica no es *"¿me lo pongo?"* sino **"¿cuánta gente hay trabajando
-arriba mío ahora mismo?"**. Esa pregunta se responde el primer día, mirando la
-obra, y la respuesta vale para toda tu permanencia ahí.
+Pero —y acá está el punto— **en la obra grande no se usa el casco porque el
+riesgo aparezca. Se usa porque en la obra grande hay alguien cuyo trabajo es que
+vos lo tengas puesto.**
+
+Eso también está en la normativa, y vale la pena saber qué hay del otro lado
+cuando entrás a una obra de cierto porte:
+
+- **Servicio de Higiene y Seguridad.** Los artículos 15 a 17 del Decreto 911/96
+  lo exigen dirigido por graduados universitarios —ingenieros laborales,
+  licenciados en Higiene y Seguridad— o por **Técnicos en Higiene y Seguridad**
+  reconocidos por la Resolución MTSS 313/83, con una carga de horas mensuales que
+  depende de la cantidad de trabajadores. Ese es el técnico que supervisa y
+  capacita.
+- **Aviso de obra y ART.** La [Resolución SRT 51/97](https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/44588/norma.htm)
+  obliga al empleador de la construcción a avisarle a su ART, con **cinco días
+  hábiles de anticipación**, la fecha de inicio de todo trabajo.
+- **Programa de Seguridad.** La misma resolución exige elaborarlo e integrarlo al
+  Legajo Técnico (Resolución SRT 231/96) para las obras que superan ciertos
+  umbrales —entre ellos **más de 1.000 m² o más de 4 metros de altura**—, y para
+  excavaciones, demoliciones y trabajos cerca de líneas energizadas.
+- **Coordinación entre contratistas.** Cuando hay varios contratistas y
+  subcontratistas, las Resoluciones SRT 51/97 y [35/98](https://servicios.infoleg.gob.ar/infolegInternet/anexos/50000-54999/50188/norma.htm)
+  obligan a coordinar las acciones de seguridad bajo un programa único, y el
+  servicio de prevención de la ART del contratista principal controla su
+  cumplimiento. **Si entrás a una obra grande como subcontratista de calefacción,
+  ese sos vos.**
+
+<div class="callout-box">
+  <div class="callout-box__title">La conclusión, que es al revés de la costumbre</div>
+  <div class="callout-box__body">
+    <p>La diferencia entre la obra grande y la obra chica <strong>no es de norma
+    ni de riesgo: es de quién te lo recuerda.</strong> En la grande hay un
+    técnico, una ART avisada, un programa escrito y alguien controlando. En la
+    casa de una planta no hay nada de eso.</p>
+    <p>Es decir: en la obra donde estás más solo es donde menos probable es que
+    alguien te lo haga cumplir — y también donde, si algo se cae, no hay nadie
+    para levantarte.</p>
+  </div>
+</div>
+
+Con eso, la pregunta práctica deja de ser *"¿esta obra es de las que piden
+casco?"* y pasa a ser **"¿hay alguien trabajando arriba mío?"**. Se responde el
+primer día, mirando, y la respuesta vale para toda tu permanencia ahí.
 
 ### Lo demás
 
@@ -414,7 +455,10 @@ Toda la normativa citada es argentina y está enlazada a su texto oficial.
 
 - [Decreto 911/96](https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/38568/texact.htm), Reglamento de Higiene y Seguridad para la Industria de la Construcción — artículo 46 (orden y limpieza), 54 y 112 (riesgo de caída y cinturón de seguridad), 103 y 107 (vestimenta y casco), 197, 198 y 208 (herramientas), 210, 214, 215 y 216 (escaleras).
 - [Resolución 295/2003](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-295-2003-90396), Anexo I — especificaciones técnicas sobre ergonomía y levantamiento manual de cargas.
+- [Resolución SRT 51/97](https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/44588/norma.htm) — aviso de obra a la ART y Programa de Seguridad. [Resolución SRT 35/98](https://servicios.infoleg.gob.ar/infolegInternet/anexos/50000-54999/50188/norma.htm) — coordinación entre contratistas y subcontratistas. Ambas complementan al Decreto 911/96, junto con las Resoluciones SRT 231/96 (Legajo Técnico) y 319/99.
 - **IRAM 3610** — calzado de seguridad: requisitos y ensayos. **IRAM 3703** — calzado de seguridad para la construcción.
+- [Fundación UOCRA — *Consideraciones prácticas para las diferentes etapas de obra*](https://www.uocra.org/pdf/sst/cuadernillos/CUADERNILLO_CONSIDERAC_PRACTIC_PREVENC_OBRAS.pdf) y el material de salud y seguridad de su Departamento de Salud y Seguridad en el Trabajo, que es la fuente sindical específica del sector y publica por etapa de obra.
+- [Biblioteca y publicaciones de la Superintendencia de Riesgos del Trabajo](https://www.srt.gob.ar/) — reportes por rama de actividad e identificación de riesgos en la industria de la construcción.
 - Temperatura y tiempos de termofusión: documentación técnica de los fabricantes de tubería de polipropileno para termofusión.
 
 Donde la normativa citada rige formalmente para el empleador y su personal, se
