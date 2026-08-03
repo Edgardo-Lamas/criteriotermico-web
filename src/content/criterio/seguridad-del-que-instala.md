@@ -7,10 +7,6 @@ image: "/images/criterio/seguridad-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-seguridad.jpg"
 fecha: "2026-08-03"
-# Texto terminado, faltan las 4 imágenes. Mientras esté en true no se lista en
-# /criterio, queda fuera del sitemap y va con noindex. Sacar esta línea cuando
-# las fotos estén en public/images/criterio/.
-borrador: true
 ---
 
 Durante cuarenta y dos años, la norma que gobierna tu trabajo recomendó sellar
@@ -77,6 +73,17 @@ normativa y empezás vos.
 
 Volvamos a la pasta, porque hay una pregunta razonable que aparece enseguida:
 *si la usé veinte años, ¿qué hago ahora?*
+
+<div class="figura-par">
+  <figure>
+    <img src="/images/criterio/seguridad-litargirio.jpg" alt="Primer plano de las manos curtidas de un instalador aplicando con los dedos, sin guantes, una pasta selladora espesa sobre la rosca de una conexión de caño de acero" width="1000" height="526" loading="lazy" />
+  </figure>
+  <div class="figura-par__texto">
+    <p>Así se aplica: con el dedo, directo sobre la rosca. Es la forma correcta de sellar y la que enseñó todo el mundo, y es también, exactamente, la vía de exposición que describen los considerandos de la resolución.</p>
+    <p>Por eso el problema no está en las obras que hiciste. Está en el tarro que seguís abriendo.</p>
+    <p class="article-nota-credito">Imagen generada digitalmente para esta guía.</p>
+  </div>
+</div>
 
 Primero, lo que dice la resolución. La recomendación del ENARGAS es
 **cautelar** —o sea, provisoria hasta que se apruebe el reglamento nuevo, que
@@ -206,6 +213,11 @@ Argentina.** Y entre sus usos más frecuentes acá estuvieron justamente los
 tuyos: aislaciones de calderas, aislaciones de cañerías de vapor, juntas y
 elementos de sellado, chapas y cañerías de fibrocemento.
 
+<figure class="figura-ancha">
+  <img src="/images/criterio/seguridad-amianto.jpg" alt="Sala de máquinas abandonada con una caldera antigua de hierro fundido y sus cañerías envueltas en una gruesa aislación blanca agrietada y rota, con material fibroso gris a la vista y polvo depositado en el piso" width="1000" height="526" loading="lazy" />
+  <figcaption>La aislación entera no libera nada. Rota así, sí — y no se ve, no se huele y no irrita, que es exactamente lo que la vuelve peligrosa. Imagen generada digitalmente para esta guía.</figcaption>
+</figure>
+
 La regla práctica que se desprende es de una sola línea:
 
 <div class="callout-box callout-box--urgente">
@@ -261,6 +273,8 @@ un lugar cerrado porque hay que entregar.
 
 Poné los cinco en fila y aparece un patrón, y el patrón es la parte que vale.
 
+<div class="table-scroll">
+
 | Riesgo | Cómo avisa |
 |---|---|
 | Plomo del sellador | No avisa. Se acumula. |
@@ -268,6 +282,8 @@ Poné los cinco en fila y aparece un patrón, y el patrón es la parte que vale.
 | Espacio confinado | Avisa cuando ya no podés reaccionar. |
 | Amianto | Avisa treinta años tarde. |
 | Combustión en ambiente cerrado | Avisa con síntomas que parecen otra cosa. |
+
+</div>
 
 **Ninguno de los cinco te avisa a tiempo.** Esa es la diferencia de fondo con el
 resto de los riesgos del trabajo, que sí avisan: la amoladora hace ruido, el
