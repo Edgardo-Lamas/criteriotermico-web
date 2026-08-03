@@ -1,326 +1,392 @@
 ---
-title: "El riesgo que corre el que instala"
-description: "Del monóxido y de las fugas se habla siempre desde el lado del que habita la casa. Del lado del que la instala hay riesgos propios, y una norma que hasta 2024 te recomendaba sellar con plomo."
+title: "Lo que te lastima no es la caldera"
+description: "En una instalación de calefacción por agua el accidente no viene del equipo: viene de la escalera, del peso de un radiador, de la amoladora y de las horas de rodillas. Qué exige la normativa y qué queda a tu criterio."
 categoria: "Seguridad"
-readingTime: "19 min"
+readingTime: "22 min"
 image: "/images/criterio/seguridad-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-seguridad.jpg"
 fecha: "2026-08-03"
-# Fuera de línea el 2026-08-03: el enfoque estaba mal. Se fue a gas y a salas de
-# máquinas de calderas de alta potencia, cuando el trabajo real es calefacción
-# por agua en vivienda unifamiliar (PEX y termofusión) y el riesgo real es el
-# del cuerpo: peso, postura, calzado, orden en obra. Se reescribe entera.
 borrador: true
 ---
 
-Durante cuarenta y dos años, la norma que gobierna tu trabajo recomendó sellar
-las roscas con plomo.
+Hacé dos listas.
 
-No es una manera de decir. El **litargirio** es óxido de plomo, y la pasta de
-litargirio con glicerina figuraba en el punto 5.2.7 de la NAG-200, el texto que
-regula las instalaciones domiciliarias de gas en la Argentina desde 1982. Se
-amasa a mano. Fragua dura, compacta, aguanta. Toda una generación selló con eso,
-y selló bien: si estás leyendo esto, probablemente tengas el tarro en algún
-cajón del taller.
+En la primera, todo lo que tocás en una instalación de calefacción por agua en
+una casa: la caldera mural, el colector, los radiadores o el piso radiante, el
+PEX de Rehau, Giacomini, Baxi o Peisa, el polipropileno de H3, Dema o Polimex,
+la termofusora, la amoladora, el nivel, la escalera.
 
-Recién el **29 de julio de 2024** el ENARGAS dictó la
-[Resolución 395/2024](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-395-2024-402218/texto)
-y recomendó dejar de usarla. El motivo que da la propia resolución no es
-técnico. Es que el plomo
+En la segunda, todo lo que te puede mandar a tu casa lastimado.
 
-> es altamente tóxico y puede afectar el sistema nervioso, los riñones, el
-> sistema cardiovascular.
+**No se parecen.** En la segunda lista casi no hay calefacción. Hay una escalera
+mal apoyada, un radiador levantado con la espalda, seis horas de rodillas
+tendiendo caño, una amoladora que mordió, una matriz de termofusora a
+doscientos sesenta grados apoyada donde no correspondía, y un techo al que
+subiste treinta segundos.
 
-Y enumera las vías: inhalación del polvo, ingestión accidental, absorción por la
-piel.
+Todo el material de seguridad que circula en calefacción habla de explosiones,
+fugas y monóxido. Está bien que exista, pero le habla al riesgo del que va a
+vivir en la casa. **El tuyo es otro, es mucho más frecuente y casi nadie lo
+escribe:** en este trabajo el equipo no te lastima. Te lastima el camino hasta
+el equipo.
 
-Leelo pensando en cómo se trabaja de verdad. La ingestión accidental no es que
-alguien coma litargirio. Es la mano que amasó la pasta y después agarró el mate.
+Esta guía va por ese camino, en el orden en que lo recorrés: lo que te ponés
+antes de entrar, la obra que te toca, el peso, la postura, la herramienta, la
+escalera y el techo. De cada cosa: qué exige la normativa argentina —con el
+texto enlazado— y dónde termina la norma y empezás vos.
 
-Ahora bien: lo importante de este episodio no es la pasta. Es lo que el episodio
-deja a la vista, y que ordena todo lo que sigue.
+## 1. Lo que te ponés antes de entrar
 
-## La norma cuida la instalación. A vos te cuida tu criterio
+Empecemos por lo más barato de resolver y lo que más se saltea.
 
-Hay muchísimo material sobre seguridad en calefacción, y está bien escrito. El
-monóxido, las fugas, las ventilaciones, los conductos, el tiraje. Fijate en algo:
-**está escrito, casi todo, desde el lado del que va a vivir en la casa.**
+### La ropa
 
-Y tiene sentido. La norma existe para que la instalación no lastime a quien la
-usa. Ese es su trabajo y lo hace bien.
+El [Decreto 911/96](https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/38568/texact.htm),
+que es el reglamento de higiene y seguridad para la industria de la
+construcción, dice en su **artículo 103** que la vestimenta
 
-Pero vos no estás del lado del que usa. Estás del otro. Vos sos el que se mete
-en el sótano donde está la caldera, el que corta el caño viejo sin saber qué
-tuvo adentro, el que pica la aislación de un equipo de 1985, el que enciende el
-artefacto por primera vez con la ventilación todavía a medio hacer. **El usuario
-convive con la instalación terminada. Vos convivís con la instalación mientras
-todavía es peligrosa**, que es exactamente el rato en que nadie escribió nada
-para vos.
+> Ajustará bien el cuerpo del trabajador sin perjuicio de su comodidad y
+> facilidad de movimiento. Las mangas serán cortas o, en su defecto, ajustarán
+> adecuadamente.
 
-Y hay un segundo dato, verificable, que conviene tener presente antes de seguir:
-**la NAG-200 que está en vigencia es la de 1982.** Se le fueron haciendo
-modificaciones puntuales —la del litargirio es una de ellas—, pero el texto
-madre es ese. Hubo dos intentos de reemplazarlo por un reglamento nuevo y
-completo: uno se puso en discusión pública [en 2011](https://www.enargas.gob.ar/secciones/normativa/normas-tecnicas-items.php?grupo=2)
-y otro está en consulta pública [ahora, con fecha 2025](https://www.enargas.gov.ar/secciones/normativa/pdf/normas-discusion/IF-2025-103868516-APN-GIYN-ENARGAS.pdf).
-Ninguno de los dos reemplazó todavía al de 1982.
+Leído rápido parece una obviedad de manual. Leído con la amoladora en la mano no
+lo es: **la manga suelta es lo que engancha en lo que gira**, y cuando engancha
+no tenés tiempo de soltar nada. Lo mismo la campera abierta, el buzo largo, el
+cordón del delantal.
 
-Esto no es una queja contra el ENARGAS. Es un dato de contexto sobre el terreno
-en el que trabajás: **una parte de lo que te mantiene entero no está escrito en
-ningún reglamento.** Es criterio, y el criterio se arma a propósito o no se arma.
+Ahora, acá hay algo que ninguna lista de seguridad te dice y que en este trabajo
+importa: **la regla de la ropa no es una sola, porque depende de la tarea.**
 
-De eso trata esta guía. De los cuatro o cinco riesgos que son tuyos y no del
-usuario, de qué dice la normativa sobre cada uno, y de dónde termina la
-normativa y empezás vos.
+- **En la amoladora y la agujereadora**, manga corta o bien ajustada. Nada que
+  cuelgue.
+- **En la termofusora**, exactamente al revés: manga larga y guante de calor,
+  porque lo que te amenaza no es el enganche sino el contacto y la salpicadura.
 
-## 1. El plomo, y qué hacer con el tarro que ya tenés
+Son dos respuestas opuestas y las dos son correctas. Lo que no cambia es el
+criterio del que salen: **la ropa se elige por lo que va a hacer la tarea de las
+próximas dos horas**, no por lo que había limpio a la mañana. El que se cambia
+según lo que va a hacer trabaja mejor; el que se pone una sola cosa para todo el
+día está eligiendo por comodidad y no por criterio.
 
-Volvamos a la pasta, porque hay una pregunta razonable que aparece enseguida:
-*si la usé veinte años, ¿qué hago ahora?*
+### El calzado
 
-<div class="figura-par">
-  <figure>
-    <img src="/images/criterio/seguridad-litargirio.jpg" alt="Primer plano de las manos curtidas de un instalador aplicando con los dedos, sin guantes, una pasta selladora espesa sobre la rosca de una conexión de caño de acero" width="1000" height="526" loading="lazy" />
-  </figure>
-  <div class="figura-par__texto">
-    <p>Así se aplica: con el dedo, directo sobre la rosca. Es la forma correcta de sellar y la que enseñó todo el mundo, y es también, exactamente, la vía de exposición que describen los considerandos de la resolución.</p>
-    <p>Por eso el problema no está en las obras que hiciste. Está en el tarro que seguís abriendo.</p>
-    <p class="article-nota-credito">Imagen generada digitalmente para esta guía.</p>
-  </div>
-</div>
+El calzado de seguridad en la Argentina responde a la norma **IRAM 3610**, que
+fija los requisitos y ensayos. La puntera protege contra impactos de hasta
+**200 joules** y compresión de hasta 1.500 kg. Existe además la **IRAM 3703**,
+específica de calzado de seguridad para construcción.
 
-Primero, lo que dice la resolución. La recomendación del ENARGAS es
-**cautelar** —o sea, provisoria hasta que se apruebe el reglamento nuevo, que
-elimina la mención definitivamente— y tiene dos partes: evitar la mezcla de
-litargirio con glicerina, y usar en su lugar **productos sellantes aprobados
-conforme a la NAG-214**, certificados por un organismo acreditado ante el
-ENARGAS.
+Traducido a tu trabajo: lo que se te puede caer en el pie en una instalación de
+calefacción no es un destornillador. Es un radiador, una caldera, una llave
+Stillson, un tramo de caño. Todo pesado, todo con esquina, y casi siempre a la
+altura del pie porque está en el piso esperando que lo montes.
 
-Eso es todo lo que la norma dice. Lo demás es criterio, y hay tres cosas que se
-desprenden solas:
+Y no es solo la puntera. Es la **suela**: en una obra en construcción el piso
+tiene recortes de hierro, clavos, escombro suelto y humedad. La zapatilla no
+tiene nada que hacer ahí.
 
-**El tarro abierto en el taller es el problema, no la rosca.** Una unión sellada
-y fraguada hace veinte años detrás de un revoque no te está exponiendo a nada.
-El polvo del tarro que abrís cada semana, sí. Si vas a dejar de usarlo, el
-primer movimiento no es revisar obras viejas: es sacar el tarro de la mesa donde
-comés.
+### Lo demás
 
-**No es un producto para tirar en cualquier lado.** Los considerandos de la
-misma resolución mencionan la contaminación ambiental entre los motivos. Un
-residuo con plomo tiene destino propio; el volquete de la obra no lo es.
+Antiparras cuando hay proyección —amoladora, agujereadora, corte—, protección
+auditiva cuando hay ruido sostenido, y casco donde corresponda: el **artículo
+107** del mismo decreto lo exige para todo trabajador expuesto a caída de
+objetos. Si arriba tuyo hay alguien trabajando, ese sos vos.
 
-**Y el argumento del "toda la vida lo usé" no es un argumento, es una
-descripción.** Toda la vida se trabajó sin antiparras, también. La diferencia
-entre las dos cosas es que la antiparra te avisa el mismo día, y el plomo no
-avisa nunca: se acumula, y cuando aparece ya lleva años adentro.
+## 2. La obra donde entrás no es tuya
 
-<div class="callout-box">
-  <div class="callout-box__title">Lo verificable, en corto</div>
-  <div class="callout-box__body">
-    El litargirio es óxido de plomo. La Resolución ENARGAS 395/2024 (29/07/2024)
-    modificó cautelarmente el punto 5.2.7 "Pasta para conexiones" de la NAG-200
-    y recomendó reemplazarlo por sellantes aprobados según NAG-214. El motivo
-    declarado en los considerandos es la toxicidad del plomo, no el desempeño
-    del sellado.
-  </div>
-</div>
+Este punto se subestima porque parece de otro. No lo es.
 
-## 2. Cortar y soldar sobre lo que tuvo gas
+El **artículo 46** del Decreto 911/96 obliga a mantener el orden y la limpieza en
+toda la obra, disponiendo materiales, herramientas y desechos de modo que no
+obstruyan los lugares de trabajo y de paso, y agrega:
 
-Este es el riesgo que más rápido mata y el que más fácil se subestima, porque el
-caño **parece** vacío.
+> Deben eliminarse o protegerse todos aquellos elementos punzo-cortantes como
+> hierros, clavos, etc., que signifiquen riesgo para la seguridad de los
+> trabajadores.
 
-La normativa argentina lo trata desde hace décadas, y la redacción es de una
-claridad que conviene leer entera. El
-[Decreto 351/79](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=32030),
-reglamentario de la Ley 19.587 de Higiene y Seguridad, dice en su **artículo
-158** que cuando se suelda o corta un recipiente que contuvo sustancias
-explosivas o inflamables, o donde pudieron formarse gases inflamables, hay que
+Formalmente esa obligación es de quien conduce la obra. Prácticamente, **el que
+se clava el hierro sos vos**, y llegás cuando el desorden ya está hecho. Hay dos
+cosas que sí controlás:
 
-> limpiar perfectamente el recipiente y comprobar por procedimiento apropiado
-> que no queden gases o vapores combustibles en el mismo o reemplazar todo el
-> aire existente en él por un gas inerte o por agua.
+**La primera es tu propio metro cuadrado.** Los recortes de PEX, las virutas de
+la amoladora, el rollo tendido en medio del paso, la caja de herramientas
+abierta en el piso, la prolongación cruzando la puerta. Eso es tuyo y se ordena
+sobre la marcha, no al final.
 
-Y termina con la frase que vale por todo el artículo:
+**La segunda es decirlo.** Si el lugar por donde tenés que pasar cargando un
+radiador está lleno de escombro, eso no es una molestia: es la causa del
+accidente que todavía no pasó. Pedirlo antes de empezar es parte del trabajo, y
+además es mucho más fácil que pedirlo después.
 
-> Si el contenido del recipiente es desconocido se lo tratará siempre como si
-> hubiera contenido una sustancia explosiva o inflamable.
+## 3. El peso: el radiador no tiene manija
 
-Fijate lo que está diciendo. **La duda no habilita a probar: la duda ya es la
-respuesta.** Si no sabés qué tuvo adentro, la norma no te pide que averigües; te
-pide que asumas lo peor y trabajes en consecuencia.
+Acá la normativa argentina es más útil de lo que uno espera, pero no por el
+número que todo el mundo cita.
 
-Traducido a lo que hacés todas las semanas: el tramo que desafectás de una
-instalación vieja, el caño que aparece detrás de un tabique, el tanque que el
-dueño "cree" que era de agua. Ninguno de esos es un caño limpio hasta que se
-demostró que lo es.
+La [Resolución 295/2003](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-295-2003-90396),
+en su Anexo I, fija las especificaciones sobre ergonomía y levantamiento manual
+de cargas. El dato que se repite es el tope de transporte manual: **50 kg hasta
+10 metros**, y pasado cualquiera de esos dos límites es obligatorio usar
+elementos auxiliares.
 
-Hay un detalle más, del **artículo 157** del mismo decreto, que es puro sentido
-práctico y casi nadie cumple: cuando se interrumpe el trabajo, **los sopletes se
-retiran del interior del lugar**. No se apoyan ahí para volver después del
-almuerzo. Una pérdida mínima en una manguera, dos horas de acumulación y un
-ambiente chico son un accidente esperando que alguien vuelva y accione un
-chispero.
-
-## 3. El sótano donde está la caldera tiene nombre técnico
-
-Nadie llama "espacio confinado" a una sala de máquinas. Se le dice el sótano, el
-cuartito, el subsuelo. Pero la definición técnica no pregunta cómo le decís:
-pregunta cómo es. Un espacio confinado es un lugar con **aberturas limitadas de
-entrada y salida y ventilación natural desfavorable**, donde pueden acumularse
-contaminantes tóxicos o inflamables, o formarse atmósferas pobres en oxígeno.
-
-Leído así, media sala de máquinas del conurbano califica.
-
-La normativa argentina lo tiene contemplado. La
-[Resolución SRT 953/2010](https://servicios.infoleg.gob.ar/infolegInternet/anexos/165000-169999/169317/norma.htm)
-establece que los requisitos de seguridad para tareas en espacios confinados se
-consideran satisfechos cuando se cumple la **norma IRAM 3625**, que fija cómo se
-entra, cómo se trabaja y cómo se sale de esos lugares.
-
-Y el artículo 157 del Decreto 351/79 pone lo concreto para el caso más común
-—soldar o cortar ahí adentro—:
-
-> Esta comenzará a funcionar antes de que el trabajador entre al lugar y no
-> cesará hasta que éste no se haya retirado.
-
-Habla de la ventilación mecánica. No es "ventilá mientras trabajás": es
-**antes de entrar, todo el tiempo, y hasta que saliste**. Y agrega que cuando se
-entra por una abertura chica hay que usar cinturón de seguridad con cable de
-vida, y que **tiene que haber alguien afuera** durante toda la tarea.
-
-Ese "alguien afuera" es la parte que se saltea siempre, y es la única que
-importa de verdad. En un espacio confinado el que se descompone no pide ayuda:
-pierde el conocimiento. Si no hay nadie mirando desde arriba, no hay rescate,
-hay hallazgo.
-
-Vale la aclaración honesta: esta normativa está escrita para el empleador y su
-personal. Si trabajás solo, formalmente no te alcanza. Pero **la física del
-sótano no lee resoluciones**, y el criterio que la norma codifica —ventilar
-antes, no entrar sin que alguien sepa, no quedarte solo— es exactamente el mismo
-tengas o no alguien que te lo exija.
-
-## 4. La caldera vieja que estás por desarmar
-
-Este es el riesgo que menos se nombra y el que tiene la regla más simple de
-aplicar, porque es una fecha.
-
-La [Resolución 823/2001](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-823-2001-68112/texto)
-del Ministerio de Salud dice, en su artículo 1º:
-
-> Prohíbese en todo el territorio del país la producción, importación,
-> comercialización y uso de fibras de Asbesto variedad Crisotilo y productos que
-> las contengan, a partir del 1º de enero de 2003.
-
-O sea: **hasta el 1º de enero de 2003 se pudo instalar amianto legalmente en la
-Argentina.** Y entre sus usos más frecuentes acá estuvieron justamente los
-tuyos: aislaciones de calderas, aislaciones de cañerías de vapor, juntas y
-elementos de sellado, chapas y cañerías de fibrocemento.
-
-<figure class="figura-ancha">
-  <img src="/images/criterio/seguridad-amianto.jpg" alt="Sala de máquinas abandonada con una caldera antigua de hierro fundido y sus cañerías envueltas en una gruesa aislación blanca agrietada y rota, con material fibroso gris a la vista y polvo depositado en el piso" width="1000" height="526" loading="lazy" />
-  <figcaption>La aislación entera no libera nada. Rota así, sí — y no se ve, no se huele y no irrita, que es exactamente lo que la vuelve peligrosa. Imagen generada digitalmente para esta guía.</figcaption>
-</figure>
-
-La regla práctica que se desprende es de una sola línea:
-
-<div class="callout-box callout-box--urgente">
-  <div class="callout-box__title">Regla de la fecha</div>
-  <div class="callout-box__body">
-    Si el equipo o la aislación son anteriores a 2003, tratá el material
-    aislante como si tuviera amianto hasta que se demuestre lo contrario. Es el
-    mismo criterio del artículo 158: la duda ya es la respuesta.
-  </div>
-</div>
-
-Lo que hace peligroso al amianto no es que esté ahí. Es **que alguien lo
-rompa**. Una aislación entera y en su lugar no libera nada; la misma aislación
-picada en seco con una maza libera fibras que quedan suspendidas horas y que no
-se ven, no se huelen y no irritan. Nada te avisa. Por eso la enfermedad aparece
-décadas después, y por eso la exposición típica no es la del que fabricaba
-amianto: es la del que un martes cualquiera desarmó una caldera vieja.
-
-La remoción de material con amianto es tarea especializada y con procedimiento
-propio: no es un ítem de tu presupuesto ni una habilidad que tengas que
-adquirir. Lo que sí es tuyo es **reconocerlo a tiempo**, frenar, y decirlo. Un
-equipo de 1985 con la aislación deshecha no es un trabajo de calefacción con un
-detalle: es otra tarea, de otro, antes de la tuya.
-
-## 5. La prueba de encendido, que es cuando el que respira sos vos
-
-El último riesgo es el más cotidiano y el que más se parece a "trabajar
-normal": el equipo se enciende para probarlo, en una obra donde todavía falta
-todo.
-
-Acá hay que ser cuidadoso con una cosa, porque es fácil confundirla. Del
-monóxido en la vivienda terminada ya escribimos aparte —[la nota está acá](/notas/monoxido-de-carbono-el-asesino-silencioso)—
-y ese es el riesgo del que vive en la casa. El tuyo es distinto y dura poco:
-**es el rato en que el artefacto ya funciona y la instalación todavía no está
-terminada.** Conducto provisorio, ventilación tapada por la obra, ambiente
-cerrado porque afuera hace frío, y vos adentro haciendo las pruebas.
-
-El reglamento nuevo que está en consulta pública es explícito sobre qué se le
-exige a un conducto: someterlo a pruebas de estanquidad y tiraje con aporte de
-humo, y que **evacúe la totalidad de los productos de la combustión por el
-remate**, sin fugas en el trayecto, sin migración a otros ambientes y sin
-retorno. Es un ensayo pensado para la instalación terminada.
-
-El punto es que, hasta que ese ensayo esté hecho y dé bien, el conducto **no
-sabés qué hace**. Y el momento en que no sabés qué hace es, justamente, el
-momento en que vos estás parado al lado del quemador.
-
-Es el único riesgo de esta lista que se resuelve casi sin costo: abrir, ventilar
-de verdad el ambiente donde estás probando, y no encadenar horas de pruebas en
-un lugar cerrado porque hay que entregar.
-
-## Lo que queda cuando ordenás los cinco
-
-Poné los cinco en fila y aparece un patrón, y el patrón es la parte que vale.
+Pero el número solo no sirve de mucho, porque un radiador rara vez llega a 50 kg
+y sin embargo la espalda se rompe igual. Lo verdaderamente útil está unas
+líneas más abajo, donde la norma enumera **las condiciones que obligan a bajar
+el límite**. Leelas pensando en un día tuyo cualquiera:
 
 <div class="table-scroll">
 
-| Riesgo | Cómo avisa |
+| Lo que dice la norma | Cómo se llama en tu obra |
 |---|---|
-| Plomo del sellador | No avisa. Se acumula. |
-| Corte o soldadura sobre caño con gas | Avisa una sola vez. |
-| Espacio confinado | Avisa cuando ya no podés reaccionar. |
-| Amianto | Avisa treinta años tarde. |
-| Combustión en ambiente cerrado | Avisa con síntomas que parecen otra cosa. |
+| "Postura agachada obligada del cuerpo, como el levantamiento cuando se está sentado o **arrodillado**" | Tender piso radiante |
+| "**Sujeción deficiente de las manos**: falta de mangos o asas, ausencia de relieves u otros puntos de agarre" | Un radiador. Una caldera. Un rollo de caño |
+| "**Inestabilidad de los pies**" | Contrapiso, escombro, obra en construcción |
+| "Levantamiento con una sola mano" | Sostener con una y atornillar con la otra |
 
 </div>
 
-**Ninguno de los cinco te avisa a tiempo.** Esa es la diferencia de fondo con el
-resto de los riesgos del trabajo, que sí avisan: la amoladora hace ruido, el
-peso te tira de la cintura, la escalera se mueve. Con esos aprendés por
-experiencia, que es como se aprende casi todo en este trabajo y como se aprende
-bien.
+Y después están las dos notas que valen por toda la sección:
 
-Con estos cinco, no. **Con estos cinco la experiencia llega después del daño**, y
-por eso son exactamente los que hay que resolver por criterio y por anticipado,
-antes de que la obra te apure.
+> Las tareas de levantamiento manual de cargas no deben iniciarse a una
+> distancia horizontal que sea mayor de 80 cm desde el punto medio entre los
+> tobillos.
 
-Y hay una simetría que cierra el asunto. Todo el trabajo que hacés apunta a que
-la instalación no lastime a la familia que va a vivir ahí: por eso ensayás
-hermeticidad, por eso verificás tiraje, por eso no entregás una ventilación
-trucha. Es el estándar más alto que tenés y no lo negociás con nadie.
+> Las tareas de levantamiento manual de cargas de rutina no deben realizarse
+> desde alturas de partida superiores a 30 cm por encima del hombro o superiores
+> a 180 cm por encima del nivel del suelo.
 
-Lo único raro es lo poco que se habla de aplicarte ese mismo estándar a vos.
+Ahora pensá en **colgar una caldera mural**. El peso sale del piso, va lejos del
+cuerpo porque el equipo tiene fondo, y termina por encima del hombro contra la
+pared. Es, punto por punto, la descripción de lo que las dos notas dicen que no
+se haga.
+
+<div class="callout-box">
+  <div class="callout-box__title">Lo que se desprende, en criterio</div>
+  <div class="callout-box__body">
+    Ninguna de esas dos notas dice "no lo hagas". Dicen que esa maniobra está
+    fuera de lo que un cuerpo aguanta como rutina. La conclusión práctica no es
+    dejar de colgar calderas: es <strong>no colgarla solo</strong>, apoyarla en
+    algo a media altura antes del tramo final, y no repetir la maniobra completa
+    cuatro veces en el día porque el soporte quedó torcido.
+  </div>
+</div>
+
+Y una cosa más, que es de las que solo se aprenden a golpes: **lo que rompe la
+espalda no suele ser el radiador**. Es el movimiento distraído, con el peso ya
+encima, para esquivar algo que estaba en el piso. Por eso el punto 2 va antes que
+este.
+
+## 4. Las horas de rodillas
+
+Esta es la lesión más segura de todo el rubro, y es la única que no vas a poder
+señalar en ningún parte de accidente, porque no pasa un día: pasa en diez años.
+
+Un piso radiante se tiende de rodillas. El caño se desenrolla, se posiciona y se
+fija sobre el panel, metro a metro, avanzando por el ambiente. En una casa
+entera son horas, y son horas en la misma posición, con las rodillas apoyadas
+sobre panel o sobre contrapiso.
+
+Acá la normativa **no te va a ayudar**, y conviene decirlo con todas las letras:
+la Resolución 295/03 trata la postura arrodillada como un factor que reduce lo
+que podés levantar, pero no fija un límite de horas de rodillas, porque no está
+escrita pensando en esta tarea. Esto es criterio, y el criterio es tuyo:
+
+- **Rodilleras**, y de las que no se corren solas. Es la inversión más barata de
+  todo tu equipo y la que más años te devuelve.
+- **Cortar el circuito en tramos.** No es más lento tenderlo en cuatro etapas con
+  otra tarea en el medio; es exactamente lo mismo de lento, con la diferencia de
+  que a los cincuenta años seguís pudiendo arrodillarte.
+- **Alternar rodillas y cuclillas** en vez de sostener una sola postura.
+
+Y el reverso de la misma moneda es el caño que va **por arriba**: colgado del
+techo, con los brazos por encima del hombro. La norma nombra esa altura para el
+levantamiento; para el trabajo sostenido no dice nada, y el hombro se gasta
+igual. Si el tramo es largo, se resuelve con andamio o con caballete, no con la
+punta de los dedos y el cuello estirado.
+
+## 5. La termofusora: doscientos sesenta grados que no se ven
+
+De todo lo que hay en tu caja, esto es lo único que quema.
+
+La termofusión de polipropileno —H3 de Saladillo, Dema, Polimex— une el caño y
+el accesorio calentando ambos contra una matriz a **unos 260 °C**, con tiempos
+que van de pocos segundos a un minuto según el diámetro. A esa temperatura la
+unión es molecular y el caño queda continuo, que es exactamente lo que la hace
+buena.
+
+Y también lo que la hace peligrosa de una manera particular: **el metal caliente
+no cambia de color.** Una matriz a 260 grados se ve igual que una matriz fría.
+No hay señal visual, no hay ruido, no hay olor. La única información que te
+llega es el dolor, y llega tarde.
+
+Lo que se desprende:
+
+- **Un lugar fijo para apoyarla, y siempre el mismo.** Despejado, estable, lejos
+  del borde y lejos de donde vas a poner la mano sin mirar. La termofusora
+  apoyada sobre el rollo de caño o sobre la tabla de trabajo es la quemadura de
+  la semana que viene.
+- **Guante de calor y manga larga** mientras se termofusiona, aunque haga calor.
+  Es el momento en que la regla de la manga se invierte.
+- **Enfriamiento**: la matriz sigue caliente mucho después de que apagaste la
+  máquina, y esa es la quemadura clásica — la de cuando ya terminaste.
+- **Antiparras**, por la salpicadura de material fundido.
+
+## 6. La herramienta eléctrica
+
+La amoladora abriendo canaleta y la agujereadora en la pared son las dos
+herramientas que más usás y las dos que más lastiman.
+
+El **artículo 208** del Decreto 911/96 es sorprendentemente concreto. Exige que
+las herramientas eléctricas, sus cables y accesorios tengan protección mecánica y
+condiciones dieléctricas adecuadas, y agrega:
+
+> Deben contar además con dispositivos que corten la alimentación en forma
+> automática, ante el cese de la acción del operador.
+
+Es decir: **cuando soltás, se apaga.** Que es la manera formal de decir que
+**trabar el gatillo con precinto, cinta o alambre está prohibido por escrito.**
+Es la costumbre más extendida del rubro y la que convierte un tropezón en una
+amoladora girando suelta en el piso.
+
+Dos artículos más del mismo capítulo, cortos y de puro sentido práctico:
+
+- **Artículo 197:** las herramientas se depositan, antes y después de usarlas, en
+  lugares asignados. No en el piso, no sobre el radiador, no en el último escalón
+  de la escalera.
+- **Artículo 198:** toda falla o desperfecto que se note se comunica de
+  inmediato, y la herramienta se saca de servicio. El cable pelado con cinta
+  aisladora no es una reparación: es una postergación.
+
+A eso hay que sumarle lo que la obra pone de su lado. Estás perforando pared con
+una máquina de 220 V, muchas veces con el piso mojado, alimentándote de una
+prolongación que viene de un tablero provisorio que no armaste vos. Antes de
+enchufar conviene saber si ese tablero **tiene disyuntor diferencial y toma de
+tierra**, porque de eso depende que un contacto sea un susto o sea otra cosa. Es
+una pregunta de treinta segundos y hay que hacerla el primer día, no el día que
+pasa algo.
+
+Y por último, el **polvo de la canaleta**: abrir pared con amoladora en seco
+llena el ambiente de polvo mineral fino. Barbijo, y no el de tela.
+
+## 7. La escalera, que es la que más lastima
+
+Si tuviera que apostar a una sola causa de accidente en este trabajo, apostaría a
+la escalera. No porque sea especialmente traicionera, sino por la cantidad de
+veces por día que subís **un minuto**: el colector, el soporte de la caldera, un
+tramo de caño por el techo, la salida a la terraza.
+
+El Decreto 911/96 le dedica un capítulo entero. El **artículo 214**, sobre
+escaleras de mano, fija tres condiciones que en la práctica se cumplen poco:
+
+> a) Los espacios entre los peldaños deben ser iguales y de TREINTA CENTIMETROS
+> (30 cm.) como máximo.
+>
+> b) Toda escalera de mano de una hoja usada como medio de circulación debe
+> sobrepasar en UN METRO (1 m.) el lugar más alto al que deba acceder […]
+>
+> c) Se deben apoyar sobre un plano firme y nivelado, impidiendo que se
+> desplacen sus puntos de apoyo superiores e inferiores mediante abrazaderas de
+> sujeción u otro método similar.
+
+Fijate en el punto (b), que es el que más se ignora: **la escalera tiene que
+pasar un metro por encima de donde vas a llegar.** No terminar ahí: pasarlo. Es
+lo que te da de dónde agarrarte en el momento exacto en que dejás de tener los
+dos pies en la escalera, que es el momento en que se cae la gente.
+
+Y el (c) dice dos cosas, no una: apoyo firme y nivelado **abajo**, y sujeción
+**arriba**. La escalera apoyada contra la pared sin atar es la que se abre.
+
+Para las otras dos que usás todo el tiempo:
+
+- **Escalera de tijera** (artículo 215): no más de 6 m, y con un sistema que
+  limite la apertura y mantenga los peldaños horizontales. El limitador roto o
+  atado con alambre es media escalera.
+- **Escalera extensible** (artículo 216): la superposición entre los dos tramos
+  tiene que ser de **un metro como mínimo**.
+
+Hay además un detalle del **artículo 210** que casi nadie aplica: las escaleras
+móviles son para **ascenso y descenso**. No son un puesto de trabajo. Media hora
+parado en el tercer escalón con las dos manos ocupadas y el cuerpo torcido para
+llegar al caño no es usar mal la escalera: es usar la herramienta equivocada. Ahí
+va un caballete o un andamio.
+
+## 8. El techo
+
+Subir al techo aparece más seguido de lo que uno diría: el conducto, una
+ventilación, un tramo que cruza, la terraza donde está el tanque.
+
+Dos artículos, y los dos sorprenden por lo bajo del umbral.
+
+El **artículo 54** define qué es trabajar con riesgo de caída:
+
+> tareas que involucren circular o trabajar a un nivel cuya diferencia de cota
+> sea igual o mayor a DOS METROS (2 m.) con respecto del plano horizontal
+> inferior más próximo.
+
+**Dos metros.** No es el edificio: es el techo de una planta baja, y es también
+media escalera de tijera abierta.
+
+El **artículo 112** fija el umbral del arnés:
+
+> En todo trabajo con riesgo de caída a distinto nivel será obligatorio, a partir
+> de una diferencia de nivel de DOS CON CINCUENTA METROS (2,50 m.), el uso de
+> cinturones de seguridad provistos de anillas por donde pasará el cabo de vida.
+
+Y agrega tres cosas que valen tanto como el umbral: el cinturón **se revisa antes
+de cada uso** y se descarta si tiene cortes o grietas; **se verifica el anclaje**
+y su resistencia; y el cabo de vida será **el más corto posible** conforme a la
+tarea. Un cabo largo no te salva de la caída: te salva del final de la caída, que
+no es lo mismo cuando abajo hay cuatro metros de recorrido.
+
+<div class="callout-box callout-box--urgente">
+  <div class="callout-box__title">Lo que la norma no dice, y en un techo argentino decide</div>
+  <div class="callout-box__body">
+    <p>Buena parte de los techos a los que vas a subir son de chapa vieja o de
+    fibrocemento, y esos materiales no avisan: no se hunden despacio, se rompen
+    de golpe y de una sola vez.</p>
+    <p>El criterio es no cargar el peso sobre la superficie sino sobre la
+    estructura que la sostiene, y no confiar en que una chapa que aguantó el
+    paso anterior va a aguantar el siguiente. Si no se ve dónde está la
+    estructura, no es un techo por el que se camina.</p>
+  </div>
+</div>
+
+## Lo que queda
+
+Poné en fila los ocho puntos y aparece algo que vale más que la lista.
+
+En este trabajo hay dos clases de daño y se comportan al revés.
+
+**El primero es el accidente**: la escalera, el techo, la amoladora, la
+quemadura. Pasa en un segundo, se ve, y todo el mundo entiende lo que pasó.
+Contra ese se trabaja con lo de siempre —el apoyo firme, el metro que sobresale,
+el gatillo sin trabar, el guante— y con una sola idea de fondo: **casi todos
+ocurren en tareas de un minuto.** Nadie se cae del andamio que armó con cuidado
+para tres días. Se cae del banquito que arrimó para hacer una cosa rápida.
+
+**El segundo no es un accidente**: son las rodillas, la espalda y el hombro. No
+tiene fecha, no tiene testigo y no lo cubre nadie, porque no hay un día en que
+haya pasado. Se paga a los veinte años, de una sola vez, y es el que decide si
+seguís trabajando o no.
+
+Y hay una asimetría que conviene mirar de frente. En cada obra ponés un cuidado
+enorme en que la instalación no lastime a la familia que va a vivir ahí: por eso
+ensayás, verificás y no entregás nada trucho. Es el estándar más alto que tenés.
+
+Lo raro es lo poco que se habla de aplicarte ese mismo estándar a vos, que sos la
+única parte de la instalación que no tiene repuesto.
 
 ---
 
 ## Fuentes
 
-Toda la normativa citada es argentina y está enlazada a su texto oficial. Nada
-de lo que se afirma acá sale de una interpretación: sale del texto.
+Toda la normativa citada es argentina y está enlazada a su texto oficial.
 
-- [Resolución ENARGAS 395/2024](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-395-2024-402218/texto) — modifica cautelarmente el punto 5.2.7 "Pasta para conexiones" de la NAG-200 y recomienda evitar el litargirio con glicerina (29/07/2024).
-- [NAG-200, listado de normas técnicas del ENARGAS](https://www.enargas.gob.ar/secciones/normativa/normas-tecnicas-items.php?grupo=2) — versión vigente y sus modificaciones.
-- [NAG-200, reglamento técnico en consulta pública, año 2025](https://www.enargas.gov.ar/secciones/normativa/pdf/normas-discusion/IF-2025-103868516-APN-GIYN-ENARGAS.pdf) — texto propuesto, todavía no vigente.
-- [Decreto 351/79](https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=32030), reglamentario de la Ley 19.587 — artículo 157 (soldadura y corte en espacios confinados) y artículo 158 (recipientes que contuvieron sustancias inflamables).
-- [Resolución SRT 953/2010](https://servicios.infoleg.gob.ar/infolegInternet/anexos/165000-169999/169317/norma.htm) — adopta la norma IRAM 3625 para tareas en espacios confinados.
-- [Resolución 823/2001](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-823-2001-68112/texto), Ministerio de Salud — prohibición del asbesto crisotilo a partir del 1º de enero de 2003.
+- [Decreto 911/96](https://servicios.infoleg.gob.ar/infolegInternet/anexos/35000-39999/38568/texact.htm), Reglamento de Higiene y Seguridad para la Industria de la Construcción — artículo 46 (orden y limpieza), 54 y 112 (riesgo de caída y cinturón de seguridad), 103 y 107 (vestimenta y casco), 197, 198 y 208 (herramientas), 210, 214, 215 y 216 (escaleras).
+- [Resolución 295/2003](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-295-2003-90396), Anexo I — especificaciones técnicas sobre ergonomía y levantamiento manual de cargas.
+- **IRAM 3610** — calzado de seguridad: requisitos y ensayos. **IRAM 3703** — calzado de seguridad para la construcción.
+- Temperatura y tiempos de termofusión: documentación técnica de los fabricantes de tubería de polipropileno para termofusión.
 
-Las recomendaciones prácticas que exceden el texto de las normas están señaladas
-como criterio y no como obligación. Cuando la normativa citada rige formalmente
-para el empleador y su personal, se dice.
+Donde la normativa citada rige formalmente para el empleador y su personal, se
+dice en el texto. Las recomendaciones que exceden la norma están señaladas como
+criterio y no como obligación.
