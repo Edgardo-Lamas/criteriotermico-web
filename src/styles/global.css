@@ -2451,6 +2451,12 @@ h4 { font-size: var(--text-xl); }
   margin-bottom: 0;
 }
 
+/* Citas de más de un párrafo (un artículo del Código con corte, una
+   atribución al pie): el margin-bottom: 0 de arriba las dejaba pegadas. */
+.article-content blockquote p + p {
+  margin-top: 14px;
+}
+
 .article-content img {
   border-radius: var(--radius-md);
   margin-block: var(--space-6);
@@ -2565,6 +2571,12 @@ h4 { font-size: var(--text-xl); }
   line-height: 1.6;
   color: var(--color-cream-soft);
   margin-bottom: 20px;
+}
+
+/* El body admite varios <p> además de texto suelto; sin esto el margen del
+   último párrafo se suma al del contenedor y abre un hueco dentro del recuadro. */
+.callout-box__body p:last-child {
+  margin-bottom: 0;
 }
 
 .callout-box strong {

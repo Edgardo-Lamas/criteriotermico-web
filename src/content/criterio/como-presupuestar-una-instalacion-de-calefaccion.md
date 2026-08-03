@@ -1,8 +1,8 @@
 ---
 title: "Cómo presupuestar una instalación de calefacción, y cobrarla entera"
-description: "Un presupuesto no es una lista de precios: es el contrato. Cómo se arma el costo real, cómo se calcula el margen, qué previsiones hay que dejar escritas, cómo se manejan los adicionales y qué herramientas existen para no terminar reclamando plata con una obra ya entregada."
+description: "Un presupuesto no es una lista de precios: es el contrato. Cómo se arma el costo, el margen, los adicionales, la cobranza y la garantía de una instalación."
 categoria: "Presupuestos"
-readingTime: "19 min"
+readingTime: "25 min"
 image: "/images/criterio/presupuestar-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-presupuestar.jpg"
@@ -199,11 +199,17 @@ ganancia. Es tu número, no el de nadie más, y cambia todo.
 <div class="callout-box">
   <div class="callout-box__title">Los ítems que se aprenden a cobrar a golpes</div>
   <div class="callout-box__body">
-    La lista larga de arriba tiene un atajo: llevá una libreta —o una nota en el
-    teléfono— con cada cosa que hiciste en una obra y no habías presupuestado.
-    En un año esa libreta vale más que cualquier plantilla, porque son
-    exactamente los ítems que a vos se te escapan. Cada uno entra al presupuesto
-    siguiente.
+    <p>La lista larga de arriba tiene un atajo: llevá una libreta —o una nota en
+    el teléfono— con cada cosa que hiciste en una obra y no habías
+    presupuestado. En un año esa libreta vale más que cualquier plantilla,
+    porque son exactamente los ítems que a vos se te escapan. Cada uno entra al
+    presupuesto siguiente.</p>
+    <p>Y hay una segunda fuente, que es la barata: <strong>mirar cómo le va al
+    de al lado.</strong> Todo esto se aprende de dos maneras nada más, perdiendo
+    plata propia o viendo perderla a otro, y la segunda sale gratis. El que
+    quedó pagando un adicional, el que no cobró el saldo, el que discutió por
+    algo que nunca escribió: cada uno de esos casos es una lección completa que
+    ya pagó otro.</p>
   </div>
 </div>
 
@@ -267,6 +273,34 @@ varios millones, esa confusión es un sueldo.
 
 La fórmula, para tenerla a mano: **precio = costo ÷ (1 − margen)**. Si querés
 un 35% de margen, dividís el costo por 0,65.
+
+### Dos fuentes de margen, no una
+
+Hay una decisión previa que cambia toda la cuenta: **de dónde sale tu margen.**
+
+El que solo pone la mano de obra tiene una sola fuente, y todo el peso del
+precio cae ahí. El que además provee el material tiene dos, y en calefacción
+suelen ser dos listas distintas —la de calefacción y la de la casa de
+sanitarios, cada una con su propio margen— más la mano de obra encima.
+
+Eso no es solamente más ganancia. Es margen de maniobra, en el sentido literal
+de la palabra.
+
+Porque con las dos fuentes sumadas se puede hacer algo que con una sola no:
+**devolver una parte como descuento por el pago de contado de toda la
+mercadería.** Y ese descuento no es una concesión ni una simpatía. Es una
+compra: estás comprando plata al contado el día que arranca la obra, que es
+justo el día en que te hace falta.
+
+Conviene ver contra quién se compite ahí. Una casa de calefacción compra como
+mayorista y tiene márgenes de material bastante más grandes que los tuyos: en
+una pulseada de precio de lista no le ganás. Pero el descuento por contado,
+tomado de tu propio margen, sí te sienta en la misma mesa. El cliente ve un
+número mejor, y vos arrancás la obra con el material cubierto.
+
+Y ahí aparece el criterio que ordena todo lo que viene: **lo que tiene que
+quedar cubierto, sí o sí, es el costo de los materiales.** La mano de obra se
+recupera trabajando. El material que te comiste sale de tu bolsillo y no vuelve.
 
 ## Los adicionales: donde se pierde la plata
 
@@ -392,21 +426,50 @@ un riesgo previsible, con medidas concretas.
 
 ### 1. No financies la obra
 
-El esquema de pagos es parte del presupuesto, no una charla aparte. Un armado
-razonable:
+Antes de los esquemas conviene sacar del medio una expectativa: **no existe una
+forma correcta de cobrar.** Cómo se arma el pago sale de la capacidad de cada
+uno —de si proveés el material o no, de con cuánto capital podés trabajar, del
+tamaño de la obra—, y por eso dos instaladores que trabajan igual de bien
+pueden cobrar de maneras completamente distintas sin que ninguno esté
+equivocado. El que busca la fórmula única está buscando algo que no existe.
 
-- **Anticipo a la aceptación**, dimensionado para comprar el material grueso.
-  No es una seña simbólica: es lo que hace que el material entre a la obra a
-  precio de hoy.
-- **Pagos contra avance verificable**, atados a hitos que se ven: caldera
-  montada, tendido completo, emisores colocados, prueba de presión aprobada.
-  Nada de "a los 15 días": contra hecho cumplido, que no se discute.
-- **Un saldo final chico**, contra puesta en marcha y entrega.
+Lo que sí es igual para todos es qué tiene que quedar cubierto, y ya lo vimos:
+**el material.**
 
-Lo del saldo final tiene una lógica que vale la pena entender. Si el último pago
-es grande, es exactamente la plata que te van a pelear cuando ya no tengas nada
-para retener. Si es chico, podés perderlo sin que la obra dé pérdida. Y tiene
-que ser lo bastante interesante como para que ellos también quieran cerrar.
+Con eso claro, dos armados que funcionan, y se eligen por tamaño de obra:
+
+- **Obra chica o mediana: 50% de anticipo, un pago contra avance y el saldo a
+  la entrega.** El anticipo dimensionado para que el material grueso entre a la
+  obra a precio de hoy. No es una seña simbólica: es su razón de ser.
+- **Obra grande: tres pagos de un tercio, contra avances pactados de antemano.**
+  Cuando el plazo es largo, tres tramos reparten el riesgo mejor para las dos
+  partes que un anticipo grande y una espera.
+
+En los dos casos los pagos van **atados a hitos que se ven**: caldera montada,
+tendido completo, emisores colocados, prueba de presión aprobada. Nada de "a los
+15 días". Contra hecho cumplido no se discute.
+
+Y sobre el último pago, una lógica para tener presente al decidir su tamaño: es
+exactamente la plata que te van a pelear cuando ya no te quede nada para
+retener. Cuanto más grande, más tienta la discusión; cuanto más chico, menos te
+duele si se pierde. Pero tiene que seguir siendo lo bastante interesante como
+para que del otro lado también quieran cerrar.
+
+<div class="callout-box">
+  <div class="callout-box__title">El esquema no se arma contra el cliente</div>
+  <div class="callout-box__body">
+    <p>Hay clientes con los que nada de esto hace falta. En la Patagonia había
+    obras grandes que se terminaban un día y se cobraban enteras al siguiente
+    —o cuando uno pasara, sin apuro y sin una sola vuelta—. Existen, son
+    muchos, y con ellos el esquema queda guardado en el cajón.</p>
+    <p><strong>El problema es que cuál es cuál se sabe después.</strong> Cada
+    cliente es una novela y ninguna se lee de antemano; por eso el esquema se
+    arma antes de conocerlo, una sola vez, y después se aplica entero, a medias
+    o nada según con quién se esté trabajando. Tenerlo armado es lo que te
+    permite ser flexible con el que responde bien sin quedar desarmado frente
+    al que no.</p>
+  </div>
+</div>
 
 ### 2. Dejá registro del avance
 
@@ -468,6 +531,81 @@ como reserva en el acta. Lo que no se anota, después es tuyo.
   </div>
 </div>
 
+## La garantía: la que das y la que trasladás
+
+La garantía entra al presupuesto como un renglón más, y casi siempre entra mal:
+en una línea suelta que dice *"garantía escrita"* sin aclarar de qué.
+
+Son dos cosas distintas, y conviene separarlas porque una te cuesta plata y la
+otra no.
+
+**La del fabricante ya existe, y es tuya para usar.** Los radiadores vienen con
+diez años de garantía; los materiales de la instalación, con cincuenta. Esas
+garantías las da el fabricante, no vos: no te cuestan un peso y ya están
+escritas. Lo único que hay que hacer es conocerlas, nombrarlas en el presupuesto
+con marca y modelo, y guardar las facturas.
+
+Ahí se pasa por alto algo todo el tiempo. Escribir que el material tiene
+cincuenta años de garantía no es un dato administrativo: es la respuesta a la
+pregunta que el cliente no sabe formular, que es *"¿y esto cuánto me va a
+durar?"*. El que la deja escrita está mostrando algo que el que no la nombra
+tiene exactamente igual, y no le sirve de nada.
+
+**La tuya es la instalación, y esa sí la pagás vos.** Dos años sobre el trabajo
+propio es un plazo sostenible. Lo que cubre es la ejecución —lo que armaste,
+soldaste, montaste y pusiste en marcha—, no el uso, ni la falta de
+mantenimiento, ni lo que haya intervenido un tercero después de que te fuiste.
+Eso último se escribe: una garantía sin límites no es más generosa, es más
+discutible.
+
+Y tiene una consecuencia de plata que engancha con todo lo anterior. **La
+garantía propia es un costo previsible**: alguna obra va a llamar. Ese renglón
+ya está contemplado unos párrafos más arriba, en la lista de lo que paga el
+margen. Es una de las razones por las que el margen no es lo que sobra.
+
+### La posventa, que es otra cosa
+
+La garantía cubre lo que salió mal en el trabajo. La posventa es más ancha: es
+qué hacés cuando algo sale mal, sin más.
+
+**Lo que sigue es propio. Escribe Edgardo Lamas.**
+
+Mandé dos empleados a un departamento a retirar un radiador. Trabajo de una
+mañana, de esos que uno ni pregunta cómo salieron.
+
+Desconectaron el radiador y no salió agua. Taparon las conexiones como se tapa
+algo que está seco, y se fueron.
+
+No salía agua porque la instalación era de vapor. En una instalación de vapor
+ahí no hay agua con el sistema frío: el agua está en la caldera, y lo que sube
+por las cañerías cuando el equipo arranca es vapor. Que no gotee al desconectar
+no prueba absolutamente nada, y para el que sabe dónde está parado eso es obvio.
+
+A las diez de la noche me llamó la propietaria. Habían encendido la calefacción.
+El departamento estaba lleno de vapor.
+
+Pagué la pintura completa, a nuevo. Fue lo único que hubo que reparar, y eso fue
+suerte: en esa misma escena podía haber habido muebles arruinados, papeles,
+cuadros, gente adentro.
+
+No hubo discusión sobre de quién era la responsabilidad, porque no había ninguna
+duda: la gente era mía, el trabajo era mío y el error era mío. Y ahí está la
+parte que de verdad hay que afrontar, que no es la plata. Es el momento exacto
+en que se abre la puerta para explicar por qué no fue del todo culpa tuya. Esa
+puerta aparece siempre, y siempre es tentadora.
+
+Todo este artículo se apoya en el Código Civil, porque el Código sirve. Pero el
+criterio que sostiene una posventa asumida no sale de ahí, y el que a mí me
+ordenó veinte años de trabajo tiene bastantes más años que el Código:
+
+> De más estima es el buen nombre que las muchas riquezas,
+> y la buena fama más que la plata y el oro.
+>
+> — Proverbios 22:1
+
+Una obra mal terminada se paga una vez. Un nombre se cobra, o se pierde, en
+todas las que vienen después.
+
 ## Qué tiene que decir un presupuesto
 
 Juntando todo, esto es lo mínimo. Si algo de esta lista falta, ahí está el
@@ -511,7 +649,9 @@ agujero por donde se te va a escapar la plata.
 13. **Cómo se tratan los adicionales**: por escrito, valorizados y aprobados
     antes de ejecutarse. Dejalo dicho desde el primer día, así cuando mandes el
     primero no es una novedad.
-14. **Garantía**: qué cubre, por cuánto tiempo, y qué la anula.
+14. **Garantía**, en dos renglones y no en uno: la del fabricante sobre los
+    materiales (con marca, modelo y plazo) y la tuya sobre la instalación, con
+    su plazo y qué la anula.
 15. Condiciones de recepción y acta de entrega.
 
 ## Volviendo al principio
@@ -545,5 +685,6 @@ Capítulo 9 — *Efectos*:
 - [Artículo 1032 — Tutela preventiva](https://leyes-ar.com/codigo_civil_y_comercial/1032.htm)
 - [Artículo 1091 — Imprevisión](https://leyes-ar.com/codigo_civil_y_comercial/1091.htm)
 
-El caso que abre y cierra la guía es real y llegó por relato directo. No se
-nombra a las partes.
+El caso que abre y cierra la guía es real y llegó por relato directo. El del
+departamento con instalación de vapor es propio. En ninguno de los dos se nombra
+a las partes.
