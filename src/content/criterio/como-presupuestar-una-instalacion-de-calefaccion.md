@@ -2,7 +2,7 @@
 title: "Cómo presupuestar una instalación de calefacción, y cobrarla entera"
 description: "Un presupuesto no es una lista de precios: es el contrato. Cómo se arma el costo, el margen, los adicionales, la cobranza y la garantía de una instalación."
 categoria: "Presupuestos"
-readingTime: "25 min"
+readingTime: "26 min"
 image: "/images/criterio/presupuestar-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-presupuestar.jpg"
@@ -462,12 +462,12 @@ para que del otro lado también quieran cerrar.
     obras grandes que se terminaban un día y se cobraban enteras al siguiente
     —o cuando uno pasara, sin apuro y sin una sola vuelta—. Existen, son
     muchos, y con ellos el esquema queda guardado en el cajón.</p>
-    <p><strong>El problema es que cuál es cuál se sabe después.</strong> Cada
-    cliente es una novela y ninguna se lee de antemano; por eso el esquema se
-    arma antes de conocerlo, una sola vez, y después se aplica entero, a medias
-    o nada según con quién se esté trabajando. Tenerlo armado es lo que te
-    permite ser flexible con el que responde bien sin quedar desarmado frente
-    al que no.</p>
+    <p><strong>El problema es que cuál es cuál se sabe después.</strong> Nadie
+    llega con su historia escrita en la cara: se lee sobre la marcha, y para
+    entonces ya estás adentro. Por eso el esquema se arma una sola vez, antes de
+    conocer a nadie, y después se aplica entero, a medias o nada según con quién
+    estés trabajando. Tenerlo armado es lo que te deja ser flexible con el que
+    responde bien sin quedar desarmado frente al que no.</p>
   </div>
 </div>
 
@@ -563,48 +563,71 @@ garantía propia es un costo previsible**: alguna obra va a llamar. Ese renglón
 ya está contemplado unos párrafos más arriba, en la lista de lo que paga el
 margen. Es una de las razones por las que el margen no es lo que sobra.
 
-### La posventa, que es otra cosa
+## La posventa: lo que se dice de vos cuando no estás
 
-La garantía cubre lo que salió mal en el trabajo. La posventa es más ancha: es
-qué hacés cuando algo sale mal, sin más.
+Pensá de dónde salió tu última obra. No de un cartel, no de un aviso: de alguien
+que te contrató antes y habló bien de vos.
 
-**Lo que sigue es propio. Escribe Edgardo Lamas.**
+Ese es el dato incómodo del negocio. El presupuesto compite —siempre hay otro
+más barato—, pero el nombre no compite con nadie: o te llaman a vos, o ni te
+enteraste de que había una obra. Y como no se factura, no aparece en ninguna
+planilla, así que es lo único importante que nadie administra.
 
-Mandé dos empleados a un departamento a retirar un radiador. Trabajo de una
-mañana, de esos que uno ni pregunta cómo salieron.
+El nombre tampoco se construye donde uno cree. Las obras que salen bien casi no
+suman: era lo que se esperaba, y a los seis meses nadie se acuerda. **Un nombre
+se hace, entero, en las pocas veces que algo sale mal.** Ahí el cliente ve por
+primera vez con quién estuvo tratando todo este tiempo.
 
-Desconectaron el radiador y no salió agua. Taparon las conexiones como se tapa
-algo que está seco, y se fueron.
-
-No salía agua porque la instalación era de vapor. En una instalación de vapor
-ahí no hay agua con el sistema frío: el agua está en la caldera, y lo que sube
-por las cañerías cuando el equipo arranca es vapor. Que no gotee al desconectar
-no prueba absolutamente nada, y para el que sabe dónde está parado eso es obvio.
-
-A las diez de la noche me llamó la propietaria. Habían encendido la calefacción.
-El departamento estaba lleno de vapor.
+<div class="callout-box">
+  <div class="callout-box__title">Lo que sigue es propio — escribe Edgardo Lamas</div>
+  <div class="callout-box__body">
+    <p>Un trabajo de una mañana: retirar un radiador de un departamento. Mandé
+    dos empleados y me olvidé del asunto.</p>
+    <p>Desconectaron, no salió una gota, taparon las conexiones como se tapa
+    algo que está seco y se fueron.</p>
+    <p>No salió una gota porque esa instalación era de vapor. Con el sistema
+    frío ahí no hay agua: está toda en la caldera. Y lo que sube por las
+    cañerías cuando el equipo arranca no gotea, no se ve y no avisa. Que no
+    salga nada al desconectar no significa absolutamente nada, y el que sabe
+    dónde está parado lo sabe sin pensarlo.</p>
+    <p>Esa noche encendieron la calefacción.</p>
+    <p><strong>A las diez me llamó la propietaria: el departamento estaba lleno
+    de vapor.</strong></p>
+  </div>
+</div>
 
 Pagué la pintura completa, a nuevo. Fue lo único que hubo que reparar, y eso fue
-suerte: en esa misma escena podía haber habido muebles arruinados, papeles,
-cuadros, gente adentro.
+suerte: en esa escena podía haber habido muebles, papeles, cuadros, gente.
 
-No hubo discusión sobre de quién era la responsabilidad, porque no había ninguna
-duda: la gente era mía, el trabajo era mío y el error era mío. Y ahí está la
-parte que de verdad hay que afrontar, que no es la plata. Es el momento exacto
-en que se abre la puerta para explicar por qué no fue del todo culpa tuya. Esa
-puerta aparece siempre, y siempre es tentadora.
+Nadie discutió de quién era la responsabilidad, porque no había nada que
+discutir: la gente era mía, el trabajo era mío, el error era mío.
 
-Todo este artículo se apoya en el Código Civil, porque el Código sirve. Pero el
-criterio que sostiene una posventa asumida no sale de ahí, y el que a mí me
-ordenó veinte años de trabajo tiene bastantes más años que el Código:
+Y lo caro de esa noche no fue la pintura. Fue tener a mano tres o cuatro frases
+perfectamente ciertas —el empleado no consultó, era un trabajo menor, nadie me
+avisó qué instalación había— y no usar ninguna. Porque esa puerta está siempre
+abierta, no cuesta nada cruzarla y del otro lado te espera exactamente lo mismo
+que dejaste: una señora que igual va a hablar de vos.
 
-> De más estima es el buen nombre que las muchas riquezas,
-> y la buena fama más que la plata y el oro.
+**Eso no se elige.** Que hable, hablaba seguro. Lo único que estaba en mis manos
+era qué iba a decir.
+
+Por eso hacerse cargo no es blandura, es la lectura más fría que hay del
+negocio: el que responde pierde una obra, y el que se escapa pierde las que esa
+obra le iba a traer. La diferencia es que las segundas no avisan. No hay reclamo,
+no hay discusión, no hay nada: simplemente el teléfono no suena, y uno nunca se
+entera de por qué.
+
+Todo este artículo se apoyó en el Código Civil, porque el Código sirve. Pero
+esto último no sale de ahí, y el consejo que mejor lo dice tiene bastantes más
+años que cualquier código:
+
+> De más estima es el buen nombre que las muchas riquezas, y la buena fama más
+> que la plata y el oro.
 >
 > — Proverbios 22:1
 
-Una obra mal terminada se paga una vez. Un nombre se cobra, o se pierde, en
-todas las que vienen después.
+Un trabajo mal terminado se paga una vez. Un nombre se cobra, o se pierde, en
+todas las obras que vienen después.
 
 ## Qué tiene que decir un presupuesto
 
