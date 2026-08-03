@@ -85,12 +85,42 @@ Y no es solo la puntera. Es la **suela**: en una obra en construcción el piso
 tiene recortes de hierro, clavos, escombro suelto y humedad. La zapatilla no
 tiene nada que hacer ahí.
 
+### El casco, que es el que más se desestima
+
+Al casco hay que dedicarle un párrafo aparte, porque es el elemento que más se
+subestima y el que peor se entiende.
+
+El **artículo 107** del Decreto 911/96 lo exige para
+
+> todo trabajador que desarrolle sus tareas en obras de construcción o en
+> dependencias cuya actividad suponga riesgos específicos de accidentes.
+
+Y acá está la parte que conviene entender bien, porque cambia por completo cuándo
+te lo ponés: **el casco no te protege de tu trabajo. Te protege del trabajo de
+los otros.** Vos, instalando calefacción, no generás caída de objetos sobre tu
+propia cabeza. La generan el que está en la planta de arriba, el que sube
+material, el que pica un techo, el que está armando encofrado sobre tu vertical.
+
+De ahí sale un criterio de obra que ninguna norma escribe con esas palabras y que
+sin embargo es el que se usa: **el casco escala con la obra, porque lo que escala
+es la cantidad de rubros trabajando al mismo tiempo.**
+
+- En una casa de una planta, con vos solo o casi solo adentro, arriba tuyo no
+  suele haber nadie y el casco casi no tiene a qué responder.
+- En una **casa de más de una planta**, en un dúplex, en un edificio, la cosa se
+  da vuelta: hay varios rubros a la vez y en distintos niveles, y arriba tuyo
+  siempre hay alguien. **Ahí el casco se usa**, y por eso en obras medianas y
+  grandes es la regla y nadie la discute.
+
+La pregunta práctica no es *"¿me lo pongo?"* sino **"¿cuánta gente hay trabajando
+arriba mío ahora mismo?"**. Esa pregunta se responde el primer día, mirando la
+obra, y la respuesta vale para toda tu permanencia ahí.
+
 ### Lo demás
 
-Antiparras cuando hay proyección —amoladora, agujereadora, corte—, protección
-auditiva cuando hay ruido sostenido, y casco donde corresponda: el **artículo
-107** del mismo decreto lo exige para todo trabajador expuesto a caída de
-objetos. Si arriba tuyo hay alguien trabajando, ese sos vos.
+Antiparras cuando hay proyección —amoladora, agujereadora, corte—, que el
+**artículo 108** ordena elegir según el riesgo de cada tarea, y protección
+auditiva cuando el ruido es sostenido.
 
 ## 2. La obra donde entrás no es tuya
 
