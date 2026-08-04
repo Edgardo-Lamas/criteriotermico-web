@@ -7,7 +7,6 @@ image: "/images/criterio/seguridad-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-seguridad.jpg"
 fecha: "2026-08-03"
-borrador: true
 ---
 
 Hacé dos listas.
@@ -326,6 +325,17 @@ fija sobre el panel, metro a metro, avanzando por el ambiente. En una casa
 entera son horas, y son horas en la misma posición, con las rodillas apoyadas
 sobre panel o sobre contrapiso.
 
+<div class="figura-par">
+  <figure>
+    <img src="/images/criterio/seguridad-rodillas.jpg" alt="Instalador arrodillado sobre el panel aislante de un piso radiante, fijando con las manos el caño flexible mientras el serpentín ya tendido se pierde hacia el fondo del ambiente" width="1000" height="526" loading="lazy" />
+  </figure>
+  <div class="figura-par__texto">
+    <p>Mirá dónde está apoyado el peso del cuerpo. No es una postura incómoda de un rato: es la postura de toda la tarea, y la tarea se mide en ambientes.</p>
+    <p>El serpentín que se va al fondo dice el resto. Cada vuelta que se ve ahí se fijó desde esta misma posición.</p>
+    <p class="article-nota-credito">Imagen generada digitalmente para esta guía.</p>
+  </div>
+</div>
+
 Acá la normativa **no te va a ayudar**, y conviene decirlo con todas las letras:
 la Resolución 295/03 trata la postura arrodillada como un factor que reduce lo
 que podés levantar, pero no fija un límite de horas de rodillas, porque no está
@@ -414,6 +424,11 @@ Si tuviera que apostar a una sola causa de accidente en este trabajo, apostaría
 la escalera. No porque sea especialmente traicionera, sino por la cantidad de
 veces por día que subís **un minuto**: el colector, el soporte de la caldera, un
 tramo de caño por el techo, la salida a la terraza.
+
+<figure class="figura-ancha">
+  <img src="/images/criterio/seguridad-escalera.jpg" alt="Instalador parado en los últimos escalones de una escalera de tijera, con los dos brazos por encima del hombro trabajando sobre una cañería junto al techo, la escalera apoyada sobre un contrapiso irregular con escombro y un rollo de caño en el piso" width="1000" height="504" loading="lazy" />
+  <figcaption>Dos cosas para mirar acá, y ninguna es el que está arriba: el piso donde apoyan las patas y los dos brazos por encima del hombro. La norma se ocupa de lo primero; lo segundo es lo que a los veinte años se cobra el hombro. Imagen generada digitalmente para esta guía.</figcaption>
+</figure>
 
 El Decreto 911/96 le dedica un capítulo entero. El **artículo 214**, sobre
 escaleras de mano, fija tres condiciones que en la práctica se cumplen poco:
