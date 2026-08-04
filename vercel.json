@@ -3,7 +3,12 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.crtermico.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.crtermico.com"
+        }
+      ],
       "destination": "https://crtermico.com/$1",
       "permanent": true
     },
@@ -11,15 +16,29 @@
       "source": "/oficio",
       "destination": "/criterio",
       "permanent": true
+    },
+    {
+      "source": "/repuestos/termostato-ambiente-tactil-peisa",
+      "destination": "/repuestos/termostato-ambiente-kalt-klt21",
+      "permanent": true
     }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
@@ -32,7 +51,12 @@
     },
     {
       "source": "/panel",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/_astro/(.*)",

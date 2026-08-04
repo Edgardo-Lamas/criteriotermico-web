@@ -1,0 +1,24 @@
+{
+  "slug": "termostato-ambiente-kalt-klt21",
+  "nombre": "Termostato de ambiente táctil KALT KLT-21",
+  "codigo": "KLT-21",
+  "marca": "KALT",
+  "precio_usd": 0,
+  "precio_ars": 90000,
+  "imagen": "/images/repuestos/termostato-klt21-1.jpg",
+  "imagenes": [
+    "/images/repuestos/termostato-klt21-1.jpg",
+    "/images/repuestos/termostato-klt21-2.jpg",
+    "/images/repuestos/termostato-klt21-3.jpg"
+  ],
+  "disponible": true,
+  "modelos_compatibles": ["Compatible con cualquier caldera, porque funciona a pilas"],
+  "sintomas": [
+    "El termostato existente no responde al tacto",
+    "La caldera no respeta la temperatura programada",
+    "Pantalla del termostato sin imagen o con error"
+  ],
+  "descripcion": "Termostato de ambiente digital programable KALT KLT-21, de pantalla táctil. Precisión de ±0,5 °C con sensor NTC 10k, rango de ajuste de 5 a 35 °C, modo antihielo y bloqueo infantil. Salida por relay con contacto NO/NC/COM y capacidad de 3 A. Funciona con 2 pilas AA.",
+  "guia_instalacion_slug": "",
+  "whatsapp_mensaje": "Hola, consulto por el termostato de ambiente KALT KLT-21. ¿Está disponible?"
+}
