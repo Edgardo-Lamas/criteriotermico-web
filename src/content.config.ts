@@ -7,7 +7,11 @@ const repuestos = defineCollection({
     slug: z.string(),
     nombre: z.string(),
     codigo: z.string(),
-    marca: z.string(),
+    // Opcional a propósito: hay repuestos genéricos que se consiguen de distintos
+    // proveedores y cuya marca cambia entre partidas (dato de Edgardo). Inventarle
+    // una marca fija a un repuesto así sería mentirle al que compra, así que
+    // cuando falta, el sello, el título y el `brand` del schema se omiten enteros.
+    marca: z.string().optional(),
     precio_usd: z.number(),
     precio_ars: z.number().optional(),
     imagen: z.string(),

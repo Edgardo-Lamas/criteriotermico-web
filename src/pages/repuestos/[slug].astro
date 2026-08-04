@@ -35,12 +35,16 @@ const compraMensaje = `Hola, quiero comprar el ${repuesto.nombre}. ¿Me confirm�
 // queda fuera del título. Tampoco se duplica la marca cuando el nombre ya la dice
 // (solo se agrega si falta), ni se repite "| Criterio Térmico" —Google añade el
 // nombre del sitio solo—. Se mantiene el gancho "Repuesto original".
-// `marca` es obligatoria en el schema: no lleva fallback, y menos a una marca fija
-// (ver §8 de docs/norma-lenguaje.md — la marca es dato del producto, no del sitio).
+// `marca` es opcional y NO lleva fallback, y menos a una marca fija (ver §8 de
+// docs/norma-lenguaje.md — la marca es dato del producto, no del sitio). En un
+// repuesto genérico, además, "original" no significa nada: si no hay marca de la
+// que ser original, el gancho se cae solo y queda el nombre, que ya describe.
 const marcaRepuesto = repuesto.marca;
-const seoTitle = repuesto.nombre.includes(marcaRepuesto)
-  ? `${repuesto.nombre} — Repuesto original`
-  : `${repuesto.nombre} ${marcaRepuesto} — Repuesto original`;
+const seoTitle = !marcaRepuesto
+  ? repuesto.nombre
+  : repuesto.nombre.includes(marcaRepuesto)
+    ? `${repuesto.nombre} — Repuesto original`
+    : `${repuesto.nombre} ${marcaRepuesto} — Repuesto original`;
 // La compatibilidad se declara de dos formas distintas en el contenido: como lista
 // de modelos ("Diva Duo F", "Única F") o como una frase suelta ("Compatible con
 // calderas Peisa con conector estándar"). Anteponerle "para" a la frase daba
@@ -49,7 +53,9 @@ const seoTitle = repuesto.nombre.includes(marcaRepuesto)
 // desaprovecha el snippet, por encima Google lo corta a mitad de frase.
 const modelos = repuesto.modelos_compatibles ?? [];
 const esFrase = modelos.length === 1 && modelos[0].length > 30;
-const colaSeo = `Repuesto original ${marcaRepuesto} con asesoramiento técnico. Retiro en Villa Urquiza, CABA.`;
+const colaSeo = marcaRepuesto
+  ? `Repuesto original ${marcaRepuesto} con asesoramiento técnico. Retiro en Villa Urquiza, CABA.`
+  : `Repuesto con asesoramiento técnico. Retiro en Villa Urquiza, CABA.`;
 // Se listan hasta 3 modelos y se van sacando de a uno hasta que la descripción
 // entra en el límite; los nombres de modelo son de largo muy variable.
 let seoDescription = colaSeo;
@@ -109,7 +115,8 @@ for (let n = esFrase ? 1 : Math.min(modelos.length, 3); n >= 1; n--) {
         </div>
 
         <div class="product-detail__info">
-          <span class="product-detail__code">{repuesto.marca} original</span>
+          {/* Sin marca no hay "original" que valga: el sello desaparece entero. */}
+          {marcaRepuesto && <span class="product-detail__code">{marcaRepuesto} original</span>}
 
           <h1>{repuesto.nombre}</h1>
 

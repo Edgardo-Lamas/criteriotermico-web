@@ -18,10 +18,11 @@ if (type === "product") {
     description: data.descripcion,
     image: data.imagen,
     sku: data.codigo || undefined,
-    brand: {
-      "@type": "Brand",
-      name: data.marca,
-    },
+    // Los repuestos genéricos no llevan marca. `brand` con un nombre vacío es peor
+    // que no declararlo: Google lo lee como dato del producto.
+    brand: data.marca
+      ? { "@type": "Brand", name: data.marca }
+      : undefined,
     offers: {
       "@type": "Offer",
       priceCurrency: data.precio_ars > 0 ? "ARS" : "USD",

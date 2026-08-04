@@ -1,23 +1,25 @@
 {
   "slug": "kit-valvula-detentor-escuadra-media",
-  "nombre": "Kit válvula + detentor escuadra ½\" Peisa",
+  "nombre": "Kit completo válvula + detentor, niples y rosetas",
   "codigo": "",
-  "marca": "Peisa",
   "precio_usd": 0,
-  "precio_ars": 45000,
-  "imagen": "/images/repuestos/valvula-detentor-1.jpg",
+  "precio_ars": 58000,
+  "imagen": "/images/repuestos/kit-radiador-3.jpg",
   "imagenes": [
-    "/images/repuestos/valvula-detentor-1.jpg",
-    "/images/repuestos/valvula-detentor-2.jpg"
+    "/images/repuestos/kit-radiador-3.jpg",
+    "/images/repuestos/kit-radiador-1.jpg",
+    "/images/repuestos/kit-radiador-2.jpg",
+    "/images/repuestos/kit-accesorios-1.jpg"
   ],
   "disponible": true,
-  "modelos_compatibles": ["Radiadores Peisa", "Toalleros Peisa"],
+  "modelos_compatibles": ["Radiadores y toalleros con conexión ½\""],
   "sintomas": [
     "Pérdida de agua en la conexión del radiador",
     "Imposibilidad de regular o cortar el flujo en un radiador",
-    "Válvula existente dura o bloqueada"
+    "Válvula existente dura o bloqueada",
+    "Radiador nuevo a montar, sin los accesorios de conexión"
   ],
-  "descripcion": "Kit completo de válvula y detentor escuadra ½\" original Peisa para radiadores y toalleros. Permite regular y cortar el flujo individualmente por elemento.",
+  "descripcion": "Todo lo que hace falta para conectar un radiador, en un solo kit: válvula, detentor, 2 niples y 2 rosetas cromadas, más el blister de accesorios con 4 bujes, 4 juntas, 2 soportes, 2 tarugos y el desaireador.",
   "guia_instalacion_slug": "",
-  "whatsapp_mensaje": "Hola, consulto por el kit válvula detentor ½\" Peisa. ¿Está disponible?"
+  "whatsapp_mensaje": "Hola, consulto por el kit completo para conectar un radiador. ¿Está disponible?"
 }
