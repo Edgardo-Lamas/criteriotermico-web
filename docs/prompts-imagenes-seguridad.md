@@ -4,41 +4,42 @@ Cuatro imágenes para la guía de seguridad de `/criterio`. Generalas y dejá lo
 archivos donde te quede cómodo; yo recorto, optimizo, verifico y escribo los
 créditos.
 
-⚠ **La versión anterior de este archivo pedía otras cuatro imágenes** (sótano,
-sala de máquinas, pasta selladora, amianto). Ese enfoque se descartó: el artículo
-se reescribió sobre calefacción **por agua en vivienda unifamiliar** y sobre el
-riesgo del **cuerpo**. Las imágenes viejas se borraron.
+⚠ **El radiador es de ALUMINIO POR ELEMENTOS, nunca de fundición.** Corrección de
+Edgardo: la fundición no es lo que se instala. En los prompts va descripto como
+una fila de elementos verticales unidos entre sí, no como un panel liso de chapa
+—que fue el error de la tanda anterior— y no como un radiador antiguo de columnas.
 
-⚠ La última tanda salió en **PNG real de 1200×630**. Si vuelve a salir así, la
-portada me queda 840×630 al recortarla a 4:3 y la tengo que reescalar. **Si podés
-elegir la relación, pedí la portada en 4:3 y la OG en 1200×630.**
+⚠ Relaciones: **la portada en 4:3** y **la OG en 1200×630**. Si el generador saca
+todo en 1200×630, la portada me queda 840×630 al recortarla y la tengo que
+reescalar.
 
-Ninguna imagen debe traer marcas, logos ni texto legible.
+⚠ Ninguna imagen debe traer marcas, logos ni texto legible.
 
 Destino final: `public/images/criterio/`.
 
 ---
 
-## 1. Portada — `seguridad-portada.jpg` (ideal 4:3)
+## 1. Portada — el peso · `seguridad-portada.jpg` (4:3)
 
 > Documentary photograph inside an unfinished single-family house, bare plaster
 > walls and rough concrete floor, daylight from a large unglazed window opening.
-> A heating installer in work clothes and safety boots is lifting a white steel
-> panel radiator against the wall, holding it awkwardly against his chest with
-> both arms because the radiator has no handles. His back is bent, his weight is
-> forward. Tools, a coil of red heating pipe and a stepladder visible around him
-> on the floor. Natural cool daylight, dust in the air, realistic and unglamorous.
-> Candid, unposed, photojournalistic. 35mm. No brand names, no logos, no legible
-> text anywhere in the frame.
+> A heating installer in work clothes and safety boots is lifting a white
+> sectional aluminium radiator into place against the wall. The radiator is made
+> of a row of joined vertical fin elements, not a flat panel. He holds it
+> awkwardly against his chest with both arms because it has no handles anywhere;
+> his back is bent and his weight is forward. Tools, a coil of red heating pipe
+> and a stepladder are visible around him on the floor. Natural cool daylight,
+> dust in the air, realistic and unglamorous. Candid, unposed, photojournalistic.
+> 35mm. No brand names, no logos, no legible text anywhere in the frame.
 
 **Por qué así:** la tesis del artículo es que lo que lastima no es el equipo sino
-el camino hasta el equipo. El radiador **sin agarre, contra el pecho y con la
-espalda doblada** es literalmente lo que describe la norma de ergonomía. Tiene
-que verse la incomodidad, no un obrero posando.
+el camino hasta el equipo. Tiene que verse la incomodidad —**sin agarre, contra
+el pecho, espalda doblada**—, que es literalmente lo que describe la norma de
+ergonomía. No un obrero posando.
 
 ---
 
-## 2. Las rodillas — `seguridad-rodillas.jpg`
+## 2. Las rodillas · `seguridad-rodillas.jpg`
 
 > Low-angle documentary close-up in an unfinished room. A heating installer
 > kneeling on a radiant-floor insulation panel, fixing a coil of red-orange
@@ -49,12 +50,12 @@ que verse la incomodidad, no un obrero posando.
 > 35mm. No brand names, no logos, no legible text anywhere in the frame.
 
 **Por qué así:** es la lesión más segura del rubro y la que no tiene fecha. El
-foco tiene que estar en **las rodillas apoyadas**, no en la prolijidad del
-serpentín. Y la fuga de caño hacia el fondo cuenta sola cuántas horas son.
+foco va en **las rodillas apoyadas**, no en la prolijidad del serpentín. Y la fuga
+de caño hacia el fondo cuenta sola cuántas horas son.
 
 ---
 
-## 3. La escalera — `seguridad-escalera.jpg`
+## 3. La escalera · `seguridad-escalera.jpg`
 
 > Documentary photograph in an unfinished house interior. A heating installer
 > standing on the upper steps of an aluminium stepladder, both arms raised above
@@ -72,15 +73,16 @@ y el piso irregular, no solo al tipo arriba.
 
 ---
 
-## 4. OG para WhatsApp — `og-seguridad.jpg` (1200×630 exacto)
+## 4. OG para WhatsApp · `og-seguridad.jpg` (1200×630)
 
 > Wide documentary photograph, horizontal composition, inside an unfinished
-> single-family house. A heating installer carrying a white steel panel radiator
-> across a rough concrete floor, small in the frame, with bare plaster walls, a
-> stepladder, a coil of red heating pipe and scattered tools around him. Cool
-> natural daylight from a large window opening, dust in the air. Cinematic,
-> candid, photojournalistic. No brand names, no logos, no legible text anywhere
-> in the frame.
+> single-family house. A heating installer carrying a white sectional aluminium
+> radiator —a row of joined vertical fin elements, not a flat panel— across a
+> rough concrete floor, small in the frame, with bare plaster walls, a stepladder,
+> a coil of red heating pipe and scattered tools around him. Cool natural daylight
+> from a large window opening, dust in the air. Cinematic, candid,
+> photojournalistic. No brand names, no logos, no legible text anywhere in the
+> frame.
 
 **Por qué aparte:** el recorte 4:3 de la portada y el 1200×630 de la tarjeta de
 WhatsApp no coinciden. Con la misma imagen, en el teléfono se ve un encuadre
