@@ -284,6 +284,17 @@ el límite**. Leelas pensando en un día tuyo cualquiera:
 
 </div>
 
+<div class="figura-par figura-par--invertida">
+  <figure>
+    <img src="/images/criterio/seguridad-peso.jpg" alt="Instalador inclinado hacia adelante, con la espalda casi horizontal, sosteniendo con las dos manos un radiador de aluminio por elementos mientras lo calza contra la pared" width="1000" height="504" loading="lazy" />
+  </figure>
+  <div class="figura-par__texto">
+    <p>Acá está la fila de arriba de la tabla, en una sola imagen: no hay por dónde agarrarlo. Las manos van donde entran, no donde conviene.</p>
+    <p>Y mirá la espalda. El peso no está sobre las piernas: está colgando de la cintura, que es la articulación que después no se recupera.</p>
+    <p class="article-nota-credito">Imagen generada digitalmente para esta guía.</p>
+  </div>
+</div>
+
 Y después están las dos notas que valen por toda la sección:
 
 > Las tareas de levantamiento manual de cargas no deben iniciarse a una
