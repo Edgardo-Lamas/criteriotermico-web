@@ -5,10 +5,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project
 
 Criterio Térmico is a static marketing/catalog site (Astro 7) for a solo technician
-with 20+ years of experience repairing and installing Peisa gas boilers, based in
-Villa Urquiza, CABA, Argentina. The business can't compete with larger retailers on
-parts inventory (only 4 SKUs today) — the site's strategy is to lead with the
-owner's technical authority and diagnostic content rather than catalog breadth.
+with 20+ years installing and repairing hot-water heating systems, based in Villa
+Urquiza, CABA, Argentina. The business can't compete with larger retailers on parts
+inventory (only 4 SKUs today) — the site's strategy is to lead with the owner's
+technical authority and diagnostic content rather than catalog breadth.
+
+**Do not describe the owner or the site by a boiler brand** (see §8 of
+`docs/norma-lenguaje.md`, added 2026-08-04). The site used to read as "the Peisa
+technician" in 72 places, which pinned the business to one brand's spare parts; his
+track record spans several brands and, in his words, installation work is identical
+across them — the brand only affects a given unit's service. Brands still belong
+wherever they are *product data* (a part's `marca`, compatible models, the specific
+unit named inside a guide) and nowhere they would be *a description of him* (schema,
+bylines, footer, meta descriptions, section titles).
 
 ## Commands
 

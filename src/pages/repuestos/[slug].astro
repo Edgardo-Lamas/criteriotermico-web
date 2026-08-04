@@ -32,10 +32,12 @@ const galeria = (repuesto.imagenes && repuesto.imagenes.length > 0)
 
 const compraMensaje = `Hola, quiero comprar el ${repuesto.nombre}. ¿Me confirmás disponibilidad, precio del día y cómo coordinamos la entrega?`;
 // El código de repuesto casi no se usa en la práctica (dato de Edgardo), así que
-// queda fuera del título. Tampoco se duplica "Peisa" cuando el nombre ya lo dice
+// queda fuera del título. Tampoco se duplica la marca cuando el nombre ya la dice
 // (solo se agrega si falta), ni se repite "| Criterio Térmico" —Google añade el
 // nombre del sitio solo—. Se mantiene el gancho "Repuesto original".
-const marcaRepuesto = repuesto.marca || "Peisa";
+// `marca` es obligatoria en el schema: no lleva fallback, y menos a una marca fija
+// (ver §8 de docs/norma-lenguaje.md — la marca es dato del producto, no del sitio).
+const marcaRepuesto = repuesto.marca;
 const seoTitle = repuesto.nombre.includes(marcaRepuesto)
   ? `${repuesto.nombre} — Repuesto original`
   : `${repuesto.nombre} ${marcaRepuesto} — Repuesto original`;
@@ -107,7 +109,7 @@ for (let n = esFrase ? 1 : Math.min(modelos.length, 3); n >= 1; n--) {
         </div>
 
         <div class="product-detail__info">
-          <span class="product-detail__code">{repuesto.marca || "Peisa"} original</span>
+          <span class="product-detail__code">{repuesto.marca} original</span>
 
           <h1>{repuesto.nombre}</h1>
 

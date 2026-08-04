@@ -123,7 +123,35 @@ Es el mismo estándar que ya rige para las notas (fuentes primarias, dato verifi
 ninguna cifra que no se pueda respaldar). La norma de lenguaje y la norma editorial
 dicen lo mismo desde dos lados.
 
-## 8. Chequeo rápido antes de publicar
+## 8. Las marcas de caldera no son la identidad del sitio
+
+**Vigente desde el 2026-08-04. Criterio de Edgardo.** El sitio se había escrito como
+si Criterio Térmico fuera "el técnico de Peisa": *especialista exclusivo en calderas
+Peisa*, *20 años en línea Peisa*, *servicio técnico Peisa* en el pie. Eran 72
+menciones y **encerraban el negocio en una sola marca de repuesto**, cuando la
+trayectoria real cruza varias marcas y —lo que más importa— **la instalación es la
+misma para cualquiera de ellas: la marca solo afecta el servicio técnico del equipo.**
+
+**La regla, en dos renglones:**
+
+> La marca se nombra donde es **un dato del producto**. Nunca donde es **una
+> descripción de quién sos**.
+
+| Dónde | Qué va | Ejemplo |
+|---|---|---|
+| Ficha de repuesto, compatibilidad, código | ✓ La marca, siempre y completa | *"Ventilador original Peisa 47W · entra en Diva Duo F, Única F, DS y C anteriores a 2019"* |
+| Cuerpo de una guía, al indicar el equipo | ✓ La marca y el modelo | *"En las Peisa de tiro forzado el original es el 90000090"* |
+| Quién sos, qué hacés, schema, firma, pie | ✗ Nunca una marca | *"20 años instalando y reparando calefacción por agua"* |
+| Título o H1 de una sección entera | ✗ Nunca una marca | *"Diagnóstico técnico de calderas"*, no *"…de calderas Peisa"* |
+
+**Por qué la distinción y no la eliminación:** sacar la marca de una ficha sería
+mentirle al que compra, porque ahí es información de compatibilidad y es lo que
+busca. Lo que se saca es la marca **como adjetivo tuyo**.
+
+⚠ El stock de repuestos hoy es Peisa, y eso se puede decir — como estado del stock
+(*"hoy el stock es de repuestos Peisa"*), no como definición del negocio.
+
+## 9. Chequeo rápido antes de publicar
 
 - [ ] ¿Digo "profesionales" o "técnicos" donde podría decir el rubro? → decí el rubro.
 - [ ] ¿Cuento oficios o profesiones como si fueran unidades? → nombrá los saberes.
@@ -131,6 +159,7 @@ dicen lo mismo desde dos lados.
 - [ ] ¿Hay algún "no de la academia", "sin vueltas teóricas", "nada de manual"? → fuera.
 - [ ] ¿El texto supone que el lector no sabe? → reescribir entre pares.
 - [ ] ¿Alguna cifra sin fuente verificable? → fuera.
+- [ ] ¿Una marca de caldera describe a Edgardo o titula una sección? → fuera (§8).
 
 ---
 

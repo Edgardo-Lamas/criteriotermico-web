@@ -67,4 +67,4 @@ Esta guía cubre el reemplazo del ventilador forzador en calderas Peisa de tiro 
 
 ---
 
-*Criterio Térmico — 20 años de experiencia en calderas Peisa*
+*Criterio Térmico — 20 años de experiencia en calderas y calefacción por agua*

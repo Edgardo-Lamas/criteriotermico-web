@@ -63,8 +63,9 @@ if (type === "product") {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Criterio Térmico",
-    description:
-      "Repuestos originales Peisa en Villa Urquiza, CABA. Ventiladores, flujostatos, termostatos táctiles y válvulas. Asesoramiento técnico incluido.",
+    // Se lee de siteConfig: antes repetía el texto a mano y las dos copias se
+    // desincronizaban (la de acá quedó nombrando una sola marca de caldera).
+    description: siteConfig.descripcion,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Villa Urquiza",
