@@ -3,9 +3,9 @@ title: "Lo que te lastima no es la caldera"
 description: "En una instalación de calefacción por agua el accidente no viene del equipo: viene de la escalera, del peso de un radiador, de la amoladora y de las horas de rodillas. Qué exige la normativa y qué queda a tu criterio."
 categoria: "Seguridad"
 readingTime: "25 min"
-image: "/images/criterio/seguridad-portada.jpg"
+image: "/images/criterio/seguridad-portada-radiador.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
-ogImage: "/images/criterio/og-seguridad.jpg"
+ogImage: "/images/criterio/og-seguridad-radiador.jpg"
 fecha: "2026-08-03"
 ---
 

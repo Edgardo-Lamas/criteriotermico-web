@@ -19,7 +19,7 @@ Destino final: `public/images/criterio/`.
 
 ---
 
-## 1. Portada — el peso · `seguridad-portada.jpg` (4:3)
+## 1. Portada — el peso · `seguridad-portada-radiador.jpg` (4:3)
 
 > Documentary photograph inside an unfinished single-family house, bare plaster
 > walls and rough concrete floor, daylight from a large unglazed window opening.
@@ -73,7 +73,7 @@ y el piso irregular, no solo al tipo arriba.
 
 ---
 
-## 4. OG para WhatsApp · `og-seguridad.jpg` (1200×630)
+## 4. OG para WhatsApp · `og-seguridad-radiador.jpg` (1200×630)
 
 > Wide documentary photograph, horizontal composition, inside an unfinished
 > single-family house. A heating installer carrying a white sectional aluminium
