@@ -7,7 +7,6 @@ image: "/images/criterio/condensado-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta guía."
 ogImage: "/images/criterio/og-condensado.jpg"
 fecha: "2026-08-05"
-borrador: true
 ---
 
 La caldera de condensación trajo a la instalación un componente que ninguna caldera
