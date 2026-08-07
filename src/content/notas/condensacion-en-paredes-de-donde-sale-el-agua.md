@@ -7,7 +7,6 @@ image: "/images/notas/condensacion-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta nota."
 ogImage: "/images/notas/og-condensacion.jpg"
 fecha: "2026-08-06"
-borrador: true
 ---
 
 Un club de la Patagonia, con pileta climatizada cubierta. Las paredes y los techos
