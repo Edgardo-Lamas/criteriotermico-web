@@ -14,11 +14,6 @@ fecha: "2026-08-08"
      blanco. Markdown corta el bloque de HTML ahí y el resto del dibujo se
      procesa como texto: el esquema sale vacío y los rótulos caen sueltos
      debajo. Pasó con el esquema 2 mientras se armaba esta nota.
-
-     PENDIENTE de sumar, a confirmar con Edgardo: el caso del gasista que pasó
-     sus caños por encima de los de calefacción, los aplastó y al cerrar
-     desprendió parcialmente una conexión — pérdida mínima, difícil de encontrar
-     porque la tapaba la cañería de gas.
      ============================================================ -->
 
 En esa casa había un piso de pinotea levantado. Abajo no había nada.
