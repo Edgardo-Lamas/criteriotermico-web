@@ -150,6 +150,27 @@ product is thermal calculation, which comes from exactly that. Talking about tra
 and capacitación *is* allowed: what degrades is a classroom tone, not the word. The
 section formerly at `/oficio` is now `/criterio` (301 in `vercel.json`).
 
+**Narrative content — he supplies the facts, you write the piece. This is not a
+style preference; it is the division of labour, and getting it wrong has cost
+three rewrites so far.** Edgardo is not a writer and does not claim to be. When
+he recounts an obra, he is handing over *raw material*: what happened, in the
+order he happened to remember it, in the words that came out. **A draft that
+follows his message beat by beat — same order, same phrasing, cleaned up — is a
+transcription, and it is a failure of the job.** He notices instantly and says
+so.
+
+Write it as a piece of prose would be written: choose the entry point (rarely the
+chronological start), decide what to withhold and when to reveal it, cut the
+beats that carry no weight, and give it rhythm — short sentences where the turns
+are. Aim at the standard of a well-told short story, not a tidy report.
+
+**What may never change:** the technical facts, the numbers, and who did what.
+**What may never be added:** detail he did not give — weather, province, dialogue,
+how many people, what anyone felt. Invented colour is the other recurring failure
+(see the skill `criterio-termico-obra`), and it is *more* tempting in narrative,
+where it reads as craft. Naming what is unknown ("quién sabe cuándo, quién sabe
+por quién") is legitimate; inventing it is not.
+
 **Business config:** `src/config/site.ts` holds WhatsApp number, address, hours,
 etc. `siteConfig.whatsapp` (Edgardo) and `siteConfig.whatsappAlejandro` are real
 numbers — they are published on the live site. Don't replace them with invented values.

@@ -2285,6 +2285,68 @@ h4 { font-size: var(--text-xl); }
   }
 }
 
+/* ---------- Esquemas dibujados en SVG ----------
+   Mismo motivo que el gráfico de barras de arriba: la CSP no admite librerías,
+   así que el dibujo se escribe a mano en el Markdown del artículo.
+
+   ⚠ Regla de legibilidad, y es la que define cómo se dibujan: adentro del SVG
+   va el MÍNIMO texto posible —el número de referencia y alguna cota— y la
+   explicación vive en la lista de abajo, que es HTML. Un rótulo largo dibujado
+   adentro escala junto con el dibujo y en el celular queda ilegible; en la
+   lista escala como el resto del artículo, se puede seleccionar y lo lee un
+   lector de pantalla.
+   ⚠ Por eso el dibujo se topea en 600px, que es el ancho de su viewBox: así el
+   texto del esquema sale 1:1 en desktop y en 390px baja a ~10px, que todavía se
+   lee. Sin tope, en desktop la tipografía del dibujo saldría bastante más
+   grande que la del artículo que lo rodea. */
+.article-content .esquema {
+  margin: 34px auto;
+  max-width: 600px;
+}
+
+.article-content .esquema svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+/* Las referencias numeradas del dibujo. No es un punteo del artículo: hereda el
+   guion de `.article-content li::before` y hay que reemplazarlo por el número,
+   que es el que aparece dibujado adentro del SVG. */
+.article-content .esquema__ref {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  gap: 9px;
+  counter-reset: esquema;
+}
+
+.article-content .esquema__ref li {
+  padding-left: 32px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.article-content .esquema__ref li::before {
+  counter-increment: esquema;
+  content: counter(esquema);
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  top: 1px;
+  border-radius: var(--radius-full);
+  background: var(--color-espresso);
+  color: var(--color-text-inverse);
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
 /* Crédito de la foto cuando la figura no lleva figcaption propio (maquetas
    pareadas): mismo tamaño y color que un pie de foto, no un párrafo más. */
 .article-content .article-nota-credito {
