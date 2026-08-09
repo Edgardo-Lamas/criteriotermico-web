@@ -31,7 +31,9 @@ técnica de Edgardo como fuente, embudo hacia el asesoramiento y el SaaS.
 
 - **Qué es:** sitio de marketing/catálogo **estático en Astro 7** (`output: "static"`,
   sin framework UI, CSS plano) de Edgardo Lamas, técnico con 20+ años reparando e
-  instalando calderas a gas Peisa en **Villa Urquiza, CABA, Argentina**. En producción
+  instalando calderas a gas Peisa en **Domingo French 210, Villa Martelli, partido de
+  Vicente López, Provincia de Buenos Aires** (mudanza del 2026-08-09; antes figuraba en
+  Villa Urquiza, CABA — **no volver a nombrar CABA como su ubicación**). En producción
   en su dominio propio **`crtermico.com`** (comprado el 2026-07-24; el `.vercel.app`
   quedó como URL de despliegue).
 - **A quién le habla (define el tono):** al **instalador profesional de la construcción**.
@@ -124,7 +126,12 @@ casi todo **desde el celular**. Familias de queries a trabajar:
   "presostato caldera", "repuestos Peisa" (y BAXI/Baxiroca/Caldaia donde aplique).
 - **Decisión / how-to:** "piso radiante o radiadores", "qué potencia de caldera
   necesito", "tiro forzado o natural".
-- **Local / servicio:** "gasista matriculado CABA", "service caldera Villa Urquiza".
+- **Local / servicio:** "gasista matriculado Vicente López", "service caldera Villa
+  Martelli", "service caldera zona norte", y las localidades del partido (Olivos,
+  Florida, Munro, Carapachay, Florida Oeste). 🔴 **CABA quedó SIN EFECTO como zona de
+  trabajo** — decisión suya del 2026-08-09, junto con la mudanza: no es sólo que
+  cambió el domicilio, cambió el área que atiende. **No reintroducir términos de CABA
+  ni de sus barrios sin que él lo pida.**
 - **Sumar calefacción al rubro** (intención de expansión, multi-rubro — clave para el
   objetivo ampliado): "cómo instalar calefacción", "puedo instalar radiadores", "instalar
   caldera paso a paso", "qué necesito para poner calefacción", y variantes por rubro (el

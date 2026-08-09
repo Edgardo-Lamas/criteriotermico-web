@@ -3114,6 +3114,41 @@ h4 { font-size: var(--text-xl); }
   }
 }
 
+/* ---------- Mapa de ubicación (nosotros) ----------
+ * El alto se reserva con aspect-ratio para que la página no salte cuando el
+ * iframe termina de cargar: el mapa entra con loading="lazy" y llega tarde.
+ * OJO: el iframe sólo carga si `frame-src` de la CSP (vercel.json) habilita a
+ * Google. Sin eso no da error — queda un recuadro vacío. */
+.mapa {
+  margin: var(--space-6) 0 var(--space-5);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-cream);
+}
+
+.mapa__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* En mobile un iframe de mapa se queda con el gesto de arrastre y el visitante
+ * no puede seguir bajando la página: hace zoom del mapa en vez de scrollear.
+ * Acá el mapa es prueba de que el lugar existe, no una herramienta de
+ * exploración — para eso está el botón "Cómo llegar", que abre la app. */
+@media (max-width: 768px) {
+  .mapa {
+    aspect-ratio: 4 / 3;
+  }
+  .mapa__frame {
+    pointer-events: none;
+  }
+}
+
 /* ---------- Reusable photo+text row (premium row) ---------- */
 .premium-row {
   display: grid;

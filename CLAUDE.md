@@ -5,8 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project
 
 Criterio Térmico is a static marketing/catalog site (Astro 7) for a solo technician
-with 20+ years installing and repairing hot-water heating systems, based in Villa
-Urquiza, CABA, Argentina. The business can't compete with larger retailers on parts
+with 20+ years installing and repairing hot-water heating systems, based at Domingo
+French 210, Villa Martelli (Vicente López, Province of Buenos Aires), Argentina —
+**not** CABA, which is where the business used to be listed until 2026-08-09. The business can't compete with larger retailers on parts
 inventory (only 4 SKUs today) — the site's strategy is to lead with the owner's
 technical authority and diagnostic content rather than catalog breadth.
 
@@ -65,6 +66,12 @@ hand Google a duplicate.
   `connect-src` must list `dolarapi.com` (the blue-dollar fetch in `PriceDisplay`)
   and `font-src`/`style-src` the Google Fonts hosts. **Adding any third-party
   script, font or API means widening the CSP or the page silently breaks.**
+  `frame-src` lists **both** `https://maps.google.com` and `https://www.google.com`
+  for the location map on `/nosotros`: the keyless embed URL is requested on
+  `maps.google.com` and **301s to `www.google.com/maps/embed`**, so dropping either
+  host leaves an empty rectangle with no console error. Any other embed (YouTube,
+  Instagram) is still blocked — the criterion is to link third-party media, not
+  frame it.
 - Cache: `/_astro/*` is immutable (Astro hashes those filenames); `/images/*` and
   `/videos/*` get a day of `max-age` plus a week of `stale-while-revalidate` —
   deliberately *not* `immutable`, because those filenames have no hash and photos
@@ -172,8 +179,13 @@ where it reads as craft. Naming what is unknown ("quién sabe cuándo, quién sa
 por quién") is legitimate; inventing it is not.
 
 **Business config:** `src/config/site.ts` holds WhatsApp number, address, hours,
-etc. `siteConfig.whatsapp` (Edgardo) and `siteConfig.whatsappAlejandro` are real
-numbers — they are published on the live site. Don't replace them with invented values.
+etc. `siteConfig.whatsapp` (Edgardo), `siteConfig.whatsappAlejandro` and
+`siteConfig.email` (the domain's own Zoho mailbox) are real — they are published on
+the live site. Don't replace them with invented values. The address is a **single
+source of truth**: it feeds the footer (three places), the homepage strip, and — via
+`SchemaMarkup` — the `PostalAddress` that Google reads. The schema splits it into
+`streetAddress` / `addressLocality` / `addressRegion` / `postalCode` by hand, so
+those five fields must be changed together with `siteConfig.direccion`.
 
 **Images:** plain `<img src="/path">` strings, no `astro:assets` integration.
 Convention: `public/images/home/` for homepage-only imagery, `public/images/nosotros/`

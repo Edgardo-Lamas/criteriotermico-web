@@ -67,13 +67,19 @@ if (type === "product") {
     // Se lee de siteConfig: antes repetía el texto a mano y las dos copias se
     // desincronizaban (la de acá quedó nombrando una sola marca de caldera).
     description: siteConfig.descripcion,
+    // Villa Martelli es partido de Vicente López, PROVINCIA de Buenos Aires:
+    // no es CABA. Poner "CABA" acá le daría a Google la jurisdicción equivocada
+    // para los resultados de negocio local.
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Villa Urquiza",
-      addressRegion: "CABA",
+      streetAddress: "Av. Domingo French 210",
+      addressLocality: "Villa Martelli",
+      addressRegion: "Provincia de Buenos Aires",
+      postalCode: "B1603",
       addressCountry: "AR",
     },
     url: siteConfig.dominio,
+    email: siteConfig.email,
     // Era el placeholder "+54911XXXXXXXX", que se publicaba tal cual en el JSON-LD
     // que lee Google para los resultados de negocio local.
     telephone: siteConfig.telefono,
@@ -98,8 +104,10 @@ if (type === "product") {
     },
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Villa Urquiza",
-      addressRegion: "CABA",
+      streetAddress: "Av. Domingo French 210",
+      addressLocality: "Villa Martelli",
+      addressRegion: "Provincia de Buenos Aires",
+      postalCode: "B1603",
       addressCountry: "AR",
     },
   };
