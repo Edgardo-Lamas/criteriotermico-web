@@ -5,8 +5,15 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 import ProductCard from "../components/ProductCard.astro";
 import Icon from "../components/Icon.astro";
 import Video from "../components/Video.astro";
+import MapaUbicacion from "../components/MapaUbicacion.astro";
 import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
+
+// Enlace universal de Google Maps: en el celular abre la app con la ruta ya
+// cargada. Mismo destino que el botón de `/nosotros`.
+const mapaComoLlegar = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  "Av. Domingo French 210, Villa Martelli, Vicente López, Buenos Aires"
+)}`;
 
 const repuestos = await getCollection("repuestos");
 const diagnosticos = await getCollection("diagnostico");
@@ -417,6 +424,22 @@ const trabajos = [
         <div class="contact-meta">
           <span><Icon name="pin" /> {siteConfig.direccion}</span>
           <span><Icon name="clock" /> {siteConfig.horario}</span>
+        </div>
+
+        {/* El mapa cierra la tarjeta: el visitante que llega por primera vez ve
+            que atrás hay un local de verdad, no un celular suelto. Va sólo acá
+            y no en el footer a propósito — el footer se repite en todas las
+            páginas y el mapa de Google tarda varios segundos en dibujarse. */}
+        <div class="contact-mapa">
+          <MapaUbicacion class="mapa--home" />
+          <a
+            class="btn btn--outline"
+            href={mapaComoLlegar}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="pin" /> Cómo llegar
+          </a>
         </div>
       </div>
     </div>

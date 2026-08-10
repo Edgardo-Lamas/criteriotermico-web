@@ -1,0 +1,40 @@
+---
+/* Mapa del local. Vive acá y no suelto en cada página porque lo usan dos
+ * (`/nosotros` y la home): con el iframe duplicado, una mudanza obliga a
+ * acordarse de los dos lugares — y la dirección ya se repite bastante.
+ *
+ * OJO al probarlo: Google NO sirve este mapa desde `localhost` — el recuadro
+ * queda vacío y sin error en consola. No es un bug del sitio; se verifica en
+ * producción o en un preview de Vercel, nunca con `npm run dev`.
+ *
+ * Y sólo carga si `frame-src` de la CSP (vercel.json) habilita a Google con
+ * SUS DOS hosts: la URL sin clave se pide en `maps.google.com` y responde un
+ * 301 hacia `www.google.com/maps/embed`. Si falta cualquiera de los dos, otra
+ * vez recuadro vacío sin error.
+ */
+interface Props {
+  /** Modificador de `.mapa` (p. ej. `mapa--home`, más chato). Los altos se
+   * definen en global.css, no acá: el resto del sitio maqueta por clase. */
+  class?: string;
+}
+
+const { class: clase = "" } = Astro.props;
+
+// Dirección con partido y provincia para que Google no la confunda con una
+// calle homónima. `output=embed` es la forma del mapa que no necesita clave.
+const consultaMapa = encodeURIComponent(
+  "Av. Domingo French 210, Villa Martelli, Vicente López, Buenos Aires"
+);
+// `hl=es` fuerza el idioma: sin eso los controles salen en inglés.
+const mapaEmbed = `https://maps.google.com/maps?q=${consultaMapa}&z=16&hl=es&output=embed`;
+---
+
+<div class:list={["mapa", clase]}>
+  <iframe
+    class="mapa__frame"
+    src={mapaEmbed}
+    title="Mapa de la ubicación: Av. Domingo French 210, Villa Martelli, Vicente López"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>

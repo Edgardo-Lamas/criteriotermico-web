@@ -3,16 +3,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import CredibilityStrip from "../components/CredibilityStrip.astro";
 import SchemaMarkup from "../components/SchemaMarkup.astro";
+import MapaUbicacion from "../components/MapaUbicacion.astro";
 import Icon from "../components/Icon.astro";
 import { siteConfig } from "../config/site";
 
 // Dirección con partido y provincia para que Google no la confunda con una calle
-// homónima. `output=embed` es la forma del mapa que no necesita clave de API.
+// homónima. El mapa incrustado se arma dentro de `MapaUbicacion`; acá sólo queda
+// el enlace de "Cómo llegar".
 const consultaMapa = encodeURIComponent(
   "Av. Domingo French 210, Villa Martelli, Vicente López, Buenos Aires"
 );
-// `hl=es` fuerza el idioma: sin eso los controles del mapa salen en inglés.
-const mapaEmbed = `https://maps.google.com/maps?q=${consultaMapa}&z=16&hl=es&output=embed`;
 // URL universal de Google Maps: en el celular abre la app con la ruta cargada.
 const mapaComoLlegar = `https://www.google.com/maps/dir/?api=1&destination=${consultaMapa}`;
 
@@ -165,15 +165,7 @@ const credibilidad = [
           antes de entregarla.
         </p>
 
-        <div class="mapa">
-          <iframe
-            class="mapa__frame"
-            src={mapaEmbed}
-            title="Mapa de la ubicación: Av. Domingo French 210, Villa Martelli, Vicente López"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
+        <MapaUbicacion />
 
         <p>
           <a
