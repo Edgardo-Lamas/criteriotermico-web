@@ -2,7 +2,7 @@
 title: "Por qué el agua caliente sale hirviendo y no se deja regular"
 category: "Mantenimiento"
 excerpt: "El agua sale hirviendo, se abre la fría y sale tibia: no hay punto medio. No pasa de un día para el otro —avisa durante meses— y la falla definitiva llega siempre a la peor hora. Una de las causas es el agua de la casa, y el análisis puede decir potable y tener razón: el límite sanitario admite el doble de dureza que el que exige el fabricante de la caldera."
-readingTime: "17 min"
+readingTime: "18 min"
 image: "/images/notas/agua-dura-portada.jpg"
 imageCredito: "Imagen generada digitalmente para esta nota."
 ogImage: "/images/notas/og-agua-dura.jpg"
@@ -383,6 +383,15 @@ agua —es todo provisorio y el gasto no tendría destino—, así que el filtro
 siempre una decisión de la casa terminada. Por eso alguien la tiene que plantear a
 tiempo: no aparece sola en ningún plano.
 
+Sobre cada cuánto se repone la carga tampoco hay un número que sirva para todos:
+depende de la dureza del agua, del tamaño de la demanda y del uso que tenga esa
+casa. El intervalo lo da el producto, no una regla general.
+
+Lo que sí conviene dejarle dicho al propietario es que **la carga —las piedras— la
+repone él mismo, y es sencillo.** No hace falta llamar a nadie. Es de las pocas
+tareas de una instalación que quedan de su lado, y avisarlo no es un detalle: un
+filtro que nadie sabe que hay que recargar deja de servir sin que nadie se entere.
+
 ### El ablandador de resina
 
 Este sí saca la dureza, y es la diferencia de fondo con el anterior.
@@ -448,6 +457,19 @@ criterio, que es medir el caudal y compararlo con el de la instalación limpia.
 
 Lo que sí puedo aportar es un caso: **en aquel barrio, sin tratamiento, fueron
 cuatro meses.**
+
+¿Y con el filtro puesto? Ahí prefiero decir exactamente lo que vi, que es menos
+redondo de lo que a cualquiera le gustaría: **el problema no se terminó, se
+espació.** Los equipos anduvieron mejor y los mantenimientos se fueron alejando. Eso
+es lo que un polifosfato puede dar, y no siempre es lo que se promete al venderlo.
+
+Tiene sentido si se vuelve a lo que hace. El mineral sigue entrando a la casa con
+cada apertura de canilla: el filtro consigue que no se agarre a la placa, no que
+deje de estar.
+
+Y corresponde una honestidad más. De aquel barrio **puedo hablar de las casas que
+atendí yo.** No todos los propietarios tomaron el mismo camino, y qué terminó
+haciendo cada uno por su cuenta no hay manera de saberlo.
 
 ## La pregunta que falta en el relevamiento
 
