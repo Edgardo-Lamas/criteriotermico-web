@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResultadoCompra from "../../components/ResultadoCompra.astro";
+---
+
+<BaseLayout
+  title="Compra confirmada"
+  description="Recibimos tu pago. Coordinamos la entrega del repuesto."
+  noindex={true}
+>
+  <ResultadoCompra
+    tono="exito"
+    titulo="Listo, recibimos tu pago"
+    bajada="Te escribimos por WhatsApp para coordinar la entrega o el retiro en Villa Martelli. Si preferís adelantarlo, escribinos vos con el número de operación."
+    mensajeWhatsapp="Hola, acabo de pagar un repuesto en la web. Quiero coordinar la entrega."
+  />
+</BaseLayout>

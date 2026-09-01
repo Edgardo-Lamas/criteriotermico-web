@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PriceDisplay from "../../components/PriceDisplay.astro";
 import WhatsAppButton from "../../components/WhatsAppButton.astro";
+import BotonComprar from "../../components/BotonComprar.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import SchemaMarkup from "../../components/SchemaMarkup.astro";
 import { siteConfig, PLACEHOLDER_REPUESTO } from "../../config/site";
@@ -31,6 +32,16 @@ const galeria = (repuesto.imagenes && repuesto.imagenes.length > 0)
   : [repuesto.imagen || PLACEHOLDER_REPUESTO];
 
 const compraMensaje = `Hola, quiero comprar el ${repuesto.nombre}. ¿Me confirmás disponibilidad, precio del día y cómo coordinamos la entrega?`;
+
+// El pago online se enciende con PUBLIC_PAGOS_ONLINE="true" en Vercel. Hasta que
+// las credenciales de Mercado Pago estén cargadas y probadas, la ficha vende como
+// vendía: por WhatsApp. Un botón de compra que no cobra es peor que no tenerlo.
+// Se exige precio_ars porque el precio en dólares se convierte al blue en el
+// navegador, y ese número no sirve como monto a cobrar (ver api/crear-preferencia.js).
+const pagosOnline =
+  import.meta.env.PUBLIC_PAGOS_ONLINE === "true" &&
+  repuesto.disponible &&
+  (repuesto.precio_ars ?? 0) > 0;
 // El código de repuesto casi no se usa en la práctica (dato de Edgardo), así que
 // queda fuera del título. Tampoco se duplica la marca cuando el nombre ya la dice
 // (solo se agrega si falta), ni se repite "| Criterio Térmico" —Google añade el
@@ -126,14 +137,20 @@ for (let n = esFrase ? 1 : Math.min(modelos.length, 3); n >= 1; n--) {
             <span class="product-detail__price-label">Precio</span>
             <PriceDisplay precioUsd={repuesto.precio_usd} precioArs={repuesto.precio_ars} />
             <p class="price-note" style="margin-top: 4px;">
-              Te confirmamos disponibilidad y precio del día al instante.
+              {pagosOnline
+                ? "Precio final. Retiro en Villa Martelli o envío a coordinar."
+                : "Te confirmamos disponibilidad y precio del día al instante."}
             </p>
             <div class="product-detail__buy">
-              <WhatsAppButton
-                mensaje={compraMensaje}
-                texto="Comprar por WhatsApp"
-                class="whatsapp-btn--full"
-              />
+              {pagosOnline ? (
+                <BotonComprar slug={repuesto.slug} mensajeWhatsapp={compraMensaje} />
+              ) : (
+                <WhatsAppButton
+                  mensaje={compraMensaje}
+                  texto="Comprar por WhatsApp"
+                  class="whatsapp-btn--full"
+                />
+              )}
               <WhatsAppButton
                 mensaje={repuesto.whatsapp_mensaje}
                 texto="Consultar antes de comprar"

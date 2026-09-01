@@ -30,6 +30,10 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes("/panel") &&
+        // Las pantallas de vuelta de Mercado Pago no son contenido: solo tienen
+        // sentido con los parámetros que agrega MP al redirigir. Van con noindex
+        // y fuera del sitemap.
+        !page.includes("/compra/") &&
         !rutasBorrador.some((ruta) => page.includes(ruta)),
     }),
     mdx(),

@@ -1,0 +1,117 @@
+---
+// Botón "Comprar ahora" — inicia el pago con Mercado Pago.
+//
+// El sitio es estático, así que el botón no puede saber en tiempo de render si
+// el pago está habilitado: se lo pregunta a /api/crear-preferencia al hacer clic.
+// Si la función responde 503 (credenciales sin cargar) o falla, el botón se
+// reemplaza por el camino de siempre, WhatsApp, y el visitante nunca queda
+// mirando un botón que no hace nada.
+//
+// El precio NO se manda desde acá a propósito: viaja solo el slug y el servidor
+// busca el monto. Ver el encabezado de api/crear-preferencia.js.
+
+import { siteConfig } from "../config/site";
+
+interface Props {
+  slug: string;
+  mensajeWhatsapp: string;
+  class?: string;
+}
+
+const { slug, mensajeWhatsapp, class: className } = Astro.props;
+const urlWhatsapp = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(mensajeWhatsapp)}`;
+---
+
+<div class={`comprar ${className ?? ""}`} data-comprar data-slug={slug} data-whatsapp={urlWhatsapp}>
+  <button type="button" class="comprar__btn" data-comprar-btn>
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="1" y="4" width="22" height="16" rx="2" />
+      <line x1="1" y1="10" x2="23" y2="10" />
+    </svg>
+    <span data-comprar-texto>Comprar ahora</span>
+  </button>
+  <p class="comprar__nota" data-comprar-nota>Pagás con tarjeta, débito o efectivo por Mercado Pago.</p>
+</div>
+
+<style>
+  .comprar { display: flex; flex-direction: column; gap: 6px; }
+
+  .comprar__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #b8790a;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+  }
+
+  .comprar__btn:hover:not(:disabled) { background: #9c6608; }
+  .comprar__btn:disabled { opacity: 0.7; cursor: progress; }
+
+  .comprar__nota {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #6b6b6b;
+    text-align: center;
+  }
+
+  .comprar__nota--error { color: #a32b2b; }
+</style>
+
+<script>
+  document.querySelectorAll("[data-comprar]").forEach((caja) => {
+    const contenedor = caja as HTMLElement;
+    const boton = contenedor.querySelector("[data-comprar-btn]") as HTMLButtonElement | null;
+    const texto = contenedor.querySelector("[data-comprar-texto]") as HTMLElement | null;
+    const nota = contenedor.querySelector("[data-comprar-nota]") as HTMLElement | null;
+    if (!boton || !texto || !nota) return;
+
+    // Cuando el pago no está disponible el botón deja de ser un botón: se
+    // convierte en el enlace de WhatsApp, que es lo que el sitio hacía antes.
+    const caerAWhatsapp = (motivo: string) => {
+      const url = contenedor.dataset.whatsapp;
+      nota.textContent = motivo;
+      nota.classList.add("comprar__nota--error");
+      texto.textContent = "Comprar por WhatsApp";
+      boton.disabled = false;
+      boton.onclick = () => { if (url) window.location.href = url; };
+    };
+
+    boton.addEventListener("click", async function iniciar() {
+      if (boton.disabled) return;
+      boton.disabled = true;
+      texto.textContent = "Abriendo el pago…";
+
+      try {
+        const res = await fetch("/api/crear-preferencia", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug: contenedor.dataset.slug, cantidad: 1 }),
+        });
+        const datos = await res.json().catch(() => ({}));
+
+        if (res.ok && datos.init_point) {
+          window.location.href = datos.init_point;
+          return;
+        }
+
+        if (res.status === 409) {
+          caerAWhatsapp("Sin stock en este momento. Consultanos por WhatsApp.");
+          return;
+        }
+        caerAWhatsapp("El pago online no está disponible. Coordinalo por WhatsApp.");
+      } catch {
+        caerAWhatsapp("No pudimos abrir el pago. Coordinalo por WhatsApp.");
+      }
+    });
+  });
+</script>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResultadoCompra from "../../components/ResultadoCompra.astro";
+---
+
+<BaseLayout
+  title="No se pudo completar el pago"
+  description="El pago no se completó. Podés reintentar o coordinarlo por WhatsApp."
+  noindex={true}
+>
+  <ResultadoCompra
+    tono="error"
+    titulo="El pago no se completó"
+    bajada="No se descontó nada de tu cuenta. Puede haber sido un rechazo de la tarjeta o una operación cancelada. Podés volver a intentarlo, o escribirnos y lo coordinamos por otro medio."
+    mensajeWhatsapp="Hola, intenté pagar un repuesto en la web y el pago no se completó. ¿Me ayudan?"
+  />
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResultadoCompra from "../../components/ResultadoCompra.astro";
+---
+
+<BaseLayout
+  title="Pago en proceso"
+  description="Tu pago está siendo procesado. Te avisamos apenas se acredite."
+  noindex={true}
+>
+  <ResultadoCompra
+    tono="pendiente"
+    titulo="Tu pago está en proceso"
+    bajada="Pasa con los pagos en efectivo (Rapipago, Pago Fácil) y con algunas tarjetas: Mercado Pago todavía no lo acreditó. Apenas se acredite te escribimos para coordinar la entrega. No hace falta que pagues de nuevo."
+    mensajeWhatsapp="Hola, pagué un repuesto en la web y figura como pendiente. ¿Me confirman?"
+  />
+</BaseLayout>
