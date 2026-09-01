@@ -52,25 +52,6 @@ function firmaValida(req, dataId) {
   const manifest = armarManifest({ dataId, requestId, ts });
   const esperada = crypto.createHmac("sha256", secreto).update(manifest).digest("hex");
 
-  // DIAGNÓSTICO TEMPORAL (2026-09-01) — BORRAR una vez validada la firma.
-  // El webhook rechaza todo con 401 y hay que ver qué manda MP de verdad.
-  // No se loguea el secreto: solo su largo, para detectar espacios o un pegado
-  // incompleto, que son las dos causas que no se ven a simple vista.
-  console.log(
-    JSON.stringify({
-      diag: "firma",
-      manifest,
-      query: req.query ?? null,
-      x_request_id: requestId ?? null,
-      ts,
-      v1_recibida: v1,
-      v1_calculada: esperada,
-      coincide: esperada === v1,
-      secreto_largo: secreto.length,
-      secreto_con_espacios: secreto !== secreto.trim(),
-    })
-  );
-
   // Comparación en tiempo constante: comparar con === filtra información sobre
   // la clave a quien mida cuánto tarda en fallar. Mismo criterio que el gate de
   // /api/search-console.

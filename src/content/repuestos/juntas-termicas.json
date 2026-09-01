@@ -5,7 +5,11 @@
   "precio_usd": 0,
   "precio_ars": 5000,
   "imagen": "/images/repuestos/juntas-1.jpg",
-  "disponible": true,
+  "imagenes": [
+    "/images/repuestos/juntas-1.jpg",
+    "/images/repuestos/juntas-2.jpg"
+  ],
+  "disponible": false,
   "modelos_compatibles": [
     "Consultar por modelo antes de comprar"
   ],
@@ -15,9 +19,5 @@
   ],
   "descripcion": "Juntas térmicas para uniones de instalaciones de agua caliente. Consultá el modelo antes de comprar.",
   "guia_instalacion_slug": "",
-  "whatsapp_mensaje": "Hola, consulto por las juntas térmicas. ¿Qué medidas tenés?",
-  "imagenes": [
-    "/images/repuestos/juntas-1.jpg",
-    "/images/repuestos/juntas-2.jpg"
-  ]
+  "whatsapp_mensaje": "Hola, consulto por las juntas térmicas. ¿Qué medidas tenés?"
 }

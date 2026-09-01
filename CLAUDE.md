@@ -118,9 +118,14 @@ The short version:
   site are collected in Edgardo's account and reported under his CUIT. He loads the
   credentials into Vercel himself — do not ask for, store, or paste an Access Token
   anywhere in this repo.
-- **Production credentials are blocked on identity validation** (as of 2026-09-01): MP's
-  facial recognition has failed repeatedly against Edgardo's own DNI, so only the `TEST-`
-  credentials are usable. The test phase does not need it; going live does.
+- **It is the TEST credentials that are unavailable, not the production ones** (as of
+  2026-09-01). Identity validation passed, so `APP_USR-` works and has taken a real
+  payment. The panel refuses to activate the sandbox credentials, failing with "Algo
+  salió mal" on every attempt. So the integration was validated with real money: a
+  $5.000 test part paid from another person's account. MP's fee was $215,15 (4,3%) plus
+  $240 of tax withholding, and the money is released ~18 days later, not immediately.
+  **Do not test payment changes by paying again** — use the Mercado Pago MCP server
+  (`.mcp.json`, OAuth) to create a test user instead.
 
 ## Architecture
 

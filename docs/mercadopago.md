@@ -129,7 +129,24 @@ id:<data.id>;request-id:<x-request-id>;ts:<ts>;
 donde el `id` sale del **query de la URL** (`?data.id=…`), no del cuerpo. Si alguna de
 las tres partes no viene, se omite junto con su clave.
 
-⚠ Esto importa porque es fácil de equivocar, y equivocarlo **no da error**: el webhook
+### Guardar la configuración regenera la clave secreta
+
+Esto costó una tarde entera de 401 y no está escrito en la documentación de MP.
+
+En **Webhooks → Configurar notificaciones**, cada vez que se aprieta *Guardar*, Mercado
+Pago **emite una clave secreta nueva** y descarta la anterior. Copiar la clave y después
+volver a guardar —para ajustar los eventos, para revisar la URL, para lo que sea— deja
+la clave copiada vencida en el mismo acto de copiarla.
+
+El orden correcto es: entrar, copiar la clave, **salir sin guardar**, y recién ahí
+cargarla en Vercel. Si hubo que guardar algo, la clave que vale es la de después de
+guardar, no la de antes.
+
+El síntoma es indistinguible de haber copiado la clave del modo equivocado: 401 en cada
+aviso, sin ningún error que explique nada. Antes de sospechar del código, volver a
+copiar la clave.
+
+⚠ La firma también es fácil de equivocar, y equivocarla **no da error**: el webhook
 simplemente rechaza todos los pagos legítimos con 401. La Edge Function del SaaS
 (`supabase/functions/mercadopago-webhook`, otro repo) lo arma mal hoy —
 `id:<x-request-id>;request-date:<ts>;` — y hay que corregirla con este mismo formato

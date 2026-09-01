@@ -34,9 +34,10 @@ export default defineConfig({
         // sentido con los parámetros que agrega MP al redirigir. Van con noindex
         // y fuera del sitemap.
         !page.includes("/compra/") &&
-        // TEMPORAL (2026-09-01) — repuesto de prueba para validar el cobro con
-        // credenciales de producción, porque el panel de MP no entrega las de
-        // prueba. BORRAR esta línea junto con el JSON del repuesto.
+        // Las juntas térmicas nacieron como repuesto de prueba para validar el
+        // cobro real (2026-09-01) y se quedaron. Siguen fuera del sitemap hasta
+        // tener ficha escrita: hoy el precio es el de la prueba y la descripción
+        // dice "consultar por modelo". Sacar esta línea cuando estén las medidas.
         !page.includes("/repuestos/juntas-termicas") &&
         !rutasBorrador.some((ruta) => page.includes(ruta)),
     }),

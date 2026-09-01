@@ -2,7 +2,7 @@
 // Se regenera en cada build desde src/content/repuestos/*.json
 // (scripts/generar-catalogo.mjs). Para cambiar un precio, se cambia el JSON.
 //
-// Generado: 2026-09-01T19:57:15.609Z
+// Generado: 2026-09-01T22:46:07.044Z
 
 export const CATALOGO = {
   "flujostato-bitron-onoff-90000054": {
@@ -19,7 +19,7 @@ export const CATALOGO = {
     "codigo": "",
     "precio_ars": 5000,
     "imagen": "/images/repuestos/juntas-1.jpg",
-    "disponible": true
+    "disponible": false
   },
   "kit-valvula-detentor-escuadra-media": {
     "slug": "kit-valvula-detentor-escuadra-media",
