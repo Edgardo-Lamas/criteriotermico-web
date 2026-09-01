@@ -34,6 +34,10 @@ export default defineConfig({
         // sentido con los parámetros que agrega MP al redirigir. Van con noindex
         // y fuera del sitemap.
         !page.includes("/compra/") &&
+        // TEMPORAL (2026-09-01) — repuesto de prueba para validar el cobro con
+        // credenciales de producción, porque el panel de MP no entrega las de
+        // prueba. BORRAR esta línea junto con el JSON del repuesto.
+        !page.includes("/repuestos/juntas-termicas") &&
         !rutasBorrador.some((ruta) => page.includes(ruta)),
     }),
     mdx(),

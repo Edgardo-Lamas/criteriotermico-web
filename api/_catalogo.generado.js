@@ -2,7 +2,7 @@
 // Se regenera en cada build desde src/content/repuestos/*.json
 // (scripts/generar-catalogo.mjs). Para cambiar un precio, se cambia el JSON.
 //
-// Generado: 2026-09-01T19:00:07.927Z
+// Generado: 2026-09-01T19:57:15.609Z
 
 export const CATALOGO = {
   "flujostato-bitron-onoff-90000054": {
@@ -11,6 +11,14 @@ export const CATALOGO = {
     "codigo": "90000054",
     "precio_ars": 95000,
     "imagen": "/images/repuestos/flujostato-1.jpg",
+    "disponible": true
+  },
+  "juntas-termicas": {
+    "slug": "juntas-termicas",
+    "nombre": "Juntas térmicas",
+    "codigo": "",
+    "precio_ars": 5000,
+    "imagen": "/images/repuestos/juntas-1.jpg",
     "disponible": true
   },
   "kit-valvula-detentor-escuadra-media": {
