@@ -7,6 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "catalogo": "node scripts/generar-catalogo.mjs",
+    "prebuild": "node scripts/generar-catalogo.mjs",
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",

@@ -24,7 +24,8 @@ bylines, footer, meta descriptions, section titles).
 
 ```sh
 npm run dev       # Start dev server at localhost:4321
-npm run build     # Build static site to ./dist/
+npm run catalogo  # Regenerate api/_catalogo.generado.js from the repuestos JSON
+npm run build     # Build static site to ./dist/ (runs `catalogo` first, via prebuild)
 npm run preview   # Preview the production build locally
 npm run astro ...  # Run Astro CLI commands (e.g. astro add, astro check)
 ```
@@ -84,6 +85,43 @@ for the portrait) at `-q:v 4`. Always give `<img>` a `width`/`height` unless the
 container already reserves the space with `aspect-ratio`, or the page shifts as it
 loads.
 
+## Payments (Mercado Pago, added 2026-08-28)
+
+**Read `docs/mercadopago.md` before touching anything under `api/` or the buy
+button.** It has the full setup, the env vars and the decisions taken.
+
+The short version:
+
+- **The price never travels from the browser.** `api/crear-preferencia.js` receives
+  only the `slug` and looks the amount up server-side in `api/_catalogo.generado.js`.
+  If the client sent the amount, anyone could edit it in devtools and buy a $468.000
+  part for one peso. Never "simplify" this by passing the price from the front end.
+- **`api/_catalogo.generado.js` is generated, not written.** `scripts/generar-catalogo.mjs`
+  builds it from `src/content/repuestos/*.json` on every `prebuild`, so the displayed
+  price and the charged price cannot drift apart. Edit the content JSON, not the
+  generated file. It is committed so deploys work without a local build.
+- **`PUBLIC_PAGOS_ONLINE` gates the button.** Unless it is `"true"` at build time the
+  ficha sells over WhatsApp exactly as before. A buy button that cannot charge is
+  worse than no button, so this defaults to off.
+- **`MP_ACCESS_TOKEN` is the key to the till** — Vercel env var only, never the repo,
+  never the front end. `PUBLIC_`-prefixed vars are visible in the HTML: that prefix is
+  for the on/off switch, never for a secret.
+- **Webhook signature format matters and fails silently.** MP signs
+  `id:<data.id>;request-id:<x-request-id>;ts:<ts>;` where `data.id` comes from the URL
+  query, not the body. Get it wrong and every legitimate payment is rejected with 401
+  while nothing errors. `api/mp-webhook.js` has it right; the SaaS repo's Supabase
+  Edge Function does **not** (it builds `id:<x-request-id>;request-date:<ts>;`) and
+  must be fixed before charging there.
+- **Account ownership (corrected 2026-09-01):** the MP account is **Edgardo's**, opened
+  in his own name. This file previously said it was Alejandro's — that was wrong, and
+  acting on it would send someone to the wrong account for credentials. Parts sold on the
+  site are collected in Edgardo's account and reported under his CUIT. He loads the
+  credentials into Vercel himself — do not ask for, store, or paste an Access Token
+  anywhere in this repo.
+- **Production credentials are blocked on identity validation** (as of 2026-09-01): MP's
+  facial recognition has failed repeatedly against Edgardo's own DNI, so only the `TEST-`
+  credentials are usable. The test phase does not need it; going live does.
+
 ## Architecture
 
 **Stack:** Astro 7, static output (`output: "static"` in `astro.config.mjs`), zero UI
@@ -93,9 +131,11 @@ framework (no React/Vue/etc.), plain CSS (no Tailwind). Integrations: `@astrojs/
 **Content model** (`src/content.config.ts`, Zod-typed collections loaded from
 `src/content/`):
 - `repuestos` — JSON files, one per spare part (nombre, codigo, marca, precio_usd,
-  imagen, disponible, modelos_compatibles[], sintomas[], descripcion,
+  precio_ars, imagen, disponible, modelos_compatibles[], sintomas[], descripcion,
   guia_instalacion_slug, whatsapp_mensaje). Rendered via `ProductCard.astro` and
-  `src/pages/repuestos/[slug].astro`.
+  `src/pages/repuestos/[slug].astro`. **`precio_ars` is what gets charged** — it is
+  the only price the payment flow will use (see Payments below), and a part without
+  it stays WhatsApp-only.
 - `diagnostico` — Markdown troubleshooting guides (title, description, fecha,
   categoria, repuestos_relacionados[] optional). This is the site's main
   differentiator/SEO asset — homepage surfaces it prominently, not as an
