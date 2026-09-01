@@ -2,7 +2,7 @@
 // Se regenera en cada build desde src/content/repuestos/*.json
 // (scripts/generar-catalogo.mjs). Para cambiar un precio, se cambia el JSON.
 //
-// Generado: 2026-09-01T22:46:07.044Z
+// Generado: 2026-09-01T23:54:58.800Z
 
 export const CATALOGO = {
   "flujostato-bitron-onoff-90000054": {

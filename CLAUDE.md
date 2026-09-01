@@ -85,7 +85,7 @@ for the portrait) at `-q:v 4`. Always give `<img>` a `width`/`height` unless the
 container already reserves the space with `aspect-ratio`, or the page shifts as it
 loads.
 
-## Payments (Mercado Pago, added 2026-08-28)
+## Payments (Mercado Pago — live and charging since 2026-09-01)
 
 **Read `docs/mercadopago.md` before touching anything under `api/` or the buy
 button.** It has the full setup, the env vars and the decisions taken.
@@ -100,9 +100,13 @@ The short version:
   builds it from `src/content/repuestos/*.json` on every `prebuild`, so the displayed
   price and the charged price cannot drift apart. Edit the content JSON, not the
   generated file. It is committed so deploys work without a local build.
-- **`PUBLIC_PAGOS_ONLINE` gates the button.** Unless it is `"true"` at build time the
-  ficha sells over WhatsApp exactly as before. A buy button that cannot charge is
-  worse than no button, so this defaults to off.
+- **`PUBLIC_PAGOS_ONLINE` gates the button, and it is now `"true"` in Vercel.** The
+  four parts with `precio_ars` charge through Mercado Pago; anything without it, or with
+  `disponible: false`, still sells over WhatsApp. Read at *build* time, so changing it
+  needs a redeploy, not just an env edit. The name must be exactly this: Astro only
+  injects `PUBLIC_`-prefixed vars, and the code compares against the literal string
+  `"true"`. Vercel refuses to mark a `PUBLIC_` var *Sensitive* — that combination is a
+  contradiction, and the fix is to drop *Sensitive*, never the prefix.
 - **`MP_ACCESS_TOKEN` is the key to the till** — Vercel env var only, never the repo,
   never the front end. `PUBLIC_`-prefixed vars are visible in the HTML: that prefix is
   for the on/off switch, never for a secret.
@@ -118,14 +122,30 @@ The short version:
   site are collected in Edgardo's account and reported under his CUIT. He loads the
   credentials into Vercel himself — do not ask for, store, or paste an Access Token
   anywhere in this repo.
-- **It is the TEST credentials that are unavailable, not the production ones** (as of
-  2026-09-01). Identity validation passed, so `APP_USR-` works and has taken a real
-  payment. The panel refuses to activate the sandbox credentials, failing with "Algo
-  salió mal" on every attempt. So the integration was validated with real money: a
-  $5.000 test part paid from another person's account. MP's fee was $215,15 (4,3%) plus
-  $240 of tax withholding, and the money is released ~18 days later, not immediately.
-  **Do not test payment changes by paying again** — use the Mercado Pago MCP server
-  (`.mcp.json`, OAuth) to create a test user instead.
+- **Saving the webhook config regenerates the secret.** This cost an afternoon of 401s
+  and is written nowhere in MP's docs. Every press of *Guardar* in Webhooks → Configurar
+  notificaciones issues a new secret and discards the old one, so a key copied *before*
+  that save is dead the moment it is pasted. Copy the key and leave without saving. The
+  symptom is indistinguishable from having copied the key of the wrong mode: 401 on every
+  notification, nothing logged anywhere. Suspect the key before the code — the manifest in
+  `api/mp-webhook.js` is verified correct against the official template.
+- **Test credentials exist; only the panel button is broken.** The web panel fails with
+  "Algo salió mal" when activating sandbox credentials, but the `TEST-` access token and
+  public key are issued and readable over the API — the Mercado Pago MCP server
+  (`.mcp.json`, OAuth) returns them. A test user already exists: **3655965507**
+  (`TESTUSER3476911726754698730`, MLA, buyer), password revealed at
+  `/developers/panel/app/1426858103774532/test-users`.
+- **Never validate a payment change by paying again.** It was done once, on 2026-09-01,
+  only because the panel hid the sandbox credentials: a $5.000 part paid from another
+  person's account. Worth knowing what a sale actually costs — MP took $215,15 (4,3%),
+  tax withholding another $240, and the money is released ~18 days later, not on the
+  spot. Use the test user above instead.
+- **There is no stock control.** `disponible: false` in the content JSON blocks a
+  purchase, but nothing sets it automatically. If the last unit sells and someone pays,
+  the money has to be refunded by hand.
+- **A sale notifies nobody.** The webhook logs it to Vercel and that is all — no email,
+  no WhatsApp. Someone buying on a Sunday night goes unnoticed until the panel is opened.
+  This is the most serious gap in the system now that the site charges for real.
 
 ## Architecture
 

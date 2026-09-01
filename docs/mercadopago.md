@@ -1,7 +1,7 @@
 # Cobro online con Mercado Pago
 
-Cómo está armado el pago de repuestos en crtermico.com y qué hace falta para
-encenderlo. Escrito el 2026-08-28.
+Cómo está armado el pago de repuestos en crtermico.com. Escrito el 2026-08-28,
+encendido y cobrando desde el 2026-09-01.
 
 ---
 
@@ -82,12 +82,17 @@ sitio caen ahí y se informan bajo su CUIT. Lo hace él, en
    (`APP_USR-…`). Para habilitar las de producción MP pide la industria, la URL del
    sitio (`https://crtermico.com`) y aceptar los términos.
 
-⚠ **Producción exige además validar identidad con reconocimiento facial**, y al
-2026-09-01 eso está trabado: el biométrico de MP no reconoce el rostro de Edgardo contra
-su propio DNI, después de unos diez intentos. Conviene no reintentar en el momento —
-MP bloquea la validación por un rato— y pedir validación asistida por el chat de ayuda
-de la app. **Nada de esto frena el paso 2:** las credenciales `TEST-` no dependen de la
-validación, así que el sandbox se puede probar entero mientras tanto.
+⚠ **Producción exige además validar identidad con reconocimiento facial.** Se hizo el
+2026-09-01, después de una decena de intentos fallidos. Si vuelve a trabarse: no
+reintentar en el momento (MP bloquea la validación por un rato), hacerlo desde la app
+del celular y no desde el navegador, con luz de frente y sin anteojos.
+
+⚠ **El botón de "activar credenciales de prueba" del panel está roto** — falla con
+"Algo salió mal" en cada intento. No es un problema de la cuenta: las credenciales
+`TEST-` están emitidas y se leen por API. La vía es el MCP de Mercado Pago
+(`.mcp.json`, OAuth), que además creó el usuario de prueba **3655965507**
+(`TESTUSER3476911726754698730`). La contraseña se revela en
+`/developers/panel/app/1426858103774532/test-users`.
 
 ### 2. Probar con credenciales de prueba
 
