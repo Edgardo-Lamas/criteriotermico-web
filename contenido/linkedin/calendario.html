@@ -1,0 +1,615 @@
+<title>Once semanas en LinkedIn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --bg:            #eaeef2;
+    --surface:       #f5f7f9;
+    --ink:           #101a24;
+    --body:          #16222e;
+    --muted:         #44586a;
+    --faint:         #6b7d8d;
+    --accent:        #a63d09;
+    --accent-fill:   #c04f18;
+    --ok:            #2f6b4f;
+    --line:          rgba(16, 26, 36, 0.14);
+    --line-soft:     rgba(16, 26, 36, 0.08);
+    --rail:          #c04f18;
+
+    --f-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+    --f-body: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:          #101a24;
+      --surface:     #16222e;
+      --ink:         #f4f8fb;
+      --body:        #dde6ed;
+      --muted:       #9fb2c1;
+      --faint:       #7d91a1;
+      --accent:      #f0803a;
+      --accent-fill: #f0803a;
+      --ok:          #6fbf95;
+      --line:        rgba(230, 237, 243, 0.16);
+      --line-soft:   rgba(230, 237, 243, 0.09);
+      --rail:        #f0803a;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:          #101a24;
+    --surface:     #16222e;
+    --ink:         #f4f8fb;
+    --body:        #dde6ed;
+    --muted:       #9fb2c1;
+    --faint:       #7d91a1;
+    --accent:      #f0803a;
+    --accent-fill: #f0803a;
+    --ok:          #6fbf95;
+    --line:        rgba(230, 237, 243, 0.16);
+    --line-soft:   rgba(230, 237, 243, 0.09);
+    --rail:        #f0803a;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  /* ---------- encabezado ---------- */
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(30px, 6vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin: 10px 0 0;
+  }
+
+  .standfirst {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 60ch;
+    margin: 14px 0 0;
+  }
+
+  /* ---------- cómo funciona ---------- */
+
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+
+  .slot-def {
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .slot-def.link { border-left: 3px solid var(--rail); }
+
+  .slot-def h3 {
+    font-family: var(--f-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .slot-def p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+  h2 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+
+  section > p.intro {
+    margin: -6px 0 20px;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  /* ---------- semanas ---------- */
+
+  .weeks { display: flex; flex-direction: column; gap: 26px; }
+
+  .week {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .week-mark {
+    font-variant-numeric: tabular-nums;
+    padding-top: 2px;
+  }
+
+  .week-num {
+    font-family: var(--f-display);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+    display: block;
+  }
+
+  .week-dates {
+    font-size: 12.5px;
+    color: var(--faint);
+    letter-spacing: 0.02em;
+    display: block;
+    margin-top: 5px;
+  }
+
+  .week.now .week-num { color: var(--accent); }
+
+  .posts { display: flex; flex-direction: column; gap: 12px; }
+
+  .post {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    padding: 15px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .post.link-slot { border-left: 3px solid var(--rail); }
+  .post.needs { border-style: dashed; border-color: var(--line); background: transparent; }
+
+  .post-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .day {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pill {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    color: var(--faint);
+  }
+
+  .pill.done { color: var(--ok); }
+
+  .post h4 {
+    font-family: var(--f-display);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.28;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .post p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+  .src {
+    font-size: 12.5px;
+    color: var(--faint);
+    letter-spacing: 0.01em;
+  }
+
+  /* ---------- serie monóxido ---------- */
+
+  .pieces { display: flex; flex-direction: column; gap: 2px; counter-reset: pz; }
+
+  .piece {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 14px;
+    padding: 13px 0;
+    border-top: 1px solid var(--line-soft);
+    align-items: baseline;
+  }
+
+  .piece:last-child { border-bottom: 1px solid var(--line-soft); }
+
+  .piece-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .piece.spent .piece-num { color: var(--faint); }
+
+  .piece h4 {
+    font-family: var(--f-body);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 2px;
+  }
+
+  .piece p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  /* ---------- reglas ---------- */
+
+  .rules {
+    background: var(--ink);
+    color: #e6edf3;
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .rules h2 { color: #f4f8fb; margin: 0; }
+  .rules p.lede { margin: 0; color: #b9c8d4; font-size: 15px; max-width: 60ch; }
+
+  .rules ol {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    color: #dde6ed;
+    font-size: 15px;
+  }
+
+  .rules strong { color: #f0803a; font-weight: 600; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    font-size: 13.5px;
+    color: var(--faint);
+  }
+
+  footer p { margin: 0 0 6px; }
+
+  @media (max-width: 560px) {
+    .week { grid-template-columns: 1fr; gap: 10px; }
+    .week-mark { display: flex; align-items: baseline; gap: 10px; padding-top: 0; }
+    .week-num { font-size: 18px; }
+    .week-dates { margin-top: 0; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Criterio Térmico · plan de publicación</p>
+    <h1>Once semanas en LinkedIn</h1>
+    <p class="standfirst">Dos posts por semana, del 1 de septiembre al 12 de noviembre de 2026, armados sobre los once artículos que ya están escritos y publicados en el sitio. Ninguna semana pide texto nuevo, salvo las obras del jueves.</p>
+  </header>
+
+  <section>
+    <h2>Los dos turnos</h2>
+    <div class="slots">
+      <div class="slot-def link">
+        <h3>Martes — con enlace</h3>
+        <p>Baja un artículo del sitio: el gancho más fuerte del texto, desarrollado, y el link al final. Es el turno que trae gente a crtermico.com.</p>
+      </div>
+      <div class="slot-def">
+        <h3>Jueves — sin enlace</h3>
+        <p>Valor cerrado en el propio post. LinkedIn muestra bastante menos lo que saca gente afuera, así que este turno va por alcance puro.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>El calendario</h2>
+    <p class="intro">El orden no es el de publicación en el sitio. Se termina el invierno y al gasista se le libera la agenda: primero va lo que le sirve para cotizar y organizar la temporada que viene, después el diagnóstico técnico, y lo histórico al final, cuando ya te leen. Monóxido y fallas de encendido vuelven en abril, que es cuando explotan solas.</p>
+
+    <div class="weeks">
+
+      <div class="week now">
+        <div class="week-mark"><span class="week-num">01</span><span class="week-dates">1 – 5 sep</span></div>
+        <div class="posts">
+          <article class="post">
+            <div class="post-head"><span class="day">Martes 01/09</span><span class="pill done">Escrito</span></div>
+            <h4>Por qué ninguno de los dos salió</h4>
+            <p>El mecanismo: primero adormece, después saca la fuerza para salir. Sin enlace y sin foto, por el hecho de esta semana.</p>
+            <p class="src">Monóxido de carbono, pieza 1 de 7</p>
+          </article>
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Jueves 03/09</span><span class="pill">Por escribir</span></div>
+            <h4>Un detector que cumple la norma tiene prohibido sonar antes de dos horas</h4>
+            <p>La tabla de la NAG-204. Rompe una creencia instalada, y eso circula. Acá sí va el enlace al artículo completo, mientras el tema está caliente.</p>
+            <p class="src">Monóxido de carbono, pieza 2 de 7</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">02</span><span class="week-dates">8 – 12 sep</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 08/09</span><span class="pill">Por escribir</span></div>
+            <h4>Cómo presupuestar una instalación, y cobrarla entera</h4>
+            <p>Un presupuesto no es una lista de precios: es el contrato. El artículo más largo que tenés, y el que más le duele al que vive de esto.</p>
+            <p class="src">/criterio · 26 min</p>
+          </article>
+          <article class="post">
+            <div class="post-head"><span class="day">Jueves 10/09</span><span class="pill done">Escrito</span></div>
+            <h4>Un ventilador forzador nunca falla de golpe. Avisa.</h4>
+            <p>Los cuatro ruidos y qué tiempo te queda con cada uno. La diferencia entre cambiar la pieza el martes o que te llamen un domingo a la noche.</p>
+            <p class="src">Guía de diagnóstico</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">03</span><span class="week-dates">15 – 19 sep</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 15/09</span><span class="pill">Por escribir</span></div>
+            <h4>Lo que te lastima no es la caldera</h4>
+            <p>El accidente no viene del equipo: viene de la escalera, del peso del radiador, de la amoladora y de las horas de rodillas.</p>
+            <p class="src">/criterio · 25 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 17/09</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>Contámela como te salga, en desorden. Si no llega a tiempo, entra la pieza 3 del monóxido — la llama azul.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">04</span><span class="week-dates">22 – 26 sep</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 22/09</span><span class="pill">Por escribir</span></div>
+            <h4>La misma casa: 923 o 346 m³ de gas por año</h4>
+            <p>Un estudio para la Secretaría de Energía puso dos veces la misma casa de 65 m² en el conurbano. Adentro de esa cuenta hay algo que casi nadie cuenta.</p>
+            <p class="src">/notas · Ahorro · 13 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 24/09</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>Qué encontraste, qué pensaste primero, en qué te equivocaste, cómo lo resolviste.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">05</span><span class="week-dates">29 sep – 3 oct</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 29/09</span><span class="pill">Por escribir</span></div>
+            <h4>Adónde va el condensado</h4>
+            <p>La caldera de condensación produce un líquido que ninguna caldera anterior producía, y ninguna norma argentina dice dónde termina.</p>
+            <p class="src">/criterio · 20 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 01/10</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>&nbsp;</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">06</span><span class="week-dates">6 – 10 oct</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 06/10</span><span class="pill">Por escribir</span></div>
+            <h4>La OMS nunca escribió que recomienda el piso radiante</h4>
+            <p>La respuesta más repetida del rubro tiene un problema. Y la pregunta tiene otro: le falta la mitad.</p>
+            <p class="src">/notas · Comparativas · 12 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 08/10</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>&nbsp;</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">07</span><span class="week-dates">13 – 17 oct</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 13/10</span><span class="pill">Por escribir</span></div>
+            <h4>La cámara que ve el calor</h4>
+            <p>Te muestra por dónde pasan los caños del piso radiante sin picar un metro, y qué borne del tablero está por prenderse fuego.</p>
+            <p class="src">/notas · Tecnología · 14 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 15/10</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>&nbsp;</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">08</span><span class="week-dates">20 – 24 oct</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 20/10</span><span class="pill">Por escribir</span></div>
+            <h4>Estaba a veinticinco metros</h4>
+            <p>Levantaron parte de un piso de pinotea buscando una pérdida y abajo no había nada. El orden para descartar sin romper.</p>
+            <p class="src">/notas · Diagnóstico · 15 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 22/10</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>&nbsp;</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">09</span><span class="week-dates">27 – 31 oct</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 27/10</span><span class="pill">Por escribir</span></div>
+            <h4>La pared que se moja no es la que tiene el problema</h4>
+            <p>Una oficina mojada a treinta metros de la pileta climatizada. Qué es el punto de rocío y por qué la calefacción por agua no puede ser la culpable.</p>
+            <p class="src">/notas · Diagnóstico · 14 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 29/10</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>&nbsp;</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">10</span><span class="week-dates">3 – 7 nov</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 03/11</span><span class="pill">Por escribir</span></div>
+            <h4>Sale hirviendo, se abre la fría y sale tibia</h4>
+            <p>No hay punto medio, avisa durante meses, y la falla definitiva llega siempre a la peor hora. El análisis puede decir potable y tener razón.</p>
+            <p class="src">/notas · Mantenimiento · 18 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 05/11</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>&nbsp;</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-mark"><span class="week-num">11</span><span class="week-dates">10 – 14 nov</span></div>
+        <div class="posts">
+          <article class="post link-slot">
+            <div class="post-head"><span class="day">Martes 10/11</span><span class="pill">Por escribir</span></div>
+            <h4>El piso radiante tiene 2.000 años</h4>
+            <p>En las termas había que caminar con sandalias de madera para no quemarse. Los romanos habían resuelto el principio; les faltaba lo que hoy damos por sentado.</p>
+            <p class="src">/notas · Historia · 7 min</p>
+          </article>
+          <article class="post needs">
+            <div class="post-head"><span class="day">Jueves 12/11</span><span class="pill">Falta material</span></div>
+            <h4>Obra tuya</h4>
+            <p>&nbsp;</p>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Monóxido: las siete piezas</h2>
+    <p class="intro">El artículo tiene 4.400 palabras. Pegado entero no lo lee nadie y se quema en un día; partido, aparecés siete veces sobre el mismo tema, que es lo que hace que dentro de tres meses alguien piense en vos cuando le hablen de monóxido. Van dos ahora, y las cinco restantes quedan para abril.</p>
+    <div class="pieces">
+      <div class="piece spent">
+        <span class="piece-num">01</span>
+        <div>
+          <h4>Por qué ninguno de los dos salió</h4>
+          <p>El mecanismo. Mata gente despierta. — martes 01/09</p>
+        </div>
+      </div>
+      <div class="piece spent">
+        <span class="piece-num">02</span>
+        <div>
+          <h4>Prohibido sonar antes de dos horas</h4>
+          <p>La tabla de la NAG-204: el detector no mide cuánto hay, mide cuánto te entró. — jueves 03/09</p>
+        </div>
+      </div>
+      <div class="piece">
+        <span class="piece-num">03</span>
+        <div>
+          <h4>La llama azul</h4>
+          <p>Las tres señales del artefacto: llama amarilla, hollín, mancha negra en el techo.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <span class="piece-num">04</span>
+        <div>
+          <h4>Una gripe no arranca a la misma hora en cuatro personas</h4>
+          <p>La señal de contexto vale más que cualquier síntoma.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <span class="piece-num">05</span>
+        <div>
+          <h4>Tu cuerpo fabrica monóxido</h4>
+          <p>El dato inesperado. Es el de más alcance de los siete.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <span class="piece-num">06</span>
+        <div>
+          <h4>Qué número creer</h4>
+          <p>Las cifras en Argentina, y por qué no coinciden entre sí.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <span class="piece-num">07</span>
+        <div>
+          <h4>Dónde termina tu diagnóstico y empieza el matriculado</h4>
+          <p>El límite. Es el más de gremio de los siete, y el que más comentarios trae.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rules">
+    <h2>Publicar sobre un hecho reciente</h2>
+    <p class="lede">Tres reglas que separan un post que sirve de uno que hace plata con un velorio. Valen cada vez que sale una noticia y el tema es tuyo.</p>
+    <ol>
+      <li><strong>No colgar el post de la muerte.</strong> El texto tiene que valer solo. Si sacás la noticia y el post se cae, estaba mal escrito.</li>
+      <li><strong>No especular sobre ese caso.</strong> No sabés qué artefacto era ni en qué estado. Explicás el mecanismo, no ese hecho, y no nombrás a nadie.</li>
+      <li><strong>Cero venta.</strong> Sin repuesto, sin «consultame», sin link a nada que cobre. Esa credibilidad vale más que la consulta.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>Publicación desde el perfil personal, no desde página de empresa: lo que se vende es tu criterio, y LinkedIn muestra bastante menos las páginas que las personas.</p>
+    <p>Los posts escritos viven en <code>contenido/linkedin/</code> del repo.</p>
+  </footer>
+
+</div>
