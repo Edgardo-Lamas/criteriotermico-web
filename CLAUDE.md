@@ -164,7 +164,9 @@ The short version:
   `pending` (log only) and then, whenever the buyer pays at the counter, again as `approved`
   — and that one mails. What never arrives is notice that someone *intends* to buy. The only
   thing that costs is stock: the last unit can be sold to someone else while the first buyer
-  is on their way to pay. Announcing `pending` too is a decision, not an oversight.
+  is on their way to pay. **Announcing `pending` was weighed on 2026-09-03 and rejected**
+  as noise at this volume; so was excluding cash from the checkout, which would lose the
+  buyer with no card.
 - **`vercel integration add` overwrites `.env.local` without asking.** It ran `env pull` on
   its own and replaced the file. Copy it aside before installing an integration.
 

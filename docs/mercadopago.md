@@ -213,8 +213,8 @@ segundo SPF.
   `pending` (solo al log) y después, cuando el comprador lo paga en el local, vuelve a
   llegar como `approved`: **ese sí manda el correo.** Lo que nunca llega es el aviso de que
   alguien *tiene la intención* de comprar. Lo único que eso cuesta es stock: se le puede
-  vender la última unidad a otro mientras el primero va camino a pagar. Avisar también de
-  los `pending` es una decisión, no un olvido.
+  vender la última unidad a otro mientras el primero va camino a pagar. **Avisar también de
+  los `pending` se evaluó el 3/9 y se decidió que no** (ver las decisiones, más abajo).
 - **No descuenta stock.** El correo lo dice en una línea, pero bloquear la compra sigue
   siendo a mano (`disponible: false` en el JSON).
 
@@ -243,6 +243,12 @@ su cuenta y reemplaza el archivo. Copiarlo aparte antes de instalar una integrac
   de compra que no cobra.
 - **No hay stock automático.** `disponible: false` en el JSON bloquea la compra, pero
   hay que ponerlo a mano. Si se vende el último y alguien paga, hay que devolverle.
+- **No se avisa de los pagos pendientes** (3/9). Con cuatro repuestos y poco movimiento, un
+  correo de "alguien dijo que va a pagar" es ruido: buena parte de esos cupones no se paga
+  nunca. Si el volumen crece y empieza a haber choques de stock, se revisa.
+- **El efectivo NO se excluyó del checkout.** Se evaluó dejar solo tarjeta y dinero en
+  cuenta para que la plata entre siempre en el momento, y se descartó: perdería al
+  comprador que no tiene tarjeta.
 - **El envío no se cobra ni se pide dirección.** Se coordina por WhatsApp después del
   pago, como se coordina hoy. Si el volumen crece, esto es lo primero que hay que
   cambiar.
