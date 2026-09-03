@@ -159,9 +159,12 @@ The short version:
     the same payment from mailing twice. Resend remembers it for 24 h.
   - **The webhook answers 500 when the mail fails**, on purpose, so MP retries and the notice
     gets a second chance; the sale is already in the log by then. Don't "fix" it to 200.
-- **Only approved payments are announced.** A cash payment at Rapipago arrives as `pending`
-  and may be paid three days later or never, so it only reaches the log. If someone should
-  hear about pending payments too, that's a decision, not an oversight.
+- **Only approved payments are announced — but a cash payment does get announced when it is
+  actually paid.** MP notifies on every state change, so a Rapipago coupon lands first as
+  `pending` (log only) and then, whenever the buyer pays at the counter, again as `approved`
+  — and that one mails. What never arrives is notice that someone *intends* to buy. The only
+  thing that costs is stock: the last unit can be sold to someone else while the first buyer
+  is on their way to pay. Announcing `pending` too is a decision, not an oversight.
 - **`vercel integration add` overwrites `.env.local` without asking.** It ran `env pull` on
   its own and replaced the file. Copy it aside before installing an integration.
 

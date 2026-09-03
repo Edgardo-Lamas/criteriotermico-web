@@ -208,9 +208,13 @@ segundo SPF.
 
 ### Lo que el aviso NO cubre
 
-- **Solo los pagos aprobados.** El efectivo en Rapipago llega como `pending` y puede pagarse
-  tres días después o nunca: eso va al log nada más. Avisar de los pendientes es una
-  decisión, no un olvido.
+- **Solo los pagos aprobados — pero el efectivo SÍ avisa cuando se paga.** MP notifica cada
+  vez que un pago cambia de estado, así que un cupón de Rapipago llega primero como
+  `pending` (solo al log) y después, cuando el comprador lo paga en el local, vuelve a
+  llegar como `approved`: **ese sí manda el correo.** Lo que nunca llega es el aviso de que
+  alguien *tiene la intención* de comprar. Lo único que eso cuesta es stock: se le puede
+  vender la última unidad a otro mientras el primero va camino a pagar. Avisar también de
+  los `pending` es una decisión, no un olvido.
 - **No descuenta stock.** El correo lo dice en una línea, pero bloquear la compra sigue
   siendo a mano (`disponible: false` en el JSON).
 
