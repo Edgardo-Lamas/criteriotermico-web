@@ -40,6 +40,7 @@ sigue vendiendo por WhatsApp.
 |---|---|
 | `api/crear-preferencia.js` | Crea el pago en MP. Valida slug, stock y cantidad. |
 | `api/mp-webhook.js` | Recibe el aviso de pago y valida la firma de MP. |
+| `api/_aviso-venta.js` | Le manda el correo del aviso de venta. No es una ruta. |
 | `api/_catalogo.generado.js` | **Generado.** Precios del lado del servidor. |
 | `scripts/generar-catalogo.mjs` | Lo genera desde el contenido. Corre en cada build. |
 | `src/components/BotonComprar.astro` | El botón. Cae a WhatsApp si el pago falla. |
@@ -57,6 +58,9 @@ sigue vendiendo por WhatsApp.
 | `PUBLIC_PAGOS_ONLINE` | `"true"` enciende el botón. Sin esto la ficha vende por WhatsApp. | Sí, para que se vea |
 | `MP_STATEMENT_DESCRIPTOR` | Lo que el comprador lee en el resumen de la tarjeta. Máx. 13 caracteres. | Recomendada |
 | `SITE_URL` | Por defecto `https://crtermico.com`. | No |
+| `RESEND_API_KEY` | Manda el aviso de venta. La carga sola la integración de Resend. | Sí, para el aviso |
+| `AVISO_VENTA_A` | A quién le llega. Por defecto `lamasedgardo@crtermico.com`. Admite varias, separadas por coma. | No |
+| `AVISO_VENTA_DE` | Remitente. Por defecto `avisos@send.crtermico.com`. | No |
 
 ⚠ **`MP_ACCESS_TOKEN` no va nunca en el repo ni en el frontend.** Quien lo tiene puede
 cobrar en nombre de la cuenta. Lo carga Edgardo, que es el titular, directo en el panel
@@ -156,6 +160,70 @@ simplemente rechaza todos los pagos legítimos con 401. La Edge Function del Saa
 (`supabase/functions/mercadopago-webhook`, otro repo) lo arma mal hoy —
 `id:<x-request-id>;request-date:<ts>;` — y hay que corregirla con este mismo formato
 antes de cobrar ahí.
+
+---
+
+## Aviso de venta por correo (3/9/2026)
+
+Antes de esto, una venta quedaba **solamente** en los logs de Vercel: quien comprara un
+domingo a la noche no se notaba hasta que alguien abriera el panel. Ahora cada pago
+**aprobado** manda un correo con el repuesto, las unidades, el monto y los datos del
+comprador. Contestarle al aviso le escribe al comprador directo (`reply_to`).
+
+El registro en el log **no se sacó**: sale siempre y antes del correo, así que si el
+aviso falla la venta igual quedó anotada.
+
+### Por qué Resend y no la casilla de Zoho
+
+El plan **Forever Free de Zoho Mail no da SMTP** — es solo navegador y app. La casilla del
+dominio puede *recibir* el aviso, pero no puede *mandarlo*. Resend es una integración del
+Marketplace de Vercel en **plan gratis** (3.000 correos/mes; acá van a ser unos pocos),
+instalada con `vercel integration add resend --plan free`, región `sa-east-1`.
+
+### El remitente vive en un subdominio, a propósito
+
+El remitente es `avisos@send.crtermico.com`. Resend verificó **`send.crtermico.com`**, no
+el dominio pelado, y sus registros quedaron todos ahí abajo:
+
+| Registro | Valor |
+|---|---|
+| `send.send.crtermico.com` TXT | `v=spf1 include:amazonses.com ~all` |
+| `send.send.crtermico.com` MX | `feedback-smtp.sa-east-1.amazonses.com` |
+| `resend._domainkey.send.crtermico.com` TXT | la clave DKIM de Resend |
+
+🔴 **Por eso el `v=spf1 include:zoho.com ~all` de la raíz quedó intacto.** Nunca puede
+haber **dos** registros SPF en el mismo nombre: mandar desde `avisos@crtermico.com` obliga
+a fusionar los dos en uno solo, y si eso queda mal, el correo real de Zoho empieza a caer
+en spam sin que nada avise. Si algún día hace falta, se fusiona a mano — no se agrega un
+segundo SPF.
+
+### Las dos decisiones que parecen errores y no lo son
+
+- **`Idempotency-Key: venta-<nº de pago>`.** MP avisa varias veces del mismo pago; sin esto
+  cada reintento sería otro correo igual. Resend la recuerda 24 h.
+- **El webhook contesta 500 cuando el correo no sale.** Es a propósito: MP reintenta la
+  notificación y el aviso tiene una segunda oportunidad. La venta ya está en el log, y la
+  `Idempotency-Key` evita que el reintento duplique el correo si en realidad sí se había
+  mandado. **No "arreglarlo" a 200.**
+
+### Lo que el aviso NO cubre
+
+- **Solo los pagos aprobados.** El efectivo en Rapipago llega como `pending` y puede pagarse
+  tres días después o nunca: eso va al log nada más. Avisar de los pendientes es una
+  decisión, no un olvido.
+- **No descuenta stock.** El correo lo dice en una línea, pero bloquear la compra sigue
+  siendo a mano (`disponible: false` en el JSON).
+
+### Cómo se probó
+
+Sin pagar nada y sin tocar MP: el envío real se verificó contra la API de Resend (llegó,
+`last_event: delivered`), y el webhook se corrió local con la firma HMAC armada a mano
+contra un secreto de prueba, con el pago y Resend simulados. Seis casos: aprobado, firma
+falsa (401), rechazado, pendiente, Resend caído (500) y referencia rota. El script quedó
+fuera del repo — es de un rato, no una suite.
+
+⚠ **`vercel integration add` sobrescribe `.env.local` sin preguntar.** Corre `env pull` por
+su cuenta y reemplaza el archivo. Copiarlo aparte antes de instalar una integración.
 
 ---
 

@@ -143,9 +143,27 @@ The short version:
 - **There is no stock control.** `disponible: false` in the content JSON blocks a
   purchase, but nothing sets it automatically. If the last unit sells and someone pays,
   the money has to be refunded by hand.
-- **A sale notifies nobody.** The webhook logs it to Vercel and that is all — no email,
-  no WhatsApp. Someone buying on a Sunday night goes unnoticed until the panel is opened.
-  This is the most serious gap in the system now that the site charges for real.
+- **A sale sends an email (added 2026-09-03).** `api/_aviso-venta.js` mails the details of
+  every *approved* payment through Resend; the Vercel log stays as the record. Read the
+  "Aviso de venta" section of `docs/mercadopago.md` before touching it. Four things there
+  are deliberate and easy to undo by accident:
+  - **Resend, not Zoho, because Zoho's Forever Free plan has no SMTP** — the domain mailbox
+    can receive the notice but cannot send it.
+  - **The sender is `avisos@send.crtermico.com`, a Resend-verified *subdomain*.** Resend's
+    SPF and DKIM live under `send.crtermico.com`, so the root's `v=spf1 include:zoho.com`
+    is untouched. Moving the sender to the bare domain means merging both SPF records into
+    one — there can only ever be one — and a mistake there silently sends the real mail to
+    spam. `AVISO_VENTA_DE` overrides the address; anything outside a verified domain is
+    rejected.
+  - **`Idempotency-Key: venta-<payment id>`** is what stops MP's repeated notifications for
+    the same payment from mailing twice. Resend remembers it for 24 h.
+  - **The webhook answers 500 when the mail fails**, on purpose, so MP retries and the notice
+    gets a second chance; the sale is already in the log by then. Don't "fix" it to 200.
+- **Only approved payments are announced.** A cash payment at Rapipago arrives as `pending`
+  and may be paid three days later or never, so it only reaches the log. If someone should
+  hear about pending payments too, that's a decision, not an oversight.
+- **`vercel integration add` overwrites `.env.local` without asking.** It ran `env pull` on
+  its own and replaced the file. Copy it aside before installing an integration.
 
 ## Architecture
 

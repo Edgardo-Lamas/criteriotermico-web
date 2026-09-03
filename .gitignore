@@ -27,3 +27,9 @@ pnpm-debug.log*
 design_handoff_rediseno_home/
 .vercel
 .env*
+
+# skills de agente que instala `vercel integration add` (Resend). Son 540K de
+# documentación para asistentes, no código del sitio: quedan en la máquina.
+.agents/
+.claude/skills/
+skills-lock.json

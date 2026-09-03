@@ -9,6 +9,9 @@
 //   MP_ACCESS_TOKEN   → para consultarle a MP los datos reales del pago.
 //   MP_WEBHOOK_SECRET → Panel MP → Tus integraciones → tu app → Webhooks →
 //                       "Clave secreta". Sin esto NO se procesa nada.
+//   RESEND_API_KEY    → para mandarle el aviso de venta por correo. Ver
+//                       _aviso-venta.js. Sin esto el pago se procesa igual y la
+//                       venta queda solo en el log, como antes del 3/9.
 //
 // Configurar en MP (Webhooks → Configurar notificaciones):
 //   URL: https://crtermico.com/api/mp-webhook
@@ -19,6 +22,9 @@
 // registro de ventas. La firma prueba que el aviso lo mandó Mercado Pago.
 
 import crypto from "node:crypto";
+
+import { buscarRepuesto } from "./_catalogo.generado.js";
+import { avisarVenta } from "./_aviso-venta.js";
 
 // Formato oficial del manifest que MP firma con HMAC-SHA256:
 //     id:<data.id>;request-id:<x-request-id>;ts:<ts>;
@@ -115,6 +121,8 @@ export default async function handler(req, res) {
     const referencia = pago.external_reference ?? "";
     const [, slug] = referencia.split(":");
 
+    // El registro sale SIEMPRE, y antes del correo: si el aviso falla, la venta
+    // igual quedó anotada acá.
     console.log(
       JSON.stringify({
         evento: "pago",
@@ -128,6 +136,45 @@ export default async function handler(req, res) {
         referencia,
       })
     );
+
+    // Solo se avisa de la plata que entró. MP notifica además pagos creados,
+    // rechazados y pendientes — el efectivo de Rapipago puede pagarse tres días
+    // después o nunca, y eso todavía no es una venta.
+    if (pago.status !== "approved") {
+      return res.status(200).end("OK");
+    }
+
+    // El slug se cruza contra el catálogo del servidor para que el correo diga
+    // el nombre del repuesto y no una cadena con guiones. Si la referencia vino
+    // rara, se avisa igual: perder el aviso es peor que mandarlo incompleto.
+    const repuesto = buscarRepuesto(slug) ?? {
+      nombre: slug || "(repuesto no identificado)",
+      codigo: "",
+    };
+
+    const telefono = [pago.payer?.phone?.area_code, pago.payer?.phone?.number]
+      .filter(Boolean)
+      .join(" ");
+
+    const avisado = await avisarVenta({
+      repuesto,
+      unidades: Number(pago.metadata?.unidades) || 1,
+      monto: pago.transaction_amount,
+      comprador: {
+        nombre: [pago.payer?.first_name, pago.payer?.last_name].filter(Boolean).join(" "),
+        email: pago.payer?.email ?? "",
+        telefono,
+      },
+      pagoId: pago.id,
+      referencia,
+    });
+
+    // 500 a propósito cuando el correo no salió: MP reintenta la notificación y
+    // hay una segunda oportunidad de que el aviso llegue. La Idempotency-Key de
+    // Resend evita que ese reintento mande el mismo correo dos veces.
+    if (!avisado) {
+      return res.status(500).end("Venta registrada, aviso no enviado");
+    }
 
     return res.status(200).end("OK");
   } catch (e) {
