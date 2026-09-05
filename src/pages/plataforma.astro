@@ -3,9 +3,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Video from "../components/Video.astro";
 import { siteConfig } from "../config/site";
 
-// La app vive en Vercel. La URL vieja de GitHub Pages daba 404 y se llevaba puestos
-// los siete CTA de esta página, que son la única puerta de entrada al SaaS.
-const PLATFORM_URL = "https://criterio-termico.vercel.app";
+// La app vive en su propio subdominio desde el 2026-09-05. Antes apuntaba a
+// criterio-termico.vercel.app, y antes de eso a GitHub Pages, que daba 404 y se
+// llevaba puestos los siete CTA de esta página: son la única puerta de entrada
+// al SaaS, así que esta constante es la más cara de tener mal.
+const PLATFORM_URL = "https://app.crtermico.com";
 const waTecnicos = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
   "Hola, soy técnico/instalador y quiero saber más sobre la plataforma Criterio Térmico."
 )}`;

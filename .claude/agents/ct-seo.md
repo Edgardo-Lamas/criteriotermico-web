@@ -64,7 +64,7 @@ técnica de Edgardo como fuente, embudo hacia el asesoramiento y el SaaS.
     se llama **`/criterio`** (antes `/oficio`, renombrada el 2026-08-02).
 - **Qué se vende:** el **asesoramiento y la autoridad técnica** de Edgardo. El catálogo
   (hoy 4 repuestos) NO es el gancho. El contenido de diagnóstico es el activo SEO y la
-  puerta de entrada; el repuesto y el SaaS (`criterio-termico.vercel.app`) son
+  puerta de entrada; el repuesto y el SaaS (`app.crtermico.com`) son
   consecuencia.
 - **El argumento central** (H1 de la home): *"Instalar calefacción cruza cuatro
   especialidades"* — gas, agua caliente, electricidad y termodinámica. No lo dice ningún
