@@ -90,7 +90,24 @@ const fullCanonical = canonicalUrl || `${siteUrl}${currentPath}`;
     <!-- Runs before first paint so [data-reveal] only hides content when JS
          can actually reveal it again (see .js-reveal rules in global.css) -->
     <script is:inline>
-      document.documentElement.classList.add("js-reveal");
+      // Quien vuelve a mostrar el contenido es el módulo del final del body, y
+      // un navegador que no ejecute módulos ES lo ignora entero: el WebView
+      // desactualizado que usa el navegador interno de Instagram es el caso
+      // típico. Esconder igual dejaría la página en blanco para siempre, así
+      // que van dos seguros.
+      // 1) Esconder sólo si este navegador sabe ejecutar módulos. Si no sabe,
+      //    la página se ve completa de entrada, sin animación: mejor eso.
+      // 2) Si el módulo no llegó a arrancar (falla de red, error de JS), a los
+      //    3 segundos se muestra todo igual.
+      if (window.HTMLScriptElement && HTMLScriptElement.supports && HTMLScriptElement.supports("module")) {
+        var raiz = document.documentElement;
+        raiz.classList.add("js-reveal");
+        setTimeout(function () {
+          if (!raiz.hasAttribute("data-animaciones-listas")) {
+            raiz.classList.remove("js-reveal");
+          }
+        }, 3000);
+      }
     </script>
   </head>
   <body>
@@ -104,6 +121,9 @@ const fullCanonical = canonicalUrl || `${siteUrl}${currentPath}`;
     {!hideChrome && <WhatsAppFloat />}
 
     <script>
+      // Le avisa al seguro por tiempo del <head> que el módulo sí arrancó.
+      document.documentElement.setAttribute("data-animaciones-listas", "");
+
       if (typeof IntersectionObserver !== "undefined") {
         const io = new IntersectionObserver(
           (entries) => {
